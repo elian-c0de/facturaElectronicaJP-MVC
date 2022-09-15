@@ -8,7 +8,7 @@
             
             <!-- formulario de agregar -->
             <form action="<?php echo RUTA_URL?>/linea/agregar" method="POST">
-              <input type="number" class="form-control mb-3" name="cod_empresa" placeholder="Establecimiento">
+              <input type="number" class="form-control mb-3" name="cod_empresa" placeholder="Empresa">
               <input type="text" class="form-control mb-3" name="cod_linea" placeholder="linea">
               <input type="text" class="form-control mb-3" name="cod_sublinea" placeholder="sublinea">
               <input type="text" class="form-control mb-3" name="txt_descripcion" placeholder="descripcion">
@@ -23,13 +23,14 @@
       </div>
       <div class="col-md-8">
       <table class="table">
-            <thead>
+            <thead class="table-success table-striped">
                 <tr>
-                <th>codigo empresa</th>
-                <th>codigho linea</th>
-                <th>codigo sublinea</th>
-                <th>txt_descripcion</th>
-                <th>fec_actializa</th>
+                <th>Empresa</th>
+                <th>Linea</th>
+                <th>Sublinea</th>
+                <th>Descripcion</th>
+                <th>Fecha</th>
+                <th>Editar/Eliminar</th>
             
                 </tr>
             </thead>
@@ -42,10 +43,16 @@
                     <td><?php echo $linea->cod_sublinea;?></td>
                     <td><?php echo $linea->txt_descripcion;?></td>
                     <td><?php echo $linea->fec_actualiza;?></td>
-            
-                
-                    <td><a href="<?php echo RUTA_URL; ?>/Linea/borrar/<?php echo $linea->cod_linea;?>">Editar</a></td>
-                    <td><a href="<?php echo RUTA_URL; ?>/Linea/borrar/<?php echo $linea->cod_linea;?>/<?php echo $linea->cod_sublinea;?>">Borrar</a></td>
+                    <td>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-secondary">
+                          <a class="btn btn-secondary btn-lg active btn-sm" href="<?php echo RUTA_URL; ?>/Linea/editar/<?php echo $linea->cod_linea;?>"><i class="bi bi-pencil-square"></i></a>
+                        </label>
+                        <label class="btn btn-secondary">
+                          <a class="btn btn-secondary btn-lg active btn-sm" href="<?php echo RUTA_URL; ?>/Linea/borrar/<?php echo $linea->cod_linea;?>/<?php echo $linea->cod_sublinea;?>"><i class="bi bi-trash"></i></a>
+                        </label>
+                      </div>
+                    </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
