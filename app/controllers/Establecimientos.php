@@ -28,14 +28,8 @@ class Establecimientos extends Controlador{
                 'cod_establecimiento' => trim($_POST['cod_establecimiento']),
                 'txt_descripcion' => trim($_POST['txt_descripcion']),
                 'txt_direccion' => trim($_POST['txt_direccion']),
-                'sts_matriz' => trim('C'),
-                // if(isset($_POST['sts_matriz'])){
-                //     'sts_matriz' => trim($_POST['sts_matriz']),
-                // }
-                'sts_local' => trim('C'),
-                // if(isset($_POST['sts_local'])){
-                //     'sts_local' => trim($_POST['sts_local']),
-                // }
+                'sts_matriz' => trim($_POST['sts_matriz']),
+                'sts_local' => trim($_POST['sts_local']),
                 'fec_actualiza' => date('m-d-Y h:i:s a', time())
             
                 

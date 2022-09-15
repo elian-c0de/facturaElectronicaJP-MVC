@@ -24,7 +24,7 @@
       </div>
       <div class="col-md-8">
       <table class="table">
-            <thead>
+            <thead class="table-success table-striped">
                 <tr>
                 <th>Establecimiento</th>
                 <th>Descripcion</th>
@@ -44,10 +44,16 @@
                     <td><?php echo $establecimientos->txt_direccion;?></td>
                     <td><?php echo $establecimientos->sts_matriz;?></td>
                     <td><?php echo $establecimientos->sts_local;?></td>
-            
-                
-                    <td><a href="<?php echo RUTA_URL; ?>/Establecimientos/borrar/<?php echo $establecimientos->cod_linea;?>">Editar</a></td>
-                    <td><a href="<?php echo RUTA_URL; ?>/Establecimientos/borrar/<?php echo $establecimientos->cod_linea;?>">Borrar</a></td>
+                    <td>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-secondary">
+                          <a class="btn btn-secondary btn-lg active btn-sm" href="<?php echo RUTA_URL; ?>/Establecimientos/editar/<?php echo $establecimientos->cod_establecimiento;?>"><i class="bi bi-pencil-square"></i></a>
+                        </label>
+                        <label class="btn btn-secondary">
+                          <a class="btn btn-secondary btn-lg active btn-sm" href="<?php echo RUTA_URL; ?>/Establecimientos/borrar/<?php echo $establecimientos->cod_establecimiento;?>"><i class="bi bi-trash"></i></a>
+                        </label>
+                      </div>
+                    </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

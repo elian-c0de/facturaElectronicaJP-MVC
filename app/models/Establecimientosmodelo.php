@@ -21,8 +21,14 @@ class Establecimientosmodelo{
         $this->db->bind(':cod_establecimiento', $datos['cod_establecimiento']);
         $this->db->bind(':txt_descripcion', $datos['txt_descripcion']);
         $this->db->bind(':txt_direccion', $datos['txt_direccion']);
-        $this->db->bind(':sts_matriz', $datos['sts_matriz']);
-        $this->db->bind(':sts_local', $datos['sts_local']);
+        $this->db->bind(':sts_matriz', 'C');
+        if(isset($_POST['sts_matriz'])){
+            $this->db->bind(':sts_matriz', $datos['matriz']);
+        }
+        $this->db->bind(':sts_local', 'C');
+        if(isset($_POST['sts_local'])){
+            $this->db->bind(':sts_local', $datos['sts_local']);
+        }
         $this->db->bind(':fec_actualiza', $datos['fec_actualiza']);
         
         //ejecutar
@@ -64,7 +70,7 @@ class Establecimientosmodelo{
 
     public function borrarEstablecimientos($datos){
         var_dump($datos);
-        $this->db->query('Delete from ecmp_linea where cod_linea = :cod_linea and cod_sublinea = :cod_sublinea');
+        $this->db->query('Delete from ecmp_linea where cod_linea = :cod_linea');
 
         //vincular valores
         $this->db->bind(':cod_linea', $datos['cod_linea']);
