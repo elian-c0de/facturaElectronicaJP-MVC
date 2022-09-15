@@ -1,27 +1,21 @@
-<?php require RUTA_APP . '/vistas/inc/header.php'?>
+<?php require RUTA_APP . '/views/inc/header.php'?>
 
         
 <div class="container mt-5">
     <div class="row">
       <div class="col-md-4">
-        <h1>Establecimientos</h1>
+        <h1>Lineas de Productos</h1>
             
             <!-- formulario de agregar -->
-            <h1>Establecimientos</h1>
             <form action="<?php echo RUTA_URL?>/linea/agregar" method="POST">
               <input type="number" class="form-control mb-3" name="cod_empresa" placeholder="Establecimiento">
               <input type="text" class="form-control mb-3" name="cod_linea" placeholder="linea">
               <input type="text" class="form-control mb-3" name="cod_sublinea" placeholder="sublinea">
               <input type="text" class="form-control mb-3" name="txt_descripcion" placeholder="descripcion">
-              <!-- <input type="text" class="form-control mb-3" name="cod_usuario" placeholder="usuario"> -->
-              <!-- <input type="date" class="form-control mb-3" name="fec_actualiza" placeholder="fecha" > -->
-              <!-- <label><input class="form-check-input" type="checkbox" name="matriz" value="A" id="flexCheckDefault"> Matriz
-              <br></br>
-              <label><input class="form-check-input" type="checkbox" name="local" value="A" id="flexCheckDefault"> Estado
-              <br></br> -->
-                
+                              
               
               <input  type="submit" class="btn btn-primary" value="Agregar Linea">
+              <a href="<?php echo RUTA_URL;?>/paginas" class="btn btn btn-danger" <i class="fa fa-backward"></i>Volver</a>
               <!-- <input id="btn_cancel" type="button" onclick="location.href = '../InformacionGeneral/bienvenidos.php';" name="cancel" class="btn btn-danger" value="Cancelar"> -->
              
             </form> 
@@ -50,8 +44,8 @@
                     <td><?php echo $linea->fec_actualiza;?></td>
             
                 
-                    <td><a href="<?php echo RUTA_URL; ?>/lineaproducto/editar/<?php echo $linea->cod_empresa;?>">Editar</a></td>
-                    <td><a href="<?php echo RUTA_URL; ?>/lineaproducto/borrar/<?php echo $linea->cod_empresa;?>">Borrar</a></td>
+                    <td><a href="<?php echo RUTA_URL; ?>/Linea/borrar/<?php echo $linea->cod_linea;?>">Editar</a></td>
+                    <td><a href="<?php echo RUTA_URL; ?>/Linea/borrar/<?php echo $linea->cod_linea;?>/<?php echo $linea->cod_sublinea;?>">Borrar</a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
@@ -61,4 +55,4 @@
   </div>
 
 
-<?php require RUTA_APP . '/vistas/inc/footer.php'?>
+<?php require RUTA_APP . '/views/inc/footer.php'?>

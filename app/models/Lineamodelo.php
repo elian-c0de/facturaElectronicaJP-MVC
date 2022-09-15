@@ -14,14 +14,14 @@ class Lineamodelo{
     }    
     
     public function agregarLinea($datos){
-        $this->db->query('INSERT INTO ecmp_linea (cod_empresa,cod_linea,cod_sublinea,txt_descripcion) values (:cod_empresa,:cod_linea,:cod_sublinea,:txt_descripcion)');
+        $this->db->query('INSERT INTO ecmp_linea (cod_empresa,cod_linea,cod_sublinea,txt_descripcion,fec_actualiza) values (:cod_empresa,:cod_linea,:cod_sublinea,:txt_descripcion,:fec_actualiza)');
         //vincular valores
     
         $this->db->bind(':cod_empresa', $datos['cod_empresa']);
         $this->db->bind(':cod_linea', $datos['cod_linea']);
         $this->db->bind(':cod_sublinea', $datos['cod_sublinea']);
         $this->db->bind(':txt_descripcion', $datos['txt_descripcion']);
-        // $this->db->bind(':fec_actualiza', $datos['fec_actualiza']);
+        $this->db->bind(':fec_actualiza', $datos['fec_actualiza']);
         
         //ejecutar
         if($this->db->execute()){
@@ -31,11 +31,15 @@ class Lineamodelo{
         }
     }
 
-    public function obtenerLineaId($id){
-        $this->db->query('select * from ecmp_linea where cod_linea = :id');
+    public function obtenerLineaId($id,$idsub){
+        print_r($idsub);
+        print_r($id);
+        $this->db->query('select * from ecmp_linea where cod_linea = :id and cod_sublinea = :idsub');
         $this->db->bind(':id',$id);
+        $this->db->bind(':idsub',$idsub);
 
-        $fila = $this->db->registro();
+        $fila = $this->db->registros();
+        print_r($fila);
 
         return $fila;
 
@@ -60,10 +64,12 @@ class Lineamodelo{
     }
 
     public function borrarLinea($datos){
-        $this->db->query('Delete from ecmp_linea where cod_linea = :id');
+        var_dump($datos);
+        $this->db->query('Delete from ecmp_linea where cod_linea = :cod_linea and cod_sublinea = :cod_sublinea');
 
         //vincular valores
-        $this->db->bind(':id', $datos['cod_empresa']);
+        $this->db->bind(':cod_linea', $datos['cod_linea']);
+        $this->db->bind(':cod_sublinea', $datos['cod_sublinea']);
 
         //ejecutar
         if($this->db->execute()){

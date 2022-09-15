@@ -27,8 +27,8 @@ class Linea extends Controlador{
                 'cod_empresa' => trim($_POST['cod_empresa']),
                 'cod_linea' => trim($_POST['cod_linea']),
                 'cod_sublinea' => trim($_POST['cod_sublinea']),
-                'txt_descripcion' => trim($_POST['txt_descripcion'])
-                // 'fec_actualiza' => trim($_POST['fec_actualiza'])
+                'txt_descripcion' => trim($_POST['txt_descripcion']),
+                'fec_actualiza' => date('m-d-Y h:i:s a', time())
             
                 
                     ];
@@ -61,7 +61,7 @@ class Linea extends Controlador{
                 'cod_linea' => trim($_POST['cod_linea']),
                 'cod_sublinea' => trim($_POST['cod_sublinea']),
                 'txt_descripcion' => trim($_POST['txt_descripcion']),
-                'fec_actualiza' => trim($_POST['fec_actualiza'])
+                'fec_actualiza' => date('m-d-Y h:i:s a', time())
 
                     ];
 
@@ -85,42 +85,31 @@ class Linea extends Controlador{
         }
     }
 
-    public function borrar($id){
+    public function borrar($id,$idsub){
 
-        //obtener informacion de usuario dede el modelo
-        $empresa = $this->usuarioModelo->obtenerUsuarioId($id);
+        //obtener informacion de linea dede el modelo
+        $linea = $this->lineaModelo->obtenerLineaId($id,$idsub);
+        print_r($linea);
+        var_dump($linea);
         $datos = [
-            'cod_empresa' => $empresa->cod_empresa,
-            'nom_empresa' => $empresa->nom_empresa,
-            'nom_abreviado' => $empresa->nom_abreviado
+            'cod_linea' => $linea->cod_linea,
+            'cod_sublinea' => $linea->cod_sublinea
             ];
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $datos = [
-                'cod_empresa' => $id
-                 ];
+        // if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        //     $datos = [
+        //         'cod_empresa' => $id
+        //          ];
 
-                if($this->usuarioModelo->borrarUsuario($datos)){
-                    redireccionar('/paginas');
+                if($this->lineaModelo->borrarLinea($datos)){
+                    // redireccionar('/Linea');
                 }else{
                     die('algo salio mal');
                 }
-        }
+        // }
 
-            $this->vista('paginas/borrar',$datos);
+            $this->vista('Linea/borrar',$datos);
         
     }
-
-
-
-
-
-    
 }
-
-
-
-
-
-
 ?>

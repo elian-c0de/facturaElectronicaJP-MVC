@@ -1,4 +1,4 @@
-<?php require RUTA_APP . '/vistas/inc/header.php'?>
+<?php require RUTA_APP . '/views/inc/header.php'?>
 <a href="<?php echo RUTA_URL;?>/paginas" class="btn btn-light" <i class="fa fa-backward"></i>> Volver</a>
 
 <div class="container text-center">
@@ -23,4 +23,4 @@
     </form>
  
 </div>
-<?php require RUTA_APP . '/vistas/inc/footer.php'?>
+<?php require RUTA_APP . '/views/inc/footer.php'?>

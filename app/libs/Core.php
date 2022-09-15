@@ -8,7 +8,7 @@
     */
 
     class Core {
-        protected $controladorActual = 'Login';
+        protected $controladorActual = 'paginas';
         protected $metodoActual = 'index';
         protected $parametros = [];
 
@@ -18,7 +18,7 @@
             
             if(isset($url)){
                  // buscar en controlador si el controlador existe
-                 if (file_exists('../app/controladores/' . ucwords($url[0]) . '.php')){
+                 if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')){
                     // si exite se setear como controlador por defecto
                     $this->controladorActual = ucwords($url[0]);
 
@@ -30,7 +30,7 @@
             }
            
             // requiere el controlador
-            require_once '../app/controladores/' . $this->controladorActual . '.php';
+            require_once '../app/controllers/' . $this->controladorActual . '.php';
             $this->controladorActual = new $this ->controladorActual;
 
             //verificar la segunda parte del url que seria el metodo
@@ -65,8 +65,4 @@
 
         }
     }
-
-
-
-
 ?>

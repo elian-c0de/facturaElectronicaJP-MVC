@@ -1,4 +1,4 @@
-<?php require RUTA_APP . '/vistas/inc/header.php'?>
+<?php require RUTA_APP . '/views/inc/header.php'?>
 <table class="table">
     <thead>
         <tr>
@@ -43,4 +43,4 @@
     </tbody>
 </table>
 
-<?php require RUTA_APP . '/vistas/inc/footer.php'?>
+<?php require RUTA_APP . '/views/inc/footer.php'?>
