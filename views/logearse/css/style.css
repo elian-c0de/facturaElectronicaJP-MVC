@@ -1,0 +1,36 @@
+:root {
+    --dark: #2c2c2c;
+    --dark-x: #a6a9c5;
+    --light: #ffffffff;
+}
+
+body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: var(--light);
+}
+
+.bg-dark {
+    background-color: var(--dark) !important;
+}
+
+.bg-dark-x{
+    background-color: var(--dark-x);
+}
+
+.form-control, .btn{
+    min-height: 3.125rem;
+    line-height: initial;
+}
+
+.img-1 {
+    background-image: url('../img/fondo1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.img-2 {
+    background-image: url('../img/fondo2.jpg');
+    background-size: cover;
+    background-position: center;
+}

@@ -1,0 +1,21 @@
+*{
+    margin: 50;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+.containerTable{
+    margin: 5%;
+}
+
+.button{
+    display: inline-block;
+    padding-left: 20%;
+}
+
+.btn-group-toggle{
+    display: inline-block;
+    padding-left: 30%;
+}
