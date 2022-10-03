@@ -11,7 +11,7 @@
 //     //header("location: index.php");
 //     session_destroy();
 //     die();
-// } 
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
