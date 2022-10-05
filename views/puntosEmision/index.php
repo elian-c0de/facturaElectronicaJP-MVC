@@ -35,7 +35,7 @@ include("../../config/config.php");
         
           <form id="P-emision-form">
               <input type="hidden" id="establecimientoId">
-              <input type="hidden" id="emisionId">
+              <!-- <input type="hidden" id="emisionId">
               <select class="form-control mb-3" name="codigoEstablecimiento">
                 <?php
                     // $query='SELECT * FROM gen_local';
@@ -50,8 +50,9 @@ include("../../config/config.php");
                     //   <?php 
                     // }
                 ?>
-              </select>
-              <input type="number" class="form-control mb-3" id="codigo" placeholder="Código" required>
+              </select> -->
+              <input type="number" class="form-control mb-3" id="codigo_estable" placeholder="Código de establecimiento" required>
+              <input type="number" class="form-control mb-3" id="codigo_emision" placeholder="Código de punto de emisión" required>
               <input type="text" class="form-control mb-3" id="descripcion" placeholder="Descripción">
               <input type="number" class="form-control mb-3" id="caja" placeholder="Caja">
               <input type="number" class="form-control mb-3" id="ambiente" placeholder="Ambiente">

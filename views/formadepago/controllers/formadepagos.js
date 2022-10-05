@@ -22,7 +22,7 @@ $(document).ready(function() {
         }
 
         let retencion = '';
-        if ($('#estado').prop('checked')){
+        if ($('#retencion').prop('checked')){
             retencion = 'A';
         }else{
             retencion = 'C';
@@ -111,13 +111,16 @@ $(document).ready(function() {
         if(confirm('¿Seguro que quiere eliminar esta Forma de Pago?')) {
             let element = $(this)[0].parentElement.parentElement.parentElement;
             // console.log(element);
-            let id = $(element).attr('formadepagosID');
-            console.log(id);
-            $.post('controllers/delete.php', {id}, function(response) {
-                // console.log(response);
-                alert(response);
-                fetchFormadepagos();
-            })
+            let id_general = $(element).attr('formadepagosID');
+
+            $.ajax({
+                type: "DELETE",
+                url: 'http://localhost/api-rest1/gen_forma_pago?id='+id_general+'&nameId=cod_forma_pago',
+                success: function (response) {
+                    console.log(response);
+                    fetchFormadepagos();
+                }
+            });
         }
     })
 

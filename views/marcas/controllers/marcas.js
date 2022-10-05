@@ -1,27 +1,47 @@
 $(document).ready(function() {
     let editar = false;
+    let id_general = 0;
     // console.log('JQuery is Working');
     $('#task-result').hide();
     fetchMarcas();
 
     $('#marcas-form').submit(function(e){
         // console.log('Enviando...');
-        const postData = {
-            id: $('#marcaId').val(),
-            codigo: $('#codigo').val(),
-            nombre: $('#nombre').val()
-        };
-        console.log(postData);
-
-        let url = editar == false ? 'controllers/insert.php' : 'controllers/edit.php';
-
-        $.post(url, postData, function(response){
-            console.log(response);
-            fetchMarcas();
-            $('#marcas-form').trigger('reset');
-            editar = false;
+        if (editar) {
+            //EDITAR
+            $.ajax({
+                url: 'http://localhost/api-rest1/ecmp_marca?id='+id_general+'&nameId=cod_marca',
+                type: "PUT",
+                success: function (response) {
+                    console.log('hola aqui paso');
+                    console.log(response);
+                    fetchMarcas();
+                    $('#marcas-form').trigger('reset');
+                    editar = false;
+                },
+                data:{
+                    nom_marca: $('#nombre').val(),
+                }
+            });
+            e.preventDefault();
+        }else{
+            //AGREGAR
+            $.ajax({
+            url: 'http://localhost/api-rest1/ecmp_marca',
+            type: "POST",
+            success: function (response) {
+                console.log(response);
+                fetchMarcas();
+                $('#marcas-form').trigger('reset');
+                editar = false;
+            },
+            data:{
+                cod_marca: $('#codigo').val(),
+                nom_marca: $('#nombre').val(),
+            }
         });
         e.preventDefault();
+        }
     });
 
     function fetchMarcas(){
@@ -35,15 +55,15 @@ $(document).ready(function() {
                 let template = '';
                 marcas.results.forEach(marca =>{
                     template += `
-                    <tr  cod_empre="${marca.cod_empresa}"; formadepagosID="${marca.cod_marca}">
+                    <tr  marcasID="${marca.cod_marca}">
                             <td>${marca.cod_marca}</td>
                             <td>${marca.nom_marca}</td>
                             <td>
                                 <div class="btn-group" data-toggle="buttons">
-                                    <button class="cajas-edit btn btn-warning">
+                                    <button class="marcas-edit btn btn-warning">
                                         <i class="bi bi-pencil-square"></i>
                                     </button>
-                                    <button class="cajas-delete btn btn-danger">
+                                    <button class="marcas-delete btn btn-danger">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </div>
@@ -59,27 +79,36 @@ $(document).ready(function() {
     $(document).on('click', '.marcas-delete', function() {
         if(confirm('¿Seguro que quiere eliminar esta marca?')) {
             let element = $(this)[0].parentElement.parentElement.parentElement;
-            // console.log(element);
-            let id = $(element).attr('marcasID');
-            // console.log(id);
-            $.post('controllers/delete.php', {id}, function(response) {
-                console.log(response);
-                fetchMarcas();
-            })
+            id_general = $(element).attr('marcasID');
+
+            $.ajax({
+                type: "DELETE",
+                url: 'http://localhost/api-rest1/ecmp_marca?id='+id_general+'&nameId=cod_marca',
+                success: function (response) {
+                    console.log(response);
+                    fetchMarcas();
+                }
+            });
         }
     })
 
     $(document).on('click', '.marcas-edit', function() {
         let element = $(this)[0].parentElement.parentElement.parentElement;
-        let id = $(element).attr('marcasID');
-        // console.log(id);
-        $.post('controllers/single.php', {id}, function(response) {
-            console.log(response);
-            const marca = JSON.parse(response);
-            $('#marcaId').val(marca.codigo);
-            $('#codigo').val(marca.codigo);
-            $('#nombre').val(marca.nombre);
-            editar = true;
+        id_general = $(element).attr('marcasID');
+
+        $.ajax({
+            url: 'http://localhost/api-rest1/ecmp_marca',
+            type: 'GET',
+            success: function(response){
+                let marcas = JSON.parse(response);
+                marcas.results.forEach(marca =>{
+                    if(marca.cod_marca == id_general){
+                        $('#codigo').val(marca.cod_marca);
+                        $('#nombre').val(marca.nom_marca);
+                    }
+                });
+            }
         });
+        editar = true;
     })
 });

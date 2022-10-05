@@ -47,8 +47,8 @@ $(document).ready(function() {
             e.preventDefault();
         }else{
             //AGREGAR
+
             
-            console.log(matriz, " ", estado)
             $.ajax({
             url: 'http://localhost/api-rest1/gen_local',
             type: "POST",
