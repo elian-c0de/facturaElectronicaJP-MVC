@@ -7,7 +7,7 @@ class CurlController
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'http://localhost/sistemaF/api-rest/'.$url,
+            CURLOPT_URL => 'http://localhost/facturaElectronicaJP-MVC/api-rest/'.$url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,

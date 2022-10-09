@@ -3,7 +3,7 @@
 class TemplateController{
 
     static public function path(){
-        return "http://localhost/sistemaF/cliente/";
+        return "http://localhost/facturaElectronicaJP-MVC/cliente/";
     }
 
 

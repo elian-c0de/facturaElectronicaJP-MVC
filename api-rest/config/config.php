@@ -5,7 +5,9 @@
     define('DB_PASSWORD', 'root123');
     define('DB_NOMBRE', 'PECMP_JPEREZ');
 
-    //ELIANGL753VE
+    //Servidor Elian: ELIANGL753VE
+    //servidor Miguel: DESKTOP-J4VGQP7
+    //$serverName = "DESKTOP-J4VGQP7";
     //DESKTOP-TVN4BC2
     //ruta de la aplicacion
 //    define('RUTA_APP', dirname(dirname(__FILE__)));
