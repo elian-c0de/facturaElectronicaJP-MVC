@@ -62,7 +62,7 @@ class ControladorCajas extends Controlador
           if ($value->cod_empresa == $datos["cod_empresa"] && $value->cod_caja == $datos["cod_caja"]) {
             $json = array(
               "status" => 404,
-              "detalle" => "el cod_empresa y el cod_caja ya existen"
+              "result" => "el cod_empresa y el cod_caja ya existen"
             );
             echo json_encode($json, true);
             return;
@@ -85,7 +85,7 @@ class ControladorCajas extends Controlador
 
             $json = array(
                 "status" => 200,
-                "detalle" => "Registro exitoso, su caja ha sido guardado"
+                "result" => "Registro exitoso, su caja ha sido guardado"
             );
 
             echo json_encode($json, true);
@@ -119,7 +119,7 @@ class ControladorCajas extends Controlador
             if ($cajas == true) {
                 $json = array(
                     "status" => 200,
-                    "detalle" => "Registro exitoso, su curso ha sido actualizado"
+                    "result" => "Registro exitoso, su curso ha sido actualizado"
 
                 );
 
@@ -130,7 +130,7 @@ class ControladorCajas extends Controlador
             $json = array(
 
                 "status" => 404,
-                "detalle" => "No está autorizado para modificar este curso"
+                "result" => "No está autorizado para modificar este curso"
 
             );
 
@@ -156,7 +156,7 @@ class ControladorCajas extends Controlador
               $json = array(
 
                             "status"=>200,
-                            "detalle"=>"se ha borrado el curso"
+                            "result"=>"se ha borrado el curso"
                           
                           );
 

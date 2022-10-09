@@ -1,5 +1,9 @@
 <?php
 require_once ("config/config.php");
+require_once ("models/Get.php");
+
+
+
 //clase para conectarse a la base de datos y ejecutar consultas
 class Base{
     private $host = DB_HOST;
@@ -75,6 +79,52 @@ class Base{
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    //generar token de auth
+    static public function jwt($cod_usuario,$nom_usuario){
+
+        $time = time();
+
+        $token = array(
+            
+            "iat" =>  $time,//time en que inicia el token
+            "exp" => $time + (60*60),
+            "data" => [
+                "cod_usuario" => $cod_usuario,
+                "nom_usuario" => $nom_usuario
+            ]
+        );
+
+      
+        return $token;
+
+    }
+
+    //valider token de seguridad
+    static public function tokenValidate($token){
+        //traemos al usuario de acuerdo al token
+
+        $asd = new Get();
+        $user = $asd->obtenerDataFilter("gen_usuario","token_exp_usuario","token_usuario",$token,null,null,null);
+        
+        if(!empty($user)){
+
+            $time = time();
+            if($user[0]->{"token_exp_usuario"} > $time){
+                return "ok";
+            }else{
+                return "expired";
+            }
+      
+            //vlidams que el token no haya expirado
+        }else{
+            return "no-auth";
+        }
+
+
+
+        return ;
+    }
+
 
     // validar exetecnia de una tabal en la base de datos
     public function getColumsData($table,$columns){
@@ -107,7 +157,8 @@ class Base{
         return $this->stmt->rowCount();
     }
 
+    static public function apiKey(){
+        return "JJS$3cjBM{w&9LQQX3;-:8]a+TZFyG";
+    }
+
 }
-
-
-?>

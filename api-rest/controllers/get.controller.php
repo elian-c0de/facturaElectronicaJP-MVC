@@ -10,9 +10,9 @@ class GetController extends Controlador{
     }
 
     // el Index es para Obtener los registros
-    public function getData($table,$select,$orderBy,$orderMode,$startAt)
+    public function getData($table,$select,$orderBy,$orderMode,$startAt,$endAt,$orderAt)
     {
-        $response = $this->instanciaModelo->obtenerData($table,$select,$orderBy,$orderMode,$startAt);
+        $response = $this->instanciaModelo->obtenerData($table,$select,$orderBy,$orderMode,$startAt,$endAt,$orderAt);
     
 
         $return = new GetController();
@@ -46,9 +46,9 @@ class GetController extends Controlador{
 
      }
 
-     public function getDataSearch($table,$select,$linkTo,$search,$orderBy,$orderMode,$startAt)
+     public function getDataSearch($table,$select,$linkTo,$search,$orderBy,$orderMode,$startAt, $endAt, $orderAt)
      {
-         $response = $this->instanciaModelo->obtenerDataSearch($table,$select,$linkTo,$search,$orderBy,$orderMode,$startAt);
+         $response = $this->instanciaModelo->obtenerDataSearch($table,$select,$linkTo,$search,$orderBy,$orderMode,$startAt, $endAt, $orderAt);
          $return = new GetController();
          $return -> fncResponse($response);
 
@@ -68,8 +68,8 @@ class GetController extends Controlador{
 
     }
     //peticiones get para selecion de rangos
-    public function getDataRange($table,$select,$linkTo,$between1,$between2,$orderBy,$orderMode,$startAt,$filterTo,$inTo){
-        $response = $this->instanciaModelo->getDataRange($table,$select,$linkTo,$between1,$between2,$orderBy,$orderMode,$startAt,$filterTo,$inTo);
+    public function getDataRange($table,$select,$linkTo,$between1,$between2,$orderBy,$orderMode,$startAt,$endAt,$orderAt,$filterTo,$inTo){
+        $response = $this->instanciaModelo->getDataRange($table,$select,$linkTo,$between1,$between2,$orderBy,$orderMode,$startAt,$endAt,$orderAt,$filterTo,$inTo);
         $return = new GetController();
         $return -> fncResponse($response);
 
@@ -93,12 +93,12 @@ class GetController extends Controlador{
             $json = array(
                 'status' => 200,
                 'total' => count($response),
-                'results' => $response
+                'result' => $response
             );
         }else{
             $json = array(
                 'status' => 404,
-                'result' => 'Not fount',
+                'result' => 'Not Found',
                 'method' => 'get'
             );
 

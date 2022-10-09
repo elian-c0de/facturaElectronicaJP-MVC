@@ -18,7 +18,7 @@ class Get
 
 
     //peticiones get sin filtros
-    public function obtenerData($table, $select, $orderBy, $orderMode, $startAt)
+    public function obtenerData($table, $select, $orderBy, $orderMode, $startAt,$endAt,$orderAt)
     {
 
         $selectArray = explode(",",$select);
@@ -36,18 +36,19 @@ class Get
 
 
         //ordenar datos sin limites
-        if ($orderBy != null && $orderMode != null && $startAt == null) {
+        if ($orderBy != null && $orderMode != null && $startAt == null && $endAt == null && $orderAt == null) {
             $this->db->query("SELECT $select FROM $table order by $orderBy $orderMode");
         }
 
         //ordernar datos y limitar datos
-        if ($orderBy != null && $orderMode != null && $startAt != null) {
-            $this->db->query("SELECT top $startAt $select FROM $table order by $orderBy $orderMode");
+        if ($orderBy != null && $orderMode != null && $startAt != null && $endAt != null && $orderAt != null) {
+            $this->db->query("SELECT $select FROM $table ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
         }
 
         //limitar datos sin ordenar
-        if ($orderBy == null && $orderMode == null && $startAt != null) {
-            $this->db->query("SELECT top $startAt $select FROM $table");
+        if ($orderBy == null && $orderMode == null && $startAt != null && $endAt != null && $orderAt != null) {
+            $this->db->query("SELECT $select FROM $table ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
+
         }
 
         $resultados = $this->db->registros();
@@ -70,7 +71,7 @@ class Get
         }
 
         
-        $equalToArray = explode("_", $equalTo);
+        $equalToArray = explode(",", $equalTo);
         $linkToText = "";
 
         if (count($linkToArray) > 1) {
@@ -169,7 +170,7 @@ class Get
         //organizamos los filtros
 
         $linkToArray = explode(",", $linkTo);
-        $equalToArray = explode("_", $equalTo);
+        $equalToArray = explode(",", $equalTo);
         $linkToText = "";
 
         if (count($linkToArray) > 1) {
@@ -238,7 +239,7 @@ class Get
 
 
 
-    public function obtenerDataSearch($table, $select, $linkTo, $search, $orderBy, $orderMode, $startAt)
+    public function obtenerDataSearch($table, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt, $orderAt)
     {
         $selectArray = explode(",",$select);
         $linkToArray = explode(",",$linkTo);
@@ -254,7 +255,7 @@ class Get
         }
 
         
-        $searchToArray = explode("_", $search);
+        $searchToArray = explode(",", $search);
         $linkToText = "";
 
         if (count($linkToArray) > 1) {
@@ -276,14 +277,20 @@ class Get
             $this->db->query("SELECT $select FROM  $table where $linkToArray[0] like '%$searchToArray[0]%' $linkToText order by $orderBy $orderMode");
         }
 
+
+
+
         //ordernar datos y limitar datos
         if ($orderBy != null && $orderMode != null && $startAt != null) {
-            $this->db->query("SELECT top $startAt $select FROM  $table where $linkToArray[0] like '%$searchToArray[0]%' $linkToText order by $orderBy $orderMode");
+            $this->db->query("SELECT $select FROM $table where $linkToArray[0] like '%$searchToArray[0]%' $linkToText ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
+
         }
 
         //limitar datos sin ordenar
         if ($orderBy == null && $orderMode == null && $startAt != null) {
             $this->db->query("SELECT top $startAt $select FROM  $table where $linkToArray[0] like '%$searchToArray[0]%' $linkToText'");
+            $this->db->query("SELECT $select FROM $table where $linkToArray[0] like '%$searchToArray[0]%' $linkToText ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
+
         }
 
         foreach ($linkToArray as $key => $value) {
@@ -343,7 +350,7 @@ class Get
     }
 
 
-    public function getDataRange($table, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $filterTo, $inTo)
+    public function getDataRange($table, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt,$endAt,$orderAt, $filterTo, $inTo)
     {
 
         $linkToArray = explode(",",$linkTo);
@@ -372,6 +379,7 @@ class Get
             $filter = 'AND ' . $filterTo . ' IN (' . $inTo . ')';
         }
         $this->db->query("SELECT $select FROM  $table where $linkTo between '$between1' and '$between2' $filter");
+        
 
 
 
@@ -380,14 +388,18 @@ class Get
             $this->db->query("SELECT $select FROM $table where $linkTo between '$between1' and '$between2' $filter  order by $orderBy $orderMode");
         }
 
+        // con rangos
         //ordernar datos y limitar datos
         if ($orderBy != null && $orderMode != null && $startAt != null) {
-            $this->db->query("SELECT top $startAt $select FROM $table where $linkTo between '$between1' and '$between2' $filter order by $orderBy $orderMode");
+            // $this->db->query("SELECT top $startAt $select FROM $table where $linkTo between '$between1' and '$between2' $filter order by $orderBy $orderMode");
+            $this->db->query("SELECT $select FROM $table where $linkTo between '$between1' and '$between2' $filter ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
         }
 
         //limitar datos sin ordenar
         if ($orderBy == null && $orderMode == null && $startAt != null) {
-            $this->db->query("SELECT top $startAt $select FROM $table where $linkTo between '$between1' and '$between2' $filter");
+     
+            $this->db->query("SELECT $select FROM $table where $linkTo between '$between1' and '$between2' $filter ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
+
         }
 
         try {
@@ -481,7 +493,7 @@ class Get
      
 
 
-        $searchToArray = explode("_", $search);
+        $searchToArray = explode(",", $search);
         $linkToText = "";
 
         if (count($linkToArray) > 1) {

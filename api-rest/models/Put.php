@@ -17,28 +17,34 @@ class Put
     }
     
     public function putData($table,$data,$id,$nameId){
+ 
+        
 
         $asd = new Get();
         $response = $asd->obtenerDataFilter($table, $nameId, $nameId, $id, null, null, null);
-    
+       
 
         if(empty($response)){
             // $response = array(
             //     "comment" => "Error: the id is not foun in the database"
             // );
+          
             return null;
         }
-
+       
         $set = "";
         foreach ($data as $key => $value) {
             $set .= $key." = :".$key.",";
             # code...
         }
         $set = substr($set,0,-1);
+
         $this->db->query("UPDATE $table SET $set WHERE $nameId = :$nameId");
+
         foreach ($data as $key => $value) {
             $this->db->bind(":".$key,$data[$key]);
         }
+
         $this->db->bind(":".$nameId,$id);
 
         try {

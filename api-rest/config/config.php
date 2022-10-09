@@ -1,11 +1,12 @@
 <?php 
     //configuracion de acceso a la base de datos
-    define('DB_HOST', 'CARLOS');
+    define('DB_HOST', 'ELIANGL753VE');
     define('DB_USUARIO', 'sa');
-    define('DB_PASSWORD', 'admin123');
+    define('DB_PASSWORD', 'root123');
     define('DB_NOMBRE', 'PECMP_JPEREZ');
 
-
+    //ELIANGL753VE
+    //DESKTOP-TVN4BC2
     //ruta de la aplicacion
 //    define('RUTA_APP', dirname(dirname(__FILE__)));
 

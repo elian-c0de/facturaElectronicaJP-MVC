@@ -1,0 +1,210 @@
+[06-Oct-2022 22:09:06 Europe/Berlin] PHP Warning:  include(modules/slidebar.php.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 25
+[06-Oct-2022 22:09:06 Europe/Berlin] PHP Warning:  include(): Failed opening 'modules/slidebar.php.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 25
+[07-Oct-2022 00:03:28 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 00:05:12 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 00:05:23 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 00:12:56 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 00:12:57 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 00:13:13 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 00:21:47 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 01:17:23 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 01:44:58 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 01:46:08 Europe/Berlin] PHP Warning:  include(../inc/header.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\SistemaF\cliente\views\pages\cajas\index.php on line 12
+[07-Oct-2022 01:46:08 Europe/Berlin] PHP Warning:  include(): Failed opening '../inc/header.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\SistemaF\cliente\views\pages\cajas\index.php on line 12
+[07-Oct-2022 01:51:49 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 01:54:01 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 02:06:40 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 02:15:31 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 02:18:16 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 7
+[07-Oct-2022 02:18:16 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 7
+[07-Oct-2022 02:18:16 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 7
+[07-Oct-2022 17:45:44 Europe/Berlin] PHP Warning:  preg_match(): Unknown modifier '(' in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 9
+[07-Oct-2022 17:46:56 Europe/Berlin] PHP Warning:  preg_match(): Unknown modifier '(' in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 9
+[07-Oct-2022 17:47:04 Europe/Berlin] PHP Warning:  preg_match(): Unknown modifier '(' in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 9
+[07-Oct-2022 18:22:20 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 22
+[07-Oct-2022 18:22:41 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[07-Oct-2022 18:44:22 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$result in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 21
+[07-Oct-2022 18:44:22 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 21
+[07-Oct-2022 18:44:22 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 21
+[07-Oct-2022 18:44:52 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$result in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 22
+[07-Oct-2022 18:44:52 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 22
+[07-Oct-2022 18:44:52 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 22
+[07-Oct-2022 19:04:09 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:37:01 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:37:18 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:47:58 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:48:06 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:48:35 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:48:38 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:49:31 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:49:42 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:51:14 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:52:04 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:52:33 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:56:08 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:56:43 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:57:45 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 19:57:55 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 20
+[07-Oct-2022 19:57:55 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 20
+[07-Oct-2022 19:57:55 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 20
+[07-Oct-2022 20:01:48 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:02:48 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:05:11 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:06:00 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:06:02 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:06:03 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:06:24 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:07:17 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:07:40 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:10:51 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:10:55 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:14:17 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:23:43 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:25:25 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:25:31 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 20:44:04 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 21:04:37 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 21:04:42 Europe/Berlin] PHP Warning:  include(actions/list.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\SistemaF\cliente\views\pages\admins\index.php on line 26
+[07-Oct-2022 21:04:42 Europe/Berlin] PHP Warning:  include(): Failed opening 'actions/list.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\SistemaF\cliente\views\pages\admins\index.php on line 26
+[07-Oct-2022 21:17:54 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 21:18:04 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 21:35:24 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 22:22:56 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[07-Oct-2022 22:23:37 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[08-Oct-2022 05:55:23 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[08-Oct-2022 06:02:03 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[08-Oct-2022 06:05:50 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 00:30:01 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\views\pages\admins\actions\list.php on line 12
+[09-Oct-2022 00:30:21 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\views\pages\admins\actions\list.php on line 12
+[09-Oct-2022 00:30:52 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\views\pages\admins\actions\list.php on line 12
+[09-Oct-2022 00:31:19 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\views\pages\admins\actions\list.php on line 12
+[09-Oct-2022 04:33:14 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 05:12:06 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:12:06 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:12:06 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:12:06 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 29
+[09-Oct-2022 05:12:06 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 29
+[09-Oct-2022 05:12:15 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:12:15 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:12:15 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:12:15 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 29
+[09-Oct-2022 05:12:15 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 29
+[09-Oct-2022 05:12:44 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:12:44 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:12:44 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:12:44 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 29
+[09-Oct-2022 05:12:44 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 29
+[09-Oct-2022 05:14:38 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:14:38 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:14:38 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:14:38 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 29
+[09-Oct-2022 05:14:38 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 29
+[09-Oct-2022 05:14:51 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:14:51 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:14:51 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:14:51 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 29
+[09-Oct-2022 05:14:51 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 29
+[09-Oct-2022 05:17:58 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:17:58 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:17:58 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 23
+[09-Oct-2022 05:17:58 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$results in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 29
+[09-Oct-2022 05:17:58 Europe/Berlin] PHP Warning:  Trying to access array offset on value of type null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 29
+[09-Oct-2022 05:20:20 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 05:20:45 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 07:22:49 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 08:00:56 Europe/Berlin] PHP Warning:  Undefined array key 2 in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 9
+[09-Oct-2022 08:00:56 Europe/Berlin] PHP Warning:  Undefined array key 2 in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 9
+[09-Oct-2022 08:00:56 Europe/Berlin] PHP Warning:  Undefined array key 2 in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 9
+[09-Oct-2022 08:03:09 Europe/Berlin] PHP Warning:  Undefined array key 1 in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 9
+[09-Oct-2022 08:03:09 Europe/Berlin] PHP Warning:  Undefined array key 1 in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 9
+[09-Oct-2022 08:13:47 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "value" in C:\xampp\htdocs\SistemaF\cliente\views\template.php:12
+Stack trace:
+#0 C:\xampp\htdocs\SistemaF\cliente\controllers\template.controller.php(12): include()
+#1 C:\xampp\htdocs\SistemaF\cliente\index.php(21): TemplateController->index()
+#2 {main}
+  thrown in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 12
+[09-Oct-2022 08:22:55 Europe/Berlin] PHP Warning:  Undefined variable $value in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 10
+[09-Oct-2022 08:25:16 Europe/Berlin] PHP Warning:  Undefined array key 1 in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 17
+[09-Oct-2022 08:25:16 Europe/Berlin] PHP Warning:  Undefined array key 1 in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 17
+[09-Oct-2022 08:26:32 Europe/Berlin] PHP Warning:  Undefined variable $routesArray1 in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 108
+[09-Oct-2022 10:25:55 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 10:26:11 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:16:31 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:16:36 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:17:14 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:18:54 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:19:23 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:20:22 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:20:41 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:21:03 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:21:27 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:21:35 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:22:24 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:22:45 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:23:11 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:23:34 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:24:16 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:24:31 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:24:41 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:24:42 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:24:50 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:25:10 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:25:24 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:25:36 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:27:46 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:28:00 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:28:13 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:28:42 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:29:07 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:29:20 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:37:44 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:38:18 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:38:43 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:39:06 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:39:16 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:39:32 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:39:44 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:39:57 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:40:13 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:40:27 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:40:39 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:40:57 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:41:10 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:41:18 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:47:38 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:48:01 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:50:13 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:55:31 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:57:22 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 11:57:41 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 12:01:28 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 12:01:57 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 16:39:49 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 17:00:52 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 17:08:22 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 17:08:51 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 17:09:17 Europe/Berlin] PHP Warning:  Undefined array key "admin" in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 83
+[09-Oct-2022 17:09:17 Europe/Berlin] PHP Warning:  Attempt to read property "cod_empresa" on null in C:\xampp\htdocs\SistemaF\cliente\views\template.php on line 83
+[09-Oct-2022 17:10:55 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 17:36:09 Europe/Berlin] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 22
+[09-Oct-2022 17:36:09 Europe/Berlin] PHP Warning:  Attempt to read property "result" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 39
+[09-Oct-2022 17:36:22 Europe/Berlin] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 22
+[09-Oct-2022 17:36:22 Europe/Berlin] PHP Warning:  Attempt to read property "result" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 39
+[09-Oct-2022 17:36:26 Europe/Berlin] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 22
+[09-Oct-2022 17:36:26 Europe/Berlin] PHP Warning:  Attempt to read property "result" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 39
+[09-Oct-2022 17:36:46 Europe/Berlin] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 22
+[09-Oct-2022 17:36:46 Europe/Berlin] PHP Warning:  Attempt to read property "result" on null in C:\xampp\htdocs\SistemaF\cliente\controllers\admins.controllers.php on line 39
+[09-Oct-2022 17:38:07 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 17:38:16 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 17:42:18 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 17:45:31 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 17:48:05 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 17:48:12 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 17:48:19 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 17:48:30 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 17:58:22 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 18:07:48 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 18:07:55 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 18:08:43 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 18:12:26 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[09-Oct-2022 18:13:07 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72

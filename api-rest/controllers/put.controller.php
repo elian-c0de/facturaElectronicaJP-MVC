@@ -17,7 +17,7 @@ class PutController extends Controlador{
     }
 
     public function putData2ids($table,$data,$id,$nameId,$id2,$nameId2){
-        $response = $this->instanciaModelo->putData2ids($table,$data,$id,$nameId,$id2,$nameId2);
+        $response = $this->instanciaModelo->putData($table,$data,$id,$nameId,$id2,$nameId2);
         $return = new PutController();
         $return -> fncResponse($response);
 
@@ -28,7 +28,7 @@ class PutController extends Controlador{
         if(!empty($response)){
             $json = array(
                 'status' => 200,
-                'results' => $response
+                'result' => $response
             );
         }else{
             $json = array(

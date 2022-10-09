@@ -9,8 +9,8 @@ class DeleteController extends Controlador{
         //$this->articuloModelo = $this->modelo('Articulo');
     }
 
-    public function deleteData($table,$data,$id,$nameId){
-        $response = $this->instanciaModelo->deleteData($table,$data,$id,$nameId);
+    public function deleteData($table,$id,$nameId){
+        $response = $this->instanciaModelo->deleteData($table,$id,$nameId);
         $return = new DeleteController();
         $return -> fncResponse($response);
 
@@ -28,7 +28,7 @@ class DeleteController extends Controlador{
         if(!empty($response)){
             $json = array(
                 'status' => 200,
-                'results' => $response
+                'result' => $response
             );
         }else{
             $json = array(
