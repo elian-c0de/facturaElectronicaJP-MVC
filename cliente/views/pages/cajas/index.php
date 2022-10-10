@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-      <h1>Cajas</h1>
+      <h1><i class="fa-solid fa-cash-register mr-1"></i>Cajas</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-left">

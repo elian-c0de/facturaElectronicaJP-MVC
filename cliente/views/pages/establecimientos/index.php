@@ -1,10 +1,9 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-      <h1>Establecimientos</h1>
+      <h1><i class=" fa-solid fa-shop mr-1"></i>Establecimientos</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-left">

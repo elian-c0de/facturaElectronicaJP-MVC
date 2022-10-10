@@ -24,6 +24,7 @@ $routesArray = array_filter($routesArray);
             </div>
             <div class="info">
                 <a href="#" class="d-block"><?php echo $_SESSION["admin"]->nom_usuario?></a>
+                <a href="#" class="d-block"><?php echo $_SESSION["admin"]->cod_empresa?></a>
             </div>
         </div>
 
