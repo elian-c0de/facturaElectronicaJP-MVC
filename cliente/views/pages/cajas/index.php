@@ -13,11 +13,11 @@
           <?php 
           if (isset($routesArray1[4])) {
             if($routesArray1[4] == "create" || $routesArray1[4] == "edit"){
-              echo '<li class="breadcrumb-item"><a href="admins">Admins</a></li>';
+              echo '<li class="breadcrumb-item"><a href="cajas">Cajas</a></li>';
               echo '<li class="breadcrumb-item active">'.$routesArray1[4].'</li>';
             }
           }else{
-            echo '<li class="breadcrumb-item active">Admins</li>';
+            echo '<li class="breadcrumb-item active">Cajas</li>';
           }
       ?>
         </ol>

@@ -15,7 +15,7 @@ class DataTableController
             $length = $_POST["length"];
            
             //total de registros de la data
-            $url = "gen_local?select=cod_establecimiento&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=0&endAt=1&orderAt=cod_establecimiento";
+            $url = "gen_perfil?select=cod_perfil&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=0&endAt=1&orderAt=cod_perfil";
             
             $method = "GET";
             $fields = array();
@@ -26,18 +26,18 @@ class DataTableController
                 echo '{"data":[]}';
                 return;
             }
-            $select = "cod_establecimiento,txt_descripcion,txt_direccion,sts_matriz,sts_local";
+            $select = "cod_perfil,nom_perfil,sts_perfil";
 
             //busquedad de datos
             if(!empty($_POST['search']['value'])){
 
                 if(preg_match('/^[0-9A-Za-zñÑáéíóú ]{1,}$/',$_POST['search']['value'])){
 
-                    $linkTo = ["cod_establecimiento","txt_descripcion","txt_direccion","fec_actualiza"];
+                    $linkTo = ["cod_perfil","nom_perfil","sts_perfil"];
                     $search = str_replace(" ","_",$_POST['search']['value']);
                     foreach ($linkTo as $key => $value) {
 
-                        $url = "gen_local?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+                        $url = "gen_perfil?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
                         $data = CurlController::request($url, $method, $fields)->result;
                         // echo '<pre>'; print_r($url); echo '</pre>'; 
                         
@@ -57,7 +57,7 @@ class DataTableController
                 }
             }else{ 
             //seleccionar datos
-            $url = "gen_local?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+            $url = "gen_perfil?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
             $data = CurlController::request($url, $method, $fields)->result;
             // echo '<pre>'; print_r($data); echo '</pre>'; 
             // echo '<pre>'; print_r($url); echo '</pre>'; 
@@ -83,14 +83,14 @@ class DataTableController
                     }else{
                         $actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
                     }
-                    $cod_establecimiento = $value->cod_establecimiento;
+                    $cod_perfil = $value->cod_perfil;
                     $txt_descripcion = $value->txt_descripcion;
                     $txt_direccion = $value->txt_direccion;
                     $sts_matriz = $value->sts_matriz;
                     $sts_local = $value->sts_local;
 
                             $dataJson.='{
-                        "cod_establecimiento":"'.$cod_establecimiento.'",
+                        "cod_perfil":"'.$cod_perfil.'",
                         "txt_descripcion":"'.$txt_descripcion.'",
                         "txt_direccion":"'.$txt_direccion.'",
                         "sts_matriz":"'.$sts_matriz.'",
