@@ -108,7 +108,8 @@ if(!isset($_SESSION["admin"])){
         $routesArray1[3] == "perfiles" || 
         $routesArray1[3] == "conceptos" || 
         $routesArray1[3] == "formadepago" || 
-        $routesArray1[3] == "parametros") {
+        $routesArray1[3] == "parametros" || 
+        $routesArray1[3] == "retenciondeImpuestos") {
           include ("views/pages/".$routesArray1[3]."/index.php");
         }else{
           include ("views/pages/404/404.php");
