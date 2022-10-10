@@ -15,9 +15,8 @@ class DataTableController
             $length = $_POST["length"];
            
             //total de registros de la data
-            $url = "gen_control?select=cod_parametro&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=0&endAt=1&orderAt=cod_empresa";
-            //$url = "gen_control?select=cod_parametro&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=0&endAt=1&orderAt=cod_parametro";
-
+            $url = "gen_control?select=cod_parametro&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=0&endAt=1&orderAt=cod_parametro";
+            
             $method = "GET";
             $fields = array();
             $response = CurlController::request($url, $method, $fields);
@@ -40,7 +39,7 @@ class DataTableController
 
                         $url = "gen_control?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
                         $data = CurlController::request($url, $method, $fields)->result;
-                        //echo '<pre>'; print_r($url); echo '</pre>'; 
+                        // echo '<pre>'; print_r($url); echo '</pre>'; 
                         
                         if($data == "Not Found"){
                             $data = array();
@@ -60,8 +59,8 @@ class DataTableController
             //seleccionar datos
             $url = "gen_control?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
             $data = CurlController::request($url, $method, $fields)->result;
-             //echo '<pre>'; print_r($data); echo '</pre>'; 
-             //echo '<pre>'; print_r($url); echo '</pre>'; 
+            // echo '<pre>'; print_r($data); echo '</pre>'; 
+            // echo '<pre>'; print_r($url); echo '</pre>'; 
             $recordsFiltered = $totalData;
         }
         if(empty($data)){

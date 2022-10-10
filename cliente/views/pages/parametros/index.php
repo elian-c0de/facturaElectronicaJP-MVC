@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-      <h1><i class="fa-solid fa-id-card-clip mr-1"></i>Parametros</h1>
+      <h1><i class="fa-solid fa-sliders mr-1"></i>Parametros</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-left">
