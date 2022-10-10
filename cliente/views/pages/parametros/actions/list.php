@@ -5,9 +5,9 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
 }else{
   // d-m-Y  Paladines
   // m-d-Y  Ramirez
-  $between1 = date("m-d-Y",strtotime("-29 day", strtotime(date("m-d-Y"))));
+  $between1 = date("d-m-Y",strtotime("-29 day", strtotime(date("d-m-Y"))));
 
-  $between2 = date("m-d-Y");
+  $between2 = date("d-m-Y");
 }
 ?>
 
@@ -44,7 +44,7 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
         <tr>
           <th>Codigo</th>
           <th>Nombre</th>
-          <th>Estado</th>
+          <th>Valor</th>
           <th>Editar/Eliminar</th>
         </tr>
       </thead>
