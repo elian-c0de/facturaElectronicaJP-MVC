@@ -26,18 +26,18 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
         <div class="d-flex mr-2">
           <span class="mr-3">Acciones:</span><input type="checkbox" onchange="reportActive(event);" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
         </div>
-        <div class="input-group">
+        <!-- <div class="input-group">
           <button type="button" class="btn btn-default float-right" id="daterangee-btn">
             <i class="far fa-calendar-alt"></i> Date range picker
             <i class="fas fa-caret-down"></i>
           </button>
-        </div>
+        </div> -->
         </div>
       </div>
   </div>
   <!-- /.card-header -->
   <div class="card-body">
-    <table id="establecimientostable" class="table table-bordered table-striped">
+    <table id="perfilestable" class="table table-bordered table-striped">
       <thead>
         <tr>
           <th>Codigo</th>
