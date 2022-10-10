@@ -28,18 +28,19 @@ function execDataTable (text) {
          {extend:"print",className:"btn-g"},
          {extend:"colvis",className:"btn-g"}
      ]
-     })
+    })
  
      if(text == "flat"){
-         $("#formadepagotable").on("draw.dt",function(){
-             setTimeout(() => {
-              formadepagoTable.buttons().container().appendTo('#formadepagotable_wrapper .col-md-6:eq(0)');
-     
-             }, 100);
-     
-         })
-     }
-   }
+        $("#formadepagotable").on("draw.dt",function(){
+            setTimeout(() => {
+            formadepagoTable.buttons().container().appendTo('#formadepagotable_wrapper .col-md-6:eq(0)');
+    
+            }, 100);
+    
+        })
+    }
+}
+
  
  // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
  function reportActive(event){
@@ -59,21 +60,21 @@ function execDataTable (text) {
  }
  
 //  rango de fechas
- $('#daterangee-btn').daterangepicker(
-     {
-       ranges   : {
-         'Today'       : [moment(), moment()],
-         'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-         'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-         'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-         'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-         'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-       },
-       startDate: moment($("#between1").val()),
-       endDate  : moment($("#between2").val())
-     },
-     function (start, end) {
-       // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-       window.location = "formadepago?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
-     }
-   )
+//  $('#daterangee-btn').daterangepicker(
+//      {
+//        ranges   : {
+//          'Today'       : [moment(), moment()],
+//          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+//          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+//          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+//          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+//          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+//        },
+//        startDate: moment($("#between1").val()),
+//        endDate  : moment($("#between2").val())
+//      },
+//      function (start, end) {
+//        // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+//        window.location = "formadepago?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
+//      }
+//    )
