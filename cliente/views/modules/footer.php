@@ -1,6 +1,6 @@
 <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
+      <b>Version</b> 0.1
     </div>
-    <strong>Copyright &copy; <?php echo date("Y");  ?> </strong> All rights reserved.
+    <strong>Copyright &copy; <?php echo date("Y");  ?> </strong> Factura Electronica JP. All Rights Reserved.
   </footer>

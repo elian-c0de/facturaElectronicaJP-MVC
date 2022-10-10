@@ -9,10 +9,10 @@
       <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Procesos Especiales</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-            <a href="#" class="dropdown-item"><i class=" fa-solid fa-user  pl-1 pr-1"></i>Informacion general</a>
-            <a href="#" class="dropdown-item"><i class=" fa-solid fa-shop mr-1"></i>Establecimientos</a>
-            <a href="#" class="dropdown-item"><i class=" fa-solid fa-cart-shopping mr-1"></i>Puntos de emision</a>
-            <a href="#" class="dropdown-item"><i class="fa-solid fa-cash-register mr-1"></i>Cajas</a>
+            <a href="admins" class="dropdown-item"><i class=" fa-solid fa-user  pl-1 pr-1"></i>Informacion general</a>
+            <a href="establecimientos" class="dropdown-item"><i class=" fa-solid fa-shop mr-1"></i>Establecimientos</a>
+            <a href="puntosEmision" class="dropdown-item"><i class=" fa-solid fa-cart-shopping mr-1"></i>Puntos de emision</a>
+            <a href="cajas" class="dropdown-item"><i class="fa-solid fa-cash-register mr-1"></i>Cajas</a>
             <li class="dropdown-divider"></li>
             <a href="#" class="dropdown-item"><i class="fa-solid fa-circle-info mr-1"></i>Conceptos</a>
             <a href="#" class="dropdown-item"><i class="fa-solid fa-money-check-dollar mr-1"></i>Formas de pago</a>
@@ -94,21 +94,21 @@
     </li> -->
 
     <!-- Messages Dropdown Menu -->
-    <li class="nav-item dropdown">
+    <!-- <li class="nav-item dropdown">
       <a class="nav-link"  href="#">
         <i class="far fa-comments"></i>
         <span class="badge badge-danger navbar-badge">3</span>
       </a>
 
-    </li>
+    </li> -->
     <!-- Notifications Dropdown Menu -->
-    <li class="nav-item dropdown">
+    <!-- <li class="nav-item dropdown">
       <a class="nav-link"  href="#">
         <i class="far fa-bell"></i>
         <span class="badge badge-warning navbar-badge">15</span>
       </a>
 
-    </li>
+    </li> -->
     <li class="nav-item">
       <a class="nav-link" data-widget="fullscreen" href="#" role="button">
         <i class="fas fa-expand-arrows-alt"></i>

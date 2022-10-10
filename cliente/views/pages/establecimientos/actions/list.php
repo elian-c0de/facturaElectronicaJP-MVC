@@ -7,72 +7,50 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
 
   $between2 = date("Y-m-d");
 }
-
-
-
 ?>
 
 <input type="hidden" id="between1" value="<?php echo $between1 ?>">
 <input type="hidden" id="between2" value="<?php echo $between2 ?>">
 <div class="card">
-  <div class="card-header">
+<div class="card-header">
 
-  <?php
-
-
-
+<?php
 ?>
 
-
-
     <h3 class="card-title">
-      <a class="btn bg-blue btn-small" href="admins/create">Crear</a>
-      <a class="btn bg-blue btn-small" href="">xml</a>
+      <a class="btn bg-blue btn-small" href="establecimientos/create"><i class="bi bi-file-earmark-plus-fill"></i></a>
+      <a class="btn bg-green btn-small" href=""><i class="bi bi-filetype-xml"></i></a>
     </h3>
-  
-
       <div class="card-tools">
         <div class="d-flex">
         <div class="d-flex mr-2">
-          <span class="mr-3">Resportes:</span><input type="checkbox" onchange="reportActive(event);" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+          <span class="mr-3">Acciones:</span><input type="checkbox" onchange="reportActive(event);" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
         </div>
-
         <div class="input-group">
-          <button type="button" class="btn btn-default float-right" id="daterange-btn">
+          <button type="button" class="btn btn-default float-right" id="daterangee-btn">
             <i class="far fa-calendar-alt"></i> Date range picker
             <i class="fas fa-caret-down"></i>
           </button>
         </div>
         </div>
-        
-
       </div>
-
-
-    
-
-
   </div>
   <!-- /.card-header -->
   <div class="card-body">
-    <table id="cajastable" class="table table-bordered table-striped">
+    <table id="establecimientostable" class="table table-bordered table-striped">
       <thead>
         <tr>
-
-          <th>cod_empresa</th>
-          <th>cod_caja</th>
-          <th>txt_descripcion</th>
-          <th>cod_usuario</th>
-          <th>fec_actualiza</th>
-          <th>actions</th>
+          <th>Establecimiento</th>
+          <th>Descripcion</th>
+          <th>Direccion</th>
+          <th>Matriz</th>
+          <th>Estado</th>
+          <th>Editar/Eliminar</th>
         </tr>
       </thead>
-
-
     </table>
   </div>
   <!-- /.card-body -->
 </div>
 
-
-<script src="views/assets/custom/datatable/datatable.js"></script>
+<script src="views/assets/custom/datatable/establecimientos.js"></script>

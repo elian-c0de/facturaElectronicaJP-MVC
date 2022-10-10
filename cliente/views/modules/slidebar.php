@@ -106,7 +106,7 @@ $routesArray = array_filter($routesArray);
                         </li>
 
                         <li class="nav-item">
-                            <a href="Cajas" class="nav-link ">
+                            <a href="cajas" class="nav-link ">
                             <i class="fa-solid fa-cash-register nav-icon"></i>
                                 <p>Cajas</p>
                             </a>

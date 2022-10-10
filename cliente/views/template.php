@@ -17,14 +17,8 @@ foreach ($routesArray as $key => $value) {
   $value = explode("?", $value)[0];
   
   $routesArray1[$key] = $value;
-  
-  
 }
-
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,8 +27,7 @@ foreach ($routesArray as $key => $value) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Factura Electronica JP</title>
-  <base href="<?php echo TemplateController::path() ?>"
-
+  <base href="<?php echo TemplateController::path() ?>">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -75,12 +68,10 @@ foreach ($routesArray as $key => $value) {
   <script src="views/assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="views/assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
-
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
 <?php
-
 
 if(!isset($_SESSION["admin"])){
   include ("views/pages/login/index.php");
@@ -89,19 +80,12 @@ if(!isset($_SESSION["admin"])){
 }
 
 ?>
-
 <?php  if(isset($_SESSION["admin"])):  ?>
-
-
-
 
   <!-- Site wrapper -->
   <div class="wrapper">
-
     <!-- navbar -->
     <?php include("modules/navbar.php"); ?>
-
-
 
     <!-- Main Sidebar Container -->
     <?php include("modules/slidebar.php"); ?>
@@ -113,7 +97,10 @@ if(!isset($_SESSION["admin"])){
      if(!empty($routesArray1[3])){
         if ($routesArray1[3] == "Cajas" ||
         $routesArray1[3] == "logout" ||
-        $routesArray1[3] == "admins") {
+        $routesArray1[3] == "admins" || 
+        $routesArray1[3] == "cajas" || 
+        $routesArray1[3] == "establecimientos"|| 
+        $routesArray1[3] == "puntosEmision") {
           include ("views/pages/".$routesArray1[3]."/index.php");
         }else{
           include ("views/pages/404/404.php");
@@ -121,25 +108,16 @@ if(!isset($_SESSION["admin"])){
      }else{
       include ("views/pages/home.php");
     }
-     
-     
      ?> 
-
-
 
     </div>
       <!-- /.content-wrapper -->
       <?php include("modules/footer.php"); ?>
-
   </div>
   <!-- ./wrapper -->
 
 <!-- datatable -->
-
-  
 <?php  endif  ?>
 <script src="views/assets/custom/forms/forms.js"></script>
-
 </body>
-
 </html>

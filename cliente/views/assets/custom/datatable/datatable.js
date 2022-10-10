@@ -1,7 +1,4 @@
-
-
 function execDataTable (text) {
-
 
    var adminsTable = $("#cajastable").DataTable({
       "responsive": true, 
@@ -12,7 +9,6 @@ function execDataTable (text) {
       "serverSide": true,
       "ajax":{
         "url":"ajax/data-admins.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val(),
-        
         "type":"POST"
       },
       "columns":[
@@ -30,11 +26,6 @@ function execDataTable (text) {
         {extend:"pdf",className:"btn-g"},
         {extend:"print",className:"btn-g"},
         {extend:"colvis",className:"btn-g"}
-        
-        
-    
-    
-    
     ]
     })
 
@@ -47,11 +38,7 @@ function execDataTable (text) {
     
         })
     }
-    
-
   }
-
-
 
 // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
 function reportActive(event){
@@ -60,14 +47,12 @@ function reportActive(event){
         $("#cajastable").dataTable().fnDestroy();
         setTimeout(() => {
             execDataTable("flat");
-
         }, 10);
     }else{
         $("#cajastable").dataTable().fnClearTable();
         $("#cajastable").dataTable().fnDestroy();
         setTimeout(() => {
             execDataTable("html");
-
         }, 10);
     }
 }
@@ -91,7 +76,3 @@ $('#daterange-btn').daterangepicker(
       window.location = "admins?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
     }
   )
-
-
-
-

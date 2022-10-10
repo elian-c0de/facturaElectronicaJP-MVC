@@ -7,7 +7,6 @@ class DataTableController
         if (!empty($_POST)) {
      
             //capturando y organizandos las variables post de datatable
-
             $draw = $_POST["draw"];
             $orderByColumnIndex = $_POST['order'][0]['column'];
             $orderBy = $_POST['columns'][$orderByColumnIndex]["data"];
@@ -16,7 +15,7 @@ class DataTableController
             $length = $_POST["length"];
            
             //total de registros de la data
-            $url = "srja_caja?select=cod_caja&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=0&endAt=1&orderAt=cod_empresa";
+            $url = "gen_local?select=cod_establecimiento&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=0&endAt=1&orderAt=cod_establecimiento";
             
             $method = "GET";
             $fields = array();
@@ -27,19 +26,20 @@ class DataTableController
                 echo '{"data":[]}';
                 return;
             }
-            $select = "cod_empresa,cod_caja,txt_descripcion,cod_usuario,fec_actualiza";
+            $select = "cod_establecimiento,txt_descripcion,txt_direccion,sts_matriz,sts_local";
 
             //busquedad de datos
             if(!empty($_POST['search']['value'])){
 
                 if(preg_match('/^[0-9A-Za-zñÑáéíóú ]{1,}$/',$_POST['search']['value'])){
 
-                    $linkTo = ["cod_empresa","cod_caja","txt_descripcion","cod_usuario","fec_actualiza"];
+                    $linkTo = ["cod_establecimiento","txt_descripcion","txt_direccion","fec_actualiza"];
                     $search = str_replace(" ","_",$_POST['search']['value']);
                     foreach ($linkTo as $key => $value) {
 
-                        $url = "srja_caja?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_caja";
+                        $url = "gen_local?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
                         $data = CurlController::request($url, $method, $fields)->result;
+                        // echo '<pre>'; print_r($url); echo '</pre>'; 
                         
                         if($data == "Not Found"){
                             $data = array();
@@ -57,8 +57,10 @@ class DataTableController
                 }
             }else{ 
             //seleccionar datos
-            $url = "srja_caja?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=".$start."&endAt=".$length."&orderAt=cod_caja";
+            $url = "gen_local?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
             $data = CurlController::request($url, $method, $fields)->result;
+            // echo '<pre>'; print_r($data); echo '</pre>'; 
+            // echo '<pre>'; print_r($url); echo '</pre>'; 
             $recordsFiltered = $totalData;
         }
         if(empty($data)){
@@ -81,19 +83,18 @@ class DataTableController
                     }else{
                         $actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
                     }
-                    $cod_empresa = $value->cod_empresa;
-                    $cod_empresa = $value->cod_empresa;
-                    $cod_caja = $value->cod_caja;
+                    $cod_establecimiento = $value->cod_establecimiento;
                     $txt_descripcion = $value->txt_descripcion;
-                    $cod_usuario = $value->cod_usuario;
-                    $fec_actualiza = $value->fec_actualiza;
+                    $txt_direccion = $value->txt_direccion;
+                    $sts_matriz = $value->sts_matriz;
+                    $sts_local = $value->sts_local;
 
                             $dataJson.='{
-                        "cod_empresa":"'.$cod_empresa.'",
-                        "cod_caja":"'.$cod_caja.'",
+                        "cod_establecimiento":"'.$cod_establecimiento.'",
                         "txt_descripcion":"'.$txt_descripcion.'",
-                        "cod_usuario":"'.$cod_usuario.'",
-                        "fec_actualiza":"'.$fec_actualiza.'",
+                        "txt_direccion":"'.$txt_direccion.'",
+                        "sts_matriz":"'.$sts_matriz.'",
+                        "sts_local":"'.$sts_local.'",
                         "actions":"'.$actions.'"
                     },';
                 }
