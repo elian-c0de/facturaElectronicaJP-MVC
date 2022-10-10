@@ -105,7 +105,8 @@ if(!isset($_SESSION["admin"])){
         $routesArray1[3] == "establecimientos" || 
         $routesArray1[3] == "puntosEmision" || 
         $routesArray1[3] == "proyectos" || 
-        $routesArray1[3] == "perfiles") {
+        $routesArray1[3] == "perfiles" || 
+        $routesArray1[3] == "conceptos") {
           include ("views/pages/".$routesArray1[3]."/index.php");
         }else{
           include ("views/pages/404/404.php");
