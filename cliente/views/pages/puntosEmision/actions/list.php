@@ -45,8 +45,9 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
           <th>Caja</th>
           <th>Ambiente</th>
           <th>Tipo de Emision</th>
-          <th>no. de Factura</th>
+          <th>No. de Factura</th>
           <th>No. Nota de Credito</th>
+          <th>No. Retención</th>
           <th>No. Nota de Guia de Remision</th>
           <th>Tipo de Facturacion</th>
           <th>Impresion</th>

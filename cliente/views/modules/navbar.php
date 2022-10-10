@@ -9,7 +9,7 @@
       <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Procesos Especiales</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-            <a href="admins" class="dropdown-item"><i class=" fa-solid fa-user  pl-1 pr-1"></i>Informacion general</a>
+            <a href="informacionGeneral" class="dropdown-item"><i class=" fa-solid fa-user  pl-1 pr-1"></i>Informacion general</a>
             <a href="establecimientos" class="dropdown-item"><i class=" fa-solid fa-shop mr-1"></i>Establecimientos</a>
             <a href="puntosEmision" class="dropdown-item"><i class=" fa-solid fa-cart-shopping mr-1"></i>Puntos de emision</a>
             <a href="cajas" class="dropdown-item"><i class="fa-solid fa-cash-register mr-1"></i>Cajas</a>

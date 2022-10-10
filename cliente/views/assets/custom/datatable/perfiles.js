@@ -1,6 +1,6 @@
 function execDataTable (text) {
 
-    var establecimientosTable = $("#establecimientostable").DataTable({
+    var perfilestosTable = $("#perfilestable").DataTable({
        "responsive": true, 
        "lengthChange": true, 
        "aLengthMenu": [[5,10,20,50,100],[5,10,20,50,100]],
@@ -8,15 +8,13 @@ function execDataTable (text) {
        "processing": true,
        "serverSide": true,
        "ajax":{
-         "url":"ajax/data-establecimientos.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val(),
+         "url":"ajax/data-perfiles.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val(),
          "type":"POST"
        },
        "columns":[
-         {"data":"cod_establecimiento"},
-         {"data":"txt_descripcion"},
-         {"data":"txt_direccion"},
-         {"data":"sts_matriz"},
-         {"data":"sts_local"},
+         {"data":"cod_perfil"},
+         {"data":"nom_perfil"},
+         {"data":"sts_perfil"},
          {"data":"actions"}
        ],
        "buttons": [
@@ -30,9 +28,9 @@ function execDataTable (text) {
      })
  
      if(text == "flat"){
-         $("#establecimientostable").on("draw.dt",function(){
+         $("#perfilestable").on("draw.dt",function(){
              setTimeout(() => {
-              establecimientosTable.buttons().container().appendTo('#establecimientostable_wrapper .col-md-6:eq(0)');
+              perfilesTable.buttons().container().appendTo('#perfilestable_wrapper .col-md-6:eq(0)');
      
              }, 100);
      
@@ -43,14 +41,14 @@ function execDataTable (text) {
  // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
  function reportActive(event){
      if(event.target.checked){
-         $("#establecimientostable").dataTable().fnClearTable();
-         $("#establecimientostable").dataTable().fnDestroy();
+         $("#perfilestable").dataTable().fnClearTable();
+         $("#perfilestable").dataTable().fnDestroy();
          setTimeout(() => {
              execDataTable("flat");
          }, 10);
      }else{
-         $("#establecimientostable").dataTable().fnClearTable();
-         $("#establecimientostable").dataTable().fnDestroy();
+         $("#perfilestable").dataTable().fnClearTable();
+         $("#perfilestable").dataTable().fnDestroy();
          setTimeout(() => {
              execDataTable("html");
          }, 10);
@@ -58,21 +56,21 @@ function execDataTable (text) {
  }
  
  //rango de fechas
- $('#daterangee-btn').daterangepicker(
-     {
-       ranges   : {
-         'Today'       : [moment(), moment()],
-         'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-         'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-         'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-         'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-         'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-       },
-       startDate: moment($("#between1").val()),
-       endDate  : moment($("#between2").val())
-     },
-     function (start, end) {
-       // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-       window.location = "establecimientos?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
-     }
-   )
+//  $('#daterangee-btn').daterangepicker(
+//      {
+//        ranges   : {
+//          'Today'       : [moment(), moment()],
+//          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+//          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+//          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+//          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+//          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+//        },
+//        startDate: moment($("#between1").val()),
+//        endDate  : moment($("#between2").val())
+//      },
+//      function (start, end) {
+//        // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+//        window.location = "perfiles?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
+//      }
+//    )

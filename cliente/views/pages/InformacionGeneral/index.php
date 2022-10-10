@@ -1,38 +1,14 @@
-<?php
-// session_start();
-// if (!isset($_SESSION['user'])) {
-//     echo '
-//             <script>
-//                 alert("Por favor debes iniciar sesión");
-//                 window.location = "../logearse/";
-//             </script>
-//         ';
-//     //header("location: index.php");
-//     session_destroy();
-//     die();
-// } 
-  
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <title>Bienvenidos</title>
-</head>
-<?php include('../inc/header.php'); ?>
-<body>
-    <div class="mx-auto" style="padding-left: 290px;">
-        <div class="row" >
-            <div class="col-md-8">
-                <h1>Informacion General</h1>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+        <div class="mx-auto" style="padding-left: 50px;">
+            <div class="row" >
+                <div class="col-md-8">
+                    <h1><i class=" fa-solid fa-user  pl-1 pr-1"></i>Informacion General</h1>
+                    <br></br>
                     <form id="empresa-form">
-                    <input type="hidden" id="empresaId">
+                        <input type="hidden" id="empresaId">
                         <div class="row">
                             <div class="col-md-3">
                                 <p>RUC:</p>
@@ -86,8 +62,9 @@
                                 <p>Regimen Microempresa:</p>
                             </div>
                             <div class="col-md-8">
-                                <label><input class="form-check-input " type="checkbox" id="regimenmicroempresa" name="regimenmicroempresa"> 
+                                <label><input class="form-check-input mb-3" type="checkbox" id="regimenmicroempresa" name="regimenmicroempresa"> 
                             </div>
+                            <br></br>
                             <div class="col-md-4">
                                 <p>Ubicacion Logo:</p>
                             </div>
@@ -109,13 +86,10 @@
                             </div>
                         </div>
                         <button id="btn_insert" type="submit" name="insert" class="btn btn-primary" value="Guardar">Guardar</button>
-                        <!-- <input id="btn_cancel" type="button" onclick="location.href = '../InformacionGeneral/';" name="cancel" class="btn btn-danger" value="Cancelar"> -->
                     </form>
+                </div>
             </div>
         </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script src="controllers/informacion.js" ></script>
-</body>
-
-</html>
+     <!-- /.container-fluid -->
+  </div>
+</section>
