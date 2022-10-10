@@ -15,8 +15,8 @@
             <a href="cajas" class="dropdown-item"><i class="fa-solid fa-cash-register mr-1"></i>Cajas</a>
             <li class="dropdown-divider"></li>
             <a href="conceptos" class="dropdown-item"><i class="fa-solid fa-circle-info mr-1"></i>Conceptos</a>
-            <a href="#" class="dropdown-item"><i class="fa-solid fa-money-check-dollar mr-1"></i>Formas de pago</a>
-            <a href="#" class="dropdown-item"><i class="fa-solid fa-sliders mr-1"></i>Parametros</a>
+            <a href="formadepago" class="dropdown-item"><i class="fa-solid fa-money-check-dollar mr-1"></i>Formas de pago</a>
+            <a href="parametros" class="dropdown-item"><i class="fa-solid fa-sliders mr-1"></i>Parametros</a>
             <a href="#" class="dropdown-item"><i class="fa-solid fa-handshake-simple mr-1"></i>Tipos de retencion de impuestos</a>
             <li class="dropdown-divider"></li>
             <a href="#" class="dropdown-item"><i class="fa-solid fa-hand-holding-dollar mr-1"></i>Tipos de precio</a>

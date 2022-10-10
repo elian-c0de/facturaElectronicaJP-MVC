@@ -3,11 +3,9 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
   $between1 = $_GET["start"];
   $between2 = $_GET["end"];
 }else{
-  // d-m-Y  Paladines
-  // m-d-Y  Ramirez
-  $between1 = date("m-d-Y",strtotime("-29 day", strtotime(date("m-d-Y"))));
+  $between1 = date("d-m-Y",strtotime("-29 day", strtotime(date("d-m-Y"))));
 
-  $between2 = date("m-d-Y");
+  $between2 = date("d-m-Y");
 }
 ?>
 
@@ -20,7 +18,7 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
 ?>
 
     <h3 class="card-title">
-      <a class="btn bg-blue btn-small" href="conceptos/create"><i class="bi bi-file-earmark-plus-fill"></i></a>
+      <a class="btn bg-blue btn-small" href="formadepago/create"><i class="bi bi-file-earmark-plus-fill"></i></a>
       <a class="btn bg-green btn-small" href=""><i class="bi bi-filetype-xml"></i></a>
     </h3>
       <div class="card-tools">
@@ -39,17 +37,16 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
   </div>
   <!-- /.card-header -->
   <div class="card-body">
-    <table id="conceptostable" class="table table-bordered table-striped">
+    <table id="formadepagotable" class="table table-bordered table-striped">
       <thead>
         <tr>
-            <th>Codigo</th>
-            <th>Descripcion</th>
-            <th>Facturacion</th>
-            <th>Tipo de Concepto</th>
-            <th>Proceso</th>
-            <th>Afecta inventario</th>
-            <th>Estado</th>
-            <th>Editar/Eliminar</th>
+          <th>Codigo</th>
+          <th>Descripcion</th>
+          <th>Defecto</th>
+          <th>S.R.I</th>
+          <th>Estado</th>
+          <th>Retencion</th>
+          <th>Editar/Eliminar</th>
         </tr>
       </thead>
     </table>
@@ -57,4 +54,4 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
   <!-- /.card-body -->
 </div>
 
-<script src="views/assets/custom/datatable/conceptos.js"></script>
+<script src="views/assets/custom/datatable/formadepagos.js"></script>
