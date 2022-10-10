@@ -1,6 +1,6 @@
 function execDataTable (text) {
 
-    var perfilestosTable = $("#perfilestable").DataTable({
+    var perfilesTable = $("#perfilestable").DataTable({
        "responsive": true, 
        "lengthChange": true, 
        "aLengthMenu": [[5,10,20,50,100],[5,10,20,50,100]],
