@@ -86,7 +86,7 @@ class DataTableController
                     $cod_parametro = $value->cod_parametro;
                     $nom_parametro = $value->nom_parametro;
                     $val_parametro = $value->val_parametro;
-
+                    $val_parametro = preg_replace('/\\\\/i', '/', $val_parametro);
                             $dataJson.='{
                         "cod_parametro":"'.$cod_parametro.'",
                         "nom_parametro":"'.$nom_parametro.'",
