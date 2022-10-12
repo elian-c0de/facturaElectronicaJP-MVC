@@ -3,9 +3,11 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
   $between1 = $_GET["start"];
   $between2 = $_GET["end"];
 }else{
-  $between1 = date("d-m-Y",strtotime("-29 day", strtotime(date("d-m-Y"))));
+  // d-m-Y  Paladines
+  // m-d-Y  Ramirez
+  $between1 = date("m-d-Y",strtotime("-29 day", strtotime(date("m-d-Y"))));
 
-  $between2 = date("d-m-Y");
+  $between2 = date("m-d-Y");
 }
 ?>
 
@@ -19,7 +21,7 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
 
     <h3 class="card-title">
       <a class="btn bg-blue btn-small" href="establecimientos/create"><i class="bi bi-file-earmark-plus-fill"></i></a>
-      <a class="btn bg-green btn-small" href=""><i class="bi bi-filetype-xml"></i></a>
+      <a class="btn bg-green btn-small" href="establecimientos/XML"><i class="bi bi-filetype-xml"></i></a>
     </h3>
       <div class="card-tools">
         <div class="d-flex">

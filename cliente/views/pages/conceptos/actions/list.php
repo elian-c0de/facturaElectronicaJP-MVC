@@ -3,9 +3,11 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
   $between1 = $_GET["start"];
   $between2 = $_GET["end"];
 }else{
-  $between1 = date("d-m-Y",strtotime("-29 day", strtotime(date("d-m-Y"))));
+  // d-m-Y  Paladines
+  // m-d-Y  Ramirez
+  $between1 = date("m-d-Y",strtotime("-29 day", strtotime(date("m-d-Y"))));
 
-  $between2 = date("d-m-Y");
+  $between2 = date("m-d-Y");
 }
 ?>
 
@@ -26,12 +28,12 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
         <div class="d-flex mr-2">
           <span class="mr-3">Acciones:</span><input type="checkbox" onchange="reportActive(event);" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
         </div>
-        <div class="input-group">
+        <!-- <div class="input-group">
           <button type="button" class="btn btn-default float-right" id="daterangee-btn">
             <i class="far fa-calendar-alt"></i> Date range picker
             <i class="fas fa-caret-down"></i>
           </button>
-        </div>
+        </div> -->
         </div>
       </div>
   </div>

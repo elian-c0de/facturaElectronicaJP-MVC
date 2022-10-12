@@ -15,7 +15,7 @@ class DataTableController
             $length = $_POST["length"];
            
             //total de registros de la data
-            $url = "srja_concepto?select=cod_concepto&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=0&endAt=1&orderAt=cod_concepto";
+            $url = "srja_concepto?select=cod_concepto&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=0&endAt=1&orderAt=cod_concepto";
             
             $method = "GET";
             $fields = array();
@@ -57,7 +57,7 @@ class DataTableController
                 }
             }else{ 
             //seleccionar datos
-            $url = "srja_concepto?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+            $url = "srja_concepto?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
             $data = CurlController::request($url, $method, $fields)->result;
             // echo '<pre>'; print_r($data); echo '</pre>'; 
             // echo '<pre>'; print_r($url); echo '</pre>'; 

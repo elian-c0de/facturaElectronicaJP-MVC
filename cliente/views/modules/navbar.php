@@ -16,8 +16,8 @@
             <li class="dropdown-divider"></li>
             <a href="conceptos" class="dropdown-item"><i class="fa-solid fa-circle-info mr-1"></i>Conceptos</a>
             <a href="formadepago" class="dropdown-item"><i class="fa-solid fa-money-check-dollar mr-1"></i>Formas de pago</a>
-            <a href="#" class="dropdown-item"><i class="fa-solid fa-sliders mr-1"></i>Parametros</a>
-            <a href="#" class="dropdown-item"><i class="fa-solid fa-handshake-simple mr-1"></i>Tipos de retencion de impuestos</a>
+            <a href="parametros" class="dropdown-item"><i class="fa-solid fa-sliders mr-1"></i>Parametros</a>
+            <a href="retenciondeImpuestos" class="dropdown-item"><i class="fa-solid fa-handshake-simple mr-1"></i>Tipos de retencion de impuestos</a>
             <li class="dropdown-divider"></li>
             <a href="tipoprecio" class="dropdown-item"><i class="fa-solid fa-hand-holding-dollar mr-1"></i>Tipos de precio</a>
             <a href="lineasdeproducto" class="dropdown-item"><i class="fa-solid fa-diagram-next mr-1"></i>Lineas de producto</a>
@@ -27,7 +27,7 @@
             <li class="dropdown-divider"></li>
             <a href="proyectos" class="dropdown-item"><i class="fa-solid fa-diagram-project mr-1"></i>Proyectos</a>
             <li class="dropdown-divider"></li>
-            <a href="#" class="dropdown-item"><i class="fa-solid fa-users mr-1"></i>Usuarios</a>
+            <a href="usuarios" class="dropdown-item"><i class="fa-solid fa-users mr-1"></i>Usuarios</a>
             <a href="perfiles" class="dropdown-item"><i class="fa-solid fa-id-card-clip mr-1"></i>Perfiles</a>
             <a href="#" class="dropdown-item"><i class="fa-solid fa-universal-access mr-1"></i>Permisos</a>
            

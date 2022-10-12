@@ -20,7 +20,7 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
 ?>
 
     <h3 class="card-title">
-      <a class="btn bg-blue btn-small" href="puntosEmision/create"><i class="bi bi-file-earmark-plus-fill"></i></a>
+      <a class="btn bg-blue btn-small" href="perfiles/create"><i class="bi bi-file-earmark-plus-fill"></i></a>
       <a class="btn bg-green btn-small" href=""><i class="bi bi-filetype-xml"></i></a>
     </h3>
       <div class="card-tools">
@@ -28,35 +28,24 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
         <div class="d-flex mr-2">
           <span class="mr-3">Acciones:</span><input type="checkbox" onchange="reportActive(event);" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
         </div>
-        <div class="input-group">
-          <button type="button" class="btn btn-default float-right" id="daterangep-btn">
+        <!-- <div class="input-group">
+          <button type="button" class="btn btn-default float-right" id="daterangee-btn">
             <i class="far fa-calendar-alt"></i> Date range picker
             <i class="fas fa-caret-down"></i>
           </button>
-        </div>
+        </div> -->
         </div>
       </div>
   </div>
   <!-- /.card-header -->
   <div class="card-body">
-    <table id="puntoemisionTable" class="table table-bordered table-striped">
+    <table id="retenciondeImpuestostable" class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>Codigo</th>
-          <th>Descripcion</th>
-          <th>Caja</th>
-          <th>Ambiente</th>
-          <th>Tipo de Emision</th>
-          <th>No. de Factura</th>
-          <th>No. Nota de Credito</th>
-          <th>No. Retención</th>
-          <th>No. Nota de Guia de Remision</th>
-          <th>Tipo de Facturacion</th>
-          <th>Impresion</th>
-          <th>No. Factura Prueba</th>
-          <th>No. NC Prueba</th>
-          <th>No. Retencion Prueba</th>
-          <th>No. Guia de Remision Prueba</th>
+          <th>Impuesto</th>
+          <th>Codigo de Retención</th>
+          <th>Descripción</th>
+          <th>Porcentaje Retención</th>
           <th>Estado</th>
           <th>Editar/Eliminar</th>
         </tr>
@@ -66,4 +55,4 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
   <!-- /.card-body -->
 </div>
 
-<script src="views/assets/custom/datatable/puntoemision.js"></script>
+<script src="views/assets/custom/datatable/retenciondeImpuestos.js"></script>

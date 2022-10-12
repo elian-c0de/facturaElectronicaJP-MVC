@@ -1,6 +1,6 @@
 function execDataTable (text) {
 
-    var conceptosTable = $("#conceptostable").DataTable({
+    var parametrosTable = $("#parametrostable").DataTable({
        "responsive": true, 
        "lengthChange": true, 
        "aLengthMenu": [[5,10,20,50,100],[5,10,20,50,100]],
@@ -8,17 +8,13 @@ function execDataTable (text) {
        "processing": true,
        "serverSide": true,
        "ajax":{
-         "url":"ajax/data-conceptos.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val(),
+         "url":"ajax/data-parametros.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val(),
          "type":"POST"
        },
        "columns":[
-         {"data":"cod_concepto"},
-         {"data":"txt_descripcion"},
-         {"data":"sts_facturacion"},
-         {"data":"sts_tipo_concepto"},
-         {"data":"sts_proceso"},
-         {"data":"sts_inventario"},
-         {"data":"sts_concepto"},
+         {"data":"cod_parametro"},
+         {"data":"nom_parametro"},
+         {"data":"val_parametro"},
          {"data":"actions"}
        ],
        "buttons": [
@@ -32,9 +28,9 @@ function execDataTable (text) {
      })
  
      if(text == "flat"){
-         $("#conceptostable").on("draw.dt",function(){
+         $("#parametrostable").on("draw.dt",function(){
              setTimeout(() => {
-              conceptosTable.buttons().container().appendTo('#conceptostable_wrapper .col-md-6:eq(0)');
+              parametrosTable.buttons().container().appendTo('#parametrostable_wrapper .col-md-6:eq(0)');
      
              }, 100);
      
@@ -45,14 +41,14 @@ function execDataTable (text) {
  // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
  function reportActive(event){
      if(event.target.checked){
-         $("#conceptostable").dataTable().fnClearTable();
-         $("#conceptostable").dataTable().fnDestroy();
+         $("#parametrostable").dataTable().fnClearTable();
+         $("#parametrostable").dataTable().fnDestroy();
          setTimeout(() => {
              execDataTable("flat");
          }, 10);
      }else{
-         $("#conceptostable").dataTable().fnClearTable();
-         $("#conceptostable").dataTable().fnDestroy();
+         $("#parametrostable").dataTable().fnClearTable();
+         $("#parametrostable").dataTable().fnDestroy();
          setTimeout(() => {
              execDataTable("html");
          }, 10);
@@ -75,6 +71,6 @@ function execDataTable (text) {
 //      },
 //      function (start, end) {
 //        // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-//        window.location = "conceptos?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
+//        window.location = "perfiles?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
 //      }
 //    )

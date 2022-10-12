@@ -12,7 +12,7 @@
           
           <?php 
           if (isset($routesArray1[4])) {
-            if($routesArray1[4] == "create" || $routesArray1[4] == "edit"){
+            if($routesArray1[4] == "create" || $routesArray1[4] == "edit" || $routesArray1[4] == "XML"){
               echo '<li class="breadcrumb-item"><a href="establecimientos">Establecimientos</a></li>';
               echo '<li class="breadcrumb-item active">'.$routesArray1[4].'</li>';
             }
@@ -30,7 +30,7 @@
 <section class="content">
     <div class="container-fluid">
     <?php
-    if(isset($routesArray[4]) && $routesArray[4] == "create"){
+    if(isset($routesArray[4]) && $routesArray[4] == "create" || $routesArray[4] == "XML"){
         include "actions/".$routesArray[4].".php"; 
     }else{
         include "actions/list.php"; 

@@ -106,10 +106,13 @@ if(!isset($_SESSION["admin"])){
         $routesArray1[3] == "puntosEmision" || 
         $routesArray1[3] == "proyectos" || 
         $routesArray1[3] == "perfiles" || 
-        $routesArray1[3] == "conceptos" || 
+        $routesArray1[3] == "conceptos" ||
+        $routesArray1[3] == "parametros" || 
+        $routesArray1[3] == "usuarios" || 
+        $routesArray1[3] == "retenciondeImpuestos" ||
         $routesArray1[3] == "tipoprecio" || 
         $routesArray1[3] == "lineasdeproducto" || 
-        $routesArray1[3] == "marcas" || 
+        $routesArray1[3] == "marcas" ||
         $routesArray1[3] == "formadepago") {
           include ("views/pages/".$routesArray1[3]."/index.php");
         }else{

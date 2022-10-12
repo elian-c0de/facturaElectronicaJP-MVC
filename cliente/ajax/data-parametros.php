@@ -15,8 +15,8 @@ class DataTableController
             $length = $_POST["length"];
            
             //total de registros de la data
-            $url = "gen_forma_pago?select=cod_forma_pago&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=0&endAt=1&orderAt=cod_forma_pago";
-
+            $url = "gen_control?select=cod_parametro&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=0&endAt=1&orderAt=cod_parametro";
+            
             $method = "GET";
             $fields = array();
             $response = CurlController::request($url, $method, $fields);
@@ -26,18 +26,18 @@ class DataTableController
                 echo '{"data":[]}';
                 return;
             }
-            $select = "cod_forma_pago,nom_forma_pago,sts_defecto,cod_sri,sts_forma_pago,sts_retencion";
+            $select = "cod_parametro,nom_parametro,val_parametro";
 
             //busquedad de datos
             if(!empty($_POST['search']['value'])){
 
                 if(preg_match('/^[0-9A-Za-zñÑáéíóú ]{1,}$/',$_POST['search']['value'])){
 
-                    $linkTo = ["cod_forma_pago","nom_forma_pago","sts_defecto","cod_sri","sts_forma_pago","sts_retencion"];
+                    $linkTo = ["cod_parametro","nom_parametro","val_parametro"];
                     $search = str_replace(" ","_",$_POST['search']['value']);
                     foreach ($linkTo as $key => $value) {
 
-                        $url = "gen_forma_pago?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_sri";
+                        $url = "gen_control?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
                         $data = CurlController::request($url, $method, $fields)->result;
                         // echo '<pre>'; print_r($url); echo '</pre>'; 
                         
@@ -57,7 +57,7 @@ class DataTableController
                 }
             }else{ 
             //seleccionar datos
-            $url = "gen_forma_pago?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_sri";
+            $url = "gen_control?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
             $data = CurlController::request($url, $method, $fields)->result;
             // echo '<pre>'; print_r($data); echo '</pre>'; 
             // echo '<pre>'; print_r($url); echo '</pre>'; 
@@ -83,20 +83,14 @@ class DataTableController
                     }else{
                         $actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
                     }
-                    $cod_forma_pago = $value->cod_forma_pago;
-                    $nom_forma_pago = $value->nom_forma_pago;
-                    $sts_defecto = $value->sts_defecto;
-                    $cod_sri = $value->cod_sri;
-                    $sts_forma_pago = $value->sts_forma_pago;
-                    $sts_retencion = $value->sts_retencion;
-
+                    $cod_parametro = $value->cod_parametro;
+                    $nom_parametro = $value->nom_parametro;
+                    $val_parametro = $value->val_parametro;
+                    $val_parametro = preg_replace('/\\\\/i', '/', $val_parametro);
                             $dataJson.='{
-                        "cod_forma_pago":"'.$cod_forma_pago.'",
-                        "nom_forma_pago":"'.$nom_forma_pago.'",
-                        "sts_defecto":"'.$sts_defecto.'",
-                        "cod_sri":"'.$cod_sri.'",
-                        "sts_forma_pago":"'.$sts_forma_pago.'",
-                        "sts_retencion":"'.$sts_retencion.'",
+                        "cod_parametro":"'.$cod_parametro.'",
+                        "nom_parametro":"'.$nom_parametro.'",
+                        "val_parametro":"'.$val_parametro.'",
                         "actions":"'.$actions.'"
                     },';
                 }

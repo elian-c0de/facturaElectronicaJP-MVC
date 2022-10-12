@@ -3,9 +3,11 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
   $between1 = $_GET["start"];
   $between2 = $_GET["end"];
 }else{
-  $between1 = date("Y-m-d",strtotime("-29 day", strtotime(date("Y-m-d"))));
+  // d-m-Y  Paladines
+  // m-d-Y  Ramirez
+  $between1 = date("m-d-Y",strtotime("-29 day", strtotime(date("m-d-Y"))));
 
-  $between2 = date("Y-m-d");
+  $between2 = date("m-d-Y");
 }
 ?>
 

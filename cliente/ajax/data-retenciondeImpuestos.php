@@ -15,8 +15,8 @@ class DataTableController
             $length = $_POST["length"];
            
             //total de registros de la data
-            $url = "gen_forma_pago?select=cod_forma_pago&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=0&endAt=1&orderAt=cod_forma_pago";
-
+            $url = "ecmp_impuesto?select=cod_impuesto&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=0&endAt=1&orderAt=cod_impuesto";
+            
             $method = "GET";
             $fields = array();
             $response = CurlController::request($url, $method, $fields);
@@ -26,18 +26,18 @@ class DataTableController
                 echo '{"data":[]}';
                 return;
             }
-            $select = "cod_forma_pago,nom_forma_pago,sts_defecto,cod_sri,sts_forma_pago,sts_retencion";
+            $select = "cod_impuesto,cod_retencion,txt_descripcion,por_retencion,sts_impuesto";
 
             //busquedad de datos
             if(!empty($_POST['search']['value'])){
 
                 if(preg_match('/^[0-9A-Za-zñÑáéíóú ]{1,}$/',$_POST['search']['value'])){
 
-                    $linkTo = ["cod_forma_pago","nom_forma_pago","sts_defecto","cod_sri","sts_forma_pago","sts_retencion"];
+                    $linkTo = ["cod_impuesto","cod_retencion","txt_descripcion","por_retencion","sts_impuesto"];
                     $search = str_replace(" ","_",$_POST['search']['value']);
                     foreach ($linkTo as $key => $value) {
 
-                        $url = "gen_forma_pago?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_sri";
+                        $url = "ecmp_impuesto?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_retencion";
                         $data = CurlController::request($url, $method, $fields)->result;
                         // echo '<pre>'; print_r($url); echo '</pre>'; 
                         
@@ -57,7 +57,7 @@ class DataTableController
                 }
             }else{ 
             //seleccionar datos
-            $url = "gen_forma_pago?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_sri";
+            $url = "ecmp_impuesto?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_retencion";
             $data = CurlController::request($url, $method, $fields)->result;
             // echo '<pre>'; print_r($data); echo '</pre>'; 
             // echo '<pre>'; print_r($url); echo '</pre>'; 
@@ -83,20 +83,18 @@ class DataTableController
                     }else{
                         $actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
                     }
-                    $cod_forma_pago = $value->cod_forma_pago;
-                    $nom_forma_pago = $value->nom_forma_pago;
-                    $sts_defecto = $value->sts_defecto;
-                    $cod_sri = $value->cod_sri;
-                    $sts_forma_pago = $value->sts_forma_pago;
-                    $sts_retencion = $value->sts_retencion;
+                    $cod_impuesto = $value->cod_impuesto;
+                    $cod_retencion = $value->cod_retencion;
+                    $txt_descripcion = $value->txt_descripcion;
+                    $por_retencion = $value->por_retencion;
+                    $sts_impuesto = $value->sts_impuesto;
 
                             $dataJson.='{
-                        "cod_forma_pago":"'.$cod_forma_pago.'",
-                        "nom_forma_pago":"'.$nom_forma_pago.'",
-                        "sts_defecto":"'.$sts_defecto.'",
-                        "cod_sri":"'.$cod_sri.'",
-                        "sts_forma_pago":"'.$sts_forma_pago.'",
-                        "sts_retencion":"'.$sts_retencion.'",
+                        "cod_impuesto":"'.$cod_impuesto.'",
+                        "cod_retencion":"'.$cod_retencion.'",
+                        "txt_descripcion":"'.$txt_descripcion.'",
+                        "por_retencion":"'.$por_retencion.'",
+                        "sts_impuesto":"'.$sts_impuesto.'",
                         "actions":"'.$actions.'"
                     },';
                 }
