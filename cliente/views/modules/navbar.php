@@ -19,10 +19,10 @@
             <a href="#" class="dropdown-item"><i class="fa-solid fa-sliders mr-1"></i>Parametros</a>
             <a href="#" class="dropdown-item"><i class="fa-solid fa-handshake-simple mr-1"></i>Tipos de retencion de impuestos</a>
             <li class="dropdown-divider"></li>
-            <a href="#" class="dropdown-item"><i class="fa-solid fa-hand-holding-dollar mr-1"></i>Tipos de precio</a>
-            <a href="#" class="dropdown-item"><i class="fa-solid fa-diagram-next mr-1"></i>Lineas de producto</a>
+            <a href="tipoprecio" class="dropdown-item"><i class="fa-solid fa-hand-holding-dollar mr-1"></i>Tipos de precio</a>
+            <a href="lineasdeproducto" class="dropdown-item"><i class="fa-solid fa-diagram-next mr-1"></i>Lineas de producto</a>
             <a href="#" class="dropdown-item"><i class="fa-solid fa-diagram-predecessor mr-1"></i>Sublinea de producto</a>
-            <a href="#" class="dropdown-item"><i class="fa-solid fa-copyright mr-1"></i>Marcas</a>
+            <a href="marcas" class="dropdown-item"><i class="fa-solid fa-copyright mr-1"></i>Marcas</a>
             <a href="#" class="dropdown-item"><i class="fa-solid fa-broom-ball mr-1"></i>Unidad de producto</a>
             <li class="dropdown-divider"></li>
             <a href="proyectos" class="dropdown-item"><i class="fa-solid fa-diagram-project mr-1"></i>Proyectos</a>
