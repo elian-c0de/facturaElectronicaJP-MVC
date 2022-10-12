@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-      <h1><i class=" fa-solid fa-shop mr-1"></i>Conceptos</h1>
+      <h1><i class="fa-solid fa-circle-info mr-1"></i>Conceptos</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-left">
