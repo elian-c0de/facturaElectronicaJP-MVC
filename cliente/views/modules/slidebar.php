@@ -79,35 +79,35 @@ $routesArray = array_filter($routesArray);
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="movimientoInventario" class="nav-link">
                             <i class="fa-solid fa-truck-ramp-box nav-icon"></i>
                                 <p>Movimientos del inventario</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="pedidos" class="nav-link">
                             <i class="fa-solid fa-cart-flatbed nav-icon"></i>
                                 <p>Pedidos</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="facturacion" class="nav-link">
                             <i class="fa-solid fa-file-invoice nav-icon"></i>
                                 <p>Facturacion</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="notasCredito" class="nav-link">
                             <i class="fa-solid fa-receipt nav-icon"></i>
                                 <p>Notas de credito</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="cajas" class="nav-link ">
+                            <a href="movimientoCaja" class="nav-link ">
                             <i class="fa-solid fa-cash-register nav-icon"></i>
                                 <p>Cajas</p>
                             </a>

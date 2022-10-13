@@ -110,7 +110,12 @@ if(!isset($_SESSION["admin"])){
         $routesArray1[3] == "formadepago" || 
         $routesArray1[3] == "parametros" || 
         $routesArray1[3] == "retenciondeImpuestos" || 
-        $routesArray1[3] == "usuarios") {
+        $routesArray1[3] == "usuarios" || 
+        $routesArray1[3] == "movimientoInventario" || 
+        $routesArray1[3] == "pedidos" || 
+        $routesArray1[3] == "facturacion" || 
+        $routesArray1[3] == "notasCredito" || 
+        $routesArray1[3] == "movimientoCaja") {
           include ("views/pages/".$routesArray1[3]."/index.php");
         }else{
           include ("views/pages/404/404.php");
