@@ -107,9 +107,14 @@ if(!isset($_SESSION["admin"])){
         $routesArray1[3] == "proyectos" || 
         $routesArray1[3] == "perfiles" || 
         $routesArray1[3] == "conceptos" ||
-        $routesArray1[3] == "parametros" || 
+        $routesArray1[3] == "parametros" ||
+        $routesArray1[3] == "retenciondeImpuestos" || 
         $routesArray1[3] == "usuarios" || 
-        $routesArray1[3] == "retenciondeImpuestos" ||
+        $routesArray1[3] == "movimientoInventario" || 
+        $routesArray1[3] == "pedidos" || 
+        $routesArray1[3] == "facturacion" || 
+        $routesArray1[3] == "notasCredito" || 
+        $routesArray1[3] == "movimientoCaja" ||
         $routesArray1[3] == "tipoprecio" || 
         $routesArray1[3] == "lineasdeproducto" || 
         $routesArray1[3] == "marcas" || 
