@@ -116,12 +116,20 @@ if(!isset($_SESSION["admin"])){
         $routesArray1[3] == "notasCredito" || 
         $routesArray1[3] == "movimientoCaja" ||
         $routesArray1[3] == "tipoprecio" || 
-        $routesArray1[3] == "lineasdeproducto" || 
+        $routesArray1[3] == "lineasdeproducto" ||
         $routesArray1[3] == "marcas" ||
         $routesArray1[3] == "formadepago" ||
         $routesArray1[3] == "gastosCompras" ||
         $routesArray1[3] == "comprobantesRetencion" ||
-        $routesArray1[3] == "guiasRemision") {
+        $routesArray1[3] == "guiasRemision" 
+        $routesArray1[3] == "permisos" ||
+        $routesArray1[3] == "kardexinventario" ||
+        $routesArray1[3] == "comprobantesemitidos" ||
+        $routesArray1[3] == "historialcliente" ||
+        $routesArray1[3] == "precios" ||
+        $routesArray1[3] == "info_ventasygastos" ||
+        $routesArray1[3] == "topventas" ||
+        $routesArray1[3] == "ats_sri") {
           include ("views/pages/".$routesArray1[3]."/index.php");
         }else{
           include ("views/pages/404/404.php");
