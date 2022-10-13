@@ -114,21 +114,21 @@ $routesArray = array_filter($routesArray);
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="gastosCompras" class="nav-link">
                             <i class="fa-solid fa-wallet nav-icon"></i>
                                 <p>Gastos/Compras</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="comprobantesRetencion" class="nav-link">
                             <i class="fa-solid fa-file-invoice nav-icon"></i>
                                 <p>Comprobantes de retencion</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="guiasRemision" class="nav-link">
                             <i class="fa-solid fa-square-up-right nav-icon"></i>
                                 <p>Guias de Remision</p>
                             </a>
