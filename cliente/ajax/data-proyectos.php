@@ -15,7 +15,7 @@ class DataTableController
             $length = $_POST["length"];
            
             //total de registros de la data
-            $url = "ecmp_proyecto?select=cod_proyecto&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=0&endAt=1&orderAt=cod_proyecto";
+            $url = "ecmp_proyecto?select=cod_proyecto&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=0&endAt=1&orderAt=cod_proyecto";
             
             $method = "GET";
             $fields = array();
@@ -57,7 +57,7 @@ class DataTableController
                 }
             }else{ 
             //seleccionar datos
-            $url = "ecmp_proyecto?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+            $url = "ecmp_proyecto?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
             $data = CurlController::request($url, $method, $fields)->result;
             // echo '<pre>'; print_r($data); echo '</pre>'; 
             // echo '<pre>'; print_r($url); echo '</pre>'; 

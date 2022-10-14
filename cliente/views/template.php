@@ -100,8 +100,7 @@ if(!isset($_SESSION["admin"])){
      if(!empty($routesArray1[3])){
         if ($routesArray1[3] == "Cajas" ||
         $routesArray1[3] == "logout" ||
-        $routesArray1[3] == "informacionGeneral" || 
-        $routesArray1[3] == "cajas" || 
+        $routesArray1[3] == "informacionGeneral" ||
         $routesArray1[3] == "establecimientos" || 
         $routesArray1[3] == "puntosEmision" || 
         $routesArray1[3] == "proyectos" || 
@@ -109,7 +108,7 @@ if(!isset($_SESSION["admin"])){
         $routesArray1[3] == "conceptos" ||
         $routesArray1[3] == "parametros" ||
         $routesArray1[3] == "retenciondeImpuestos" || 
-        $routesArray1[3] == "usuarios" || 
+        $routesArray1[3] == "usuarios" ||
         $routesArray1[3] == "movimientoInventario" || 
         $routesArray1[3] == "pedidos" || 
         $routesArray1[3] == "facturacion" || 
