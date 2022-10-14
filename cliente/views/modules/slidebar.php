@@ -79,56 +79,56 @@ $routesArray = array_filter($routesArray);
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="movimientoInventario" class="nav-link">
                             <i class="fa-solid fa-truck-ramp-box nav-icon"></i>
                                 <p>Movimientos del inventario</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="pedidos" class="nav-link">
                             <i class="fa-solid fa-cart-flatbed nav-icon"></i>
                                 <p>Pedidos</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="facturacion" class="nav-link">
                             <i class="fa-solid fa-file-invoice nav-icon"></i>
                                 <p>Facturacion</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="notasCredito" class="nav-link">
                             <i class="fa-solid fa-receipt nav-icon"></i>
                                 <p>Notas de credito</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="cajas" class="nav-link ">
+                            <a href="movimientoCaja" class="nav-link ">
                             <i class="fa-solid fa-cash-register nav-icon"></i>
                                 <p>Cajas</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="gastosCompras" class="nav-link">
                             <i class="fa-solid fa-wallet nav-icon"></i>
                                 <p>Gastos/Compras</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="comprobantesRetencion" class="nav-link">
                             <i class="fa-solid fa-file-invoice nav-icon"></i>
                                 <p>Comprobantes de retencion</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="guiasRemision" class="nav-link">
                             <i class="fa-solid fa-square-up-right nav-icon"></i>
                                 <p>Guias de Remision</p>
                             </a>
@@ -147,43 +147,43 @@ $routesArray = array_filter($routesArray);
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="kardexinventario" class="nav-link">
                             <i class="fa-solid fa-worm nav-icon"></i>
                                 <p>Kardex de inventario</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="comprobantesemitidos" class="nav-link">
                             <i class="fa-solid fa-file-lines nav-icon"></i>
                                 <p>Comprobantes emitidos</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="info_ventasygastos" class="nav-link">
                             <i class="fa-solid fa-circle-exclamation nav-icon"></i>
                                 <p>Informe de ventas y gastos</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="precios" class="nav-link">
                             <i class="fa-solid fa-sack-dollar nav-icon"></i>
                                 <p>Precios</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="historialcliente" class="nav-link">
                             <i class="fa-solid fa-clock-rotate-left nav-icon"></i>
                                 <p>Historial del cliente</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="topventas" class="nav-link">
                             <i class="fa-solid fa-jet-fighter-up nav-icon"></i>
                                 <p>Top de ventas</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="ats_sri" class="nav-link">
                             <i class="fa-solid fa-laptop nav-icon"></i>
                                 <p>ATS_SRI</p>
                             </a>

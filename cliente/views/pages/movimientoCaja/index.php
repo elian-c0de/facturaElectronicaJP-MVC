@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-      <h1><i class=" fa-solid fa-cart-shopping mr-1"></i>Lineas de Producto</h1>
+      <h1><i class="fa-solid fa-truck-ramp-box nav-icon"></i> Movimiento de Caja</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-left">
@@ -12,12 +12,12 @@
           
           <?php 
           if (isset($routesArray1[4])) {
-            if($routesArray1[4] == "create" || $routesArray1[4] == "edit"){
-              echo '<li class="breadcrumb-item"><a href="lineasdeproducto">Lineas de Producto</a></li>';
+            if($routesArray1[4] == "create" || $routesArray1[4] == "edit" || $routesArray1[4] == "createCierreCaja"){
+              echo '<li class="breadcrumb-item"><a href="movimientoCaja">MovimientoCaja</a></li>';
               echo '<li class="breadcrumb-item active">'.$routesArray1[4].'</li>';
             }
           }else{
-            echo '<li class="breadcrumb-item active">Lineas de Producto</li>';
+            echo '<li class="breadcrumb-item active">MovimientoCaja</li>';
           }
       ?>
         </ol>
@@ -30,9 +30,11 @@
 <section class="content">
     <div class="container-fluid">
     <?php
-    if(isset($routesArray[4]) && $routesArray[4] == "create"){
+    if(isset($routesArray[4]) && $routesArray[4] == "create" ){
         include "actions/".$routesArray[4].".php"; 
-    }else{
+    }elseif (isset($routesArray[4]) && $routesArray[4] == "createCierreCaja") {
+       include "actions/".$routesArray[4].".php"; 
+    } else{
         include "actions/list.php"; 
     }
     ?>

@@ -100,18 +100,35 @@ if(!isset($_SESSION["admin"])){
      if(!empty($routesArray1[3])){
         if ($routesArray1[3] == "Cajas" ||
         $routesArray1[3] == "logout" ||
-        $routesArray1[3] == "informacionGeneral" || 
-        $routesArray1[3] == "cajas" || 
+        $routesArray1[3] == "informacionGeneral" ||
         $routesArray1[3] == "establecimientos" || 
         $routesArray1[3] == "puntosEmision" || 
         $routesArray1[3] == "proyectos" || 
         $routesArray1[3] == "perfiles" || 
-        $routesArray1[3] == "conceptos" || 
-        $routesArray1[3] == "formadepago" || 
-        $routesArray1[3] == "parametros" || 
+        $routesArray1[3] == "conceptos" ||
+        $routesArray1[3] == "parametros" ||
         $routesArray1[3] == "retenciondeImpuestos" || 
-        $routesArray1[3] == "usuarios" || 
-        $routesArray1[3] == "admins") {
+        $routesArray1[3] == "usuarios" ||
+        $routesArray1[3] == "movimientoInventario" || 
+        $routesArray1[3] == "pedidos" || 
+        $routesArray1[3] == "facturacion" || 
+        $routesArray1[3] == "notasCredito" || 
+        $routesArray1[3] == "movimientoCaja" ||
+        $routesArray1[3] == "tipoprecio" || 
+        $routesArray1[3] == "lineasdeproducto" ||
+        $routesArray1[3] == "marcas" ||
+        $routesArray1[3] == "formadepago" ||
+        $routesArray1[3] == "gastosCompras" ||
+        $routesArray1[3] == "comprobantesRetencion" ||
+        $routesArray1[3] == "guiasRemision" 
+        $routesArray1[3] == "permisos" ||
+        $routesArray1[3] == "kardexinventario" ||
+        $routesArray1[3] == "comprobantesemitidos" ||
+        $routesArray1[3] == "historialcliente" ||
+        $routesArray1[3] == "precios" ||
+        $routesArray1[3] == "info_ventasygastos" ||
+        $routesArray1[3] == "topventas" ||
+        $routesArray1[3] == "ats_sri") {
           include ("views/pages/".$routesArray1[3]."/index.php");
         }else{
           include ("views/pages/404/404.php");
