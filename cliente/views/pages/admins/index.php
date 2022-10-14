@@ -1,32 +1,28 @@
-
-
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-      <h1>Admins</h1>
+        <h1>Cajas</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-left">
-          
-          <li class="breadcrumb-item"><a href="#">Home</a></li> 
-          
-          <?php 
-          if (isset($routesArray1[4])) {
-            if($routesArray1[4] == "create" || $routesArray1[4] == "edit"){
-              echo '<li class="breadcrumb-item"><a href="admins">Admins</a></li>';
-              echo '<li class="breadcrumb-item active">'.$routesArray1[4].'</li>';
 
-         
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+
+          <?php
+          if (isset($routesArray1[4])) {
+            if ($routesArray1[4] == "create" || $routesArray1[4] == "edit") {
+              echo '<li class="breadcrumb-item"><a href="admins">Admins</a></li>';
+              echo '<li class="breadcrumb-item active">' . $routesArray1[4] . '</li>';
             }
-          }else{
+          } else {
             echo '<li class="breadcrumb-item active">Admins</li>';
           }
 
-      ?>
- 
-  
+          ?>
+
+
         </ol>
       </div>
     </div>
@@ -37,23 +33,25 @@
 <!-- Main content -->
 <section class="content">
 
-    <div class="container-fluid">
+  <div class="container-fluid">
 
     <?php
-
-    if(isset($routesArray[4]) && $routesArray[4] == "create"){
-       
-        include "actions/".$routesArray[4].".php"; 
-
+    //PREGUNTAMOS SI EXISTE UN VALOR EN EL INDICE 4
+    if (isset($routesArray1[4])) {
+      
+      if ($routesArray1[4] == "create" || $routesArray1[4] == "edit") {
+        include "actions/" . $routesArray1[4] . ".php";
+      }
     }else{
-        include "actions/list.php"; 
 
+      include "actions/list.php";
     }
+
     ?>
 
 
 
 
-    </div>
+  </div>
 
 </section>
