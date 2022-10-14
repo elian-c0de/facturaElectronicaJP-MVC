@@ -69,6 +69,7 @@
                             </div>
                             <br></br>
                         </div>
+                        <a href="../cliente" class="btn btn-danger border text-left">Cancelar</a>
                         <button id="btn_insert" type="submit" name="insert" class="btn btn-primary" value="Guardar">Guardar</button>
                     </form>
                 </div>

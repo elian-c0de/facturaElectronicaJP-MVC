@@ -121,7 +121,7 @@ if(!isset($_SESSION["admin"])){
         $routesArray1[3] == "formadepago" ||
         $routesArray1[3] == "gastosCompras" ||
         $routesArray1[3] == "comprobantesRetencion" ||
-        $routesArray1[3] == "guiasRemision" 
+        $routesArray1[3] == "guiasRemision" ||
         $routesArray1[3] == "permisos" ||
         $routesArray1[3] == "kardexinventario" ||
         $routesArray1[3] == "comprobantesemitidos" ||
