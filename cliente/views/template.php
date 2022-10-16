@@ -7,7 +7,7 @@ Capturar las rutas de la URL
 
 $routesArray = explode("/", $_SERVER['REQUEST_URI']);
 $routesArray = array_filter($routesArray);
-
+//cambios fabri
 
 /*=============================================
 Limpiar la Url de variables GET
