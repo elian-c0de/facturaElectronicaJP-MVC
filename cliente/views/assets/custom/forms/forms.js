@@ -19,6 +19,24 @@
   }, false);
 })();
 
+function obtenerdata(cod_empresa){
+  var data = new FormData();
+  data.append("coddata", cod_empresa);
+
+  $.ajax({
+    url: "ajax/ajax-delete.php",
+    method: "POST",
+    data: data,
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function(response){
+      return response;
+    }
+  })
+
+}
+
 
 function validateRepeat(event,type,table,columna,id) {
 
@@ -46,6 +64,7 @@ function validateRepeat(event,type,table,columna,id) {
       }
     });
 }
+
 
 function validateJS(event, type) {
 

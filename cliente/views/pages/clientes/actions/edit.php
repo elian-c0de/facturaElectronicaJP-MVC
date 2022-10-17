@@ -1,37 +1,28 @@
 <?php
 
-if(isset($routesArray1[5])){
-    // echo '<pre>'; print_r($routesArray1[5]); echo '</pre>';
-    $security = explode("~",base64_decode($routesArray1[5]));
 
-    if($security[1] == $_SESSION["admin"]->token_usuario){
 
-        $url = "ecmp_cliente?linkTo=cod_empresa,num_id&equalTo=".$_SESSION['admin']->cod_empresa.",".$security[0];
-        $method = "GET";
-        $fields = array();
+
+$url = "gen_empresa?equalTo=" . $_SESSION["admin"]->cod_empresa . "&linkTo=cod_empresa";
+$method = "GET";
+$fields = array();
+
+$response = CurlController::request($url, $method, $fields);
+
+if ($response->status == 200) {
+    $admin = $response->result[0];
+    // echo '<pre>'; print_r($admin->cod_caja); echo '</pre>';
+} else {
+    echo '<script>
     
-        $response = CurlController::request($url,$method,$fields);
-    if($response->status == 200){
-        $admin = $response->result[0];
-        // echo '<pre>'; print_r($admin->cod_caja); echo '</pre>';
-    }else{
-        echo '<script>
-    
-        window.location = "clientes";
+        window.location = "home";
         </script>';
-    }
-
-    }else{
-        echo '<script>
-    
-        window.location = "clientes";
-        </script>';
-    }
-
-
-    
-    
 }
+
+
+    
+    
+
 
 
 ?>
@@ -42,20 +33,20 @@ if(isset($routesArray1[5])){
 
     <!-- INICIO DE FORMULARIO CAJAS -->
     <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
-    <input type="hidden" value="<?php echo $admin->num_id ?>" name="idAdmin">
+    <!-- <input type="hidden" value="<?php echo $admin->num_id ?>" name="idAdmin"> -->
 
 
         <div class="card-header">
                  <?php 
                     require_once("controllers/clientes.controllers.php");
                     $create = new ClientesController();
-                    $create ->edit($admin->num_id);
+                    $create ->edit($admin->cod_empresa);
                     ?>
             <div class="col-md-8 offset-md-2">
 
             <!-- VALIDAR TIPO DE IDENTIFICACION -->
                 <div class="form-group mt-2">
-					<label>Tipo de identificacion</label>
+					<label>RUC</label>
 					<?php 
 					$tipo_iden = file_get_contents("views/assets/json/tipo_iden.json");
 					$tipo_iden = json_decode($tipo_iden, true);
@@ -69,6 +60,18 @@ if(isset($routesArray1[5])){
 					<div class="valid-feedback">Valid.</div>
             		<div class="invalid-feedback">Please fill out this field.</div>
 				</div>  
+
+                <div class="form-group mt-2">
+                    <label>RUC</label>
+                    <input 
+                    type="text"
+                    name="num_id" 
+                    value="<?php echo $admin->num_id?>"
+                    disabled
+                    class="form-control">
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback"> Please fill out this field.</div>
+                </div>
 
                 <!-- NUMERO DE IDENTIFICACION -->
                 <div class="form-group mt-2">
