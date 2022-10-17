@@ -12,7 +12,7 @@ class ValidateCotroller{
     public function dataRepeat(){
 
    
-        $url = $this->table."?select=cod_caja&linkTo=cod_empresa,".$this->columna."&equalTo=".$this->id.",".$this->data;
+        $url = $this->table."?select=".$this->columna."&linkTo=cod_empresa,".$this->columna."&equalTo=".$this->id.",".$this->data;
         $method = "GET";
         $fields = array();
 

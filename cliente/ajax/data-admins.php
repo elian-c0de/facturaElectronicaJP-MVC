@@ -9,6 +9,8 @@ class DataTableController
     public function data()
     {
         if (!empty($_POST)) {
+          
+            
            
      
            
@@ -54,14 +56,16 @@ class DataTableController
                     $search = str_replace(" ","_",$_POST['search']['value']);
                     foreach ($linkTo as $key => $value) {
                         $url = "srja_caja?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_caja";
+                        
                         $data = CurlController::request($url, $method, $fields)->result;
+                       
                       
                         if($data == "Not Found"){
                             $data = array();
                             $recordsFiltered = count($data);
                         }else{
                             $data = $data;
-                            $recordsFiltered = count($data);
+                            $recordsFiltered = $totalData;
                             break;
                         }
                     }
@@ -77,6 +81,7 @@ class DataTableController
           
 
             $url = "srja_caja?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=".$start."&endAt=".$length."&orderAt=cod_caja";
+ 
       
 
             $data = CurlController::request($url, $method, $fields)->result;

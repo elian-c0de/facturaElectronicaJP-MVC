@@ -85,6 +85,8 @@ class Put
             # code...
         }
         $set = substr($set,0,-1);
+    
+   
         $this->db->query("UPDATE $table SET $set WHERE $nameId = :$nameId and $nameId2 = :$nameId2");
         foreach ($data as $key => $value) {
             $this->db->bind(":".$key,$data[$key]);

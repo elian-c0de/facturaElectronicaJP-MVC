@@ -61,8 +61,8 @@ class GetController extends Controlador{
 
     }
 
-    public function getRelDataSearch($rel,$type,$select,$linkTo,$search,$orderBy,$orderMode,$startAt){
-        $response = $this->instanciaModelo->obtenerRelDataSearch($rel,$type,$select,$linkTo,$search,$orderBy,$orderMode,$startAt);
+    public function getRelDataSearch($rel,$type,$select,$linkTo,$search,$orderBy,$orderMode,$startAt, $endAt, $orderAt,$filterTo,$inTo){
+        $response = $this->instanciaModelo->obtenerRelDataSearch($rel,$type,$select,$linkTo,$search,$orderBy,$orderMode,$startAt, $endAt, $orderAt,$filterTo,$inTo);
         $return = new GetController();
         $return -> fncResponse($response);
 
@@ -75,8 +75,8 @@ class GetController extends Controlador{
 
     }
     // peticiomes get para secion de rngos con relacioness
-    public function getRelDataRange($rel,$type,$select,$linkTo,$between1,$between2,$orderBy,$orderMode,$startAt,$filterTo,$inTo){
-        $response = $this->instanciaModelo->getRelDataRange($rel,$type,$select,$linkTo,$between1,$between2,$orderBy,$orderMode,$startAt,$filterTo,$inTo);
+    public function getRelDataRange($rel,$type,$select,$linkTo,$between1,$between2,$orderBy,$orderMode,$startAt,$endAt,$orderAt,$filterTo,$inTo){
+        $response = $this->instanciaModelo->getRelDataRange($rel,$type,$select,$linkTo,$between1,$between2,$orderBy,$orderMode,$startAt,$endAt,$orderAt,$filterTo,$inTo);
         $return = new GetController();
         $return -> fncResponse($response);
 

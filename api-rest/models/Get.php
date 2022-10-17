@@ -37,11 +37,14 @@ class Get
 
         //ordenar datos sin limites
         if ($orderBy != null && $orderMode != null && $startAt == null && $endAt == null && $orderAt == null) {
+            
             $this->db->query("SELECT $select FROM $table order by $orderBy $orderMode");
+            
         }
 
         //ordernar datos y limitar datos
         if ($orderBy != null && $orderMode != null && $startAt != null && $endAt != null && $orderAt != null) {
+            
             $this->db->query("SELECT $select FROM $table ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
         }
 
@@ -118,47 +121,96 @@ class Get
     public function obtenerRelData($rel, $type, $select, $orderBy, $orderMode, $startAt)
     {
         $relArray = explode(",", $rel);
+      
         $typeArray = explode(",", $type);
+        
         $innerJoinText = "";
+     
 
         if (count($relArray) > 1) {
-            foreach ($relArray as $key => $value) {
 
-                //validar exitencia de la tabla
-                if (empty($this->db->getColumsData($value,["*"]))) {
-                    return null;
+            if(count($relArray) == count($typeArray)){
+
+                
+                foreach ($relArray as $key => $value) {
+        
+                    //validar exitencia de la tabla
+                    if (empty($this->db->getColumsData($value,["*"]))) {
+                        return null;
+                    }
+                    if ($key > 0) {
+                        $innerJoinText .= "INNER JOIN " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " ";
+                    }
                 }
 
-                if ($key > 0) {
-                    $innerJoinText .= "inner join " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " ";
+            }else{
+
+                if(count($relArray) < count($typeArray)){
+
+
+                    foreach ($relArray as $key => $value) {
+        
+                        //validar exitencia de la tabla
+                        if (empty($this->db->getColumsData($value,["*"]))) {
+                            return null;
+                        }
+                        if ($key > 0) {
+                            $innerJoinText .= "LEFT join " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " and " . $relArray[0] . "." . $typeArray[2] . " = " . $value . "." . $typeArray[$key+2] . " ";
+                            
+
+
+                            // inner join ecmp_linea ON ecmp_inventario.cod_linea = ecmp_linea.cod_linea and ecmp_inventario.cod_sublinea = ecmp_linea.cod_sublinea
+
+                        }
+                    }
+
+
+                  
+                    
+
+
                 }
+
+
+
             }
+
+            
+     
+      
+
+          
+
             // sin ordener y sin limitar datos
             $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText");
+            
 
-            //ordenar datos sin limites
-            if ($orderBy != null && $orderMode != null && $startAt == null) {
-                $this->db->query("SELECT $select FROM  $relArray[0] $innerJoinText order by $orderBy $orderMode");
-            }
+            // //ordenar datos sin limites
+            // if ($orderBy != null && $orderMode != null && $startAt == null) {
+            //     $this->db->query("SELECT $select FROM  $relArray[0] $innerJoinText order by $orderBy $orderMode");
+                
+            // }
 
-            //ordernar datos y limitar datos
-            if ($orderBy != null && $orderMode != null && $startAt != null) {
-                $this->db->query("SELECT top $startAt $select FROM  $relArray[0] $innerJoinText order by $orderBy $orderMode");
-            }
+            // //ordernar datos y limitar datos
+            // if ($orderBy != null && $orderMode != null && $startAt != null) {
+            //     $this->db->query("SELECT top $startAt $select FROM  $relArray[0] $innerJoinText order by $orderBy $orderMode");
+            // }
 
-            //limitar datos sin ordenar
-            if ($orderBy == null && $orderMode == null && $startAt != null) {
-                $this->db->query("SELECT top $startAt $select FROM  $relArray[0] $innerJoinText");
-            }
+            // //limitar datos sin ordenar
+            // if ($orderBy == null && $orderMode == null && $startAt != null) {
+            //     $this->db->query("SELECT top $startAt $select FROM  $relArray[0] $innerJoinText");
+            // }
 
             try {
                 $resultados = $this->db->registros();
+             
             } catch (PDOException $Exception) {
                 return null;
                 //throw $th;
             }
             
             return $resultados;
+          
         } else {
             return null;
         }
@@ -373,12 +425,17 @@ class Get
             return null;
         }
 
-
+  
+        
         $filter = "";
+        
         if ($filterTo != null && $inTo != null) {
             $filter = 'AND ' . $filterTo . ' IN (' . $inTo . ')';
         }
+ 
         $this->db->query("SELECT $select FROM  $table where $linkTo between '$between1' and '$between2' $filter");
+        
+  
         
 
 
@@ -412,7 +469,7 @@ class Get
     }
 
     // peticiones get con seleccion de rangos y filtros y relaciones
-    public function getRelDataRange($rel, $type, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt, $filterTo, $inTo)
+    public function getRelDataRange($rel, $type, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt,$endAt,$orderAt, $filterTo, $inTo)
     {
         // $linkToArray = explode(",",$linkTo);
         // $filterToArray = explode(",",$filterTo);
@@ -425,7 +482,6 @@ class Get
         // }
         // $selectArray = array_unique($selectArray);
         
- 
 
         $filter = "";
         if ($filterTo != null && $inTo != null) {
@@ -437,15 +493,50 @@ class Get
         $innerJoinText = "";
 
         if (count($relArray) > 1) {
-            foreach ($relArray as $key => $value) {
-                     //validar exitencia de la tabla
-                     if (empty($this->db->getColumsData($value,["*"]))) {
+            if(count($relArray) == count($typeArray)){
+
+                
+                foreach ($relArray as $key => $value) {
+        
+                    //validar exitencia de la tabla
+                    if (empty($this->db->getColumsData($value,["*"]))) {
                         return null;
                     }
-
-                if ($key > 0) {
-                    $innerJoinText .= "inner join " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " ";
+                    if ($key > 0) {
+                        $innerJoinText .= "INNER JOIN " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " ";
+                    }
                 }
+
+            }else{
+
+                if(count($relArray) < count($typeArray)){
+
+
+                    foreach ($relArray as $key => $value) {
+        
+                        //validar exitencia de la tabla
+                        if (empty($this->db->getColumsData($value,["*"]))) {
+                            return null;
+                        }
+                        if ($key > 0) {
+                            $innerJoinText .= "LEFT join " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " and " . $relArray[0] . "." . $typeArray[2] . " = " . $value . "." . $typeArray[$key+2] . " ";
+                            
+
+
+                            // inner join ecmp_linea ON ecmp_inventario.cod_linea = ecmp_linea.cod_linea and ecmp_inventario.cod_sublinea = ecmp_linea.cod_sublinea
+
+                        }
+                    }
+
+
+                  
+                    
+
+
+                }
+
+
+
             }
 
 
@@ -458,16 +549,21 @@ class Get
 
             //ordenar datos sin limites
             if ($orderBy != null && $orderMode != null && $startAt == null) {
+            
                 $this->db->query("SELECT $select FROM $relArray[0]  $innerJoinText where $linkTo between '$between1' and '$between2' $filter  order by $orderBy $orderMode");
             }
 
             //ordernar datos y limitar datos
             if ($orderBy != null && $orderMode != null && $startAt != null) {
-                $this->db->query("SELECT top $startAt $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter order by $orderBy $orderMode");
+                // echo '<pre>'; print_r("SELECT $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;"); echo '</pre>';
+                // $this->db->query("SELECT top $startAt $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter order by $orderBy $orderMode");
+                $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
+                
             }
 
             //limitar datos sin ordenar
             if ($orderBy == null && $orderMode == null && $startAt != null) {
+                
                 $this->db->query("SELECT top $startAt $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter");
             }
 
@@ -485,7 +581,7 @@ class Get
 
 
 
-    public function obtenerRelDataSearch($rel, $type, $select, $linkTo, $search, $orderBy, $orderMode, $startAt)
+    public function obtenerRelDataSearch($rel, $type, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt, $orderAt,$filterTo,$inTo)
     {
 
        
@@ -509,15 +605,50 @@ class Get
         $innerJoinText = "";
 
         if (count($relArray) > 1) {
-            foreach ($relArray as $key => $value) {
+            if(count($relArray) == count($typeArray)){
+
                 
-        //validar exitencia de la tabla
-        if (empty($this->db->getColumsData($value,["*"]))) {
-            return null;
-        }
-                if ($key > 0) {
-                    $innerJoinText .= "inner join " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " ";
+                foreach ($relArray as $key => $value) {
+        
+                    //validar exitencia de la tabla
+                    if (empty($this->db->getColumsData($value,["*"]))) {
+                        return null;
+                    }
+                    if ($key > 0) {
+                        $innerJoinText .= "INNER JOIN " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " ";
+                    }
                 }
+
+            }else{
+
+                if(count($relArray) < count($typeArray)){
+
+
+                    foreach ($relArray as $key => $value) {
+        
+                        //validar exitencia de la tabla
+                        if (empty($this->db->getColumsData($value,["*"]))) {
+                            return null;
+                        }
+                        if ($key > 0) {
+                            $innerJoinText .= "LEFT join " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " and " . $relArray[0] . "." . $typeArray[2] . " = " . $value . "." . $typeArray[$key+2] . " ";
+                            
+
+
+                            // inner join ecmp_linea ON ecmp_inventario.cod_linea = ecmp_linea.cod_linea and ecmp_inventario.cod_sublinea = ecmp_linea.cod_sublinea
+
+                        }
+                    }
+
+
+                  
+                    
+
+
+                }
+
+
+
             }
 
 
@@ -533,12 +664,18 @@ class Get
 
             //ordernar datos y limitar datos
             if ($orderBy != null && $orderMode != null && $startAt != null) {
-                $this->db->query("SELECT top $startAt $select FROM  $relArray[0] $innerJoinText where $linkToArray[0] like '%$searchToArray[0]%' $linkToText order by $orderBy $orderMode");
+           
+                $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $inTo = $filterTo and $linkToArray[0] like '%$searchToArray[0]%' $linkToText ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
+                
+                
+
             }
 
             //limitar datos sin ordenar
             if ($orderBy == null && $orderMode == null && $startAt != null) {
-                $this->db->query("SELECT top $startAt $select FROM  $relArray[0] $innerJoinText where $linkToArray[0] like '%$searchToArray[0]%' $linkToText");
+                // $this->db->query("SELECT top $startAt $select FROM  $relArray[0] $innerJoinText where $linkToArray[0] like '%$searchToArray[0]%' $linkToText");
+                $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $linkToArray[0] like '%$searchToArray[0]%' $linkToText ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
+
             }
             foreach ($linkToArray as $key => $value) {
                 if ($key > 0) {

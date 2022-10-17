@@ -208,3 +208,13 @@ Stack trace:
 [09-Oct-2022 18:08:43 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
 [09-Oct-2022 18:12:26 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
 [09-Oct-2022 18:13:07 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\SistemaF\cliente\views\modules\slidebar.php on line 72
+[17-Oct-2022 06:33:05 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[17-Oct-2022 06:38:02 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[17-Oct-2022 06:40:19 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[17-Oct-2022 06:41:35 Europe/Berlin] PHP Warning:  Undefined array key 4 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\establecimientos\index.php on line 33
+[17-Oct-2022 06:41:58 Europe/Berlin] PHP Warning:  Undefined array key 4 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\establecimientos\index.php on line 33
+[17-Oct-2022 06:44:44 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[17-Oct-2022 06:47:49 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[17-Oct-2022 06:47:50 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[16-Oct-2022 23:49:36 America/Guayaquil] PHP Warning:  file_get_contents(views/assets/json/tipo_iden.json): Failed to open stream: No such file or directory in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\clientes\actions\create.php on line 19
+[16-Oct-2022 23:49:36 America/Guayaquil] PHP Warning:  foreach() argument must be of type array|object, null given in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\clientes\actions\create.php on line 24

@@ -2,8 +2,9 @@
 require_once "library/Base.php";
 include_once "controllers/put.controller.php";
 
+
 if (isset($_GET["id"]) && isset($_GET["nameId"]) && !isset($_GET["id2"]) && !isset($_GET["nameId2"])) {
-    echo "hola 1id";
+
     $data = array();
 
     parse_str(file_get_contents('php://input'), $data);
@@ -89,8 +90,10 @@ if (isset($_GET["id"]) && isset($_GET["nameId"]) && !isset($_GET["id2"]) && !iss
 
 
 if (isset($_GET["id"]) && isset($_GET["nameId"]) && isset($_GET["id2"]) && isset($_GET["nameId2"])) {
-
+    
     $data = array();
+ 
+   
 
     parse_str(file_get_contents('php://input'), $data);
 
@@ -107,10 +110,12 @@ if (isset($_GET["id"]) && isset($_GET["nameId"]) && isset($_GET["id2"]) && isset
 
 
 
+
     $this->db = new Base;
 
     //validar que la tabla y las columas existan en la base de datos
     if (empty($this->db->getColumsData($table, $columns))) {
+
         $json = array(
             'status' => 400,
             'result' => "Error: los datos del formulario no coinciden con la base de datos"

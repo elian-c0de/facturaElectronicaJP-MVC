@@ -17,7 +17,7 @@ class PutController extends Controlador{
     }
 
     public function putData2ids($table,$data,$id,$nameId,$id2,$nameId2){
-        $response = $this->instanciaModelo->putData($table,$data,$id,$nameId,$id2,$nameId2);
+        $response = $this->instanciaModelo->putData2ids($table,$data,$id,$nameId,$id2,$nameId2);
         $return = new PutController();
         $return -> fncResponse($response);
 
