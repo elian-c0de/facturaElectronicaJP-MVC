@@ -128,7 +128,8 @@ if(!isset($_SESSION["admin"])){
         $routesArray1[3] == "precios" ||
         $routesArray1[3] == "info_ventasygastos" ||
         $routesArray1[3] == "topventas" ||
-        $routesArray1[3] == "ats_sri") {
+        $routesArray1[3] == "ats_sri" ||
+        $routesArray[3] == "clientes") {
           include ("views/pages/".$routesArray1[3]."/index.php");
         }else{
           include ("views/pages/404/404.php");
