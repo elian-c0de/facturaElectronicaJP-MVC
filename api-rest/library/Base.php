@@ -26,7 +26,9 @@ class Base{
         
         //crear una instancia de PDO
         try{
+            // $this->dbh = new PDO($dsn, $this->usuario, $this->password);
             $this->dbh = new PDO($dsn, $this->usuario, $this->password, $opciones);
+
             //$this->dbh->exec("set names utf8");
         }catch(PDOException $e){
             $this->error = $e->getMessage();
@@ -87,7 +89,7 @@ class Base{
         $token = array(
             
             "iat" =>  $time,//time en que inicia el token
-            "exp" => $time + (60*60),
+            "exp" => $time + (60*60*60),
             "data" => [
                 "cod_usuario" => $cod_usuario,
                 "nom_usuario" => $nom_usuario

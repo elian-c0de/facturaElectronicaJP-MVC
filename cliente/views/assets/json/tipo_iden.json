@@ -1,0 +1,15 @@
+[
+    {
+    "name": "RUC",
+    "code": "R"
+    },
+    {
+    "name": "Cedula",
+    "code": "C"
+    },
+    {
+    "name": "Pasaporte",
+    "code": "P"
+    }
+
+    ]

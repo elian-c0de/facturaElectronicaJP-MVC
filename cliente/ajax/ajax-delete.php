@@ -8,6 +8,7 @@ class DeleteController{
     public $table;
     public $cod_empresa;
     public $token;
+    public $column;
     
  
 
@@ -19,7 +20,7 @@ class DeleteController{
 
         if($security[1] ==$this->token){
 
-            $url = $this->table."?id=".$security[0]."&nameId=cod_caja&token=".$this->token."&nameId2=cod_empresa&id2=".$security1;
+            $url = $this->table."?id=".$security[0]."&nameId=".$this->column."&token=".$this->token."&nameId2=cod_empresa&id2=".$security1;
             $method = "DELETE";
             $fields = array();
     
@@ -42,6 +43,11 @@ class DeleteController{
 
 }
 
+
+
+
+
+
 }
 
 if(isset($_POST["idItem"])){
@@ -51,6 +57,7 @@ $validate = new DeleteController();
 $validate -> idItem = $_POST["idItem"];
 $validate -> table = $_POST["table"];
 $validate -> cod_empresa = $_POST["cod_empresa"];
+$validate -> column = $_POST["column"];
 $validate -> token = $_POST["token"];
 $validate->dataDelete();
 
