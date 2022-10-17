@@ -208,19 +208,47 @@ if(isset($_GET["start"]) && isset($_GET["end"])){
   </div>
   <div class="card-footer text-right">
     <span class="mr-3">SubTotal 0%</span>
-    <span class="mr-3">0.00</span>
+    <input 
+      type="number"
+      id="total"
+      value="0.00"
+      name="total" 
+      class="mr-3"
+      require="{1,2}"
+      readonly>
   </div>
   <div class="card-footer text-right">
     <span class="mr-3">SubTotal IVA</span>
-    <span class="mr-3">0.00</span>
+    <input 
+      type="number"
+      id="total"
+      value="0.00"
+      name="total" 
+      class="mr-3"
+      require="{1,2}"
+      readonly>
   </div>
   <div class="card-footer text-right">
     <span class="mr-3">IVA</span>
-    <span class="mr-3">0.00</span>
+    <input 
+      type="number"
+      id="total"
+      value="0.00"
+      name="total" 
+      class="mr-3"
+      require="{1,2}"
+      readonly>
   </div>
   <div class="card-footer text-right">
     <span class="mr-3">Total</span>
-    <span class="mr-3">0.00</span>
+    <input 
+      type="number"
+      id="total"
+      value="0.00"
+      name="total" 
+      class="mr-3"
+      require="{1,2}"
+      readonly>
   </div>
 </div>
 
