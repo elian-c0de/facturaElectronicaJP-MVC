@@ -8,6 +8,7 @@ $response = CurlController::request($url, $method, $fields);
 
 if ($response->status == 200) {
   $admin = $response->result[0];
+
   // echo '<pre>'; print_r($admin->cod_caja); echo '</pre>';
 } else {
   echo '<script>
@@ -25,77 +26,110 @@ if ($response->status == 200) {
 
     <!-- INICIO DE FORMULARIO CAJAS -->
     <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
-        <input type="hidden" value="<?php echo $admin->num_id ?>" name="idAdmin">
+        <input type="hidden" value="<?php echo $admin->cod_empresa ?>" name="idAdmin"> 
 
 
         <div class="card-header">
+
             <?php
-            require_once("controllers/clientes.controllers.php");
-            $create = new ClientesController();
+            require_once("controllers/informaciongeneral.controller.php");
+            $create = new InformacionGeneralController();
             $create->edit($admin->cod_empresa);
             ?>
+
             <div class="col-md-8 offset-md-2">
 
-
+                <!-- INDEITIFICACON CON VALIDACIONES TERMINADO -->
                 <div class="form-group mt-2">
                     <label>RUC</label>
-                    <input type="text" name="num_id" value="<?php echo $admin->num_ruc ?>"  class="form-control">
+                    <input type="text" name="num_ruc" value="<?php echo $admin->num_ruc ?>"  class="form-control"
+                    onchange="validateJS(event,'num_ruc')"
+                    pattern = "[0-9]{1,13}"
+                    required
+                    >
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback"> Please fill out this field.</div>
                 </div>
 
 
-                <!-- NUMERO DE IDENTIFICACION -->
+                <!-- TEXT RAZON SOCIAL CON VALIDACION TERMINADO -->
                 <div class="form-group mt-2">
                     <label>Razon Social</label>
-                    <input type="text" name="num_id" value="<?php echo $admin->nom_empresa ?>"  class="form-control">
+                    <input type="text" name="nom_empresa" value="<?php echo $admin->nom_empresa ?>"  class="form-control"
+                    onchange="validateJS(event,'nom_empresa')"
+                    pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,100}"
+                    required
+                    >
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback"> Please fill out this field.</div>
                 </div>
 
 
-                <!-- Razon Social -->
+                <!-- NOMBRE ABREVIADO CON VALIDACION TERMINADO -->
                 <div class="form-group mt-2">
                     <label for="">Nombre Abreviado</label>
-                    <input type="text" class="form-control" value="<?php echo $admin->nom_abreviado ?>"  name="nom_apellido_rsocial" pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}" required>
+                    <input type="text" class="form-control" value="<?php echo $admin->nom_abreviado ?>"  name="nom_abreviado" 
+                    pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,15}"
+                    onchange="validateJS(event,'nom_abreviado')"
+                    required
+                    >
                     <div class="valid-feedback">Valid</div>
                     <div class="invalid-feedback"> Please fill out this field</div>
                 </div>
 
-                <!-- CODIGO DE USUARIO -->
+                <!-- TXT DIRECCION CON VALIDACION TERMINADO -->
                 <div class="form-group mt-2">
                     <label for="">Direccion</label>
-                    <input type="text" class="form-control" value="<?php echo $admin->txt_direccion ?>"  required name="nom_persona_nombre" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}">
+                    <input type="text" class="form-control" value="<?php echo $admin->txt_direccion ?>" 
+                     name="txt_direccion" 
+                     pattern= '[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,255}'
+                     onchange="validateJS(event,'txt_direccion')"
+                     required>
                     <div class="valid-feedback">Valid</div>
                     <div class="invalid-feedback"> Please fill out this field</div>
                 </div>
 
-                <!-- DIRECCION -->
+                <!-- NUMERO DE TELEFONO CON VALIDACION TERMINADO -->
                 <div class="form-group mt-2">
                     <label for="">Telefono</label>
-                    <input type="text" class="form-control" value="<?php echo $admin->num_telefono ?>"  pattern='[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}' name="txt_direccion" required value="<?php echo $admin->txt_direccion ?>">
+                    <input type="phone" class="form-control" value="<?php echo $admin->num_telefono ?>"  
+                    pattern='[-\\(\\)\\0-9 ]{1,10}' 
+                    onchange="validateJS(event,'num_telefono')"
+                    name="num_telefono" 
+                    required
+                    >
                     <div class="valid-feedback">Valid</div>
                     <div class="invalid-feedback"> Please fill out this field</div>
                 </div>
 
+                <!-- EMAIL CON VALIDACION TERMINADO -->
                 <div class="form-group mt-2">
                     <label for="">Direccion Email</label>
-                    <input type="text" class="form-control" name="num_telefono" value="<?php echo $admin->txt_email ?>"  pattern="[-\\(\\)\\0-9 ]{1,15}" required>
+                    <input type="text" class="form-control" name="txt_email" value="<?php echo str_replace(" ","",$admin->txt_email) ?>"  
+                    pattern="[.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}"
+                    onchange="validateJS(event,'txt_email')" 
+                    required>
                     <div class="valid-feedback">Valid</div>
                     <div class="invalid-feedback"> Please fill out this field</div>
                 </div>
+
 
                 <div class="form-group mt-2">
                     <label for="">Obligado a llevar contabilidad</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox" name="sts_cliente" <?php echo $admin->sts_obligado_contabilidad == "S" ? 'checked' : '' ?>  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
+                    <input type="checkbox" name="sts_obligado_contabilidad" <?php echo $admin->sts_obligado_contabilidad == "S" ? 'checked' : '' ?>  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
 
                 </div>
-
+                
+                <!-- NUM AGENTE DE RETENCION -->
                 <div class="form-group mt-2">
                     <label for="">#Res. Agente de retencion</label>
-                    <input type="text" class="form-control" name="num_telefono" value="<?php echo $admin->num_res_agente_ret ?>"  pattern="[-\\(\\)\\0-9 ]{1,15}" required>
+                    <input type="text" class="form-control" 
+                    name="num_res_agente_ret" value="<?php echo str_replace(" ","",$admin->num_res_agente_ret) ?>"  
+                    onchange="validateJS(event,'num_res-agente_ret')" 
+                    pattern="[0-9]{1,30}" 
+                    >
                     <div class="valid-feedback">Valid</div>
                     <div class="invalid-feedback"> Please fill out this field</div>
                 </div>
@@ -104,21 +138,43 @@ if ($response->status == 200) {
                     <label for="">Regimen Micro Empresa</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox" name="sts_cliente" <?php echo $admin->sts_contribuyente_rme == "S" ? 'checked' : '' ?>  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
+                    <input type="checkbox" name="sts_contribuyente_rme" <?php echo $admin->sts_contribuyente_rme == "S" ? 'checked' : '' ?>  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
 
                 </div>
 
-
+    <!-- UBICACION LOGO CON VALIDACION TERMINADO-->
                 <div class="form-group mt-2">
                     <label for="">Ubicacion Logo</label>
-                    <input type="text" class="form-control"  value="<?php echo $admin->txt_path_logo ?>">
+                    <input type="text" class="form-control"  
+                    value="<?php echo $admin->txt_path_logo ?>"
+                    name="txt_path_logo"
+                    >
+                    
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"> Please fill out this field</div>
+                </div>
+
+                <!-- ID REPRESENTANTE CON VALIDACION TERMINADO (OJO SE PUEO INGRESAR DE A-Z e a la espera de confirmacion) -->
+                <div class="form-group mt-2">
+                    <label for="">Id. Representante</label>
+                    <input type="text" class="form-control"  
+                    value="<?php echo $admin->cod_tipo_id_representante ?>"
+                    name="cod_tipo_id_representante"
+                    onchange="validateJS(event,'cod_tipo_id_representante')" 
+                    pattern="[A-Z]{1,1}" 
+                    required>
                     <div class="valid-feedback"></div>
                     <div class="invalid-feedback"> Please fill out this field</div>
                 </div>
 
                 <div class="form-group mt-2">
-                    <label for="">Id. Representante</label>
-                    <input type="text" class="form-control"  value="<?php echo $admin->cod_tipo_id_representante ?>">
+                    <label for="">Nombre Representante</label>
+                    <input type="text" class="form-control"  
+                    value="<?php echo str_replace(" ","",$admin->nom_representante)?>"
+                    name="nom_representante"
+                    onchange="validateJS(event,'nom_empresa')" 
+                    pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,100}"
+                    required>
                     <div class="valid-feedback"></div>
                     <div class="invalid-feedback"> Please fill out this field</div>
                 </div>

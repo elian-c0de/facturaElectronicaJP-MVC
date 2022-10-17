@@ -7,7 +7,14 @@ class AdminsController{
         if(isset($_POST["txtusuario"])){
 
             if(preg_match('/^[a-zA-Z]((\.|_|-)?[a-zA-Z0-9]+){3}$/D', $_POST["txtusuario"])){
+
+                echo '<script>
+                matPreloader("on");
+                fncSweetAlert("loading","loading..","");
                 
+                </script>';
+                
+           
                 $url = "gen_usuario?login=true";
                 $method = "POST";
                 $fields = array(
@@ -28,9 +35,10 @@ class AdminsController{
                     
                     $_SESSION["admin"] = $response->result[0];
                     echo '<script>
+
                     fncFormatInputs();
                     localStorage.setItem("token_user","'.$response->result[0]->token_usuario.'");
-
+                    localStorage.setItem("cod","'.$response->result[0]->cod_empresa.'");
                     window.location = "'.$_SERVER["REQUEST_URI"].'"
                     
                     
@@ -38,12 +46,27 @@ class AdminsController{
 
 
                 }else{
-                    echo '<div class="alert-default-warning">'.$response->result.'</div>';
+                    echo '<script>
+
+                    fncFormatInputs();
+                    matPreloader("off");
+                    fncSweetAlert("close", "", "");
+            
+                </script> 
+                <div class="alert alert-danger">'.$response->result.'</div>';
                 }
 
 
             }else{
-                echo '<div class="alert-default-warning">Erorr en la sintaxis de los campos</div>';
+                echo '<script>
+
+                fncFormatInputs();
+                matPreloader("off");
+                fncSweetAlert("close", "", "");
+        
+            </script> 
+
+         <div class="alert alert-danger">Field syntax error</div>';
 
             }
         }

@@ -133,6 +133,15 @@ if ($response->status == 200) {
           <div class="invalid-feedback"> Please fill out this field</div>
         </div>
 
+        <div class="form-group mt-2">
+          <label for="">Nombre Representante</label>
+          <input type="text" class="form-control" disabled  value="<?php echo str_replace(" ","",$admin->nom_representante)?>"  >
+          <div class="valid-feedback"></div>
+          <div class="invalid-feedback"> Please fill out this field</div>
+        </div>
+
+
+
      
 
 

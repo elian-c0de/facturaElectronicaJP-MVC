@@ -67,22 +67,32 @@ function validateRepeat(event,type,table,columna,id) {
 
 
 function validateJS(event, type) {
+  var pattern;
+
+  if(type == "num_ruc") pattern = /^[0-9]{1,13}$/;
+  if(type == "nom_empresa") pattern = /^[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,100}$/;
+  if(type == "nom_abreviado") pattern = /^[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,15}$/;
+  if(type == "txt_direccion") pattern = /^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,225}$/;
+  if(type == "num_telefono") pattern = /^[-\\(\\)\\0-9 ]{1,10}$/;
+  if(type == "txt_email") pattern = /^[.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/;
+  if(type == "num_res_agente_ret") pattern = /^[0-9]{1,30}$/;
+  if(type == "txt_path_logo") pattern = /^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}$/;
+  if(type == "cod_tipo_id_representante") pattern = /^[A-Z]{1,1}$/;
+
+  
 
 
-  if (type == "CodUsuarioValidate") {
-    var pattern = new RegExp("^[a-zA-Z,0,1,2,3,4,5,6,7,9_]{1,20}$");
-  }
+  // if (type == "number") {
+  //   var pattern = new RegExp("^[0,1,2,3,4,5,6,7,8,9]{1,3}$");
+  //   var pattern = new RegExp("^[a-zA-Z,0,1,2,3,4,5,6,7,9_]{1,20}$");
+  // }
 
-  if (type == "number") {
-    var pattern = new RegExp("^[0,1,2,3,4,5,6,7,8,9]{1,3}$");
-  }
-
-  if (type == "text") {
-    var pattern = new RegExp("^[a-zA-Z]((\.|_|-)?[a-zA-Z0-9]+){3}$");
-  }
+  // if (type == "text") {
+  //   var pattern = new RegExp("^[a-zA-Z]((\.|_|-)?[a-zA-Z0-9]+){3}$");
+  // }
 
   if (!pattern.test(event.target.value)) {
-
+    console.log("estamos aqui");
     $(event.target).parent().addClass("was-validated");
     $(event.target).parent().children(".invalid-feedback").html("Field syntax error");
   }
