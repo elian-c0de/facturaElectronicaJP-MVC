@@ -19,6 +19,8 @@
   }, false);
 })();
 
+
+
 function obtenerdata(cod_empresa){
   var data = new FormData();
   data.append("coddata", cod_empresa);
@@ -79,17 +81,7 @@ function validateJS(event, type) {
   if(type == "txt_path_logo") pattern = /^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}$/;
   if(type == "cod_tipo_id_representante") pattern = /^[A-Z]{1,1}$/;
 
-  
 
-
-  // if (type == "number") {
-  //   var pattern = new RegExp("^[0,1,2,3,4,5,6,7,8,9]{1,3}$");
-  //   var pattern = new RegExp("^[a-zA-Z,0,1,2,3,4,5,6,7,9_]{1,20}$");
-  // }
-
-  // if (type == "text") {
-  //   var pattern = new RegExp("^[a-zA-Z]((\.|_|-)?[a-zA-Z0-9]+){3}$");
-  // }
 
   if (!pattern.test(event.target.value)) {
     console.log("estamos aqui");

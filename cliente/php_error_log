@@ -637,3 +637,30 @@ Stack trace:
 [17-Oct-2022 23:02:58 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
 [17-Oct-2022 23:03:28 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
 [17-Oct-2022 23:05:13 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
+[18-Oct-2022 00:24:12 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
+[18-Oct-2022 00:24:32 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
+[18-Oct-2022 00:24:46 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
+[18-Oct-2022 00:25:01 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
+[18-Oct-2022 04:51:55 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
+[18-Oct-2022 04:51:58 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
+[18-Oct-2022 05:09:43 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
+[18-Oct-2022 05:20:35 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
+[18-Oct-2022 05:30:03 Europe/Berlin] PHP Warning:  Undefined array key 4 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\establecimientos\index.php on line 33
+[18-Oct-2022 05:32:21 Europe/Berlin] PHP Warning:  require_once(../controllers/curl.controller.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\establecimientos\actions\XML.php on line 4
+[18-Oct-2022 05:32:21 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '../controllers/curl.controller.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\establecimientos\actions\XML.php:4
+Stack trace:
+#0 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\establecimientos\index.php(39): include()
+#1 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\template.php(159): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\template.controller.php(12): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\index.php(20): TemplateController->index()
+#4 {main}
+  thrown in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\establecimientos\actions\XML.php on line 4
+[18-Oct-2022 05:32:36 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[18-Oct-2022 05:36:00 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
+[18-Oct-2022 05:36:04 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
+[18-Oct-2022 05:36:44 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
+[18-Oct-2022 05:36:58 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
+[18-Oct-2022 05:37:13 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[18-Oct-2022 05:37:22 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[18-Oct-2022 05:37:29 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[18-Oct-2022 05:40:01 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73

@@ -29,12 +29,25 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
+
+
     <?php
-    if(isset($routesArray[4]) && $routesArray[4] == "create" || $routesArray[4] == "XML"){
-        include "actions/".$routesArray[4].".php"; 
+    //PREGUNTAMOS SI EXISTE UN VALOR EN EL INDICE 4
+    if (isset($routesArray1[4])) {
+      
+      if ($routesArray1[4] == "create" || $routesArray1[4] == "edit" || $routesArray[4] == "XML") {
+        include "actions/" . $routesArray1[4] . ".php";
+      }
     }else{
-        include "actions/list.php"; 
+
+      include "actions/list.php";
     }
+
     ?>
+
+
+
+
+
     </div>
 </section>
