@@ -664,3 +664,4 @@ Stack trace:
 [18-Oct-2022 05:37:22 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
 [18-Oct-2022 05:37:29 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
 [18-Oct-2022 05:40:01 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[18-Oct-2022 07:01:08 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73

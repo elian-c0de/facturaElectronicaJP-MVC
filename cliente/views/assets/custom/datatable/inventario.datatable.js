@@ -145,6 +145,8 @@ $(document).on("click",".removeItem", function(){
       })
 
 
+    }else{
+      location.reload();
     }
 
 
@@ -204,7 +206,7 @@ $(document).on('click','.stsiva', function(e){
 
 
     }else{
-      $(".stsiva").prop('checked',estado);
+      location.reload();
     }
 
 
@@ -265,7 +267,7 @@ $(document).on('click','.stsinventario', function(e){
 
 
     }else{
-      window.location = "inventario";
+      location.reload();
     }
 
 
