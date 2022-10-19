@@ -1,10 +1,14 @@
 <?php 
     //configuracion de acceso a la base de datos
-    define('DB_HOST', 'DESKTOP-TVN4BC2');
-    define('DB_USUARIO', 'admin');
-    define('DB_PASSWORD', 'admin');
+    define('DB_HOST', 'DESKTOP-J4VGQP7');
+    define('DB_USUARIO', 'sa');
+    define('DB_PASSWORD', 'root123');
     define('DB_NOMBRE', 'PECMP_JPEREZ');
 
+    // ******BD MIGUEL******
+    // define('DB_HOST', 'DESKTOP-J4VGQP7');
+    // define('DB_USUARIO', 'sa');
+    // define('DB_PASSWORD', 'root123');
 
     //ruta de la aplicacion
 //    define('RUTA_APP', dirname(dirname(__FILE__)));
