@@ -22,16 +22,13 @@ class clientesDataTableController
 
 
             //PREPARAMOS PARAMETROS QUE SE LE ENVIARAN A LA API
-
-            // $url = "ecmp_cliente?select=cod_empresa";
-            $url = "ecmp_cliente?select=cod_empresa&between1=" . $_GET["between1"] . "&between2=" . $_GET["between2"] . "&linkTo=fec_actualiza";
-
+            $url = "ecmp_cliente?select=*&between1=" . $_GET["between1"] . "&between2=" . $_GET["between2"] . "&linkTo=fec_actualiza&filterTo=cod_empresa&inTo=".$_GET["code"];
             $method = "GET";
             $fields = array();
 
+
             //ENVIAMOS PARAMETOS A LA API
             $response = CurlController::request($url, $method, $fields);
-            
             
 
             //VALIDAMOS QUE LA RESPUESTA DE LA API SEA 200 CASO CONTRARIO SE APLICARA UN RETURN DEVOLVIENDO UN JSON VACIO
@@ -43,30 +40,38 @@ class clientesDataTableController
             }
        
 
+            $hola = array();
+            
             //BUSQUEDAD DE LA TABLA
-            $select = "num_id, cod_tipo_id, nom_apellido_rsocial, nom_persona_nombre, txt_direccion,num_telefono,txt_email,cod_precio";
-            
-            
-
             if (!empty($_POST['search']['value'])) {
                
 
                 if (preg_match('/^[0-9A-Za-zñÑáéíóú ]{1,}$/', $_POST['search']['value'])) {
 
-                    $linkTo = ["num_id", "cod_tipo_id", "nom_apellido_rsocial", "nom_persona_nombre", "txt_direccion","num_telefono","txt_email","cod_precio"];
+                    $linkTo = ["num_id", "cod_tipo_id", "nom_apellido_rsocial", "nom_persona_nombre", "txt_direccion","num_telefono","txt_email"];
+                    
                     $search = str_replace(" ", "_", $_POST['search']['value']);
                     foreach ($linkTo as $key => $value) {
 
                         $url = "ecmp_cliente?select=*"."&linkTo=" . $value . "&search=" . $search . "&orderBy=" . $orderBy . "&orderMode=" . $orderType . "&startAt=" . $start . "&endAt=" . $length . "&orderAt=cod_empresa";
-
                         $data = CurlController::request($url, $method, $fields)->result;
 
+
+
+                   
 
                         if ($data == "Not Found") {
                             $data = array();
                             $recordsFiltered = count($data);
                         } else {
-                            $data = $data;
+                            //FOREACH PARA RECORRER LOS DATOS OBETNIDOS DE LA API Y FILTRAR QUE COINCIDAN CON EL CODIGO DE EMPRESA
+                            foreach ($data as $key1 => $value1) {
+                                if ($value1->cod_empresa == $_GET["code"]) {
+                                 array_push($hola,$value1);
+                                }
+                             }
+
+                            $data = $hola;
                             $recordsFiltered = count($data);
                             break;
                         }
@@ -75,12 +80,19 @@ class clientesDataTableController
                     echo '{"data":[]}';
                     return;
                 }
-            }else {
+            }else{
                 
-                //PREPARACION DE DATOS APLICANDO LAS VARIABLES DEL DATATABLE
-                $url = "ecmp_cliente?select=*"."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+                //CONSULTA CON RANGOS Y FILTROS
+                $url = "ecmp_cliente?select=*"."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa&filterTo=cod_empresa&inTo=".$_GET["code"];
                 $data = CurlController::request($url, $method, $fields)->result;
-                $recordsFiltered = $totalData;
+             
+                
+                if($data == "Not Found"){
+                    $recordsFiltered = 0;
+                }else{
+                    $recordsFiltered = $totalData;
+                }
+                
       
             }
 
@@ -134,11 +146,9 @@ class clientesDataTableController
                         "num_id":"'.$num_id.'",
                         "cod_tipo_id":"'.$cod_tipo_id.'",
                         "nom_apellido_rsocial":"'.$nom_apellido_rsocial.'",
-                        "nom_persona_nombre":"'.$nom_persona_nombre.'",
                         "txt_direccion":"'.$txt_direccion.'",
                         "num_telefono":"'.$num_telefono.'",
                         "txt_email":"'.$txt_email.'",
-                        "cod_precio":"'.$cod_precio.'",
                         "actions":"'.$actions.'"
                         },';
                 }

@@ -27,6 +27,7 @@ class inventarioDataTableController
             $rel= "ecmp_inventario,ecmp_linea";
             $type = "cod_linea,cod_linea,cod_sublinea,cod_sublinea";
             $select = "ecmp_inventario.txt_descripcion,ecmp_linea.txt_descripcion%20as%20lineasublinea";
+            
             $url = "relations?rel=".$rel."&type=".$type."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=ecmp_inventario.fec_actualiza&filterTo=".$_GET["code"]."&inTo=ecmp_inventario.cod_empresa&select=".$select;
 
             $method = "GET";
