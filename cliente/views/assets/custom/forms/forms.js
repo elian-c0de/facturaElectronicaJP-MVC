@@ -80,6 +80,10 @@ function validateJS(event, type) {
   if(type == "num_res_agente_ret") pattern = /^[0-9]{1,30}$/;
   if(type == "txt_path_logo") pattern = /^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}$/;
   if(type == "cod_tipo_id_representante") pattern = /^[A-Z]{1,1}$/;
+  if(type == "txt_descripcion") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,60}$/;
+  if(type == "cod_pre") pattern = /^[a-zA-Z0-9]{1,2}$/;
+  
+
 
 
 

@@ -665,3 +665,47 @@ Stack trace:
 [18-Oct-2022 05:37:29 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
 [18-Oct-2022 05:40:01 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
 [18-Oct-2022 07:01:08 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[19-Oct-2022 01:28:39 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[19-Oct-2022 01:35:28 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[18-Oct-2022 20:57:24 America/Guayaquil] PHP Fatal error:  Uncaught Error: Class "ClientesController" not found in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\tipoprecio\actions\create.php:94
+Stack trace:
+#0 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\tipoprecio\index.php(34): include()
+#1 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\template.php(160): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\template.controller.php(12): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\index.php(20): TemplateController->index()
+#4 {main}
+  thrown in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\tipoprecio\actions\create.php on line 94
+[18-Oct-2022 20:58:50 America/Guayaquil] PHP Fatal error:  Uncaught Error: Class "ClientesController" not found in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\tipoprecio\actions\create.php:94
+Stack trace:
+#0 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\tipoprecio\index.php(34): include()
+#1 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\template.php(160): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\template.controller.php(12): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\index.php(20): TemplateController->index()
+#4 {main}
+  thrown in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\tipoprecio\actions\create.php on line 94
+[19-Oct-2022 04:04:40 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$num_id in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\InformacionGeneral\actions\list.php on line 38
+[18-Oct-2022 22:05:47 America/Guayaquil] PHP Warning:  Undefined array key "sts_precio" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 24
+[18-Oct-2022 22:17:57 America/Guayaquil] PHP Warning:  Undefined array key "sts_defecto" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 18
+[18-Oct-2022 22:17:57 America/Guayaquil] PHP Warning:  Undefined array key "sts_precio" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 24
+[18-Oct-2022 22:21:21 America/Guayaquil] PHP Warning:  Undefined array key "sts_defecto" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 18
+[18-Oct-2022 22:21:21 America/Guayaquil] PHP Warning:  Undefined array key "sts_precio" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 24
+[18-Oct-2022 22:23:02 America/Guayaquil] PHP Warning:  Undefined array key "sts_defecto" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 18
+[18-Oct-2022 22:24:50 America/Guayaquil] PHP Warning:  Undefined array key "sts_defecto" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 18
+[18-Oct-2022 22:24:50 America/Guayaquil] PHP Warning:  Undefined array key "sts_defecto" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 42
+[18-Oct-2022 22:25:35 America/Guayaquil] PHP Warning:  Undefined array key "sts_defecto" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 18
+[18-Oct-2022 22:25:35 America/Guayaquil] PHP Warning:  Undefined array key "sts_defecto" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 42
+[18-Oct-2022 22:26:34 America/Guayaquil] PHP Warning:  Undefined array key "sts_defecto" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 18
+[18-Oct-2022 22:26:34 America/Guayaquil] PHP Warning:  Undefined array key "sts_defecto" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 43
+[18-Oct-2022 22:27:03 America/Guayaquil] PHP Warning:  Undefined array key "sts_defecto" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 18
+[18-Oct-2022 22:27:03 America/Guayaquil] PHP Warning:  Undefined array key "sts_defecto" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 43
+[18-Oct-2022 22:27:36 America/Guayaquil] PHP Warning:  Undefined array key "sts_defecto" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 18
+[18-Oct-2022 22:27:36 America/Guayaquil] PHP Warning:  Undefined array key "sts_defecto" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 43
+[18-Oct-2022 22:36:32 America/Guayaquil] PHP Fatal error:  Uncaught Error: Undefined constant "off" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php:18
+Stack trace:
+#0 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\tipoprecio\actions\create.php(10): TipoprecioController->create()
+#1 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\tipoprecio\index.php(34): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\template.php(160): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\template.controller.php(12): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\index.php(20): TemplateController->index()
+#5 {main}
+  thrown in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\tipoprecio.controllers.php on line 18
