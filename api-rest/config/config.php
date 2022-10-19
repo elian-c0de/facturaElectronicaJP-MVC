@@ -1,8 +1,8 @@
 <?php 
     //configuracion de acceso a la base de datos
-    define('DB_HOST', 'CARLOS');
-    define('DB_USUARIO', 'sa');
-    define('DB_PASSWORD', 'admin123');
+    define('DB_HOST', 'DESKTOP-TVN4BC2');
+    define('DB_USUARIO', 'admin');
+    define('DB_PASSWORD', 'admin');
     define('DB_NOMBRE', 'PECMP_JPEREZ');
 
 
