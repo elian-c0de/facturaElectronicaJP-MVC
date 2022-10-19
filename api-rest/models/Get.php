@@ -579,27 +579,16 @@ class Get
         return $resultados;
     }
 
-    // peticiones get con seleccion de rangos y filtros y relaciones
+    //PETICIONES GET CON TABLAS RELACIONALES Y RANGOS
     public function getRelDataRange($rel, $type, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt,$endAt,$orderAt, $filterTo, $inTo)
     {
 
-        // $linkToArray = explode(",",$linkTo);
-        // $filterToArray = explode(",",$filterTo);
-        // $selectArray = explode(",",$select);
-        // foreach ($linkToArray as $key => $value) {
-        //     array_push($selectArray, $value);
-        // }
-        // foreach ($filterToArray as $key => $value) {
-        //     array_push($selectArray,$value);
-        // }
-        // $selectArray = array_unique($selectArray);
-
+        //ORDENAR LOS DATOS PARA SER UTILZIADAS EN LAS CONSULTAS
         $filter = "";
-        
         if ($filterTo != null && $inTo != null) {
             $filter = 'AND ' . $filterTo . ' IN (' . $inTo . ')';
         }
-        echo '<pre>'; print_r($filter); echo '</pre>';
+       
 
         $relArray = explode(",", $rel);
         $typeArray = explode(",", $type);
@@ -608,13 +597,14 @@ class Get
         if (count($relArray) > 1) {
             if(count($relArray) == count($typeArray)){
 
-                
                 foreach ($relArray as $key => $value) {
         
-                    //validar exitencia de la tabla
+                    //VALIDAMOS LA EXISTENCIA DE LAS TABLAS
                     if (empty($this->db->getColumsData($value,["*"]))) {
                         return null;
                     }
+
+                    //ARMAMOS LA CADENA DE TEXTO QUE SE USAR PARA USAR EL INNER JOIN
                     if ($key > 0) {
                         $innerJoinText .= "INNER JOIN " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " ";
                     }
@@ -624,63 +614,41 @@ class Get
 
                 if(count($relArray) < count($typeArray)){
 
-
                     foreach ($relArray as $key => $value) {
         
-                        //validar exitencia de la tabla
+                        //VALIDAMOS LA EXISTENCIA DE LAS TABLAS
                         if (empty($this->db->getColumsData($value,["*"]))) {
                             return null;
                         }
+
+                        //ARMAMOS LA CADENA DE TEXTO QUE SE USAR PARA USAR EL INNER JOIN
                         if ($key > 0) {
                             $innerJoinText .= "LEFT join " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " and " . $relArray[0] . "." . $typeArray[2] . " = " . $value . "." . $typeArray[$key+2] . " ";
-                            
-
-
-                            // inner join ecmp_linea ON ecmp_inventario.cod_linea = ecmp_linea.cod_linea and ecmp_inventario.cod_sublinea = ecmp_linea.cod_sublinea
-
                         }
                     }
-
-
-                  
-                    
-
-
                 }
-
-
 
             }
 
 
 
 
-
+            //OBTIENES DATOS CON TABLAS RELACIONADAS Y FILTRO, SIN ORDENAR NI LIMITAR
             $this->db->query("SELECT $select FROM  $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter");
-            echo '<pre>'; print_r("SELECT $select FROM  $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter"); echo '</pre>';
 
-
-
-            //ordenar datos sin limites
+             //OBTIENES DATOS CON TABLAS RELACIONADAS Y FILTRO, ORDENANDO SIN LOMITAR
             if ($orderBy != null && $orderMode != null && $startAt == null) {
-                echo '<pre>'; print_r("aqui"); echo '</pre>';
-
-            
                 $this->db->query("SELECT $select FROM $relArray[0]  $innerJoinText where $linkTo between '$between1' and '$between2' $filter  order by $orderBy $orderMode");
             }
 
-            //ordernar datos y limitar datos
+            //OBTENER DATOS CON TABLAS RELACIONADAS, FILTROS, ORDENADOS Y LIMITADOS
             if ($orderBy != null && $orderMode != null && $startAt != null) {
-                // echo '<pre>'; print_r("SELECT $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;"); echo '</pre>';
-                // $this->db->query("SELECT top $startAt $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter order by $orderBy $orderMode");
                 $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
-                
             }
 
-            //limitar datos sin ordenar
+            //OBTENER DATOS CON TABLAS RELACIONADAS, FILTROS,LIMITADOS SIN ORDENAR
             if ($orderBy == null && $orderMode == null && $startAt != null) {
-                
-                $this->db->query("SELECT top $startAt $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter");
+                $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
             }
 
             try {
