@@ -21,7 +21,7 @@ class Put
         
 
         $asd = new Get();
-        $response = $asd->obtenerDataFilter($table, $nameId, $nameId, $id, null, null, null);
+        $response = $asd->obtenerDataFilter($table, $nameId, $nameId, $id, null, null, null,null,null);
        
 
         if(empty($response)){
@@ -68,8 +68,8 @@ class Put
     public function putData2ids($table,$data,$id,$nameId,$id2,$nameId2){
 
         $asd = new Get();
-        $response = $asd->obtenerDataFilter($table, $nameId, $nameId, $id, null, null, null);
-        $response2 = $asd->obtenerDataFilter($table, $nameId2, $nameId2, $id2, null, null, null);
+        $response = $asd->obtenerDataFilter($table, $nameId, $nameId, $id, null, null, null,null,null);
+        $response2 = $asd->obtenerDataFilter($table, $nameId2, $nameId2, $id2, null, null, null,null,null);
     
 
         if(empty($response) && empty($response2)){
