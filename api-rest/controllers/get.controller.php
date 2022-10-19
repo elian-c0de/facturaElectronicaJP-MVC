@@ -30,17 +30,17 @@ class GetController extends Controlador{
         
     }
      // el Index es para Obtener los registros
-     public function getRelData($rel,$type,$select,$orderBy,$orderMode,$startAt)
+     public function getRelData($rel,$type,$select,$orderBy,$orderMode,$startAt, $endAt, $orderAt)
      {
-         $response = $this->instanciaModelo->obtenerRelData($rel,$type,$select,$orderBy,$orderMode,$startAt);
+         $response = $this->instanciaModelo->obtenerRelData($rel,$type,$select,$orderBy,$orderMode,$startAt, $endAt, $orderAt);
          $return = new GetController();
          $return -> fncResponse($response);
 
      }
 
-     public function getRelDataFilter($rel,$type,$select,$linkTo,$equalTo,$orderBy,$orderMode,$startAt)
+     public function getRelDataFilter($rel,$type,$select,$linkTo,$equalTo,$orderBy,$orderMode,$startAt, $endAt, $orderAt)
      {
-         $response = $this->instanciaModelo->obtenerRelDataFilter($rel,$type,$select,$linkTo,$equalTo,$orderBy,$orderMode,$startAt);
+         $response = $this->instanciaModelo->obtenerRelDataFilter($rel,$type,$select,$linkTo,$equalTo,$orderBy,$orderMode,$startAt, $endAt, $orderAt);
          $return = new GetController();
          $return -> fncResponse($response);
 
@@ -54,15 +54,15 @@ class GetController extends Controlador{
 
      }
 
-    public function getDataFilter($table,$select,$linkTo,$equalTo,$orderBy,$orderMode,$startAt){
-        $response = $this->instanciaModelo->obtenerDataFilter($table,$select,$linkTo,$equalTo,$orderBy,$orderMode,$startAt);
+    public function getDataFilter($table,$select,$linkTo,$equalTo,$orderBy,$orderMode,$startAt, $endAt, $orderAt){
+        $response = $this->instanciaModelo->obtenerDataFilter($table,$select,$linkTo,$equalTo,$orderBy,$orderMode,$startAt, $endAt, $orderAt);
         $return = new GetController();
         $return -> fncResponse($response);
 
     }
 
-    public function getRelDataSearch($rel,$type,$select,$linkTo,$search,$orderBy,$orderMode,$startAt, $endAt, $orderAt,$filterTo,$inTo){
-        $response = $this->instanciaModelo->obtenerRelDataSearch($rel,$type,$select,$linkTo,$search,$orderBy,$orderMode,$startAt, $endAt, $orderAt,$filterTo,$inTo);
+    public function getRelDataSearch($rel,$type,$select,$linkTo,$search,$orderBy,$orderMode,$startAt, $endAt, $orderAt){
+        $response = $this->instanciaModelo->obtenerRelDataSearch($rel,$type,$select,$linkTo,$search,$orderBy,$orderMode,$startAt, $endAt, $orderAt);
         $return = new GetController();
         $return -> fncResponse($response);
 

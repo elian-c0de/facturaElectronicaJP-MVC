@@ -44,6 +44,7 @@ class Base{
 
     // vinculamos la consulta con bind
     public function bind($parametro, $valor, $tipo = null){
+        
         if(is_null($tipo)){
             switch(true){
                 case is_int($valor):
@@ -60,9 +61,9 @@ class Base{
                 break;
             }
         }
-
+        
         $this->stmt->bindValue($parametro, $valor, $tipo);
-
+        
     }
     // funcion ejecuta la consulta
     public function execute(){
@@ -106,7 +107,7 @@ class Base{
         //traemos al usuario de acuerdo al token
 
         $asd = new Get();
-        $user = $asd->obtenerDataFilter("gen_usuario","token_exp_usuario","token_usuario",$token,null,null,null);
+        $user = $asd->obtenerDataFilter("gen_usuario","token_exp_usuario","token_usuario",$token,null,null,null,null,null);
         
         if(!empty($user)){
 

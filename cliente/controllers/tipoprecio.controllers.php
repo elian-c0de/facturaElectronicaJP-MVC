@@ -1,62 +1,51 @@
 <?php
-class ItemsxestablecimientoController{
-
-
+class TipoprecioController{
 
     public function create(){
         date_default_timezone_set("America/Guayaquil");
 
 
-        if(isset($_POST["num_id"])){
+        if(isset($_POST["cod_precio"])){
             
-           
+            echo '<script>
 
-            if(preg_match('/^[0,1,2,3,4,5,6,7,8,9]{1,13}$/',$_POST["num_id"]) &&
-            preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}$/',$_POST["nom_apellido_rsocial"]) &&
-            preg_match('/^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}$/',$_POST["nom_persona_nombre"]) &&
-            preg_match('/^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}$/',$_POST["txt_direccion"]) &&
-            preg_match('/^[-\\(\\)\\0-9 ]{1,15}$/',$_POST["num_telefono"]) && preg_match('/^[.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/',$_POST["txt_email"]))
+            matPreloader("on");
+            fncSweetAlert("loading", "Loading...", "");
+
+            </script>';
+
+            if(preg_match('/^[a-zA-Z0-9]{1,2}$/',$_POST["cod_precio"]) &&
+            preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,60}$/',$_POST["txt_descripcion"]))
 
             {
-                $var1 = "";
-                $var3 = "";
-                $_POST["sts_proveedor"] = "off";
-                if($_POST["sts_cliente"] == "on"){
-                    $var1 = "A";
+                if(isset($_POST["sts_defecto"])){
+                    $_POST["sts_defecto"] = "A";
                 }else{
-                    $var1 = "I";
+                    $_POST["sts_defecto"] = "C";
                 }
 
-                if($_POST["sts_proveedor"] == "on"){
-                    $var2 = "P";
+                if(isset($_POST["sts_precio"])){
+                    $_POST["sts_precio"] = "A";
                 }else{
-                    $var2 = "C";
+                    $_POST["sts_precio"] = "C";
+                    
                 }
-
 
                 $data = array(
                     
                     "cod_empresa" => $_SESSION["admin"]->cod_empresa,
-                    "num_id" => trim($_POST["num_id"]),
-                    "cod_tipo_id" => trim(explode("_",$_POST["cod_tipo_id"])[0]),
-                    "nom_persona_nombre" => trim($_POST["nom_persona_nombre"]),
-                    "nom_apellido_rsocial" => trim($_POST["nom_apellido_rsocial"]),
-                    "txt_direccion" => trim($_POST["txt_direccion"]),
-                    "num_telefono" => trim($_POST["num_telefono"]),
-                    "num_id_texto" => trim($_POST["num_id"]),
-                    "txt_email" => trim($_POST["txt_email"]),
-                    "sts_cliente" => $var1,
+                    "cod_precio" => trim($_POST["cod_precio"]),
+                    "txt_descripcion" => trim($_POST["txt_descripcion"]),
+                    "sts_defecto" => $_POST["sts_defecto"],
+                    "sts_precio" => $_POST["sts_precio"],
                     "cod_usuario" => "administrador",
-                    "fec_actualiza" => date("Y-m-d H:i:s"),
-                    "cod_precio" =>  trim(explode("_",$_POST["cod_precio"])[0]),
-                    "sts_proveedor" => $var2
+                    "fec_actualiza" => date("d-m-Y H:i:s"),
     
                 );
-
-            
                 
+
          
-                $url = "ecmp_cliente?token=".$_SESSION["admin"]->token_usuario;
+                $url = "ecmp_precio?token=".$_SESSION["admin"]->token_usuario;
                 $method = "POST";
                 $fields = $data;
                 $response = CurlController::request($url,$method,$fields);
@@ -65,39 +54,35 @@ class ItemsxestablecimientoController{
 
 
                 if($response->status == 200){
-                    echo '
-                    <script>
+                    echo '<script>
 
-                    fncFormatInput();
-                    </script>
-                    
-                    
-                    <div class="alert alert-success"> Registro Exitoso </div>
-                    
-                    
-                    
-                    ';
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncSweetAlert("success", "Registro con exito", "tipoprecio");
+
+                    </script>';
                 }else{
-                    echo '
-                    <script>
+                    echo '<script>
 
-                    fncFormatInput();
-                    </script>
-                    
-                    
-                    <div class="alert alert-warning"> Error en el sietam , intente mas tarde </div>';
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncNotie(3, "Error al crear los datos");
+
+                    </script>';
                 }
 
     
             }else{
-                echo '
-                
-                <script>
+                echo '<script>
 
-                    fncFormatInput();
-                    </script>
-                
-                <div class="alert alert-danger">Error en el campo de datos</div>';
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncNotie(3, "Error en el campo de datos");
+
+                    </script>';
             }
         }
 
@@ -107,14 +92,6 @@ class ItemsxestablecimientoController{
 
     public function tipoprecio(){
         $url = "ecmp_precio";
-        $method = "GET";
-        $fields = array();
-        $response = CurlController::request($url,$method,$fields)->result;
-        return $response;
-    }
-
-    public function getestablecimientos(){
-        $url = "gen_local?select=cod_establecimiento,txt_descripcion&linkTo=cod_empresa&equalTo=".$_SESSION["admin"]->cod_empresa."";
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
@@ -172,7 +149,6 @@ class ItemsxestablecimientoController{
                             "&nom_apellido_rsocial=".trim($_POST["nom_apellido_rsocial"]).
                             "&txt_direccion=".trim($_POST["txt_direccion"]).
                             "&num_telefono=".trim($_POST["num_telefono"]).
-                            "&num_id_texto=".trim($_POST["num_id"]).
                             "&txt_email=".trim($_POST["txt_email"]).
                             "&sts_cliente=".$var1.
                             "&cod_usuario="."administrador".

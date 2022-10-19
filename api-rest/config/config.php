@@ -3,6 +3,7 @@
     define('DB_HOST', 'DESKTOP-J4VGQP7');
     define('DB_USUARIO', 'sa');
     define('DB_PASSWORD', 'root123');
+
     define('DB_NOMBRE', 'PECMP_JPEREZ');
 
     // ******BD MIGUEL******
