@@ -124,6 +124,8 @@
 					<div class="valid-feedback">Valid.</div>
             		<div class="invalid-feedback">Please fill out this field.</div>
 				</div>  
+
+                
                 <div class="form-group mt-2">
                     <label for="">Estado</label>
                     <br>

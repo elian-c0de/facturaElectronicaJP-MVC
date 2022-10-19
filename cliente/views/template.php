@@ -13,11 +13,12 @@ $routesArray = array_filter($routesArray);
 Limpiar la Url de variables GET
 =============================================*/
 foreach ($routesArray as $key => $value) {
-
   $value = explode("?", $value)[0];
-
   $routesArray1[$key] = $value;
-}
+  }
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -108,6 +109,7 @@ foreach ($routesArray as $key => $value) {
   ?>
   <?php if (isset($_SESSION["admin"])) :  ?>
 
+
     <!-- Site wrapper -->
     <div class="wrapper">
       <!-- navbar -->
@@ -119,7 +121,7 @@ foreach ($routesArray as $key => $value) {
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <?php
-        //  echo '<pre>'; print_r($routesArray1); echo '</pre>';
+         echo '<pre>'; print_r($routesArray1); echo '</pre>';
         if (!empty($routesArray1[3])) {
           if (
             $routesArray1[3] == "Cajas" ||
@@ -153,9 +155,9 @@ foreach ($routesArray as $key => $value) {
             $routesArray1[3] == "info_ventasygastos" ||
             $routesArray1[3] == "topventas" ||
             $routesArray1[3] == "ats_sri" ||
-            $routesArray[3] == "clientes" ||
-            $routesArray[3] == "inventario" ||
-            $routesArray[3] == "itemsxestablecimiento"
+            $routesArray1[3] == "clientes" ||
+            $routesArray1[3] == "inventario" ||
+            $routesArray1[3] == "itemsxestablecimiento"
           ) {
             include("views/pages/" . $routesArray1[3] . "/index.php");
           } else {
