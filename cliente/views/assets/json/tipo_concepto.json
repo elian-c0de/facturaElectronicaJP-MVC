@@ -1,0 +1,15 @@
+[
+    {
+    "name": "INGRESO",
+    "code": "I"
+    },
+    {
+    "name": "EGRESO",
+    "code": "E"
+    },
+    {
+    "name": "NO APLICA",
+    "code": "C"
+    }
+
+]

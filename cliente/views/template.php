@@ -121,7 +121,7 @@ foreach ($routesArray as $key => $value) {
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <?php
-         echo '<pre>'; print_r($routesArray1); echo '</pre>';
+        //  echo '<pre>'; print_r($routesArray1); echo '</pre>';
         if (!empty($routesArray1[3])) {
           if (
             $routesArray1[3] == "Cajas" ||
