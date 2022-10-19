@@ -82,6 +82,31 @@ function validateJS(event, type) {
   if(type == "cod_tipo_id_representante") pattern = /^[A-Z]{1,1}$/;
   if(type == "txt_descripcion") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,60}$/;
   if(type == "cod_pre") pattern = /^[a-zA-Z0-9]{1,2}$/;
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  if(type == "num_id") pattern = /^[0,1,2,3,4,5,6,7,8,9]{1,13}$/;
+  if(type == "nom_apellido_rsocial") pattern = /^[-//0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}$/;
+  if(type == "nom_persona_nombre") pattern = /^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}$/;
+  if(type == "txt_direccion_cliente") pattern = /^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,150}$/;
+  if(type == "num_telefono_cliente") pattern = /^[-\\(\\)\\0-9 ]{1,15}$/;
+
+
+
+
+
+  
   
 
 

@@ -36,7 +36,7 @@
                     type="text"
                     name="num_id" 
                     class="form-control"
-                    onchange="validateRepeat(event,'number','ecmp_cliente','num_id', <?php echo $_SESSION['admin']->cod_empresa?>)"
+                    onchange="validateRepeat(event,'num_id','ecmp_cliente','num_id', <?php echo $_SESSION['admin']->cod_empresa?>)"
                     pattern="[0,1,2,3,4,5,6,7,8,9]{1,13}"
                     required>
                     <div class="valid-feedback">Valid.</div>
@@ -51,7 +51,8 @@
                     type="text" 
                     class="form-control"
                     name="nom_apellido_rsocial"
-                    pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}" 
+                    onchange="validateJS(event,'nom_apellido_rsocial')"
+                    pattern="[-//0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}" 
                     required
                     >
                     <div class="valid-feedback">Valid</div>
@@ -64,6 +65,7 @@
                     <input type="text" 
                     class="form-control"
                     required
+                    onchange="validateJS(event,'nom_persona_nombre')"
                     name="nom_persona_nombre"
                     pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}" 
                     >
@@ -75,7 +77,8 @@
                 <div class="form-group mt-2">
                     <label for="">Direccion</label>
                     <input type="text" class="form-control"
-                    pattern='[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}' 
+                    onchange="validateJS(event,'txt_direccion_cliente')"
+                    pattern='[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,150}' 
                     name="txt_direccion"
                     required
                     >
@@ -87,6 +90,7 @@
                     <label for="">Telefono</label>
                     <input type="text" class="form-control"
                     name="num_telefono"
+                    onchange="validateJS(event,'num_telefono_cliente')"
                     pattern="[-\\(\\)\\0-9 ]{1,15}"
                     required
                     >
@@ -98,6 +102,7 @@
                     <label for="">Correo Electronico</label>
                     <input type="text" class="form-control"
                     pattern="[.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}"
+                    onchange="validateJS(event,'txt_email')"
                     name="txt_email"
                     required
                     >
