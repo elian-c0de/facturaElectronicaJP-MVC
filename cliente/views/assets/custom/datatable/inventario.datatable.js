@@ -83,24 +83,24 @@ function reportActive(event){
 
 //rango de fechas
 $('#daterange-btn').daterangepicker(
-    {
-      ranges   : {
-        'Today'       : [moment(), moment().add(1,'days')],
-        'Yesterday'   : [moment().subtract(1, 'days'), moment()],
-        'Last 7 Days' : [moment().subtract(6, 'days'), moment().add(1,'days')],
-        'Last 30 Days': [moment().subtract(29, 'days'), moment().add(1,'days')],
-        'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-        'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-      },
-      startDate: moment($("#between1").val()),
-      endDate  : moment($("#between2").val())
+  {
+    ranges   : {
+      'Today'       : [moment(), moment().add(1,'days')],
+      'Yesterday'   : [moment().subtract(1, 'days'), moment()],
+      'Last 7 Days' : [moment().subtract(6, 'days'), moment().add(1,'days')],
+      'Last 30 Days': [moment().subtract(29, 'days'), moment().add(1,'days')],
+      'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+      'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+      'Todo' : [moment().subtract(10,'year'),moment().add(1,'days')]
     },
-    function (start, end) {
-      // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      window.location = "inventario?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
-    }
-  )
-
+    startDate: moment($("#between1").val()),
+    endDate  : moment($("#between2").val())
+  },
+  function (start, end) {
+    // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+    window.location = "inventario?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
+  }
+)
 
 
 

@@ -81,7 +81,7 @@ class ClientesController{
 
                 </script>';
                 }else{
-                    '<script>
+                    echo '<script>
 
                         fncFormatInputs();
                         matPreloader("off");
@@ -93,7 +93,7 @@ class ClientesController{
 
     
             }else{
-                '<script>
+               echo '<script>
 
                         fncFormatInputs();
                         matPreloader("off");

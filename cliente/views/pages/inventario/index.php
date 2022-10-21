@@ -27,7 +27,7 @@
               echo '<li class="breadcrumb-item active">' . $routesArray1[4] . '</li>';
             }
           } else {
-            echo '<li class="breadcrumb-item active">Admins</li>';
+            echo '<li class="breadcrumb-item active">inventario</li>';
           }
 
           ?>

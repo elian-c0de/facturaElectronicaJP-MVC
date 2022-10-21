@@ -42,29 +42,33 @@ function obtenerdata(cod_empresa){
 
 function validateRepeat(event,type,table,columna,id) {
 
+  
+   
     var data = new FormData();
     data.append("data", event.target.value);
     data.append("table", table);
     data.append("columna", columna);
     data.append("id", id);
-    console.log(event.target.value);
-    $.ajax({
-      type: "POST",
-      url: "ajax/ajax-validate.php",
-      data: data,
-      contentType: false,
-      cache: false,
-      processData: false,
-      success: function (response) {
-        if(response == 200){
-          event.target.value = "";
-          $(event.target).parent().addClass("was-validated");
-          $(event.target).parent().children(".invalid-feedback").html("Datos ya creado");
-        }else{
-          validateJS(event,type);
+    
+      $.ajax({
+        type: "POST",
+        url: "ajax/ajax-validate.php",
+        data: data,
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function (response) {
+          if(response == 200){
+            event.target.value = "";
+            $(event.target).parent().addClass("was-validated");
+            $(event.target).parent().children(".invalid-feedback").html("Datos ya creado");
+          }else{
+            validateJS(event,type);
+          }
         }
-      }
-    });
+      });
+    
+
 }
 
 
@@ -81,7 +85,13 @@ function validateJS(event, type) {
   if(type == "txt_path_logo") pattern = /^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}$/;
   if(type == "cod_tipo_id_representante") pattern = /^[A-Z]{1,1}$/;
   if(type == "txt_descripcion") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,60}$/;
+  if(type == "txt_descripcion_inventario") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
   if(type == "cod_pre") pattern = /^[a-zA-Z0-9]{1,2}$/;
+
+  if(type == "cod_inventario") pattern = /^[-\\A-Z0-9]{1,30}$/;
+  if(type == "cod_barras") pattern = /^[-0-9]{1,30}$/;
+  if(type == "qtx_saldo") pattern = /^[0-9]{1,18}([.][0]{1,2})?$/
+  if(type == "val_costo") pattern = /^[0-9]{1,18}([.][0-9]{1,5})?$/
 
 
 
@@ -113,7 +123,7 @@ function validateJS(event, type) {
 
 
   if (!pattern.test(event.target.value)) {
-    console.log("estamos aqui");
+ 
     $(event.target).parent().addClass("was-validated");
     $(event.target).parent().children(".invalid-feedback").html("Field syntax error");
   }
