@@ -23,6 +23,13 @@ class PutController extends Controlador{
 
     }
 
+    public function putData3ids($table,$data,$id,$nameId,$id2,$nameId2,$id3,$nameId3){
+        $response = $this->instanciaModelo->putData3ids($table,$data,$id,$nameId,$id2,$nameId2,$id3,$nameId3);
+        $return = new PutController();
+        $return -> fncResponse($response);
+
+    }
+
     public function fncResponse($response){
 
         if(!empty($response)){
