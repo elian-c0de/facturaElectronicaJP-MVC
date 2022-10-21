@@ -192,6 +192,7 @@ $(document).on('click','.stsiva', function(e){
         cache: false,
         processData: false,
         success: function(response){
+          console.log("response: ", response);
           if(response == 200){
             fncSweetAlert(
               "success",

@@ -68,6 +68,7 @@ class Delete
 
         
         $this->db->query("DELETE FROM $table WHERE $nameId = :$nameId and $nameId2 = :$nameId2");
+
        
         $this->db->bind(":".$nameId,$id);
         $this->db->bind(":".$nameId2,$id2);

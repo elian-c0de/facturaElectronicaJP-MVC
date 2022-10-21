@@ -87,6 +87,10 @@ function validateJS(event, type) {
   if(type == "txt_descripcion") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,60}$/;
   if(type == "txt_descripcion_inventario") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
   if(type == "cod_pre") pattern = /^[a-zA-Z0-9]{1,2}$/;
+  if(type == "cod_inventario") pattern = /^[-\\A-Z0-9]{1,30}$/;
+  if(type == "cod_barras") pattern = /^[-0-9]{1,30}$/;
+  if(type == "qtx_saldo") pattern = /^[0-9]{1,18}([.][0]{1,2})?$/
+  if(type == "val_costo") pattern = /^[0-9]{1,18}([.][0-9]{1,5})?$/
 
 
 

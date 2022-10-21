@@ -28,7 +28,7 @@
                     <input type="text" name="cod_barras" 
                     class="form-control" onchange="validateRepeat(event,'cod_barras','ecmp_inventario','cod_barras', <?php echo $_SESSION['admin']->cod_empresa ?>)"
                      pattern="[-0-9]{1,30}" 
-                     
+                     required
                      >
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback"> Please fill out this field.</div>
