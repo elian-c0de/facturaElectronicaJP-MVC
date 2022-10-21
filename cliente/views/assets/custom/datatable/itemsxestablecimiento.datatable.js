@@ -3,7 +3,7 @@
 
 function execDataTable (text) {
 
-    var url = "ajax/data-itemsxestablecimiento.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val()+"&token="+localStorage.getItem("token_user")+"&code="+localStorage.getItem("cod");
+    var url = "ajax/data-itemsxestablecimiento.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val()+"&token="+localStorage.getItem("token_user")+"&code="+localStorage.getItem("cod")+"&establecimiento="+$("#establecimiento").val();
     var columns = [
 
    
@@ -11,12 +11,14 @@ function execDataTable (text) {
       {"data":"txt_descripcion"},
       {"data":"precio"},
       {"data":"sts_control_saldo"},
-      {"data":"sts_modifica_saldo"},
-      {"data":"qtx_minimo"},
-      {"data":"qtx_maximo"},
+      {"data":"sts_modifica_precio"},
+      {"data":"qtx_minima"},
+      {"data":"qtx_maxima"},
       {"data":"qtx_saldo"},
       {"data":"val_costo"},
       {"data":"val_descuento"},
+      {"data":"por_descuento"},
+      {"data":"sts_item_local"},
       {"data":"actions"}
       
     ];
@@ -61,10 +63,17 @@ function execDataTable (text) {
     }  
 }
 
-
+function reload(){
+  $("#itemsxestablecimientoTable").dataTable().fnClearTable();
+  $("#itemsxestablecimientoTable").dataTable().fnDestroy();
+  setTimeout(() => {
+      execDataTable("flat");
+  }, 10);
+}
 
 // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
 function reportActive(event){
+
     if(event.target.checked){
         $("#itemsxestablecimientoTable").dataTable().fnClearTable();
         $("#itemsxestablecimientoTable").dataTable().fnDestroy();
@@ -76,7 +85,6 @@ function reportActive(event){
         $("#itemsxestablecimientoTable").dataTable().fnDestroy();
         setTimeout(() => {
             execDataTable("html");
-
         }, 10);
     }
 }

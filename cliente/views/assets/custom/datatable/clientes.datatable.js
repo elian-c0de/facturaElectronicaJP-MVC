@@ -3,16 +3,14 @@
 
 function execDataTable (text) {
 
-    var url = "ajax/data-clientes.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val()+"&token="+localStorage.getItem("token_user");
+    var url = "ajax/data-clientes.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val()+"&token="+localStorage.getItem("token_user")+"&code="+localStorage.getItem("cod");
     var columns = [
       {"data":"num_id"},
       {"data":"cod_tipo_id"},
       {"data":"nom_apellido_rsocial"},
-      {"data":"nom_persona_nombre"},
       {"data":"txt_direccion"},
       {"data":"num_telefono"},
       {"data":"txt_email"},
-      {"data":"cod_precio"},
       {"data":"actions"}
     ];
   
@@ -85,7 +83,8 @@ $('#daterange-btn').daterangepicker(
         'Last 7 Days' : [moment().subtract(6, 'days'), moment().add(1,'days')],
         'Last 30 Days': [moment().subtract(29, 'days'), moment().add(1,'days')],
         'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-        'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+        'Todo' : [moment().subtract(10,'year'),moment().add(1,'days')]
       },
       startDate: moment($("#between1").val()),
       endDate  : moment($("#between2").val())

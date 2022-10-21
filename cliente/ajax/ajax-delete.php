@@ -18,13 +18,15 @@ class DeleteController{
         $security1 = base64_decode($this->cod_empresa);
 
 
-        if($security[1] ==$this->token){
+        if($security[1] == $this->token){
 
             $url = $this->table."?id=".$security[0]."&nameId=".$this->column."&token=".$this->token."&nameId2=cod_empresa&id2=".$security1;
             $method = "DELETE";
             $fields = array();
     
             $response = CurlController::request($url,$method,$fields);
+         
+           
           
             
        

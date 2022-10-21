@@ -48,7 +48,7 @@ class PostController extends Controlador{
 
     public function postLogin($table,$data){
         //validar que el usuario exiate n la base de datos
-        $response = $this->instanciaModelo1->obtenerDataFilter($table,"*","cod_usuario",$data["cod_usuario"],null,null,null);
+        $response = $this->instanciaModelo1->obtenerDataFilter($table,"*","cod_usuario",$data["cod_usuario"],null,null,null,null,null);
     
         if(!empty($response)){
 

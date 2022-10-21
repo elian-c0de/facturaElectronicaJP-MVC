@@ -1,69 +1,61 @@
 <?php
-class ClientesController{
+class ConceptosController{
 
     public function create(){
         date_default_timezone_set("America/Guayaquil");
 
 
-        if(isset($_POST["num_id"])){
-
-
+        if(isset($_POST["cod_concepto"])){
+            
             echo '<script>
 
             matPreloader("on");
             fncSweetAlert("loading", "Loading...", "");
 
             </script>';
-            
-           
 
-            if(preg_match('/^[0,1,2,3,4,5,6,7,8,9]{1,13}$/',$_POST["num_id"]) &&
-            preg_match('/^[-0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}$/',$_POST["nom_apellido_rsocial"]) &&
-            preg_match('/^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}$/',$_POST["nom_persona_nombre"]) &&
-            preg_match('/^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}$/',$_POST["txt_direccion"]) &&
-            preg_match('/^[-\\(\\)\\0-9 ]{1,15}$/',$_POST["num_telefono"]) && 
-            preg_match('/^[.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/',$_POST["txt_email"]))
+            if(preg_match('/^[a-zA-Z0-9]{1,2}$/',$_POST["cod_concepto"]) &&
+            preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]))
 
             {
-
-
-                if(isset($_POST["sts_proveedor"])){
-                    $_POST["sts_proveedor"] = "A";
+                if(isset($_POST["sts_facturacion"])){
+                    $_POST["sts_facturacion"] = "S";
                 }else{
-                    $_POST["sts_proveedor"] = "C";
+                    $_POST["sts_facturacion"] = "N";
                 }
 
-                if(isset($_POST["sts_cliente"])){
-                    $_POST["sts_cliente"] = "A";
+                if(isset($_POST["sts_inventario"])){
+                    $_POST["sts_inventario"] = "A";
                 }else{
-                    $_POST["sts_cliente"] = "C";
-                    
+                    $_POST["sts_inventario"] = "C";
                 }
 
+                if(isset($_POST["sts_concepto"])){
+                    $_POST["sts_concepto"] = "A";
+                }else{
+                    $_POST["sts_concepto"] = "C";
+                }
 
                 $data = array(
                     
                     "cod_empresa" => $_SESSION["admin"]->cod_empresa,
-                    "num_id" => trim($_POST["num_id"]),
-                    "cod_tipo_id" => trim(explode("_",$_POST["cod_tipo_id"])[0]),
-                    "nom_persona_nombre" => trim($_POST["nom_persona_nombre"]),
-                    "nom_apellido_rsocial" => trim($_POST["nom_apellido_rsocial"]),
-                    "txt_direccion" => trim($_POST["txt_direccion"]),
-                    "num_telefono" => trim($_POST["num_telefono"]),
-                    "num_id_texto" => trim($_POST["num_id"]),
-                    "txt_email" => trim($_POST["txt_email"]),
-                    "sts_cliente" => $_POST["sts_cliente"],
+                    "cod_concepto" => trim($_POST["cod_concepto"]),
+                    "txt_descripcion" => trim($_POST["txt_descripcion"]),
+                    "sts_facturacion" => $_POST["sts_facturacion"],
+                    "sts_tipo_concepto" => trim(explode("_",$_POST["sts_tipo_concepto"])[0]),
+                    "sts_sistema" => "C",
+                    "sts_proceso" => trim(explode("_",$_POST["sts_proceso"])[0]),
+                    "sts_inventario" => $_POST["sts_inventario"],
+                    "sts_concepto" => $_POST["sts_concepto"],
                     "cod_usuario" => "administrador",
-                    "fec_actualiza" => date("Y-m-d H:i:s"),
-                    "cod_precio" =>  trim(explode("_",$_POST["cod_precio"])[0]),
-                    "sts_proveedor" =>  $_POST["sts_proveedor"]
+                    "fec_actualiza" => date("d-m-Y H:i:s"),
+                    "cod_sri" => "sri1",
     
                 );
-
-            
                 
+
          
-                $url = "ecmp_cliente?token=".$_SESSION["admin"]->token_usuario;
+                $url = "srja_concepto?token=".$_SESSION["admin"]->token_usuario;
                 $method = "POST";
                 $fields = $data;
                 $response = CurlController::request($url,$method,$fields);
@@ -74,31 +66,31 @@ class ClientesController{
                 if($response->status == 200){
                     echo '<script>
 
-                    fncFormatInputs();
-                    matPreloader("off");
-                    fncSweetAlert("close", "", "");
-                    fncSweetAlert("success", "Registro Exitosos", "clientes");
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncSweetAlert("success", "Registro con exito", "conceptos");
 
-                </script>';
+                    </script>';
                 }else{
                     echo '<script>
 
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncNotie(3, "Error al ingresar la informacion, intente mas tarde");
+                        fncNotie(3, "Error al crear los datos");
 
                     </script>';
                 }
 
     
             }else{
-               echo '<script>
+                echo '<script>
 
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncNotie(3, "Error en los campos ingresados");
+                        fncNotie(3, "Error en el campo de datos");
 
                     </script>';
             }
@@ -108,8 +100,8 @@ class ClientesController{
     }
 
 
-    public function tipoprecio(){
-        $url = "ecmp_precio";
+    public function conceptos(){
+        $url = "srja_concepto";
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
@@ -118,19 +110,10 @@ class ClientesController{
 
 
     public function edit($id){
-;
+
         if(isset($_POST["idAdmin"])){
-
-            echo '<script>
-
-				matPreloader("on");
-				fncSweetAlert("loading", "Loading...", "");
-
-			</script>';
             
-           
           if($id == $_POST["idAdmin"]){
-         
 
             $url = "ecmp_cliente?linkTo=cod_empresa,num_id&equalTo=".$_SESSION['admin']->cod_empresa.",".$id;
             
@@ -138,11 +121,10 @@ class ClientesController{
             $fields = array();
     
             $response = CurlController::request($url,$method,$fields);
-      
            
             if($response->status == 200){
 
-                if(preg_match('/^[-0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}$/',$_POST["nom_apellido_rsocial"]) &&
+                if(preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]) &&
                 preg_match('/^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}$/',$_POST["nom_persona_nombre"]) &&
                 preg_match('/^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}$/',$_POST["txt_direccion"]) &&
                 preg_match('/^[-\\(\\)\\0-9 ]{1,15}$/',$_POST["num_telefono"]) && preg_match('/^[.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/',$_POST["txt_email"]))
@@ -172,8 +154,8 @@ class ClientesController{
                         // }
                         // agruamos la informaicon
 
-                        $data = 
-                            "nom_persona_nombre=".trim($_POST["nom_persona_nombre"]).
+                        $data = "cod_tipo_id=".trim(explode("_",$_POST["cod_tipo_id"])[0]).
+                            "&nom_persona_nombre=".trim($_POST["nom_persona_nombre"]).
                             "&nom_apellido_rsocial=".trim($_POST["nom_apellido_rsocial"]).
                             "&txt_direccion=".trim($_POST["txt_direccion"]).
                             "&num_telefono=".trim($_POST["num_telefono"]).
@@ -181,7 +163,7 @@ class ClientesController{
                             "&sts_cliente=".$var1.
                             "&cod_usuario="."administrador".
                             "&fec_actualiza=".date("Y-m-d H:i:s").
-                            "&cod_precio=".trim(explode("_",$_POST["cod_precio"])[0]).
+                            "&cod_concepto=".trim(explode("_",$_POST["cod_concepto"])[0]).
                             "&sts_proveedor=".$var2;
             
                     
@@ -199,62 +181,50 @@ class ClientesController{
 
 
                     if($response->status == 200){
-                        echo '<script>
-
-                        fncFormatInputs();
-                        matPreloader("off");
-                        fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Edicion con exito", "clientes");
-
-                    </script>';
+                        echo '
+                        <script>
+                        fncFormatInput();
+                        </script>
+                        
+                        
+                        <div class="alert alert-success"> Edicion Exitosa </div>
+                        
+                        
+                        ';
                     }else{
+                        echo '
+                        <script>
 
-                 echo '<script>
-
-                        fncFormatInputs();
-                        matPreloader("off");
-                        fncSweetAlert("close", "", "");
-                        fncNotie(3, "Error editing the registry");
-
-                    </script>';
+                        fncFormatInput();
+                        </script>
+                        
+                        
+                        <div class="alert alert-warning"> Error al editar los registros</div>';
                     }
 
     
                 }else{
+                    echo '
+                    
+                    <script>
 
-                    echo '<script>
-
-                    fncFormatInputs();
-                    matPreloader("off");
-                    fncSweetAlert("close", "", "");
-                    fncNotie(3, "Error en los campos ingresados");
-
-                </script>';
-                  
+                        fncFormatInput();
+                        </script>
+                    
+                    <div class="alert alert-danger">Error en el campo de datos</div>';
                 }
 
             }else{
-                echo '<script>
+                echo '
+                
+                <script>
 
-                fncFormatInputs();
-                matPreloader("off");
-                fncSweetAlert("close", "", "");
-                fncNotie(3, "Error en el sistema");
-
-            </script>';
+                    fncFormatInput();
+                    </script>
+                
+                <div class="alert alert-danger">Error al editar el registro mielda</div>';
             }
 
-          }else{
-
-            echo '<script>
-
-            fncFormatInputs();
-            matPreloader("off");
-            fncSweetAlert("close", "", "");
-            fncNotie(3, "Error en el sistema");
-
-        </script>';
-            
           }
             
         }

@@ -9,57 +9,129 @@ class Get
 {
     private $db;
 
-
-
     public function __construct()
     {
         $this->db = new Base;
     }
 
 
-    //peticiones get sin filtros
-    public function obtenerData($table, $select, $orderBy, $orderMode, $startAt,$endAt,$orderAt)
+    //PETICIONES GET SIN FILTRO
+    public function obtenerData($table, $select, $orderBy, $orderMode, $startAt, $endAt, $orderAt)
     {
 
+        //EN EL CASO QUE EL SELECT VENGAN MAS DE UN PARAMERTOS, LOS SEPARA POR COMAS EN UN ARRAY
         $selectArray = explode(",",$select);
 
-        //validar exitencia de la tabla y las columnas
+
+        //VALIDA LA EXISTENCIA DE LA TABLA Y LAS COLUMNAS
         if (empty($this->db->getColumsData($table,$selectArray))) {
             return null;
         }
 
 
-        // sin order ni limitar datos
-
+        //GET - SIN ORDENAR NI LIMITAR DATOS (DEVUELVE TODA LA INFORMACION DE LA TABLA)
         $this->db->query("SELECT $select FROM  $table");
 
 
-
-        //ordenar datos sin limites
+        //GET - ORDENADOS SIN LIMITES (DEVUELVE DATOS ORDENADOS DE FORMA ASC O DSC EN UNA COLUMNA ESPECIFICA DE LA TABLA)
         if ($orderBy != null && $orderMode != null && $startAt == null && $endAt == null && $orderAt == null) {
-            
             $this->db->query("SELECT $select FROM $table order by $orderBy $orderMode");
-            
         }
 
-        //ordernar datos y limitar datos
+
+        //GET - ORDENAR DATOS Y LIMINAR DATOS DE ACUERDO A UN RANGO ESPECIFICO
         if ($orderBy != null && $orderMode != null && $startAt != null && $endAt != null && $orderAt != null) {
-            
-            $this->db->query("SELECT $select FROM $table ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
+            $this->db->query("SELECT $select FROM $table ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY");
         }
 
-        //limitar datos sin ordenar
+
+        //GET - OBTIENE LOS DATOS CON LA POSIBILIDAD DE LIMITARLOS PERO NO ORDENARLOS
         if ($orderBy == null && $orderMode == null && $startAt != null && $endAt != null && $orderAt != null) {
-            $this->db->query("SELECT $select FROM $table ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
-
+            $this->db->query("SELECT $select FROM $table ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY");
         }
+
 
         $resultados = $this->db->registros();
         return $resultados;
+
     }
 
-    public function obtenerDataFilter($table, $select, $linkTo, $equalTo, $orderBy, $orderMode, $startAt)
+    
+    //PETICIONES GET CON FILTRO
+    public function obtenerDataFilter($table, $select, $linkTo, $equalTo, $orderBy, $orderMode, $startAt, $endAt, $orderAt)
     {   
+        
+        //SEPARA POR , EN UN ARRAY LO QUE INGRESOAMOS POR SELECT Y LINKTO 
+        $selectArray = explode(",",$select);
+        $linkToArray = explode(",",$linkTo);
+
+     
+        //RECORREMSO Y AGRGEAMOS LAS COLUMAS DE NUESTO LINKTO CON SELECT PARA VERIFICAR SI EXISTEN
+        foreach($linkToArray as $key => $value){
+            array_push($selectArray,$value);
+        }
+        $selectArray = array_unique($selectArray);
+
+    
+        //VALIDAMOS SI EXIETE LAS COLUMNAS Y LA TABLA
+        if (empty($this->db->getColumsData($table,$selectArray))) {
+            return null;
+        }
+
+
+        //SEPARAMOS NUESTRO EQUALSTO POR , Y LO GUARDAMOS EN UN ARRAY
+        $equalToArray = explode(",", $equalTo);
+
+        
+        //CREAMOS UNA CADENA DE TEXTO CON LA FORMA ADECUADA PARA HACER UNA CONSULTA AND DESPUES DEL WHERE
+        $linkToText = "";
+        if (count($linkToArray) > 1) {
+            foreach ($linkToArray as $key => $value) {
+                if ($key > 0) {
+                    $linkToText .= "AND " . $value . " = :" . $value . " ";
+                }
+            }
+        }
+    
+
+        //ordener sin limitar datos
+        //OBTENER DATOS SIN ORDENAR NI LIMINAR PERO SI FILTRADO (DEVUELVE INFORMACION SI EXISTE LOS VALORES ESPECIFICADOS EN EQUALTO EN LA TABLA QUE SE ESPECIFICO EN LINKTO)
+        $this->db->query("SELECT $select FROM  $table where $linkToArray[0] = :$linkToArray[0] $linkToText");
+
+
+        //OBTENER DATOS ORDENANDO DE SEAS ASC O DESC EN LA COLUMNA ESPECIFICADA NI LIMINAR PERO SI FILTRADO (DEVUELVE INFORMACION SI EXISTE LOS VALORES ESPECIFICADOS EN EQUALTO EN LA TABLA QUE SE ESPECIFICO EN LINKTO)
+        if ($orderBy != null && $orderMode != null && $startAt == null) {
+            $this->db->query("SELECT $select FROM  $table where $linkToArray[0] = :$linkToArray[0] $linkToText order by $orderBy $orderMode");
+        }
+
+
+        //OBTENER DATOS ORDENANDO DE SEASE ASC O DESC EN LA COLUMNA ESPECIFICADA Y TAMBIEN LIMITADO CON FILTRADO (DEVUELVE INFORMACION SI EXISTE LOS VALORES ESPECIFICADOS EN EQUALTO EN LA TABLA QUE SE ESPECIFICO EN LINKTO)
+        if ($orderBy != null && $orderMode != null && $startAt != null) {
+            $this->db->query("SELECT $select FROM $table where $linkToArray[0] = :$linkToArray[0] $linkToText ORDER BY $orderAt, $orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY");
+        }
+
+
+        //OBTENER DATOS LIMITADOS CON FILTRADO (DEVUELVE INFORMACION SI EXISTE LOS VALORES ESPECIFICADOS EN EQUALTO EN LA TABLA QUE SE ESPECIFICO EN LINKTO)
+        if ($orderBy == null && $orderMode == null && $startAt != null) {
+            $this->db->query("SELECT $select FROM $table where $linkToArray[0] = :$linkToArray[0] $linkToText ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY");
+        }
+
+
+        //VINCULAR DATOS
+        foreach ($linkToArray as $key => $value) {
+            $this->db->bind(":" . $value, $equalToArray[$key]);
+        }
+        $resultados = $this->db->registros();
+        return $resultados;
+
+    }
+
+
+    //PETICIONES GET BUSQUEDA
+    public function obtenerDataSearch($table, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt, $orderAt)
+    {
+
+        //SEPARA LA ENTRAS EN UN ARRAY PARA TRABAJAR MAS ADELANTE
         $selectArray = explode(",",$select);
         $linkToArray = explode(",",$linkTo);
         foreach($linkToArray as $key => $value){
@@ -68,15 +140,14 @@ class Get
 
         $selectArray = array_unique($selectArray);
 
-        //validar exitencia de la tabla
+        //VALIDA DE EXISTE LA TABLA Y LA COLUMAS INGRESADAS
         if (empty($this->db->getColumsData($table,$selectArray))) {
             return null;
         }
 
-        
-        $equalToArray = explode(",", $equalTo);
+        //CONSTRUYE LA CADENA DE TEXTO QUE SE UTILIZARA PARA LA CONSULTA
+        $searchToArray = explode(",", $search);
         $linkToText = "";
-
         if (count($linkToArray) > 1) {
             foreach ($linkToArray as $key => $value) {
                 if ($key > 0) {
@@ -84,60 +155,73 @@ class Get
                 }
             }
         }
-        // echo '<pre>'; print_r($linkToText); echo '</pre>';
-        // return;
 
-        //ordener sin limitar datos
-        $this->db->query("SELECT $select FROM  $table where $linkToArray[0] = :$linkToArray[0] $linkToText");
+        //OBTIENE LOS DATOS BUSCADOS SIN ORDENAR NI LIMITAR
+        $this->db->query("SELECT $select FROM  $table where $linkToArray[0] like '%$searchToArray[0]%' $linkToText");
 
-        //ordener datos sin limites
+
+        //OBTIENE LOS DATOS BUSCADOS ORDENADOS SIN LIMITAR
         if ($orderBy != null && $orderMode != null && $startAt == null) {
-            $this->db->query("SELECT $select FROM  $table where $linkToArray[0] = :$linkToArray[0] $linkToText order by $orderBy $orderMode");
+            $this->db->query("SELECT $select FROM  $table where $linkToArray[0] like '%$searchToArray[0]%' $linkToText order by $orderBy $orderMode");
         }
 
-        //ordernar datos y limitar datos
+
+        //OBTIENE LOS DATOS BUSCADOS ORDENADOS y LIMITADOS
         if ($orderBy != null && $orderMode != null && $startAt != null) {
-
-            $this->db->query("SELECT top $startAt $select FROM  $table where $linkToArray[0] = :$linkToArray[0] $linkToText order by $orderBy $orderMode");
+            $this->db->query("SELECT $select FROM $table where $linkToArray[0] like '%$searchToArray[0]%' $linkToText ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
         }
-        //limitar datos sin ordenar
+
+
+        //OBTIENE LOS DATOS BUSCADOS LIMITADOS PERO NO ORDENADOS
         if ($orderBy == null && $orderMode == null && $startAt != null) {
-
-            $this->db->query("SELECT top $startAt $select FROM  $table where $linkToArray[0] = :$linkToArray[0] $linkToText");
+            $this->db->query("SELECT $select FROM $table where $linkToArray[0] like '%$searchToArray[0]%' $linkToText ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
         }
+
 
         foreach ($linkToArray as $key => $value) {
-            $this->db->bind(":" . $value, $equalToArray[$key]);
+            if ($key > 0) {
+                $this->db->bind(":" . $value, $searchToArray[$key]);
+            }
         }
-        
-        $resultados = $this->db->registros();
-        
+
+        try {
+
+            $resultados = $this->db->registros();
+
+        } catch (PDOException $Exception) {
+
+            return null;
+            
+        }
+
         return $resultados;
+
     }
 
 
-
-    //peticiones get sin filtros entr tablas relacioanadas
-    public function obtenerRelData($rel, $type, $select, $orderBy, $orderMode, $startAt)
+    //PETICIONES CON TABLAS RELACIONADOS SIN FILTRO
+    public function obtenerRelData($rel, $type, $select, $orderBy, $orderMode, $startAt, $endAt, $orderAt)
     {
+        //SE SEPARA LOS DATOS POR COMAS EN UN ARRAY
         $relArray = explode(",", $rel);
-      
         $typeArray = explode(",", $type);
-        
         $innerJoinText = "";
      
 
         if (count($relArray) > 1) {
 
+
+            //VALIDAMOS EN EL CASO DE QUE SE QUIERA RELACIONAR MAS DE DOS COLUMNAS ENTRE LAS TABLAS
             if(count($relArray) == count($typeArray)){
 
-                
                 foreach ($relArray as $key => $value) {
         
-                    //validar exitencia de la tabla
+                    //VALIDAMOS LA EXISTENCIA DE LAS TABLAS
                     if (empty($this->db->getColumsData($value,["*"]))) {
                         return null;
                     }
+
+                    //ARMAMOS LA CADENA DE TEXTO QUE SE USAR PARA USAR EL INNER JOIN
                     if ($key > 0) {
                         $innerJoinText .= "INNER JOIN " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " ";
                     }
@@ -147,166 +231,182 @@ class Get
 
                 if(count($relArray) < count($typeArray)){
 
-
                     foreach ($relArray as $key => $value) {
         
-                        //validar exitencia de la tabla
+                        //VALIDAMOS LA EXISTENCIA DE LAS TABLAS
                         if (empty($this->db->getColumsData($value,["*"]))) {
                             return null;
                         }
+
+                        //ARMAMOS LA CADENA DE TEXTO QUE SE USAR PARA USAR EL INNER JOIN
                         if ($key > 0) {
                             $innerJoinText .= "LEFT join " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " and " . $relArray[0] . "." . $typeArray[2] . " = " . $value . "." . $typeArray[$key+2] . " ";
-                            
-
-
-                            // inner join ecmp_linea ON ecmp_inventario.cod_linea = ecmp_linea.cod_linea and ecmp_inventario.cod_sublinea = ecmp_linea.cod_sublinea
-
                         }
                     }
-
-
-                  
-                    
-
-
                 }
-
-
 
             }
 
-            
-     
-      
-
-          
-
-            // sin ordener y sin limitar datos
+           
+            //SE OBTIENEN LOS DATOS DE LA TABLAS RELACIONADDAS SIN ORDENAR NI FILTRAR
             $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText");
+   
             
+            //SE OBTIENEN LOS DATOS DE LA TABLAS RELACIONADDAS ORDENADOS SIN LIMITAR
+            if ($orderBy != null && $orderMode != null && $startAt == null) {
+                 $this->db->query("SELECT $select FROM  $relArray[0] $innerJoinText order by $orderBy $orderMode");
+            }
 
-            // //ordenar datos sin limites
-            // if ($orderBy != null && $orderMode != null && $startAt == null) {
-            //     $this->db->query("SELECT $select FROM  $relArray[0] $innerJoinText order by $orderBy $orderMode");
-                
-            // }
 
-            // //ordernar datos y limitar datos
-            // if ($orderBy != null && $orderMode != null && $startAt != null) {
-            //     $this->db->query("SELECT top $startAt $select FROM  $relArray[0] $innerJoinText order by $orderBy $orderMode");
-            // }
+            //SE OBTIENEN LOS DATOS DE LA TABLAS RELACIONADDAS ORDENADOS Y LIMITADOS
+            if ($orderBy != null && $orderMode != null && $startAt != null) {
+                $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText ORDER BY $orderAt, $orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY");   
+            }
 
-            // //limitar datos sin ordenar
-            // if ($orderBy == null && $orderMode == null && $startAt != null) {
-            //     $this->db->query("SELECT top $startAt $select FROM  $relArray[0] $innerJoinText");
-            // }
 
+            //SE OBTIENEN LOS DATOS DE LA TABLAS RELACIONADDAS LIMITADOS SIN ORDENAR
+            if ($orderBy == null && $orderMode == null && $startAt != null) {
+                $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText ORDER BY $orderAt  OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY");   
+            }
+
+
+            //VINCULA LOS DATOS
             try {
                 $resultados = $this->db->registros();
-             
             } catch (PDOException $Exception) {
                 return null;
                 //throw $th;
             }
-            
             return $resultados;
           
+
         } else {
+
             return null;
+
         }
+
     }
 
-    public function obtenerRelDataFilter($rel, $type, $select, $linkTo, $equalTo, $orderBy, $orderMode, $startAt)
+    //PETICIONES CON TABLAS RELACIONADOS CON FILTRO
+    public function obtenerRelDataFilter($rel, $type, $select, $linkTo, $equalTo, $orderBy, $orderMode, $startAt, $endAt, $orderAt)
     {
 
-        //organizamos los filtros
-
+        //SEPARA LOS DATOS EN UN ARRAY PARA TRABAJAR MAS ADELANTE
         $linkToArray = explode(",", $linkTo);
         $equalToArray = explode(",", $equalTo);
         $linkToText = "";
 
+
+        //CONSTRUIMOS LA CADE DE TEXTO QUE IRA DESPUES DEL AND DE UN WHERE
         if (count($linkToArray) > 1) {
             foreach ($linkToArray as $key => $value) {
-                     //validar exitencia de la tabla
-                
                 if ($key > 0) {
-                    $linkToText .= "AND " . $value . " = :" . $value . " ";
+                    $linkToText .= "AND ".$value ." = :".$value." ";
+                    
+                    
                 }
             }
         }
 
+       
+        //SEPARAMOS LOS DATOS POR COMAS PARA LAS RELACIONES
         $relArray = explode(",", $rel);
         $typeArray = explode(",", $type);
         $innerJoinText = "";
 
+
         if (count($relArray) > 1) {
-            foreach ($relArray as $key => $value) {
-                     //validar exitencia de la tabla
-                     if (empty($this->db->getColumsData($value,["*"]))) {
+
+            //VALIDAMOS EN EL CASO DE QUE SE QUIERA RELACIONAR MAS DE DOS COLUMNAS ENTRE LAS TABLAS
+            if(count($relArray) == count($typeArray)){
+
+                foreach ($relArray as $key => $value) {
+        
+                    //VALIDAMOS LA EXISTENCIA DE LAS TABLAS
+                    if (empty($this->db->getColumsData($value,["*"]))) {
                         return null;
                     }
-                if ($key > 0) {
-                    $innerJoinText .= "inner join " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " ";
+
+                    //ARMAMOS LA CADENA DE TEXTO QUE SE USAR PARA USAR EL INNER JOIN
+                    if ($key > 0) {
+                        $innerJoinText .= "INNER JOIN " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " ";
+                    }
                 }
+
+            }else{
+
+                if(count($relArray) < count($typeArray)){
+
+                    foreach ($relArray as $key => $value) {
+        
+                        //VALIDAMOS LA EXISTENCIA DE LAS TABLAS
+                        if (empty($this->db->getColumsData($value,["*"]))) {
+                            return null;
+                        }
+
+                        //ARMAMOS LA CADENA DE TEXTO QUE SE USAR PARA USAR EL INNER JOIN
+                        if ($key > 0) {
+                            $innerJoinText .= "LEFT join " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " and " . $relArray[0] . "." . $typeArray[2] . " = " . $value . "." . $typeArray[$key+2] . " ";
+                        }
+                    }
+                }
+
             }
 
-
-            //organizamos las relaciones
-
-            // sin ordener y sin limitar datos
+            
+            //OBTENER DATOS CON TABLAS RELACIONADAS Y FILTRADAS SIN ORDENAR NI LIMITAR
             $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $linkToArray[0] = :$linkToArray[0] $linkToText");
 
-            //ordenar datos sin limites
+           
+            //OBTENER DATOS CON TABLAS RELACIONADAS Y FILTRADAS, ORDENADAS SIN LIMITAR
             if ($orderBy != null && $orderMode != null && $startAt == null) {
                 $this->db->query("SELECT $select FROM  $relArray[0] $innerJoinText where $linkToArray[0] = :$linkToArray[0] $linkToText order by $orderBy $orderMode");
             }
 
-            //ordernar datos y limitar datos
+
+            //OBTENER DATOS CON TABLAS RELACIONADAS Y FILTRADAS, ORDENADAS, LIMITADO
             if ($orderBy != null && $orderMode != null && $startAt != null) {
-                $this->db->query("SELECT top $startAt $select FROM  $relArray[0] $innerJoinText where $linkToArray[0] = :$linkToArray[0] $linkToText order by $orderBy $orderMode");
+                $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $linkToArray[0] =:$linkToArray[0] $linkToText ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY");
             }
 
-            //limitar datos sin ordenar
+
+            //OBTENER DATOS CON TABLAS RELACIONADAS Y FILTRADAS CON LIMITADO
             if ($orderBy == null && $orderMode == null && $startAt != null) {
-                $this->db->query("SELECT top $startAt $select FROM  $relArray[0] $innerJoinText where $linkToArray[0] = :$linkToArray[0] $linkToText");
+                $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $linkToArray[0] =:$linkToArray[0] $linkToText ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
             }
+
 
             foreach ($linkToArray as $key => $value) {
-                $this->db->bind(":" . $value, $equalToArray[$key]);
+                $this->db->bind(":".$value, $equalToArray[$key]);
             }
+
 
             try {
                 $resultados = $this->db->registros();
+
             } catch (PDOException $Exception) {
                 return null;
                 //throw $th;
             }
+
             return $resultados;
+
         } else {
+
             return null;
+
         }
+
     }
 
 
-
-
-
-    public function obtenerDataSearch($table, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt, $orderAt)
+    //PETICIONES GET BUSQUEDA CON TABLAS RELACIONADAS
+    public function obtenerRelDataSearch($rel, $type, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt, $orderAt)
     {
-        $selectArray = explode(",",$select);
+
+
         $linkToArray = explode(",",$linkTo);
-        foreach($linkToArray as $key => $value){
-            array_push($selectArray,$value);
-        }
-
-        $selectArray = array_unique($selectArray);
-
-        //validar exitencia de la tabla
-        if (empty($this->db->getColumsData($table,$selectArray))) {
-            return null;
-        }
-
-        
         $searchToArray = explode(",", $search);
         $linkToText = "";
 
@@ -318,93 +418,102 @@ class Get
             }
         }
 
-        // sin order ni limitar datos
+        $relArray = explode(",", $rel);
+        $typeArray = explode(",", $type);
+        $innerJoinText = "";
 
-        $this->db->query("SELECT $select FROM  $table where $linkToArray[0] like '%$searchToArray[0]%' $linkToText");
+        if (count($relArray) > 1) {
 
+            //VALIDAMOS EN EL CASO DE QUE SE QUIERA RELACIONAR MAS DE DOS COLUMNAS ENTRE LAS TABLAS
+            if(count($relArray) == count($typeArray)){
 
+                foreach ($relArray as $key => $value) {
+        
+                    //VALIDAMOS LA EXISTENCIA DE LAS TABLAS
+                    if (empty($this->db->getColumsData($value,["*"]))) {
+                        return null;
+                    }
 
-        //ordenar datos sin limites
-        if ($orderBy != null && $orderMode != null && $startAt == null) {
-            $this->db->query("SELECT $select FROM  $table where $linkToArray[0] like '%$searchToArray[0]%' $linkToText order by $orderBy $orderMode");
-        }
+                    //ARMAMOS LA CADENA DE TEXTO QUE SE USAR PARA USAR EL INNER JOIN
+                    if ($key > 0) {
+                        $innerJoinText .= "INNER JOIN " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " ";
+                    }
+                }
 
+            }else{
 
+                if(count($relArray) < count($typeArray)){
 
+                    foreach ($relArray as $key => $value) {
+        
+                        //VALIDAMOS LA EXISTENCIA DE LAS TABLAS
+                        if (empty($this->db->getColumsData($value,["*"]))) {
+                            return null;
+                        }
 
-        //ordernar datos y limitar datos
-        if ($orderBy != null && $orderMode != null && $startAt != null) {
-            $this->db->query("SELECT $select FROM $table where $linkToArray[0] like '%$searchToArray[0]%' $linkToText ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
+                        //ARMAMOS LA CADENA DE TEXTO QUE SE USAR PARA USAR EL INNER JOIN
+                        if ($key > 0) {
+                            $innerJoinText .= "LEFT join " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " and " . $relArray[0] . "." . $typeArray[2] . " = " . $value . "." . $typeArray[$key+2] . " ";
+                        }
+                    }
+                }
 
-        }
-
-        //limitar datos sin ordenar
-        if ($orderBy == null && $orderMode == null && $startAt != null) {
-            $this->db->query("SELECT top $startAt $select FROM  $table where $linkToArray[0] like '%$searchToArray[0]%' $linkToText'");
-            $this->db->query("SELECT $select FROM $table where $linkToArray[0] like '%$searchToArray[0]%' $linkToText ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
-
-        }
-
-        foreach ($linkToArray as $key => $value) {
-            if ($key > 0) {
-                $this->db->bind(":" . $value, $searchToArray[$key]);
             }
-        }
 
-        try {
-            $resultados = $this->db->registros();
-        } catch (PDOException $Exception) {
+
+           //BUSQUEDA EN TABLAS RELACIONADAS SIN ORDENAR NI LIMITAR
+            $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $linkToArray[0] like '%$searchToArray[0]%' $linkToText");
+
+
+            //BUSQUEDA EN TABLAS RELACIONADAS ORDENADOS SIN LIMITAR
+            if ($orderBy != null && $orderMode != null && $startAt == null) {
+                $this->db->query("SELECT $select FROM  $relArray[0] $innerJoinText where $linkToArray[0] like '%$searchToArray[0]%' $linkToText order by $orderBy $orderMode");
+            }
+
+
+             //BUSQUEDA EN TABLAS RELACIONADAS ORDENADOS Y LIMITADOS
+            if ($orderBy != null && $orderMode != null && $startAt != null) {
+                $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $linkToArray[0] like '%$searchToArray[0]%' $linkToText ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
+            }
+
+
+              //BUSQUEDA EN TABLAS RELACIONADAS LIMITADOS SIN ORDENAR
+            if ($orderBy == null && $orderMode == null && $startAt != null) {
+                $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $linkToArray[0] like '%$searchToArray[0]%' $linkToText ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
+
+            }
+            foreach ($linkToArray as $key => $value) {
+                if ($key > 0) {
+                    $this->db->bind(":" . $value, $searchToArray[$key]);
+                }
+            }
+
+            try {
+
+                $resultados = $this->db->registros();
+
+            } catch (PDOException $Exception) {
+
+                return null;
+
+                //throw $th;
+
+            }
+
+            return $resultados;
+
+        } else {
+
             return null;
-            //throw $th;
+
         }
-        return $resultados;
 
-        // $linkToArray = explode(",", $linkTo);
-        // $equalToArray = explode("_", $sear);
-        // $linkToText = "";
-
-        // if (count($linkToArray) > 1) {
-        //     foreach ($linkToArray as $key => $value) {
-        //         if ($key > 0) {
-        //             $linkToText .= "AND " . $value . " = :" . $value . " ";
-        //         }
-        //     }
-        // }
-        // // echo '<pre>'; print_r($linkToText); echo '</pre>';
-        // // return;
-
-        // //ordener sin limitar datos
-        // $this->db->query("SELECT $select FROM  $table where $linkToArray[0] = :$linkToArray[0] $linkToText");
-
-        // //ordener datos sin limites
-        // if ($orderBy != null && $orderMode != null && $startAt == null) {
-        //     $this->db->query("SELECT $select FROM  $table where $linkToArray[0] = :$linkToArray[0] $linkToText order by $orderBy $orderMode");
-        // }
-
-        // //ordernar datos y limitar datos
-        // if ($orderBy != null && $orderMode != null && $startAt != null) {
-
-        //     $this->db->query("SELECT top $startAt $select FROM  $table where $linkToArray[0] = :$linkToArray[0] $linkToText order by $orderBy $orderMode");
-        // }
-        // //limitar datos sin ordenar
-        // if ($orderBy == null && $orderMode == null && $startAt != null) {
-
-        //     $this->db->query("SELECT top $startAt $select FROM  $table where $linkToArray[0] = :$linkToArray[0] $linkToText");
-        // }
-
-        // foreach ($linkToArray as $key => $value) {
-        //     $this->db->bind(":" . $value, $equalToArray[$key]);
-        // }
-
-
-        // $resultados = $this->db->registros();
-        // return $resultados;
     }
 
-
+    //PETICIONES GET CON RANGOS
     public function getDataRange($table, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt,$endAt,$orderAt, $filterTo, $inTo)
     {
-
+        //ORDENANDO DATOS EN UN ARRAY PARA USARLOS MAS ADELANTE
         $linkToArray = explode(",",$linkTo);
         if($filterTo != null){
             $filterToArray = explode(",",$filterTo);
@@ -426,67 +535,60 @@ class Get
         }
 
   
-        
+        //ARMANDO EL FILTRO A UTILIZAR
         $filter = "";
-        
         if ($filterTo != null && $inTo != null) {
             $filter = 'AND ' . $filterTo . ' IN (' . $inTo . ')';
         }
  
+
+        //OBTENER DATOS CON RANGOS SIN ORDENAR NI LIMITAR
         $this->db->query("SELECT $select FROM  $table where $linkTo between '$between1' and '$between2' $filter");
-        
-  
-        
+          
 
-
-
-        //ordenar datos sin limites
+        //OBTENER DATOS CON RANGOS ORDENADOS SIN LIMITAR
         if ($orderBy != null && $orderMode != null && $startAt == null) {
             $this->db->query("SELECT $select FROM $table where $linkTo between '$between1' and '$between2' $filter  order by $orderBy $orderMode");
         }
 
-        // con rangos
-        //ordernar datos y limitar datos
+
+        //OBTENER DATOS CON RANGOS ORDENADOS Y LIMITAR
         if ($orderBy != null && $orderMode != null && $startAt != null) {
-            // $this->db->query("SELECT top $startAt $select FROM $table where $linkTo between '$between1' and '$between2' $filter order by $orderBy $orderMode");
             $this->db->query("SELECT $select FROM $table where $linkTo between '$between1' and '$between2' $filter ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
         }
 
-        //limitar datos sin ordenar
-        if ($orderBy == null && $orderMode == null && $startAt != null) {
-     
-            $this->db->query("SELECT $select FROM $table where $linkTo between '$between1' and '$between2' $filter ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
 
+        //OBTENER DATOS CON RANGOS LIMITADOS SIN ORDENAR
+        if ($orderBy == null && $orderMode == null && $startAt != null) {
+            $this->db->query("SELECT $select FROM $table where $linkTo between '$between1' and '$between2' $filter ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
         }
+
 
         try {
+
             $resultados = $this->db->registros();
+
         } catch (PDOException $Exception) {
+
             return null;
+
             //throw $th;
+
         }
+        
         return $resultados;
     }
 
-    // peticiones get con seleccion de rangos y filtros y relaciones
+    //PETICIONES GET CON TABLAS RELACIONALES Y RANGOS
     public function getRelDataRange($rel, $type, $select, $linkTo, $between1, $between2, $orderBy, $orderMode, $startAt,$endAt,$orderAt, $filterTo, $inTo)
     {
-        // $linkToArray = explode(",",$linkTo);
-        // $filterToArray = explode(",",$filterTo);
-        // $selectArray = explode(",",$select);
-        // foreach ($linkToArray as $key => $value) {
-        //     array_push($selectArray, $value);
-        // }
-        // foreach ($filterToArray as $key => $value) {
-        //     array_push($selectArray,$value);
-        // }
-        // $selectArray = array_unique($selectArray);
-        
 
+        //ORDENAR LOS DATOS PARA SER UTILZIADAS EN LAS CONSULTAS
         $filter = "";
         if ($filterTo != null && $inTo != null) {
             $filter = 'AND ' . $filterTo . ' IN (' . $inTo . ')';
         }
+       
 
         $relArray = explode(",", $rel);
         $typeArray = explode(",", $type);
@@ -495,13 +597,14 @@ class Get
         if (count($relArray) > 1) {
             if(count($relArray) == count($typeArray)){
 
-                
                 foreach ($relArray as $key => $value) {
         
-                    //validar exitencia de la tabla
+                    //VALIDAMOS LA EXISTENCIA DE LAS TABLAS
                     if (empty($this->db->getColumsData($value,["*"]))) {
                         return null;
                     }
+
+                    //ARMAMOS LA CADENA DE TEXTO QUE SE USAR PARA USAR EL INNER JOIN
                     if ($key > 0) {
                         $innerJoinText .= "INNER JOIN " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " ";
                     }
@@ -511,60 +614,41 @@ class Get
 
                 if(count($relArray) < count($typeArray)){
 
-
                     foreach ($relArray as $key => $value) {
         
-                        //validar exitencia de la tabla
+                        //VALIDAMOS LA EXISTENCIA DE LAS TABLAS
                         if (empty($this->db->getColumsData($value,["*"]))) {
                             return null;
                         }
+
+                        //ARMAMOS LA CADENA DE TEXTO QUE SE USAR PARA USAR EL INNER JOIN
                         if ($key > 0) {
                             $innerJoinText .= "LEFT join " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " and " . $relArray[0] . "." . $typeArray[2] . " = " . $value . "." . $typeArray[$key+2] . " ";
-                            
-
-
-                            // inner join ecmp_linea ON ecmp_inventario.cod_linea = ecmp_linea.cod_linea and ecmp_inventario.cod_sublinea = ecmp_linea.cod_sublinea
-
                         }
                     }
-
-
-                  
-                    
-
-
                 }
-
-
 
             }
 
 
 
 
-
+            //OBTIENES DATOS CON TABLAS RELACIONADAS Y FILTRO, SIN ORDENAR NI LIMITAR
             $this->db->query("SELECT $select FROM  $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter");
 
-
-
-            //ordenar datos sin limites
+             //OBTIENES DATOS CON TABLAS RELACIONADAS Y FILTRO, ORDENANDO SIN LOMITAR
             if ($orderBy != null && $orderMode != null && $startAt == null) {
-            
                 $this->db->query("SELECT $select FROM $relArray[0]  $innerJoinText where $linkTo between '$between1' and '$between2' $filter  order by $orderBy $orderMode");
             }
 
-            //ordernar datos y limitar datos
+            //OBTENER DATOS CON TABLAS RELACIONADAS, FILTROS, ORDENADOS Y LIMITADOS
             if ($orderBy != null && $orderMode != null && $startAt != null) {
-                // echo '<pre>'; print_r("SELECT $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;"); echo '</pre>';
-                // $this->db->query("SELECT top $startAt $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter order by $orderBy $orderMode");
                 $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
-                
             }
 
-            //limitar datos sin ordenar
+            //OBTENER DATOS CON TABLAS RELACIONADAS, FILTROS,LIMITADOS SIN ORDENAR
             if ($orderBy == null && $orderMode == null && $startAt != null) {
-                
-                $this->db->query("SELECT top $startAt $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter");
+                $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $linkTo between '$between1' and '$between2' $filter ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
             }
 
             try {
@@ -581,185 +665,8 @@ class Get
 
 
 
-    public function obtenerRelDataSearch($rel, $type, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt, $orderAt,$filterTo,$inTo)
-    {
-
-       
-        $linkToArray = explode(",",$linkTo);
-     
-
-
-        $searchToArray = explode(",", $search);
-        $linkToText = "";
-
-        if (count($linkToArray) > 1) {
-            foreach ($linkToArray as $key => $value) {
-                if ($key > 0) {
-                    $linkToText .= "AND " . $value . " = :" . $value . " ";
-                }
-            }
-        }
-
-        $relArray = explode(",", $rel);
-        $typeArray = explode(",", $type);
-        $innerJoinText = "";
-
-        if (count($relArray) > 1) {
-            if(count($relArray) == count($typeArray)){
-
-                
-                foreach ($relArray as $key => $value) {
-        
-                    //validar exitencia de la tabla
-                    if (empty($this->db->getColumsData($value,["*"]))) {
-                        return null;
-                    }
-                    if ($key > 0) {
-                        $innerJoinText .= "INNER JOIN " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " ";
-                    }
-                }
-
-            }else{
-
-                if(count($relArray) < count($typeArray)){
-
-
-                    foreach ($relArray as $key => $value) {
-        
-                        //validar exitencia de la tabla
-                        if (empty($this->db->getColumsData($value,["*"]))) {
-                            return null;
-                        }
-                        if ($key > 0) {
-                            $innerJoinText .= "LEFT join " . $value . " ON " . $relArray[0] . "." . $typeArray[0] . " = " . $value . "." . $typeArray[$key] . " and " . $relArray[0] . "." . $typeArray[2] . " = " . $value . "." . $typeArray[$key+2] . " ";
-                            
-
-
-                            // inner join ecmp_linea ON ecmp_inventario.cod_linea = ecmp_linea.cod_linea and ecmp_inventario.cod_sublinea = ecmp_linea.cod_sublinea
-
-                        }
-                    }
-
-
-                  
-                    
-
-
-                }
+ 
 
 
 
-            }
-
-
-            //organizamos las relaciones
-
-            // sin ordener y sin limitar datos
-            $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $linkToArray[0] like '%$searchToArray[0]%' $linkToText");
-
-            //ordenar datos sin limites
-            if ($orderBy != null && $orderMode != null && $startAt == null) {
-                $this->db->query("SELECT $select FROM  $relArray[0] $innerJoinText where $linkToArray[0] like '%$searchToArray[0]%' $linkToText order by $orderBy $orderMode");
-            }
-
-            //ordernar datos y limitar datos
-            if ($orderBy != null && $orderMode != null && $startAt != null) {
-           
-                $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $inTo = $filterTo and $linkToArray[0] like '%$searchToArray[0]%' $linkToText ORDER BY $orderAt,$orderBy $orderMode OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
-                
-                
-
-            }
-
-            //limitar datos sin ordenar
-            if ($orderBy == null && $orderMode == null && $startAt != null) {
-                // $this->db->query("SELECT top $startAt $select FROM  $relArray[0] $innerJoinText where $linkToArray[0] like '%$searchToArray[0]%' $linkToText");
-                $this->db->query("SELECT $select FROM $relArray[0] $innerJoinText where $linkToArray[0] like '%$searchToArray[0]%' $linkToText ORDER BY $orderAt OFFSET $startAt ROWS FETCH NEXT $endAt ROWS ONLY;");
-
-            }
-            foreach ($linkToArray as $key => $value) {
-                if ($key > 0) {
-                    $this->db->bind(":" . $value, $searchToArray[$key]);
-                }
-            }
-
-            try {
-                $resultados = $this->db->registros();
-            } catch (PDOException $Exception) {
-                return null;
-                //throw $th;
-            }
-            return $resultados;
-        } else {
-            return null;
-        }
-    }
-
-
-
-
-    //
-
-    public function agregarCajas($tabla, $datos)
-    {
-        $this->db->query("INSERT INTO $tabla (cod_empresa,cod_caja,txt_descripcion,cod_usuario,fec_actualiza) values (:cod_empresa,:cod_caja,:txt_descripcion,:cod_usuario,:fec_actualiza)");
-        $this->db->bind(':cod_empresa', $datos['cod_empresa']);
-        $this->db->bind(':cod_caja', $datos['cod_caja']);
-        $this->db->bind(':txt_descripcion', $datos['txt_descripcion']);
-        $this->db->bind(':cod_usuario', $datos['cod_usuario']);
-        $this->db->bind(':fec_actualiza', $datos['fec_actualiza']);
-
-        //ejecutar
-        if ($this->db->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function obtenerCajaID($tabla, $id)
-    {
-        $this->db->query("SELECT * FROM  $tabla where $tabla.cod_caja = :id");
-        $this->db->bind(':id', $id);
-        $resultados = $this->db->registro();
-        return $resultados;
-    }
-
-
-    public function actualizarCaja($tabla, $datos)
-    {
-        $this->db->query("UPDATE $tabla SET  txt_descripcion = :txt_descripcion, cod_usuario = :cod_usuario, fec_actualiza = :fec_actualiza where cod_caja = :id");
-
-        //vincular valores
-        // $this->db->bind(':cod_empresa',$datos['cod_empresa']);
-        $this->db->bind(':id', $datos['cod_caja']);
-        $this->db->bind(':txt_descripcion', $datos['txt_descripcion']);
-        $this->db->bind(':cod_usuario', $datos['cod_usuario']);
-        $this->db->bind(':fec_actualiza', $datos['fec_actualiza']);
-
-        //ejecutar
-        if ($this->db->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function eliminarCaja($tabla, $id1, $id2)
-    {
-        print_r($id2);
-        $this->db->query("Delete from $tabla where $tabla.cod_empresa = :id and $tabla.cod_caja = :id2");
-
-        //vincular valores
-        $this->db->bind(':id', $id1);
-        $this->db->bind(':id2', $id2);
-
-
-        //ejecutar
-        if ($this->db->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 }

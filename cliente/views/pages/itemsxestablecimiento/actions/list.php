@@ -5,7 +5,7 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
   $between1 = $_GET["start"];
   $between2 = $_GET["end"];
 } else {
-  $between1 = date("Y-m-d", strtotime("-1 year", strtotime(date("Y-m-d"))));
+  $between1 = date("Y-m-d", strtotime("-10 year", strtotime(date("Y-m-d"))));
   $between2 = date("Y-m-d", strtotime("+1 day", strtotime(date("Y-m-d"))));
 }
 //FIN ASIGANACION DE FECHAS 
@@ -23,7 +23,34 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
 
     <!-- BOTONES SUPERIORES PARA CREAR Y HACER OTRAS COSAS -->
     <h3 class="card-title">
-      <a class="btn bg-blue btn-small" href="clientes/create">Crear</a>
+      <a class="btn bg-blue btn-small" href="inventario/create">Crear</a>
+      <a class="btn bg-block btn-outline-primary btn-small ml-5" href="inventario">Inventario</a>
+      <a class="btn bg-block btn-outline-primary btn-small" href="itemsxestablecimiento">Items x Establecimiento</a>
+
+                      <!-- LINEA Y SUB LINEA -->
+              <div class="form-group">
+                    <label>Establecimiento</label>
+                    <?php
+                    // require_once("controllers/establecimientos.controllers.php");
+                    // $create = new EstablecimientosController();
+                    // $tipo_precio = $create->linea_sublinea();
+                    // $tipo_precio = json_encode($tipo_precio);
+                    // $tipo_precio = json_decode($tipo_precio, true);
+                    ?>
+
+                    <select class="form-control select2 changeCountry" name="cod_linea" required>
+                        <option value>Seleccione Precio Aplicado</option>
+                        <?php foreach ($tipo_precio as $key => $value) : ?>
+                            <option value="<?php echo $value["cod_linea"] ?>-<?php echo $value["cod_sublinea"] ?> ">
+
+                            <?php echo $value["cod_linea"] ?> <?php echo $value["cod_sublinea"] ?> <?php echo $value["txt_descripcion"] ?>
+
+                            </option>
+                        <?php endforeach ?>
+                    </select>
+              </div>
+
+      
 
     </h3>
 
@@ -52,21 +79,20 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
   <!-- /.card-header -->
   <!-- TABLA DONDE SE VAN A MOSTRAR LOS DATOS -->
   <div class="card-body">
-    <table id="itemsxestablecimientoTable" class="table table-bordered table-striped">
+    <table id="inventarioTable" class="table table-bordered table-striped">
       <thead>
         <tr>
           <th>Codigo</th>
+          <th>Codigo de barras</th>
           <th>Descripcion</th>
-          <th></th>
-          <th>Controla Saldo</th>
-          <th>Modifica Saldo</th>
-          <th>Minima Existencia</th>
-          <th>Maxima Existencia</th>
-          <th>Saldo</th>
+          <th>IVA</th>
+          <th>Tipo</th>
+          <th>Existencia Total</th>
           <th>V/costo</th>
-          <th>Valor Descuento</th>
-          <th>actions</th>
-
+          <th>Linea / Sublinea</th>
+          <th>Marca</th>
+          <th>Estado</th>
+          
         </tr>
       </thead>
     </table>
@@ -75,4 +101,4 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
 </div>
 
 
-<script src="views/assets/custom/datatable/itemsxestablecimiento.datatable.js"></script>
+<script src="views/assets/custom/datatable/inventario.datatable.js"></script>
