@@ -110,6 +110,7 @@ function validateJS(event, type) {
   if(type == "nom_persona_nombre") pattern = /^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}$/;
   if(type == "txt_direccion_cliente") pattern = /^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,150}$/;
   if(type == "num_telefono_cliente") pattern = /^[-\\(\\)\\0-9 ]{1,15}$/;
+  if(type == "cod_establecimiento") pattern = /^[a-zA-Z0-9]{1,3}$/;
 
 
   if (!pattern.test(event.target.value)) {
