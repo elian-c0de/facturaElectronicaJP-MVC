@@ -14,8 +14,7 @@ class LineasdeproductoController{
 
             </script>';
 
-            if(preg_match('/^[0-9]{1,3}$/',$_POST["cod_linea"]) &&
-               preg_match('/^[0-9]{1,3}$/',$_POST["cod_sublinea"]) && preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]))
+            if(preg_match('/^[0-9]{1,3}$/',$_POST["cod_linea"]) && preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]))
 
             {
 
@@ -23,9 +22,9 @@ class LineasdeproductoController{
                     
                     "cod_empresa" => $_SESSION["admin"]->cod_empresa,
                     "cod_linea" => trim($_POST["cod_linea"]),
-                    "cod_sublinea" => trim($_POST["cod_sublinea"]),
+                    "cod_sublinea" => "000",
                     "txt_descripcion" => trim($_POST["txt_descripcion"]),
-                    "cod_usuario" => "administrador",
+                    "cod_usuario" => $_SESSION["admin"]->cod_usuario,
                     "fec_actualiza" => date("d-m-Y H:i:s"),
     
                 );
@@ -88,18 +87,28 @@ class LineasdeproductoController{
 
     public function edit($id,$id2){
 
-        if(isset($_POST["cod_linea"]) && isset($_POST["cod_sublinea"])){
-            
-          if($id == $_POST["cod_linea"]){
+        date_default_timezone_set("America/Guayaquil");
+        
+        if(isset($_POST["idAdmin"]) && isset($_POST["idAdmin2"])){
 
-            $url = "ecmp_linea?linkTo=cod_empresa,cod_linea,cod_sublinea&equalTo=".$_SESSION['admin']->cod_empresa.",".$id;
+            echo '<script>
+
+				matPreloader("on");
+				fncSweetAlert("loading", "Loading...", "");
+
+			</script>';
+            
+          if($id == $_POST["idAdmin"] && $id2 == $_POST["idAdmin2"]){
+
+            $url = "ecmp_linea?linkTo=cod_empresa,cod_linea,cod_sublinea&equalTo=".$_SESSION['admin']->cod_empresa.",".$id.",".$id2;
             
             $method = "GET";
             $fields = array();
     
             $response = CurlController::request($url,$method,$fields);
-           
+
             if($response->status == 200){
+                
 
                 if(preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]))
     
@@ -107,13 +116,14 @@ class LineasdeproductoController{
                     
 
                     $data = "&txt_descripcion=".trim($_POST["txt_descripcion"]).
-                            "&cod_usuario="."administrador".
+                            "&cod_usuario=".$_SESSION["admin"]->cod_usuario.
                             "&fec_actualiza=".date("d-m-Y H:i:s");
             
                     
                      
                 
-                    $url = "ecmp_linea?id=".$id."&nameId=cod_linea&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
+                    $url = "ecmp_linea?id=".$id."&nameId=cod_linea&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa."&nameId3=cod_sublinea&id3=".$id2;
+                    
          
                     $method = "PUT";
                     $fields = $data;
@@ -125,48 +135,46 @@ class LineasdeproductoController{
 
 
                     if($response->status == 200){
-                        echo '
-                        <script>
-                        fncFormatInput();
-                        </script>
-                        
-                        
-                        <div class="alert alert-success"> Edicion Exitosa </div>
-                        
-                        
-                        ';
-                    }else{
-                        echo '
-                        <script>
+                        echo '<script>
 
-                        fncFormatInput();
-                        </script>
-                        
-                        
-                        <div class="alert alert-warning"> Error al editar los registros</div>';
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncSweetAlert("success", "Edicion con exito", "lineasdeproducto");
+
+                        </script>';
+                    }else{
+                        echo '<script>
+
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncNotie(3, "Error al momento de editar");
+
+                        </script>';
                     }
 
     
                 }else{
-                    echo '
-                    
-                    <script>
+                    echo '<script>
 
-                        fncFormatInput();
-                        </script>
-                    
-                    <div class="alert alert-danger">Error en el campo de datos</div>';
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncNotie(3, "Error en los campos de datos");
+
+                    </script>';
                 }
 
             }else{
-                echo '
-                
-                <script>
+                echo '<script>
 
-                    fncFormatInput();
-                    </script>
-                
-                <div class="alert alert-danger">Error al editar el registro mielda</div>';
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncNotie(3, "Error al editar el registro");
+
+                    </script>';
             }
 
           }

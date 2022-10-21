@@ -51,24 +51,11 @@
 
                 <!-- CODIGO DE PRECIO -->
                 <div class="form-group mt-2">
-                    <label>Código de Linea</label>
+                    <label>Código</label>
                     <input 
                     value="<?php echo$admin->cod_linea?>" 
                     type="text"
                     name="cod_linea" 
-                    class="form-control"
-                    disabled>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback"> Please fill out this field.</div>
-                </div>
-
-                <!-- CODIGO DE PRECIO -->
-                <div class="form-group mt-2">
-                    <label>Código de Sublinea</label>
-                    <input
-                    value="<?php echo$admin->cod_sublinea?>" 
-                    type="text"
-                    name="cod_sublinea" 
                     class="form-control"
                     disabled>
                     <div class="valid-feedback">Valid.</div>

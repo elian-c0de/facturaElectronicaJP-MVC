@@ -13,26 +13,12 @@
 
                 <!-- CODIGO DE PRECIO -->
                 <div class="form-group mt-2">
-                    <label>Código de Linea</label>
+                    <label>Código</label>
                     <input 
                     type="text"
                     name="cod_linea" 
                     class="form-control"
                     onchange="validateRepeat(event,'cod_verif','ecmp_linea','cod_linea', <?php echo $_SESSION['admin']->cod_empresa?>)"
-                    pattern="[0-9]{1,3}"
-                    required>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback"> Please fill out this field.</div>
-                </div>
-
-                <!-- CODIGO DE PRECIO -->
-                <div class="form-group mt-2">
-                    <label>Código de Sublinea</label>
-                    <input 
-                    type="text"
-                    name="cod_sublinea" 
-                    class="form-control"
-                    onchange="validateRepeat(event,'cod_verif','ecmp_linea','cod_sublinea', <?php echo $_SESSION['admin']->cod_empresa?>)"
                     pattern="[0-9]{1,3}"
                     required>
                     <div class="valid-feedback">Valid.</div>

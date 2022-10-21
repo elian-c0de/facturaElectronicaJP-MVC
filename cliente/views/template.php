@@ -157,6 +157,7 @@ foreach ($routesArray as $key => $value) {
             $routesArray1[3] == "ats_sri" ||
             $routesArray1[3] == "clientes" ||
             $routesArray1[3] == "inventario" ||
+            $routesArray1[3] == "sublineaproducto" ||
             $routesArray1[3] == "itemsxestablecimiento"
           ) {
             include("views/pages/" . $routesArray1[3] . "/index.php");
