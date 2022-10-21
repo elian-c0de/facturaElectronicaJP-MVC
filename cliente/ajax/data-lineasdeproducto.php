@@ -1,5 +1,6 @@
 <?php
 require_once "../controllers/curl.controller.php";
+require_once "../controllers/template.controller.php";
 class DataTableController
 {
     public function data()
@@ -26,7 +27,7 @@ class DataTableController
                 echo '{"data":[]}';
                 return;
             }
-            $select = "cod_linea,cod_sublinea,txt_descripcion";
+            $select = "cod_empresa,cod_linea,cod_sublinea,txt_descripcion";
 
             //busquedad de datos
             if(!empty($_POST['search']['value'])){
@@ -81,7 +82,19 @@ class DataTableController
                         $actions = "";
                         
                     }else{
-                        $actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
+                        $actions = "<a href='lineasdeproducto/edit/" . base64_encode($value->cod_linea . "~" . $value->cod_sublinea . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+
+                            <i class='fas fa-pencil-alt'></i>
+
+                            </a> 
+                            
+                            <a class='btn btn-danger btn-sm rounded-circle removeItem' idItem=" . base64_encode($value->cod_linea . "~" . $_GET["token"]) . " table='ecmp_cliente' column='num_id' page='clientes' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
+
+                            <i class='fas fa-trash-alt'></i>
+
+                            </a>";
+
+                        $actions = TemplateController::htmlClean($actions);
                     }
                     $cod_linea = $value->cod_linea;
                     $cod_sublinea = $value->cod_sublinea;

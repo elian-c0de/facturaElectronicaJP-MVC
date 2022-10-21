@@ -82,6 +82,8 @@ function validateJS(event, type) {
   if(type == "cod_tipo_id_representante") pattern = /^[A-Z]{1,1}$/;
   if(type == "txt_descripcion") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,60}$/;
   if(type == "cod_pre") pattern = /^[a-zA-Z0-9]{1,2}$/;
+  if(type == "cod_verif") pattern = /^[0-9]{1,3}$/;
+  if(type == "txt_descrip") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
   
 
 

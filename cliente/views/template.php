@@ -122,7 +122,7 @@ foreach ($routesArray as $key => $value) {
         //  echo '<pre>'; print_r($routesArray1); echo '</pre>';
         if (!empty($routesArray1[3])) {
           if (
-            $routesArray1[3] == "Cajas" ||
+            $routesArray1[3] == "cajas" ||
             $routesArray1[3] == "logout" ||
             $routesArray1[3] == "informacionGeneral" ||
             $routesArray1[3] == "establecimientos" ||

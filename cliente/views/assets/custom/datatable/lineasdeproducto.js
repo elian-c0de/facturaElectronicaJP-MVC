@@ -8,7 +8,7 @@ function execDataTable (text) {
        "processing": true,
        "serverSide": true,
        "ajax":{
-         "url":"ajax/data-lineasdeproducto.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val(),
+         "url":"ajax/data-lineasdeproducto.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val()+"&token="+localStorage.getItem("token_user")+"&code="+localStorage.getItem("cod"),
          "type":"POST"
        },
        "columns":[
