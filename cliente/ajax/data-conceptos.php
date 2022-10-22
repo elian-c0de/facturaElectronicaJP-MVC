@@ -1,5 +1,6 @@
 <?php
 require_once "../controllers/curl.controller.php";
+require_once "../controllers/template.controller.php";
 class DataTableController
 {
     public function data()
@@ -26,7 +27,7 @@ class DataTableController
                 echo '{"data":[]}';
                 return;
             }
-            $select = "cod_concepto,txt_descripcion,sts_facturacion,sts_tipo_concepto,sts_proceso,sts_inventario,sts_concepto";
+            $select = "cod_empresa,cod_concepto,txt_descripcion,sts_facturacion,sts_tipo_concepto,sts_proceso,sts_inventario,sts_concepto";
 
             //busquedad de datos
             if(!empty($_POST['search']['value'])){
@@ -61,7 +62,11 @@ class DataTableController
             $data = CurlController::request($url, $method, $fields)->result;
             // echo '<pre>'; print_r($data); echo '</pre>'; 
             // echo '<pre>'; print_r($url); echo '</pre>'; 
-            $recordsFiltered = $totalData;
+            if($data == "Not Found"){
+                $recordsFiltered = 0;
+            }else{
+                $recordsFiltered = $totalData;
+            }
         }
         if(empty($data)){
             echo '{"data": []}';
@@ -81,7 +86,20 @@ class DataTableController
                         $actions = "";
                         
                     }else{
-                        $actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
+                        //$actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
+                        $actions = "<a href='conceptos/edit/" . base64_encode($value->cod_concepto . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+
+                        <i class='fas fa-pencil-alt'></i>
+
+                        </a> 
+                        
+                        <a class='btn btn-danger btn-sm rounded-circle removeItem' idItem=" . base64_encode($value->cod_concepto . "~" . $_GET["token"]) . " table='srja_concepto' column='cod_concepto' page='conceptos' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
+
+                        <i class='fas fa-trash-alt'></i>
+
+                        </a>";
+
+                    $actions = TemplateController::htmlClean($actions);
                     }
                     $cod_concepto = $value->cod_concepto;
                     $txt_descripcion = $value->txt_descripcion;

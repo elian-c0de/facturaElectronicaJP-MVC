@@ -1,11 +1,11 @@
 <?php
-class ConceptosController{
+class ParametrosController{
 
     public function create(){
         date_default_timezone_set("America/Guayaquil");
 
 
-        if(isset($_POST["cod_concepto"])){
+        if(isset($_POST["cod_parametro"])){
             
             echo '<script>
 
@@ -14,48 +14,26 @@ class ConceptosController{
 
             </script>';
 
-            if(preg_match('/^[a-zA-Z0-9]{1,2}$/',$_POST["cod_concepto"]) &&
-            preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]))
+            if(preg_match('/^[A-Z\\_]{1,10}$/',$_POST["cod_parametro"]) &&
+            preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["nom_parametro"])&&
+            preg_match('/^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\#\\?\\¿\\!\\¡\\:\\,\\.\\"\\@\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["val_parametro"]))
 
             {
-                if(isset($_POST["sts_facturacion"])){
-                    $_POST["sts_facturacion"] = "S";
-                }else{
-                    $_POST["sts_facturacion"] = "N";
-                }
-
-                if(isset($_POST["sts_inventario"])){
-                    $_POST["sts_inventario"] = "A";
-                }else{
-                    $_POST["sts_inventario"] = "C";
-                }
-
-                if(isset($_POST["sts_concepto"])){
-                    $_POST["sts_concepto"] = "A";
-                }else{
-                    $_POST["sts_concepto"] = "C";
-                }
-
+                
                 $data = array(
                     
                     "cod_empresa" => $_SESSION["admin"]->cod_empresa,
-                    "cod_concepto" => trim($_POST["cod_concepto"]),
-                    "txt_descripcion" => trim($_POST["txt_descripcion"]),
-                    "sts_facturacion" => $_POST["sts_facturacion"],
-                    "sts_tipo_concepto" => $_POST["sts_tipo_concepto"],
-                    "sts_sistema" => "C",
-                    "sts_proceso" => $_POST["sts_proceso"],
-                    "sts_inventario" => $_POST["sts_inventario"],
-                    "sts_concepto" => $_POST["sts_concepto"],
+                    "cod_parametro" => trim(explode("_",$_POST["cod_parametro"])[0]),
+                    "nom_parametro" => trim($_POST["nom_parametro"]),
+                    "val_parametro" =>  trim($_POST["val_parametro"]),
                     "cod_usuario" => $_SESSION["admin"]->cod_usuario,
                     "fec_actualiza" => date("d-m-Y H:i:s"),
-                    "cod_sri" => "sri1",
     
                 );
                 
 
          
-                $url = "srja_concepto?token=".$_SESSION["admin"]->token_usuario;
+                $url = "gen_control?token=".$_SESSION["admin"]->token_usuario;
                 $method = "POST";
                 $fields = $data;
                 $response = CurlController::request($url,$method,$fields);
@@ -69,7 +47,7 @@ class ConceptosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Registro con exito", "conceptos");
+                        fncSweetAlert("success", "Registro con exito", "parametros");
 
                     </script>';
                 }else{
@@ -100,8 +78,8 @@ class ConceptosController{
     }
 
 
-    public function conceptos(){
-        $url = "srja_concepto";
+    public function parametros(){
+        $url = "gen_control";
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
@@ -113,9 +91,16 @@ class ConceptosController{
 
         if(isset($_POST["idAdmin"])){
             
+            echo '<script>
+
+				matPreloader("on");
+				fncSweetAlert("loading", "Loading...", "");
+
+			</script>';
+            
           if($id == $_POST["idAdmin"]){
 
-            $url = "srja_concepto?linkTo=cod_empresa,cod_concepto&equalTo=".$_SESSION['admin']->cod_empresa.",".$id;
+            $url = "gen_control?linkTo=cod_empresa,cod_parametro&equalTo=".$_SESSION['admin']->cod_empresa.",".$id;
             
             $method = "GET";
             $fields = array();
@@ -124,52 +109,20 @@ class ConceptosController{
            
             if($response->status == 200){
 
-                if(preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]))
+                if(
+                preg_match('/^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\#\\?\\¿\\!\\¡\\:\\,\\.\\"\\@\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["val_parametro"]))
     
                 {
-                    
-                    if(isset($_POST["sts_facturacion"])){
-                        $_POST["sts_facturacion"] = "S";
-                    }else{
-                        $_POST["sts_facturacion"] = "N";
-                    }
-    
-                    if(isset($_POST["sts_inventario"])){
-                        $_POST["sts_inventario"] = "A";
-                    }else{
-                        $_POST["sts_inventario"] = "C";
-                    }
-    
-                    if(isset($_POST["sts_concepto"])){
-                        $_POST["sts_concepto"] = "A";
-                    }else{
-                        $_POST["sts_concepto"] = "C";
-                    }
-              
-                        // // validar contraseña
-                        // if(!empty($_POST["password"])){
-                        //     $password = $_POST["password"];
-                        //     $crypt = crypt($password["cod_passwd"], 'td');
-                        // }else{
-
-                        // }
                         // agruamos la informaicon
 
                         $data =
-                            "txt_descripcion=".trim($_POST["txt_descripcion"]).
-                            "&sts_facturacion=".trim($_POST["sts_facturacion"]).
-                            "&sts_tipo_concepto=".trim($_POST["sts_tipo_concepto"]).
-                            "&sts_proceso=".trim($_POST["sts_proceso"]).
-                            "&sts_inventario=".trim($_POST["sts_inventario"]).
-                            "&sts_concepto=".trim($_POST["sts_concepto"]).
+                            "val_parametro=".trim($_POST["val_parametro"]).
                             "&cod_usuario=".$_SESSION["admin"]->cod_usuario.
-                            "&fec_actualiza=".date("d-m-Y H:i:s").
-                            "&cod_sri="."sri1";
+                            "&fec_actualiza=".date("d-m-Y H:i:s");
             
-                    
                      
                 
-                    $url = "srja_concepto?id=".$id."&nameId=cod_concepto&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
+                    $url = "gen_control?id=".$id."&nameId=cod_parametro&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
          
                     $method = "PUT";
                     $fields = $data;
@@ -186,7 +139,7 @@ class ConceptosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Edicion con exito", "conceptos");
+                        fncSweetAlert("success", "Edicion con exito", "parametros");
 
                     </script>';
                     }else{

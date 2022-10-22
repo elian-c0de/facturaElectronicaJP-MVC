@@ -1,11 +1,11 @@
 <?php
-class ConceptosController{
+class FormadepagoController{
 
     public function create(){
         date_default_timezone_set("America/Guayaquil");
 
 
-        if(isset($_POST["cod_concepto"])){
+        if(isset($_POST["cod_forma_pago"])){
             
             echo '<script>
 
@@ -14,48 +14,39 @@ class ConceptosController{
 
             </script>';
 
-            if(preg_match('/^[a-zA-Z0-9]{1,2}$/',$_POST["cod_concepto"]) &&
-            preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]))
+            if(preg_match('/^[a-zA-Z0-9]{1,2}$/',$_POST["cod_forma_pago"]) &&
+            preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["nom_forma_pago"]))
 
             {
-                if(isset($_POST["sts_facturacion"])){
-                    $_POST["sts_facturacion"] = "S";
+                if(isset($_POST["sts_defecto"])){
+                    $_POST["sts_defecto"] = "A";
                 }else{
-                    $_POST["sts_facturacion"] = "N";
+                    $_POST["sts_defecto"] = "C";
                 }
 
-                if(isset($_POST["sts_inventario"])){
-                    $_POST["sts_inventario"] = "A";
+                if(isset($_POST["sts_forma_pago"])){
+                    $_POST["sts_forma_pago"] = "A";
                 }else{
-                    $_POST["sts_inventario"] = "C";
-                }
-
-                if(isset($_POST["sts_concepto"])){
-                    $_POST["sts_concepto"] = "A";
-                }else{
-                    $_POST["sts_concepto"] = "C";
+                    $_POST["sts_forma_pago"] = "C";
                 }
 
                 $data = array(
                     
-                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
-                    "cod_concepto" => trim($_POST["cod_concepto"]),
-                    "txt_descripcion" => trim($_POST["txt_descripcion"]),
-                    "sts_facturacion" => $_POST["sts_facturacion"],
-                    "sts_tipo_concepto" => $_POST["sts_tipo_concepto"],
-                    "sts_sistema" => "C",
-                    "sts_proceso" => $_POST["sts_proceso"],
-                    "sts_inventario" => $_POST["sts_inventario"],
-                    "sts_concepto" => $_POST["sts_concepto"],
+                    
+                    
+                    "cod_forma_pago" => trim($_POST["cod_forma_pago"]),
+                    "nom_forma_pago" => trim($_POST["nom_forma_pago"]),
+                    "sts_defecto" => $_POST["sts_defecto"],
+                    "cod_sri" => $_POST["cod_sri"],
+                    "sts_forma_pago" => $_POST["sts_forma_pago"],
                     "cod_usuario" => $_SESSION["admin"]->cod_usuario,
                     "fec_actualiza" => date("d-m-Y H:i:s"),
-                    "cod_sri" => "sri1",
+                    "sts_retencion" => $_POST["sts_retencion"],
     
                 );
-                
 
          
-                $url = "srja_concepto?token=".$_SESSION["admin"]->token_usuario;
+                $url = "gen_forma_pago?token=".$_SESSION["admin"]->token_usuario;
                 $method = "POST";
                 $fields = $data;
                 $response = CurlController::request($url,$method,$fields);
@@ -69,7 +60,7 @@ class ConceptosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Registro con exito", "conceptos");
+                        fncSweetAlert("success", "Registro con exito", "formadepago");
 
                     </script>';
                 }else{
@@ -100,8 +91,8 @@ class ConceptosController{
     }
 
 
-    public function conceptos(){
-        $url = "srja_concepto";
+    public function formadepago(){
+        $url = "gen_forma_pago";
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
@@ -115,7 +106,7 @@ class ConceptosController{
             
           if($id == $_POST["idAdmin"]){
 
-            $url = "srja_concepto?linkTo=cod_empresa,cod_concepto&equalTo=".$_SESSION['admin']->cod_empresa.",".$id;
+            $url = "gen_forma_pago?linkTo=cod_forma_pago&equalTo=".$id;
             
             $method = "GET";
             $fields = array();
@@ -124,28 +115,22 @@ class ConceptosController{
            
             if($response->status == 200){
 
-                if(preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]))
+                if(preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["nom_forma_pago"]))
     
                 {
                     
-                    if(isset($_POST["sts_facturacion"])){
-                        $_POST["sts_facturacion"] = "S";
+                    if(isset($_POST["sts_defecto"])){
+                        $_POST["sts_defecto"] = "A";
                     }else{
-                        $_POST["sts_facturacion"] = "N";
+                        $_POST["sts_defecto"] = "C";
                     }
     
-                    if(isset($_POST["sts_inventario"])){
-                        $_POST["sts_inventario"] = "A";
+                    if(isset($_POST["sts_forma_pago"])){
+                        $_POST["sts_forma_pago"] = "A";
                     }else{
-                        $_POST["sts_inventario"] = "C";
+                        $_POST["sts_forma_pago"] = "C";
                     }
     
-                    if(isset($_POST["sts_concepto"])){
-                        $_POST["sts_concepto"] = "A";
-                    }else{
-                        $_POST["sts_concepto"] = "C";
-                    }
-              
                         // // validar contraseña
                         // if(!empty($_POST["password"])){
                         //     $password = $_POST["password"];
@@ -156,20 +141,18 @@ class ConceptosController{
                         // agruamos la informaicon
 
                         $data =
-                            "txt_descripcion=".trim($_POST["txt_descripcion"]).
-                            "&sts_facturacion=".trim($_POST["sts_facturacion"]).
-                            "&sts_tipo_concepto=".trim($_POST["sts_tipo_concepto"]).
-                            "&sts_proceso=".trim($_POST["sts_proceso"]).
-                            "&sts_inventario=".trim($_POST["sts_inventario"]).
-                            "&sts_concepto=".trim($_POST["sts_concepto"]).
+                            "nom_forma_pago=".trim($_POST["nom_forma_pago"]).
+                            "&sts_defecto=".trim($_POST["sts_defecto"]).
+                            "&cod_sri=".trim($_POST["cod_sri"]).
+                            "&sts_forma_pago=".trim($_POST["sts_forma_pago"]).
                             "&cod_usuario=".$_SESSION["admin"]->cod_usuario.
                             "&fec_actualiza=".date("d-m-Y H:i:s").
-                            "&cod_sri="."sri1";
+                            "&sts_retencion=".trim($_POST["sts_retencion"]);
             
                     
                      
                 
-                    $url = "srja_concepto?id=".$id."&nameId=cod_concepto&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
+                    $url = "gen_forma_pago?id=".$id."&nameId=cod_forma_pago&token=".$_SESSION["admin"]->token_usuario;
          
                     $method = "PUT";
                     $fields = $data;
@@ -186,7 +169,7 @@ class ConceptosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Edicion con exito", "conceptos");
+                        fncSweetAlert("success", "Edicion con exito", "formadepago");
 
                     </script>';
                     }else{

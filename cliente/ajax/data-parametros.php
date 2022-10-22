@@ -1,5 +1,6 @@
 <?php
 require_once "../controllers/curl.controller.php";
+require_once "../controllers/template.controller.php";
 class DataTableController
 {
     public function data()
@@ -15,7 +16,7 @@ class DataTableController
             $length = $_POST["length"];
            
             //total de registros de la data
-            $url = "gen_control?select=cod_parametro&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=0&endAt=1&orderAt=cod_parametro";
+            $url = "gen_control?select=cod_parametro&linkTo=cod_empresa&equalTo=".$_GET["code"];
             
             $method = "GET";
             $fields = array();
@@ -26,8 +27,9 @@ class DataTableController
                 echo '{"data":[]}';
                 return;
             }
-            $select = "cod_parametro,nom_parametro,val_parametro";
+            //$select = "cod_empresa,cod_parametro,nom_parametro,val_parametro";
 
+            $var= array();
             //busquedad de datos
             if(!empty($_POST['search']['value'])){
 
@@ -37,18 +39,22 @@ class DataTableController
                     $search = str_replace(" ","_",$_POST['search']['value']);
                     foreach ($linkTo as $key => $value) {
 
-                        $url = "gen_control?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+                        $url = "gen_control?select=*&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType;
                         $data = CurlController::request($url, $method, $fields)->result;
                         // echo '<pre>'; print_r($url); echo '</pre>'; 
                         
                         if($data == "Not Found"){
                             $data = array();
-                            $recordsFiltered = count($data);
+                            
                         
                         }else{
-                            $data = $data;
+                            foreach ($data as $key1 => $value1) {
+                                if ($value1->cod_empresa == $_GET["code"]) {
+                                 array_push($var,$value1);
+                                }
+                            }
+                            $data = array_slice($var,$start,$length);
                             $recordsFiltered = count($data);
-                            break;
                         }
                     }
                 }else{
@@ -57,7 +63,7 @@ class DataTableController
                 }
             }else{ 
             //seleccionar datos
-            $url = "gen_control?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+            $url = "gen_control?select=*&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa&linkTo=cod_empresa&equalTo=".$_GET["code"];
             $data = CurlController::request($url, $method, $fields)->result;
             // echo '<pre>'; print_r($data); echo '</pre>'; 
             // echo '<pre>'; print_r($url); echo '</pre>'; 
@@ -81,7 +87,20 @@ class DataTableController
                         $actions = "";
                         
                     }else{
-                        $actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
+                        //$actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
+                        $actions = "<a href='parametros/edit/" . base64_encode($value->cod_parametro . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+
+                        <i class='fas fa-pencil-alt'></i>
+
+                        </a> 
+                        
+                        <a class='btn btn-danger btn-sm rounded-circle removeItem' idItem=" . base64_encode($value->cod_parametro . "~" . $_GET["token"]) . " table='gen_control' column='cod_parametro' page='parametros' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
+
+                        <i class='fas fa-trash-alt'></i>
+
+                        </a>";
+
+                    $actions = TemplateController::htmlClean($actions);
                     }
                     $cod_parametro = $value->cod_parametro;
                     $nom_parametro = $value->nom_parametro;
