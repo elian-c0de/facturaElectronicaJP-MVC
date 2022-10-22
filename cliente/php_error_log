@@ -1295,3 +1295,53 @@ Stack trace:
 [22-Oct-2022 05:10:14 Europe/Berlin] PHP Warning:  Attempt to read property "cod_proyecto" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\proyectos\actions\edit.php on line 64
 [22-Oct-2022 05:10:14 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\proyectos\actions\edit.php on line 80
 [22-Oct-2022 05:10:14 Europe/Berlin] PHP Warning:  Attempt to read property "cod_proyecto" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\proyectos\actions\edit.php on line 80
+[22-Oct-2022 05:51:07 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "PerfilesController" not found in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\create.php:9
+Stack trace:
+#0 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\index.php(36): include()
+#1 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\template.php(163): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\template.controller.php(12): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\index.php(20): TemplateController->index()
+#4 {main}
+  thrown in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\create.php on line 9
+[22-Oct-2022 06:06:54 Europe/Berlin] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 16
+[22-Oct-2022 06:06:54 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 48
+[22-Oct-2022 06:06:54 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 48
+[22-Oct-2022 06:06:54 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 54
+[22-Oct-2022 06:06:54 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 54
+[22-Oct-2022 06:06:54 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 64
+[22-Oct-2022 06:06:54 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 64
+[22-Oct-2022 06:06:54 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 80
+[22-Oct-2022 06:06:54 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 80
+[22-Oct-2022 06:06:54 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 94
+[22-Oct-2022 06:06:54 Europe/Berlin] PHP Warning:  Attempt to read property "sts_local" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 94
+[22-Oct-2022 06:07:14 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "returns" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php:15
+Stack trace:
+#0 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\index.php(36): include()
+#1 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\template.php(163): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\template.controller.php(12): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\index.php(20): TemplateController->index()
+#4 {main}
+  thrown in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 15
+[22-Oct-2022 06:08:48 Europe/Berlin] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 17
+[22-Oct-2022 06:08:48 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 49
+[22-Oct-2022 06:08:48 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 49
+[22-Oct-2022 06:08:48 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 55
+[22-Oct-2022 06:08:48 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 55
+[22-Oct-2022 06:08:48 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 65
+[22-Oct-2022 06:08:48 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 65
+[22-Oct-2022 06:08:48 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 81
+[22-Oct-2022 06:08:48 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 81
+[22-Oct-2022 06:08:48 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 95
+[22-Oct-2022 06:08:48 Europe/Berlin] PHP Warning:  Attempt to read property "sts_local" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 95
+[22-Oct-2022 06:08:58 Europe/Berlin] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 17
+[22-Oct-2022 06:08:58 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 49
+[22-Oct-2022 06:08:58 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 49
+[22-Oct-2022 06:08:58 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 55
+[22-Oct-2022 06:08:58 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 55
+[22-Oct-2022 06:08:58 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 65
+[22-Oct-2022 06:08:58 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 65
+[22-Oct-2022 06:08:58 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 81
+[22-Oct-2022 06:08:58 Europe/Berlin] PHP Warning:  Attempt to read property "cod_perfil" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 81
+[22-Oct-2022 06:08:58 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 95
+[22-Oct-2022 06:08:58 Europe/Berlin] PHP Warning:  Attempt to read property "sts_local" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\perfiles\actions\edit.php on line 95
+[22-Oct-2022 06:09:31 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "}" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\proyectos\actions\edit.php on line 32

@@ -12,6 +12,7 @@ if(isset($routesArray1[5])){
     
         $response = CurlController::request($url,$method,$fields);
         // echo '<pre>'; print_r($response); echo '</pre>';
+        // return;
 
     if($response->status == 200){
         $admin = $response->result[0];
@@ -27,7 +28,7 @@ if(isset($routesArray1[5])){
         echo '<script>
     
         window.location = "proyectos";
-        </script>';
+        </script>';s
     }
 
 
