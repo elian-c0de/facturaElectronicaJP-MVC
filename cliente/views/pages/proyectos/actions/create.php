@@ -1,55 +1,57 @@
 <div class="card card-dark card-outline">
-    <form method="POST" class="needs-validation" novalidate>
-        <div class="card-header">
-            <div class="col-md-8 offset-md-2">
 
-                <div class="form-group mt-2">
-                    <label for="">cod_empresa</label>
-                    <input 
-                    type="text" 
-                    class="form-control"
-                    pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ]{1,}"
-                    required>
-                    <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Por favor, rellene este campo</div>
-                </div>
+<!-- INICIO DE FORMULARIO PROYECTOS -->
+<form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
 
-                <div class="form-group mt-2">
-                    <label for="">cod_caja</label>
-                    <input 
-                    type="text" 
-                    class="form-control"
-                    require="[A-Za-z0-9]{1,}">
-                </div>
+    <div class="card-header">
+             <?php 
+                require_once("controllers/proyectos.controllers.php");
+                $create = new ProyectosController();
+                $create ->create();
+                ?>
+        <div class="col-md-8 offset-md-2"> 
 
-                <div class="form-group mt-2">
-                    <label for="">txt_descripcion</label>
-                    <input 
-                    type="text" 
-                    class="form-control">
+            <!-- NUMERO DE CODIGO PROYECTO -->
+            <div class="form-group mt-2">
+                <label>Codigo de Proyecto</label>
+                <input 
+                type="text"
+                name="cod_proyecto"
+                class="form-control"
+                onchange="validateRepeat(event,'cod_proyecto','ecmp_proyecto','cod_proyecto', <?php echo $_SESSION['admin']->cod_empresa?>)"
+                pattern="[a-zA-Z0-9]{1,3}"
+                required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback"> Please fill out this field.</div>
+            </div>
 
-                </div>
-
-                <div class="form-group mt-2">
-                    <label for="">cod_usuario</label>
-                    <input type="text" class="form-control">
-                </div>
-
-                <div class="form-group mt-2">
-                    <label for="">fec_actualiza</label>
-                    <input type="text" class="form-control">
-                </div>
+            <!-- NOMBRE -->
+            <div class="form-group mt-2">
+                <label for="">Nombre</label>
+                <input 
+                type="text" 
+                class="form-control"
+                name="nom_proyecto"
+                onchange="validateJS(event,'txt_descripcion_inventario')"
+                pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}"
+                required
+                >
+                <div class="valid-feedback">Valid</div>
+                <div class="invalid-feedback"> Please fill out this field</div>
             </div>
         </div>
+    </div>
 
-        <div class="card-header">
-            <div class="col-md-8 offset-md-2">
-                <div class="form-group mt-3">
-                    <a href="proyectos" class="btn btn-danger border text-left">Cancelar</a>
-                    <button type="submit" class="btn btn-primary float-lg-right">Guardar</button>
-                </div>
+    <!-- BOTONES DE REGRESAR Y GUARDAR -->
+    <div class="card-header">
+        <div class="col-md-8 offset-md-2">
+            <div class="form-group mt-3">
+                <a href="proyectos" class="btn btn-light border text-left">Back</a>
+                <button type="submit" class="btn bg-dark float-lg-right">Save</button>
             </div>
         </div>
-    </form>
+    </div>
+</form>
+<!-- FIN DE FORMULARIO PROYECTOS -->
 
 </div>

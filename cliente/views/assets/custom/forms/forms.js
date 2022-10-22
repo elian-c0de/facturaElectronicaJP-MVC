@@ -114,6 +114,7 @@ function validateJS(event, type) {
   if(type == "num_telefono_cliente") pattern = /^[-\\(\\)\\0-9 ]{1,15}$/;
   if(type == "cod_establecimiento") pattern = /^[a-zA-Z0-9]{1,3}$/;
   if(type == "cod_caja") pattern = /^[0-9]{1,2}$/;
+  if(type == "cod_proyecto") pattern = /^[a-zA-Z0-9]{1,5}$/;
 
 
   if (!pattern.test(event.target.value)) {

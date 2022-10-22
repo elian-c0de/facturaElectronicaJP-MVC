@@ -1,8 +1,8 @@
 <?php 
     //configuracion de acceso a la base de datos
-    define('DB_HOST', 'CARLOS');
+    define('DB_HOST', 'ELIANGL753VE');
     define('DB_USUARIO', 'sa');
-    define('DB_PASSWORD', 'admin123');
+    define('DB_PASSWORD', 'sa1308');
     define('DB_NOMBRE', 'PECMP_JPEREZ');
 
     //Servidor Elian: ELIANGL753VE
