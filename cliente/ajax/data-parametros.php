@@ -94,7 +94,7 @@ class DataTableController
 
                         </a> 
                         
-                        <a class='btn btn-danger btn-sm rounded-circle removeItem' idItem=" . base64_encode($value->cod_parametro . "~" . $_GET["token"]) . " table='gen_control' column='cod_parametro' page='parametros' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
+                        <a class='btn btn-danger btn-sm rounded-circle removeItem' idItem=" . base64_encode(trim($value->cod_parametro) . "~" . $_GET["token"]) . " table='gen_control' column='cod_parametro' page='parametros' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
 
                         <i class='fas fa-trash-alt'></i>
 
