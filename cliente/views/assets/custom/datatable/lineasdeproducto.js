@@ -8,12 +8,11 @@ function execDataTable (text) {
        "processing": true,
        "serverSide": true,
        "ajax":{
-         "url":"ajax/data-lineasdeproducto.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val(),
+         "url":"ajax/data-lineasdeproducto.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val()+"&token="+localStorage.getItem("token_user")+"&code="+localStorage.getItem("cod"),
          "type":"POST"
        },
        "columns":[
          {"data":"cod_linea"},
-         {"data":"cod_sublinea"},
          {"data":"txt_descripcion"},
          {"data":"actions"}
        ],
@@ -74,3 +73,53 @@ function execDataTable (text) {
        window.location = "lineasdeproducto?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
      }
    )
+
+   //Elinianr registro
+$(document).on("click",".removeItem2ids", function(){
+  var idItem = $(this).attr("idItem");
+  var table = $(this).attr("table");
+  var cod_empresa = $(this).attr("cod_empresa");
+  var column = $(this).attr("column");
+  var column1 = $(this).attr("column1");
+  var page = $(this).attr("page");
+
+  fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
+
+    if(resp){
+      var data = new FormData();
+      data.append("idItem",idItem);
+      data.append("table",table);
+      data.append("cod_empresa",cod_empresa);
+      data.append("column",column);
+      data.append("column1",column1);
+      data.append("token",localStorage.getItem("token_user"))
+
+      $.ajax({
+        url: "ajax/ajax-delete2ids.php",
+        method: "POST",
+        data: data,
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response){
+          if(response == 200){
+            fncSweetAlert(
+              "success",
+              "el registro a sido borrado correctamente",
+              page
+            );
+          }else{
+            fncNotie(3,"error deleating the record")
+          }
+        }
+      })
+
+
+    }else{
+      location.reload();
+    }
+
+
+  })
+
+})

@@ -3,7 +3,7 @@ require_once "library/Base.php";
 include_once "controllers/put.controller.php";
 
 //PARA UN SOLO VALOR
-if (isset($_GET["id"]) && isset($_GET["nameId"]) && !isset($_GET["id2"]) && !isset($_GET["nameId2"])) {
+if (isset($_GET["id"]) && isset($_GET["nameId"]) && !isset($_GET["id2"]) && !isset($_GET["nameId2"]) && !isset($_GET["id3"]) && !isset($_GET["nameId3"]) ) {
 
     $data = array();
 
@@ -89,7 +89,7 @@ if (isset($_GET["id"]) && isset($_GET["nameId"]) && !isset($_GET["id2"]) && !iss
 
 
 //PARA DOS VALORES
-if (isset($_GET["id"]) && isset($_GET["nameId"]) && isset($_GET["id2"]) && isset($_GET["nameId2"])) {
+if (isset($_GET["id"]) && isset($_GET["nameId"]) && isset($_GET["id2"]) && isset($_GET["nameId2"]) && !isset($_GET["id3"]) && !isset($_GET["nameId3"])) {
     
     $data = array();
  
@@ -260,8 +260,3 @@ if (isset($_GET["id"]) && isset($_GET["nameId"]) && isset($_GET["id2"]) && isset
         return;
     }
 }
-
-
-
-
-

@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-      <h1><i class=" fa-solid fa-cart-shopping mr-1"></i>Tipos de Precio</h1>
+      <h1><i class=" fa-solid fa-cart-shopping mr-1"></i>Sublinea de Producto</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-left">
@@ -13,11 +13,11 @@
           <?php 
           if (isset($routesArray1[4])) {
             if($routesArray1[4] == "create" || $routesArray1[4] == "edit"){
-              echo '<li class="breadcrumb-item"><a href="tipoprecio">Tipos de Precio</a></li>';
+              echo '<li class="breadcrumb-item"><a href="sublineaproducto">Sublinea de Producto</a></li>';
               echo '<li class="breadcrumb-item active">'.$routesArray1[4].'</li>';
             }
           }else{
-            echo '<li class="breadcrumb-item active">Tipos de Precio</li>';
+            echo '<li class="breadcrumb-item active">Sublinea de Producto</li>';
           }
       ?>
         </ol>

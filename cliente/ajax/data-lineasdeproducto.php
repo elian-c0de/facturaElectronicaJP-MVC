@@ -1,5 +1,6 @@
 <?php
 require_once "../controllers/curl.controller.php";
+require_once "../controllers/template.controller.php";
 class DataTableController
 {
     public function data()
@@ -15,37 +16,42 @@ class DataTableController
             $length = $_POST["length"];
            
             //total de registros de la data
-            $url = "ecmp_linea?select=cod_linea&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=0&endAt=1&orderAt=cod_linea";
+            $url = "ecmp_linea?select=*&linkTo=cod_empresa,cod_sublinea&equalTo=".$_GET["code"].",000";
             
             $method = "GET";
             $fields = array();
             $response = CurlController::request($url, $method, $fields);
+
             if($response->status == 200){
                 $totalData = $response->total;
             }else{
                 echo '{"data":[]}';
                 return;
             }
-            $select = "cod_linea,cod_sublinea,txt_descripcion";
-
+            $hola = array();
             //busquedad de datos
             if(!empty($_POST['search']['value'])){
 
                 if(preg_match('/^[0-9A-Za-zñÑáéíóú ]{1,}$/',$_POST['search']['value'])){
 
-                    $linkTo = ["cod_linea","txt_descripcion","fec_actualiza"];
+                    $linkTo = ["cod_linea","txt_descripcion"];
                     $search = str_replace(" ","_",$_POST['search']['value']);
                     foreach ($linkTo as $key => $value) {
 
-                        $url = "ecmp_linea?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+                        $url = "ecmp_linea?select=*&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType;
                         $data = CurlController::request($url, $method, $fields)->result;
-                        // echo '<pre>'; print_r($url); echo '</pre>'; 
                         
                         if($data == "Not Found"){
                             $data = array();
                             $recordsFiltered = count($data);
                         
                         }else{
+                            foreach ($data as $key1 => $value1) {
+                                if ($value1->cod_empresa == $_GET["code"] && $value1->cod_sublinea == 000) {
+                                 array_push($hola,$value1);
+                                }
+                             }
+                            $data = array_slice($hola,$start,$length);
                             $data = $data;
                             $recordsFiltered = count($data);
                             break;
@@ -57,10 +63,8 @@ class DataTableController
                 }
             }else{ 
             //seleccionar datos
-            $url = "ecmp_linea?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+            $url = "ecmp_linea?select=*&orderBy=".$orderBy."&orderMode=".$orderType."&linkTo=cod_empresa,cod_sublinea&equalTo=".$_GET["code"].",000&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
             $data = CurlController::request($url, $method, $fields)->result;
-            // echo '<pre>'; print_r($data); echo '</pre>'; 
-            // echo '<pre>'; print_r($url); echo '</pre>'; 
             $recordsFiltered = $totalData;
         }
         if(empty($data)){
@@ -81,7 +85,19 @@ class DataTableController
                         $actions = "";
                         
                     }else{
-                        $actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
+                        $actions = "<a href='lineasdeproducto/edit/" . base64_encode($value->cod_linea . "~" . $value->cod_sublinea . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+
+                            <i class='fas fa-pencil-alt'></i>
+
+                            </a> 
+                            
+                            <a class='btn btn-danger btn-sm rounded-circle removeItem2ids' idItem=" .  base64_encode($value->cod_linea . "~" . $value->cod_sublinea . "~" . $_GET["token"]) . " table='ecmp_linea' column='cod_linea' column1='cod_sublinea' page='lineasdeproducto' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
+
+                            <i class='fas fa-trash-alt'></i>
+
+                            </a>";
+
+                        $actions = TemplateController::htmlClean($actions);
                     }
                     $cod_linea = $value->cod_linea;
                     $cod_sublinea = $value->cod_sublinea;

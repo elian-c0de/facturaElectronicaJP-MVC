@@ -1144,21 +1144,3 @@ Stack trace:
 [21-Oct-2022 17:41:52 Europe/Berlin] PHP Warning:  Undefined array key "sts_bodega" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\establecimientos.controllers.php on line 162
 [21-Oct-2022 17:47:14 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "=>" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\establecimientos.controllers.php on line 161
 [21-Oct-2022 17:47:27 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "=>" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\establecimientos.controllers.php on line 161
-[21-Oct-2022 18:42:18 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "PuntosemisionController" not found in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\puntosEmision\actions\create.php:10
-Stack trace:
-#0 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\puntosEmision\index.php(36): include()
-#1 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\template.php(162): include('C:\\xampp\\htdocs...')
-#2 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\template.controller.php(12): include('C:\\xampp\\htdocs...')
-#3 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\index.php(20): TemplateController->index()
-#4 {main}
-  thrown in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\puntosEmision\actions\create.php on line 10
-[21-Oct-2022 19:06:20 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "CajasController" not found in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\cajas\actions\create.php:9
-Stack trace:
-#0 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\cajas\index.php(36): include()
-#1 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\template.php(162): include('C:\\xampp\\htdocs...')
-#2 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\template.controller.php(12): include('C:\\xampp\\htdocs...')
-#3 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\index.php(20): TemplateController->index()
-#4 {main}
-  thrown in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\cajas\actions\create.php on line 9
-[22-Oct-2022 01:04:13 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
-[21-Oct-2022 18:19:08 America/Guayaquil] PHP Warning:  Undefined array key "txt_direccion" in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\cajas.controllers.php on line 31
