@@ -1,7 +1,6 @@
-
 <div class="card card-dark card-outline">
 
-<!-- INICIO DE FORMULARIO CAJAS -->
+<!-- INICIO DE FORMULARIO ESTABLECIMIENTOS -->
 <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
 
     <div class="card-header">
