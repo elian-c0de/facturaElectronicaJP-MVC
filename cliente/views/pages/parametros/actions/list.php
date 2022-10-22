@@ -1,18 +1,4 @@
-<?php
-if(isset($_GET["start"]) && isset($_GET["end"])){
-  $between1 = $_GET["start"];
-  $between2 = $_GET["end"];
-}else{
-  // d-m-Y  Paladines
-  // m-d-Y  Ramirez
-  $between1 = date("d-m-Y",strtotime("-29 day", strtotime(date("d-m-Y"))));
 
-  $between2 = date("d-m-Y");
-}
-?>
-
-<input type="hidden" id="between1" value="<?php echo $between1 ?>">
-<input type="hidden" id="between2" value="<?php echo $between2 ?>">
 <div class="card">
 <div class="card-header">
 

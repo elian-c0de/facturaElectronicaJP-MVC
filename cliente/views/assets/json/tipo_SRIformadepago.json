@@ -1,0 +1,36 @@
+[
+    {
+    "name": "SIN UTILIZACIÓN DEL SISTEMA FINANCIERO",
+    "code": "01"
+    },
+    {
+    "name": "COMPENSACIÓN DE DEUDAS",
+    "code": "15"
+    },
+    {
+    "name": "TARJETA DE DÉBITO",
+    "code": "16"
+    },
+    {
+    "name": "DINERO ELECTRÓNICO",
+    "code": "17"
+    },
+    {
+    "name": "TARJETA PREPAGO",
+    "code": "18"
+    },
+    {
+    "name": "TARJETA DE CRÉDITO",
+    "code": "19"
+    },
+    {
+    "name": "OTROS CON UTILIZACIÓN DEL SISTEMA FINANCIERO",
+    "code": "20"
+    },
+    {
+    "name": "ENDOSO DE TÍTULOS",
+    "code": "21"
+    }
+    
+
+]

@@ -1,5 +1,6 @@
 <?php
 require_once "../controllers/curl.controller.php";
+require_once "../controllers/template.controller.php";
 class DataTableController
 {
     public function data()
@@ -81,7 +82,20 @@ class DataTableController
                         $actions = "";
                         
                     }else{
-                        $actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
+                        //$actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
+                        $actions = "<a href='formadepago/edit/" . base64_encode($value->cod_forma_pago . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+
+                        <i class='fas fa-pencil-alt'></i>
+
+                        </a> 
+                        
+                        <a class='btn btn-danger btn-sm rounded-circle removeItem1' idItem=" . base64_encode($value->cod_forma_pago . "~" . $_GET["token"]) . " table='gen_forma_pago' column='cod_forma_pago' page='formadepago'>
+
+                        <i class='fas fa-trash-alt'></i>
+
+                        </a>";
+
+                    $actions = TemplateController::htmlClean($actions);
                     }
                     $cod_forma_pago = $value->cod_forma_pago;
                     $nom_forma_pago = $value->nom_forma_pago;

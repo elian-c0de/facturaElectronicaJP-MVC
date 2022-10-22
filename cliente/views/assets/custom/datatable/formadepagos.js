@@ -8,7 +8,7 @@ function execDataTable (text) {
        "processing": true,
        "serverSide": true,
        "ajax":{
-         "url":"ajax/data-formadepago.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val(),
+         "url":"ajax/data-formadepago.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val()+"&token="+localStorage.getItem("token_user")+"&code="+localStorage.getItem("cod"),
          "type":"POST"
        },
        "columns":[
@@ -78,3 +78,47 @@ function execDataTable (text) {
 //        window.location = "formadepago?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
 //      }
 //    )
+
+//Elinianr registro
+$(document).on("click",".removeItem1", function(){
+    var idItem = $(this).attr("idItem");
+    var table = $(this).attr("table");
+    var column = $(this).attr("column");
+    var page = $(this).attr("page");
+  
+    fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
+  
+      if(resp){
+        var data = new FormData();
+        data.append("idItem",idItem);
+        data.append("table",table);
+        data.append("column",column);
+        data.append("token",localStorage.getItem("token_user"))
+  
+        $.ajax({
+          url: "ajax/ajax-delete2.php",
+          method: "POST",
+          data: data,
+          contentType: false,
+          cache: false,
+          processData: false,
+          success: function(response){
+            if(response == 200){
+              fncSweetAlert(
+                "success",
+                "el registro a sido borrado correctamente",
+                page
+              );
+            }else{
+              fncNotie(3,"error deleating the record")
+            }
+          }
+        })
+  
+  
+      }
+  
+  
+    })
+  
+  })
