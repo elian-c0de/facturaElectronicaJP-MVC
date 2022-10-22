@@ -23,6 +23,14 @@ class DeleteController extends Controlador{
 
     }
 
+    
+    public function deleteData3ids($table,$id,$nameId,$id2,$nameId2,$id3,$nameId3){
+        $response = $this->instanciaModelo->deleteData3ids($table,$id,$nameId,$id2,$nameId2,$id3,$nameId3);
+        $return = new DeleteController();
+        $return -> fncResponse($response);
+
+    }
+
     public function fncResponse($response){
 
         if(!empty($response)){

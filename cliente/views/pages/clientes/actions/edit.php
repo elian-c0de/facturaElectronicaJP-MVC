@@ -11,7 +11,7 @@ if(isset($routesArray1[5])){
         $fields = array();
     
         $response = CurlController::request($url,$method,$fields);
-        echo '<pre>'; print_r($response); echo '</pre>';
+        // echo '<pre>'; print_r($response); echo '</pre>';
 
     if($response->status == 200){
         $admin = $response->result[0];

@@ -2,16 +2,17 @@
 require_once "library/Base.php";
 include_once "controllers/delete.controller.php";
 
-
-
-if(isset($_GET["id"]) && isset($_GET["nameId"]) && !isset($_GET["id2"]) && !isset($_GET["nameId2"]) ){
+if(isset($_GET["id"]) && isset($_GET["nameId"]) && isset($_GET["id2"]) && isset($_GET["nameId2"]) && !isset($_GET["id3"]) && !isset($_GET["nameId3"])  ){
    
+    
+
+  
+    $columns = array($_GET["nameId"], $_GET["nameId2"]);
+    
+  
 
     
 
-    $columns = array($_GET["nameId"]);
-
-  
 
     $this->db = new Base;
 
@@ -26,7 +27,6 @@ if(isset($_GET["id"]) && isset($_GET["nameId"]) && !isset($_GET["id2"]) && !isse
         return;
     }
 
-
     if (isset($_GET["token"])) {
         $validate = Base::tokenValidate($_GET["token"]);
 
@@ -34,9 +34,11 @@ if(isset($_GET["id"]) && isset($_GET["nameId"]) && !isset($_GET["id2"]) && !isse
         //cuando el token es valido
         if ($validate == "ok") {
 
+
     //solictamos respuesta del controlador para crear datos en cualquier tabla
-    $response = new deleteController();
-    $response->deleteData($table,$_GET["id"],$_GET["nameId"]);
+    $response = new DeleteController();
+    $response->deleteData2ids($table,$_GET["id"],$_GET["nameId"],$_GET["id2"],$_GET["nameId2"]);
+    
         }
 
         // error cuando el token a expirado
@@ -76,22 +78,16 @@ if(isset($_GET["id"]) && isset($_GET["nameId"]) && !isset($_GET["id2"]) && !isse
     }
 
     
-
-    
-    
 }
 
 
 
-
-
-
-if(isset($_GET["id"]) && isset($_GET["nameId"]) && isset($_GET["id2"]) && isset($_GET["nameId2"]) ){
+if(isset($_GET["id"]) && isset($_GET["nameId"]) && isset($_GET["id2"]) && isset($_GET["nameId2"]) && isset($_GET["id3"]) && isset($_GET["nameId3"]) ){
    
     
 
   
-    $columns = array($_GET["nameId"], $_GET["nameId2"]);
+    $columns = array($_GET["nameId"], $_GET["nameId2"],$_GET["nameId3"]);
     
   
 
@@ -121,7 +117,7 @@ if(isset($_GET["id"]) && isset($_GET["nameId"]) && isset($_GET["id2"]) && isset(
 
     //solictamos respuesta del controlador para crear datos en cualquier tabla
     $response = new DeleteController();
-    $response->deleteData2ids($table,$_GET["id"],$_GET["nameId"],$_GET["id2"],$_GET["nameId2"]);
+    $response->deleteData3ids($table,$_GET["id"],$_GET["nameId"],$_GET["id2"],$_GET["nameId2"],$_GET["id3"],$_GET["nameId3"]);
     
         }
 

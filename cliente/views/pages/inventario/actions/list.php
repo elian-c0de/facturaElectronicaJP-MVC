@@ -23,7 +23,11 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
 
     <!-- BOTONES SUPERIORES PARA CREAR Y HACER OTRAS COSAS -->
     <h3 class="card-title">
-      <a class="btn bg-blue btn-small" href="clientes/create">Crear</a>
+      <a class="btn bg-blue btn-small" href="inventario/create">Crear</a>
+      <a class="btn bg-block btn-outline-primary btn-small ml-5" href="inventario">Inventario</a>
+      <a class="btn bg-block btn-outline-primary btn-small" href="itemsxestablecimiento">Items x Establecimiento</a>
+
+      
 
     </h3>
 
@@ -65,7 +69,7 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
           <th>Linea / Sublinea</th>
           <th>Marca</th>
           <th>Estado</th>
-          <th>actions</th>
+          
         </tr>
       </thead>
     </table>

@@ -17,7 +17,7 @@ class DataTableController
             $length = $_POST["length"];
            
             //total de registros de la data
-            $url = "gen_local?select=cod_establecimiento&linkTo=cod_empresa&equalTo=".$_GET["code"];
+            $url = "srja_caja?select=cod_caja&linkTo=cod_empresa&equalTo=".$_GET["code"];
             
             $method = "GET";
             $fields = array();
@@ -35,11 +35,11 @@ class DataTableController
 
                 if(preg_match('/^[0-9A-Za-zñÑáéíóú ]{1,}$/',$_POST['search']['value'])){
 
-                    $linkTo = ["cod_establecimiento","txt_descripcion","txt_direccion","fec_actualiza"];
+                    $linkTo = ["cod_caja","txt_descripcion"];
                     $search = str_replace(" ","_",$_POST['search']['value']);
                     foreach ($linkTo as $key => $value) {
 
-                        $url = "gen_local?select=*&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType;
+                        $url = "srja_caja?select=*&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType;
                         $data = CurlController::request($url, $method, $fields)->result;
                         // echo '<pre>'; print_r($url); echo '</pre>'; 
                         
@@ -62,7 +62,7 @@ class DataTableController
                 }
             }else{ 
             //seleccionar datos
-            $url = "gen_local?select=*&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa&linkTo=cod_empresa&equalTo=".$_GET["code"];
+            $url = "srja_caja?select=*&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa&linkTo=cod_empresa&equalTo=".$_GET["code"];
             $data = CurlController::request($url, $method, $fields)->result;
             // echo '<pre>'; print_r($data); echo '</pre>'; 
             // echo '<pre>'; print_r($url); echo '</pre>'; 
@@ -87,13 +87,13 @@ class DataTableController
                         
                     }else{
                         // $actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
-                        $actions = "<a href='establecimientos/edit/" . base64_encode($value->cod_establecimiento . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+                        $actions = "<a href='cajas/edit/" . base64_encode($value->cod_caja . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
 
                         <i class='fas fa-pencil-alt'></i>
 
                         </a> 
                         
-                        <a class='btn btn-danger btn-sm rounded-circle removeItem' idItem=" . base64_encode($value->cod_establecimiento . "~" . $_GET["token"]) . " table='gen_local' column='cod_establecimiento' page='establecimientos' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
+                        <a class='btn btn-danger btn-sm rounded-circle removeItem' idItem=" . base64_encode($value->cod_caja . "~" . $_GET["token"]) . " table='srja_caja' column='cod_caja' page='cajas' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
 
                         <i class='fas fa-trash-alt'></i>
 
@@ -102,18 +102,12 @@ class DataTableController
                     $actions = TemplateController::htmlClean($actions);
 
                     }
-                    $cod_establecimiento = $value->cod_establecimiento;
+                    $cod_caja = $value->cod_caja;
                     $txt_descripcion = $value->txt_descripcion;
-                    $txt_direccion = $value->txt_direccion;
-                    $sts_matriz = $value->sts_matriz;
-                    $sts_local = $value->sts_local;
 
                             $dataJson.='{
-                        "cod_establecimiento":"'.$cod_establecimiento.'",
+                        "cod_caja":"'.$cod_caja.'",
                         "txt_descripcion":"'.$txt_descripcion.'",
-                        "txt_direccion":"'.$txt_direccion.'",
-                        "sts_matriz":"'.$sts_matriz.'",
-                        "sts_local":"'.$sts_local.'",
                         "actions":"'.$actions.'"
                     },';
                 }
