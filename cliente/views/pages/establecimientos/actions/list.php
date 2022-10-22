@@ -10,9 +10,9 @@
     </h3>
       <div class="card-tools">
         <div class="d-flex">
-        <div class="d-flex mr-2">
-          <span class="mr-3">Acciones:</span><input type="checkbox" onchange="reportActive(event);" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
-        </div>
+          <div class="d-flex mr-2">
+            <span class="mr-3">Acciones:</span><input type="checkbox" onchange="reportActive(event);" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+          </div>
         </div>
       </div>
   </div>
@@ -26,7 +26,7 @@
           <th>Direccion</th>
           <th>Matriz</th>
           <th>Estado</th>
-          <th>Editar/Eliminar</th>
+          <!-- <th>Editar/Eliminar</th> -->
         </tr>
       </thead>
     </table>
