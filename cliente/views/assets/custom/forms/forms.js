@@ -134,7 +134,9 @@ function validateJS(event, type) {
   if(type == "cod_proyecto") pattern = /^[a-zA-Z0-9]{1,5}$/;
   if(type == "cod_perfil") pattern = /^[a-zA-Z0-9]{1,6}$/;
   if(type == "nom_perfil") pattern = /^[a-zA-Z0-9]{1,50}$/;
-
+  if(type == "cod_rete") pattern = /^[a-zA-Z1-9]{1,5}$/;
+  if(type == "descrip_formapag") pattern = /^[-//%0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
+  if(type == "por_reten") pattern = /^[0-9]{1,3}([.][0-9]{1,2})?$/
 
 
   if (!pattern.test(event.target.value)) {
