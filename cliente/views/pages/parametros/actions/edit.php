@@ -1,16 +1,22 @@
 <?php
 
 if(isset($routesArray1[5])){
-    // echo '<pre>'; print_r($routesArray1[5]); echo '</pre>';
+ 
     $security = explode("~",base64_decode($routesArray1[5]));
 
-    if($security[1] == $_SESSION["admin"]->token_usuario){
 
-        $url = "gen_control?linkTo=cod_empresa,cod_parametro&equalTo=".$_SESSION['admin']->cod_empresa.",".$security[0];
+    if($security[1] == $_SESSION["admin"]->token_usuario){
+     
+
+        $url = "gen_control?linkTo=cod_empresa,cod_parametro&equalTo=".$_SESSION['admin']->cod_empresa.",".trim($security[0]);
+
         $method = "GET";
         $fields = array();
+
     
         $response = CurlController::request($url,$method,$fields);
+        
+        
         //Cntrl+shift+Q
         //echo '<pre>'; print_r($response); echo '</pre>';
         
@@ -46,12 +52,12 @@ if(isset($routesArray1[5])){
 
 <!-- INICIO DE FORMULARIO CAJAS -->
     <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
-    <input type="hidden" value="<?php echo $admin->cod_parametro?>" name="idAdmin"> 
+    <input type="hidden" value="<?php echo trim($admin->cod_parametro)?>" name="idAdmin"> 
         <div class="card-header">
             <?php 
                 require_once("controllers/parametros.controllers.php");
                 $create = new ParametrosController();
-                $create ->edit($admin->cod_parametro);
+                $create ->edit(trim($admin->cod_parametro));
                 ?>
             <div class="col-md-8 offset-md-2">
 
