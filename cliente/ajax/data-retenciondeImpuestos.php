@@ -90,7 +90,7 @@ class DataTableController
 
                         </a> 
                         
-                        <a class='btn btn-danger btn-sm rounded-circle removeItem1' idItem=" . base64_encode($value->cod_impuesto . "~" . $_GET["token"]) . " table='ecmp_impuesto' column='cod_impuesto' page='retenciondeImpuestos'>
+                        <a class='btn btn-danger btn-sm rounded-circle removeItem1' idItem=" . base64_encode($value->cod_impuesto . "~" . $value->cod_retencion . "~" . $_GET["token"]) . " table='ecmp_impuesto' column='cod_impuesto' column1='cod_retencion' page='retenciondeImpuestos'>
 
                         <i class='fas fa-trash-alt'></i>
 

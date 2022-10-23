@@ -64,6 +64,7 @@ $(document).on("click",".removeItem1", function(){
     var idItem = $(this).attr("idItem");
     var table = $(this).attr("table");
     var column = $(this).attr("column");
+    var column1 = $(this).attr("column1");
     var page = $(this).attr("page");
   
     fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
@@ -73,10 +74,11 @@ $(document).on("click",".removeItem1", function(){
         data.append("idItem",idItem);
         data.append("table",table);
         data.append("column",column);
+        data.append("column1",column1);
         data.append("token",localStorage.getItem("token_user"))
   
         $.ajax({
-          url: "ajax/ajax-delete2.php",
+          url: "ajax/ajax-delete3.php",
           method: "POST",
           data: data,
           contentType: false,
