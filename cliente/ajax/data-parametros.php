@@ -55,6 +55,7 @@ class DataTableController
                             }
                             $data = array_slice($var,$start,$length);
                             $recordsFiltered = count($data);
+                            break;
                         }
                     }
                 }else{

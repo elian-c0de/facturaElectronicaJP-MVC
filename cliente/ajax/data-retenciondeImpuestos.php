@@ -1,5 +1,6 @@
 <?php
 require_once "../controllers/curl.controller.php";
+require_once "../controllers/template.controller.php";
 class DataTableController
 {
     public function data()
@@ -15,7 +16,7 @@ class DataTableController
             $length = $_POST["length"];
            
             //total de registros de la data
-            $url = "ecmp_impuesto?select=cod_impuesto&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=0&endAt=1&orderAt=cod_impuesto";
+            $url = "ecmp_impuesto?select=*";
             
             $method = "GET";
             $fields = array();
@@ -26,7 +27,7 @@ class DataTableController
                 echo '{"data":[]}';
                 return;
             }
-            $select = "cod_impuesto,cod_retencion,txt_descripcion,por_retencion,sts_impuesto";
+            //$select = "cod_impuesto,cod_retencion,txt_descripcion,por_retencion,sts_impuesto";
 
             //busquedad de datos
             if(!empty($_POST['search']['value'])){
@@ -37,7 +38,7 @@ class DataTableController
                     $search = str_replace(" ","_",$_POST['search']['value']);
                     foreach ($linkTo as $key => $value) {
 
-                        $url = "ecmp_impuesto?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_retencion";
+                        $url = "ecmp_impuesto?select=*&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_retencion";
                         $data = CurlController::request($url, $method, $fields)->result;
                         // echo '<pre>'; print_r($url); echo '</pre>'; 
                         
@@ -57,13 +58,14 @@ class DataTableController
                 }
             }else{ 
             //seleccionar datos
-            $url = "ecmp_impuesto?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_retencion";
+            $url = "ecmp_impuesto?select=*&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_retencion";
+            
             $data = CurlController::request($url, $method, $fields)->result;
             // echo '<pre>'; print_r($data); echo '</pre>'; 
             // echo '<pre>'; print_r($url); echo '</pre>'; 
             $recordsFiltered = $totalData;
         }
-        if(empty($data)){
+        if(empty($data) || $data==null){
             echo '{"data": []}';
             return;
         }
@@ -81,7 +83,20 @@ class DataTableController
                         $actions = "";
                         
                     }else{
-                        $actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
+                        //$actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
+                        $actions = "<a href='retenciondeImpuestos/edit/" . base64_encode($value->cod_impuesto . "~" . $value->cod_retencion . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+                        
+                        <i class='fas fa-pencil-alt'></i>
+
+                        </a> 
+                        
+                        <a class='btn btn-danger btn-sm rounded-circle removeItem1' idItem=" . base64_encode($value->cod_impuesto . "~" . $value->cod_retencion . "~" . $_GET["token"]) . " table='ecmp_impuesto' column='cod_impuesto' column1='cod_retencion' page='retenciondeImpuestos'>
+
+                        <i class='fas fa-trash-alt'></i>
+
+                        </a>";
+
+                    $actions = TemplateController::htmlClean($actions);
                     }
                     $cod_impuesto = $value->cod_impuesto;
                     $cod_retencion = $value->cod_retencion;

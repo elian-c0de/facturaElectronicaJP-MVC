@@ -7,12 +7,12 @@ class ParametrosController{
 
         if(isset($_POST["cod_parametro"])){
             
-            // echo '<script>
+            echo '<script>
 
-            // matPreloader("on");
-            // fncSweetAlert("loading", "Loading...", "");
+            matPreloader("on");
+            fncSweetAlert("loading", "Loading...", "");
 
-            // </script>';
+            </script>';
 
             if(preg_match('/^[A-Z\\_]{1,10}$/',$_POST["cod_parametro"]) &&
             preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["nom_parametro"])&&
