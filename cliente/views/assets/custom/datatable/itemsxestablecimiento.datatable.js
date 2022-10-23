@@ -9,17 +9,20 @@ function execDataTable (text) {
    
       {"data":"cod_inventario"},
       {"data":"txt_descripcion"},
-      {"data":"precio"},
       {"data":"sts_control_saldo"},
       {"data":"sts_modifica_precio"},
-      {"data":"qtx_minima"},
-      {"data":"qtx_maxima"},
+      {"data":"qtx_minimo"},
+      {"data":"qtx_maximo"},
       {"data":"qtx_saldo"},
       {"data":"val_costo"},
       {"data":"val_descuento"},
       {"data":"por_descuento"},
       {"data":"sts_item_local"},
       {"data":"actions"}
+
+      
+    
+      
       
     ];
   
@@ -98,14 +101,15 @@ $('#daterange-btn').daterangepicker(
         'Last 7 Days' : [moment().subtract(6, 'days'), moment().add(1,'days')],
         'Last 30 Days': [moment().subtract(29, 'days'), moment().add(1,'days')],
         'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-        'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+        'Todo' : [moment().subtract(10,'year'),moment().add(1,'days')]
       },
       startDate: moment($("#between1").val()),
       endDate  : moment($("#between2").val())
     },
     function (start, end) {
       // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      window.location = "inventario?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
+      window.location = "itemsxestablecimiento?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
     }
   )
 

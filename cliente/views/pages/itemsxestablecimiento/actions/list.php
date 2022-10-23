@@ -31,19 +31,19 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
               <div class="form-group">
                     <label>Establecimiento</label>
                     <?php
-                    // require_once("controllers/establecimientos.controllers.php");
-                    // $create = new EstablecimientosController();
-                    // $tipo_precio = $create->linea_sublinea();
-                    // $tipo_precio = json_encode($tipo_precio);
-                    // $tipo_precio = json_decode($tipo_precio, true);
+                    require_once("controllers/establecimientos.controllers.php");
+                    $create = new EstablecimientosController();
+                    $tipo_precio = $create->establecimientos();
+                    $tipo_precio = json_encode($tipo_precio);
+                    $tipo_precio = json_decode($tipo_precio, true);
                     ?>
 
-                    <select class="form-control select2 changeCountry" name="cod_linea" required>
+                    <select class="form-control select2 changeCountry" name="cod_linea" id="establecimiento" onchange="reload()" required>
                         <option value>Seleccione Precio Aplicado</option>
                         <?php foreach ($tipo_precio as $key => $value) : ?>
-                            <option value="<?php echo $value["cod_linea"] ?>-<?php echo $value["cod_sublinea"] ?> ">
+                            <option value="<?php echo $value["cod_establecimiento"] ?>">
 
-                            <?php echo $value["cod_linea"] ?> <?php echo $value["cod_sublinea"] ?> <?php echo $value["txt_descripcion"] ?>
+                            <?php echo $value["txt_descripcion"] ?>
 
                             </option>
                         <?php endforeach ?>
@@ -79,20 +79,20 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
   <!-- /.card-header -->
   <!-- TABLA DONDE SE VAN A MOSTRAR LOS DATOS -->
   <div class="card-body">
-    <table id="inventarioTable" class="table table-bordered table-striped">
+    <table id="itemsxestablecimientoTable" class="table table-bordered table-striped">
       <thead>
         <tr>
           <th>Codigo</th>
-          <th>Codigo de barras</th>
           <th>Descripcion</th>
-          <th>IVA</th>
-          <th>Tipo</th>
-          <th>Existencia Total</th>
-          <th>V/costo</th>
-          <th>Linea / Sublinea</th>
-          <th>Marca</th>
+          <th>Controla Saldo</th>
+          <th>Modifica Precio</th>
+          <th>Minima Existencia</th>
+          <th>Maxima Existencia</th>
+          <th>Saldo</th>
+          <th>V/Costo</th>
+          <th>Valor Descuento</th>
+          <th>% Descuento</th>
           <th>Estado</th>
-          
         </tr>
       </thead>
     </table>
@@ -101,4 +101,4 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
 </div>
 
 
-<script src="views/assets/custom/datatable/inventario.datatable.js"></script>
+<script src="views/assets/custom/datatable/itemsxestablecimiento.datatable.js"></script>
