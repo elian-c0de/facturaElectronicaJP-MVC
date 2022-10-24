@@ -76,8 +76,8 @@ class LineasdeproductoController{
     }
 
 
-    public function tipoprecio(){
-        $url = "ecmp_linea";
+    public function getListaLinea(){
+        $url = "ecmp_linea?linkTo=cod_empresa,cod_sublinea&equalTo=".$_SESSION["admin"]->cod_empresa.",000";
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
