@@ -62,12 +62,9 @@ function validateRepeat1(event,type,table,columna) {
     }
   });
 }
-
-
 function validateRepeat(event,type,table,columna,id) {
 
-  
-   
+
     var data = new FormData();
     data.append("data", event.target.value);
     data.append("table", table);
@@ -91,6 +88,44 @@ function validateRepeat(event,type,table,columna,id) {
           }
         }
       });
+  
+  
+
+}
+
+
+function validateRepeatSublinea(event,type,table,columna,id) {
+
+    
+    if($("#linea").val() != ""){
+
+      var data = new FormData();
+      data.append("data", event.target.value);
+      data.append("table", table);
+      data.append("columna", columna);
+      data.append("id", id);
+      data.append("linea", $("#linea").val());
+        $.ajax({
+          type: "POST",
+          url: "ajax/ajax-validate_linea.php",
+          data: data,
+          contentType: false,
+          cache: false,
+          processData: false,
+          success: function (response) {
+            if(response == 200){
+              event.target.value = "";
+              $(event.target).parent().addClass("was-validated");
+              $(event.target).parent().children(".invalid-feedback").html("Datos ya creado");
+            }else{
+              validateJS(event,type);
+            }
+          }
+        });
+    }else{
+      validateJS(event,type);
+    }   
+    
     
 
 }

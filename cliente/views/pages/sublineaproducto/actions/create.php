@@ -5,9 +5,9 @@
 
         <div class="card-header">
                  <?php 
-                    require_once("controllers/lineasdeproducto.controllers.php");
-                    $create = new LineasdeproductoController();
-                    $create ->create();
+                    require_once("controllers/sublineaproducto.controllers.php");
+                    $crear = new SubLineasdeproductoController();
+                    $crear ->create();
                     ?>
             <div class="col-md-8 offset-md-2">
 
@@ -15,15 +15,17 @@
                 <div class="form-group mt-2">
 					<label>Seleccione el codigo de linea</label>
 					<?php 
+                    require_once("controllers/lineasdeproducto.controllers.php");
+                    $create = new LineasdeproductoController();
                     $lista = $create -> getListaLinea();
                     $lista = json_encode($lista);
                     $lista = json_decode($lista,true);
                     ?>
 
-					<select class="form-control select2 changeCountry" name="cod_linea"required>
+					<select class="form-control select2 changeCountry" name="cod_linea" id="linea" required>
 						<option value>Seleccione Precio Aplicado</option>
 						<?php foreach ($lista as $key => $value): ?>
-							<option value="<?php echo $value["cod_linea"] ?>" ><?php echo $value["cod_linea"] ?> | <?php echo $value["txt_descripcion"] ?></option>	
+							<option value="<?php echo $value["cod_linea"] ?>" <?php echo $key == 0 ?"selected":"" ?> ><?php echo $value["cod_linea"] ?> | <?php echo $value["txt_descripcion"] ?></option>	
 						<?php endforeach ?>
 					</select>
 					<div class="valid-feedback">Valid.</div>
@@ -37,7 +39,7 @@
                     type="text"
                     name="cod_sublinea" 
                     class="form-control"
-                    onchange="validateRepeat(event,'cod_verif','ecmp_linea','cod_linea', <?php echo $_SESSION['admin']->cod_empresa?>)"
+                    onchange="validateRepeatSublinea(event,'cod_verif','ecmp_linea','cod_sublinea', <?php echo $_SESSION['admin']->cod_empresa?>)"
                     pattern="[0-9]{1,3}"
                     required>
                     <div class="valid-feedback">Valid.</div>

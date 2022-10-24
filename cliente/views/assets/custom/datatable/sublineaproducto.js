@@ -76,7 +76,7 @@ function execDataTable (text) {
      },
      function (start, end) {
        // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-       window.location = "lineasdeproducto?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
+       window.location = "sublineaproducto?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
      }
    )
 

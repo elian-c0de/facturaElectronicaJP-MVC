@@ -105,7 +105,7 @@ class DataTableController
 
                                 </a> 
                                 
-                                <a class='btn btn-danger btn-sm rounded-circle removeItem2ids' idItem=" .  base64_encode($value->cod_linea . "~" . $value->cod_sublinea . "~" . $_GET["token"]) . " table='ecmp_linea' column='cod_linea' column1='cod_sublinea' page='lineasdeproducto' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
+                                <a class='btn btn-danger btn-sm rounded-circle removeItem2ids' idItem=" .  base64_encode($value->cod_linea . "~" . $value->cod_sublinea . "~" . $_GET["token"]) . " table='ecmp_linea' column='cod_linea' column1='cod_sublinea' page='sublineaproducto' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
 
                                 <i class='fas fa-trash-alt'></i>
 
