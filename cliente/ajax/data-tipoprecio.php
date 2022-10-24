@@ -13,14 +13,20 @@ class DataTableController
             $orderType = $_POST['order'][0]['dir'];
             $start = $_POST["start"];
             $length = $_POST["length"];
-           
+            
+            $link = array();
             //total de registros de la data
-            $url = "ecmp_precio?select=cod_precio&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza&startAt=0&endAt=1&orderAt=cod_precio";
+            $url = "ecmp_precio?select=*&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&linkTo=fec_actualiza";
             
             $method = "GET";
             $fields = array();
             $response = CurlController::request($url, $method, $fields);
             if($response->status == 200){
+                foreach ($response -> result as $key2 => $value2) {
+                    if ($value2->cod_empresa == $_GET["code"]) {
+                    array_push($link,$value2);
+                    }
+                }
                 $totalData = $response->total;
             }else{
                 echo '{"data":[]}';

@@ -28,7 +28,7 @@ if(isset($routesArray1[5])){
         echo '<script>
     
         window.location = "proyectos";
-        </script>';s
+        </script>';
     }
 
 
@@ -46,13 +46,13 @@ if(isset($routesArray1[5])){
 
 <!-- INICIO DE FORMULARIO PROYECTOS -->
 <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
-<input type="hidden" value="<?php echo $admin->cod_proyecto?>" name="idAdmin">
+<input type="hidden" value="<?php echo trim($admin->cod_proyecto)?>" name="idAdmin">
 
     <div class="card-header">
              <?php 
                 require_once("controllers/proyectos.controllers.php");
                 $create = new ProyectosController();
-                $create ->edit($admin->cod_proyecto);
+                $create ->edit(trim($admin->cod_proyecto));
                 ?>
         <div class="col-md-8 offset-md-2"> 
 
@@ -62,7 +62,7 @@ if(isset($routesArray1[5])){
                 <input 
                 type="text"
                 name="cod_proyecto"
-                value="<?php echo $admin->cod_proyecto?>"
+                value="<?php echo trim($admin->cod_proyecto)?>"
                 class="form-control"
                 onchange="validateRepeat(event,'cod_proyecto','ecmp_proyecto','cod_proyecto', <?php echo $_SESSION['admin']->cod_empresa?>)"
                 pattern="[a-zA-Z0-9]{1,3}"
@@ -78,7 +78,7 @@ if(isset($routesArray1[5])){
                 type="text" 
                 class="form-control"
                 name="nom_proyecto"
-                value="<?php echo $admin->cod_proyecto?>"
+                value="<?php echo $admin->nom_proyecto?>"
                 onchange="validateJS(event,'txt_descripcion_inventario')"
                 pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}"
                 required
