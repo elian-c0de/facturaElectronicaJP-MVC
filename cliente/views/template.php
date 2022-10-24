@@ -45,6 +45,8 @@ foreach ($routesArray as $key => $value) {
   <link rel="stylesheet" href="views/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="views/assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="views/assets/plugins/material-preloader">
+  <link rel="stylesheet" href="views/assets/plugins/datatables-select/css/select.bootstrap4.css">
+  <link rel="stylesheet" href="views/assets/plugins/datatables-select/css/select.bootstrap4.min.css">
   
   <link rel="stylesheet" href="views/assets/plugins/daterangepicker/daterangepicker.css">
     <!-- Notie Alert -->
@@ -78,6 +80,8 @@ foreach ($routesArray as $key => $value) {
   <script src="views/assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="views/assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="views/assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script src="views/assets/plugins/datatables-select/js/dataTables.select.min.js"></script>
+  <script src="views/assets/plugins/datatables-select/js/dataTables.select.js"></script>
 
   <script src="views/assets/plugins/material-preloader/material-preloader.js"></script>
   <!-- Notie Alert -->
