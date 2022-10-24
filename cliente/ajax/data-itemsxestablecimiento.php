@@ -157,15 +157,21 @@ class itemsxestablecimientoDataTableController
                     if ($_GET["text"] == "flat") {
                         $actions = "";
                     } else {
-                        $actions = "<a href='clientes/edit/" . base64_encode($value->cod_inventario . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+                        $actions = "<a href='itemsxestablecimiento/edit/" . base64_encode($value->cod_inventario . "~" .$value->cod_establecimiento . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
 
                             <i class='fas fa-pencil-alt'></i>
 
                             </a> 
                             
-                            <a class='btn btn-danger btn-sm rounded-circle removeItem' idItem=" . base64_encode($value->cod_inventario . "~" . $_GET["token"]) . " table='ecmp_cliente' column='num_id' page='clientes' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
+                            <a class='btn btn-success btn-sm rounded-circle removeItem' idItem=" . base64_encode($value->cod_inventario . "~" .$value->cod_establecimiento . "~" . $_GET["token"]) . " table='ecmp_cliente' column='num_id' page='clientes' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
 
                             <i class='fas fa-trash-alt'></i>
+
+                            </a>
+                            
+                            <a class='btn btn-danger btn-sm rounded-circle removeItem2ids' idItem=" .  base64_encode($value->cod_inventario . "~" .$value->cod_establecimiento . "~" . $_GET["token"]) . " table='ecmp_item_local' column='cod_inventario' column='cod_establecimiento' page='itemsxestablecimieto' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
+
+                            <i class='fa-solid fa-dollar-sign'></i>
 
 
                             </a>";

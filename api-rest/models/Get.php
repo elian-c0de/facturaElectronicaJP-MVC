@@ -64,6 +64,7 @@ class Get
         //SEPARA POR , EN UN ARRAY LO QUE INGRESOAMOS POR SELECT Y LINKTO 
         $selectArray = explode(",",$select);
         $linkToArray = explode(",",$linkTo);
+       
 
      
         //RECORREMSO Y AGRGEAMOS LAS COLUMAS DE NUESTO LINKTO CON SELECT PARA VERIFICAR SI EXISTEN
@@ -81,6 +82,7 @@ class Get
 
         //SEPARAMOS NUESTRO EQUALSTO POR , Y LO GUARDAMOS EN UN ARRAY
         $equalToArray = explode(",", $equalTo);
+        
 
         
         //CREAMOS UNA CADENA DE TEXTO CON LA FORMA ADECUADA PARA HACER UNA CONSULTA AND DESPUES DEL WHERE
@@ -89,11 +91,11 @@ class Get
             foreach ($linkToArray as $key => $value) {
                 if ($key > 0) {
                     $linkToText .= "AND " . $value . " = :" . $value . " ";
+                    
                 }
             }
         }
-    
-
+     
         //ordener sin limitar datos
         //OBTENER DATOS SIN ORDENAR NI LIMINAR PERO SI FILTRADO (DEVUELVE INFORMACION SI EXISTE LOS VALORES ESPECIFICADOS EN EQUALTO EN LA TABLA QUE SE ESPECIFICO EN LINKTO)
         $this->db->query("SELECT $select FROM  $table where $linkToArray[0] = :$linkToArray[0] $linkToText");

@@ -21,7 +21,7 @@ class Delete1Controller{
 
         if($security[2] == $this->token){
 
-            $url = $this->table."?id=".$security[0]."&nameId=".$this->column."&token=".$this->token."&nameId2=cod_empresa&id2=".$security1."&nameId2=".$this->column1."&id2=".$security[1];
+            $url = $this->table."?id=".$security[0]."&nameId=".$this->column."&token=".$this->token."&nameId2=cod_empresa&id2=".$security1."&nameId3=".$this->column1."&id3=".$security[1];
             $method = "DELETE";
             $fields = array();
     

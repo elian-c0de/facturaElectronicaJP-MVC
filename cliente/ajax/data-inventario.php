@@ -12,6 +12,7 @@ class inventarioDataTableController
     {
         //PREGUNTAMOS SI SE ENVIO DATOS 
         if (!empty($_POST)) {
+            
 
 
             //CAPTURA Y ORGANIZACION DE VARIABLES ENVIADAS DE DATATABLE POR EL METODO POST
