@@ -137,7 +137,7 @@ class PerfilesController{
                         $data = 
                             "nom_perfil=".trim($_POST["nom_perfil"]).
                             "&sts_perfil=".trim($_POST["sts_perfil"]).
-                            "&cod_usuario_act=".$_SESSION["admin"]->cod_usuario.
+                            "&cod_usuario_act=".$_SESSION["admin"]->cod_usuario;
             
                     
                      
