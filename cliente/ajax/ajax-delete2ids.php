@@ -47,10 +47,6 @@ class Delete1Controller{
 }
 
 
-
-
-
-
 }
 
 if(isset($_POST["idItem"])){
