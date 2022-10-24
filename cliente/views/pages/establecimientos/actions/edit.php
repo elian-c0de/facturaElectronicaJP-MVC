@@ -43,7 +43,7 @@ if(isset($routesArray1[5])){
 
 <div class="card card-dark card-outline">
 
-<!-- INICIO DE FORMULARIO CAJAS -->
+<!-- INICIO DE FORMULARIO ESTABLECIMIENTOS -->
 <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
 <input type="hidden" value="<?php echo $admin->cod_establecimiento?>" name="idAdmin">
 

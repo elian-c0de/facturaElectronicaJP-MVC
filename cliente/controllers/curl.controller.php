@@ -8,6 +8,7 @@ class CurlController
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'http://localhost/facturaElectronicaJP-MVC/api-rest/'.$url,
+            
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -22,6 +23,7 @@ class CurlController
             ),
         ));
 
+  
         $response = curl_exec($curl);
         curl_close($curl);
         $response = json_decode($response);

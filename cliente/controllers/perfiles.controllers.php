@@ -1,11 +1,11 @@
 <?php
-class EstablecimientosController{
+class PerfilesController{
 
     public function create(){
         date_default_timezone_set("America/Guayaquil");
 
 
-        if(isset($_POST["cod_establecimiento"])){
+        if(isset($_POST["cod_perfil"])){
 
 
             echo '<script>
@@ -17,23 +17,15 @@ class EstablecimientosController{
             
            
 
-            if(preg_match('/^[a-zA-Z0-9]{1,3}$/',$_POST["cod_establecimiento"]) &&
-            preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]) &&
-            preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_direccion"]))
+            if(preg_match('/^[a-zA-Z0-9]{1,6}$/',$_POST["cod_perfil"]) &&
+            preg_match('/^[a-zA-Z0-9]{1,50}$/',$_POST["nom_perfil"]))
 
             {
 
-
-                if(isset($_POST["sts_matriz"])){
-                    $_POST["sts_matriz"] = "A";
+                if(isset($_POST["sts_perfil"])){
+                    $_POST["sts_perfil"] = "A";
                 }else{
-                    $_POST["sts_matriz"] = "C";
-                }
-
-                if(isset($_POST["sts_local"])){
-                    $_POST["sts_local"] = "A";
-                }else{
-                    $_POST["sts_local"] = "C";
+                    $_POST["sts_perfil"] = "C";
                     
                 }
 
@@ -41,21 +33,17 @@ class EstablecimientosController{
                 $data = array(
                     
                     "cod_empresa" => $_SESSION["admin"]->cod_empresa,
-                    "cod_establecimiento" => trim($_POST["cod_establecimiento"]),
-                    "txt_descripcion" => trim($_POST["txt_descripcion"]),
-                    "txt_direccion" => trim($_POST["txt_direccion"]),
-                    "sts_matriz" => $_POST["sts_matriz"],
-                    "sts_local" => $_POST["sts_local"],
-                    "cod_usuario" => $_SESSION["admin"]->cod_usuario,
-                    "fec_actualiza" => date("Y-m-d H:i:s"),
-                    "sts_bodega" => NULL,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "nom_perfil" => trim($_POST["nom_perfil"]),
+                    "sts_perfil" => $_POST["sts_perfil"],
+                    "cod_usuario_act" => $_SESSION["admin"]->cod_usuario,
     
                 );
 
             
                 
          
-                $url = "gen_local?token=".$_SESSION["admin"]->token_usuario;
+                $url = "gen_perfil?token=".$_SESSION["admin"]->token_usuario;
                 $method = "POST";
                 $fields = $data;
                 $response = CurlController::request($url,$method,$fields);
@@ -69,7 +57,7 @@ class EstablecimientosController{
                     fncFormatInputs();
                     matPreloader("off");
                     fncSweetAlert("close", "", "");
-                    fncSweetAlert("success", "Registro Exitosos", "establecimientos");
+                    fncSweetAlert("success", "Registro Exitosos", "perfiles");
 
                 </script>';
                 }else{
@@ -99,9 +87,9 @@ class EstablecimientosController{
   
     }
 
-    // OBTIENE UN LISTADO DE LOS ESTABLECIMIENTO DE UNA EMPRESA EN ESPECIFICA
-    public function establecimientos(){
-        $url = "gen_local?linkTo=cod_empresa&equalTo=".$_SESSION["admin"]->cod_empresa;
+
+    public function perfiles(){
+        $url = "gen_perfil";
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
@@ -124,7 +112,7 @@ class EstablecimientosController{
           if($id == $_POST["idAdmin"]){
          
 
-            $url = "gen_local?linkTo=cod_empresa,cod_establecimiento&equalTo=".$_SESSION['admin']->cod_empresa.",".$id;
+            $url = "gen_perfil?linkTo=cod_empresa,cod_perfil&equalTo=".$_SESSION['admin']->cod_empresa.",".$id;
             
             $method = "GET";
             $fields = array();
@@ -134,38 +122,27 @@ class EstablecimientosController{
            
             if($response->status == 200){
 
-                if(preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]) &&
-                preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_direccion"]))
+                if(preg_match('/^[a-zA-Z0-9]{1,50}$/',$_POST["nom_perfil"]))
                 {
-                    if(isset($_POST["sts_matriz"])){
-                    $_POST["sts_matriz"] = "A";
-                }else{
-                    $_POST["sts_matriz"] = "C";
-                }
 
-                if(isset($_POST["sts_local"])){
-                    $_POST["sts_local"] = "A";
+                if(isset($_POST["sts_perfil"])){
+                    $_POST["sts_perfil"] = "A";
                 }else{
-                    $_POST["sts_local"] = "C";
+                    $_POST["sts_perfil"] = "C";
                     
                 }
               
                         // AGRUPAMOS LA INFORMACION
 
                         $data = 
-                            "txt_descripcion=".trim($_POST["txt_descripcion"]).
-                            "&txt_direccion=".trim($_POST["txt_direccion"]).
-                            "&sts_matriz=".trim($_POST["sts_matriz"]).
-                            "&sts_local=".trim($_POST["sts_local"]).
-                            "&cod_usuario=".$_SESSION["admin"]->cod_usuario.
-                            "&fec_actualiza=".date("Y-m-d H:i:s");
-                            // "&sts_bodega=".trim($_POST["sts_bodega"]).
-                            // "sts_bodega=". NULL;
+                            "nom_perfil=".trim($_POST["nom_perfil"]).
+                            "&sts_perfil=".trim($_POST["sts_perfil"]).
+                            "&cod_usuario_act=".$_SESSION["admin"]->cod_usuario.
             
                     
                      
                 
-                    $url = "gen_local?id=".$id."&nameId=cod_establecimiento&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
+                    $url = "gen_perfil?id=".$id."&nameId=cod_perfil&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
          
                     $method = "PUT";
                     $fields = $data;
@@ -182,7 +159,7 @@ class EstablecimientosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Edicion con exito", "establecimientos");
+                        fncSweetAlert("success", "Edicion con exito", "perfiles");
 
                     </script>';
                     }else{

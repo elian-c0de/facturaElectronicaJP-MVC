@@ -38,6 +38,30 @@ function obtenerdata(cod_empresa){
   })
 
 }
+function validateRepeat1(event,type,table,columna) {
+
+  var data = new FormData();
+  data.append("data", event.target.value);
+  data.append("table", table);
+  data.append("columna", columna);
+  $.ajax({
+    type: "POST",
+    url: "ajax/ajax-validate1.php",
+    data: data,
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function (response) {
+      if(response == 200){
+        event.target.value = "";
+        $(event.target).parent().addClass("was-validated");
+        $(event.target).parent().children(".invalid-feedback").html("Datos ya creado");
+      }else{
+        validateJS(event,type);
+      }
+    }
+  });
+}
 
 
 function validateRepeat(event,type,table,columna,id) {
@@ -91,14 +115,28 @@ function validateJS(event, type) {
   if(type == "txt_descrip") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
   if(type == "cod_inventario") pattern = /^[-\\A-Z0-9]{1,30}$/;
   if(type == "cod_barras") pattern = /^[-0-9]{1,30}$/;
-  if(type == "qtx_saldo") pattern = /^[0-9]{1,18}([.][0]{1,2})?$/;
-  if(type == "val_costo") pattern = /^[0-9]{1,18}([.][0-9]{1,5})?$/;
+  if(type == "qtx_saldo") pattern = /^[0-9]{1,18}([.][0]{1,2})?$/
+  if(type == "val_costo") pattern = /^[0-9]{1,18}([.][0-9]{1,5})?$/
   if(type == "num_id") pattern = /^[0,1,2,3,4,5,6,7,8,9]{1,13}$/;
   if(type == "nom_apellido_rsocial") pattern = /^[-//0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}$/;
   if(type == "nom_persona_nombre") pattern = /^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}$/;
   if(type == "txt_direccion_cliente") pattern = /^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,150}$/;
   if(type == "num_telefono_cliente") pattern = /^[-\\(\\)\\0-9 ]{1,15}$/;
+  if(type == "txt_descripcionforma_pago") pattern = /^[-//0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}$/;
+  if(type == "txt_descripcionConcepto") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,125}$/;
+  if(type == "txt_descripcionParametro") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
+  if(type == "valorParametro") pattern = /^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\#\\?\\¿\\!\\¡\\:\\,\\.\\//\\'\\@\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
+  if(type == "cod_for_pag") pattern = /^[A-Z]{1,2}$/;
+  if(type == "cod_parametro") pattern = /^[A-Z\\_]{1,10}$/;
+  if(type == "cod_concepto") pattern = /^[0-9]{1,2}$/;
   if(type == "cod_establecimiento") pattern = /^[a-zA-Z0-9]{1,3}$/;
+  if(type == "cod_caja") pattern = /^[0-9]{1,2}$/;
+  if(type == "cod_proyecto") pattern = /^[a-zA-Z0-9]{1,5}$/;
+  if(type == "cod_perfil") pattern = /^[a-zA-Z0-9]{1,6}$/;
+  if(type == "nom_perfil") pattern = /^[a-zA-Z0-9]{1,50}$/;
+  if(type == "cod_rete") pattern = /^[a-zA-Z1-9]{1,5}$/;
+  if(type == "descrip_formapag") pattern = /^[-//%0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
+  if(type == "por_reten") pattern = /^[0-9]{1,3}([.][0-9]{1,2})?$/
 
 
   if (!pattern.test(event.target.value)) {

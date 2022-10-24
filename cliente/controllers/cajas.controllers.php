@@ -1,61 +1,42 @@
 <?php
-class ConceptosController{
+class CajasController{
 
     public function create(){
         date_default_timezone_set("America/Guayaquil");
 
 
-        if(isset($_POST["cod_concepto"])){
-            
+        if(isset($_POST["cod_caja"])){
+
+
             echo '<script>
 
             matPreloader("on");
             fncSweetAlert("loading", "Loading...", "");
 
             </script>';
+            
+           
 
-            if(preg_match('/^[a-zA-Z0-9]{1,2}$/',$_POST["cod_concepto"]) &&
+            if(preg_match('/^[a-zA-Z0-9]{1,3}$/',$_POST["cod_caja"]) &&
             preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]))
 
             {
-                if(isset($_POST["sts_facturacion"])){
-                    $_POST["sts_facturacion"] = "S";
-                }else{
-                    $_POST["sts_facturacion"] = "N";
-                }
 
-                if(isset($_POST["sts_inventario"])){
-                    $_POST["sts_inventario"] = "A";
-                }else{
-                    $_POST["sts_inventario"] = "C";
-                }
-
-                if(isset($_POST["sts_concepto"])){
-                    $_POST["sts_concepto"] = "A";
-                }else{
-                    $_POST["sts_concepto"] = "C";
-                }
 
                 $data = array(
                     
                     "cod_empresa" => $_SESSION["admin"]->cod_empresa,
-                    "cod_concepto" => trim($_POST["cod_concepto"]),
+                    "cod_caja" => trim($_POST["cod_caja"]),
                     "txt_descripcion" => trim($_POST["txt_descripcion"]),
-                    "sts_facturacion" => $_POST["sts_facturacion"],
-                    "sts_tipo_concepto" => $_POST["sts_tipo_concepto"],
-                    "sts_sistema" => "C",
-                    "sts_proceso" => $_POST["sts_proceso"],
-                    "sts_inventario" => $_POST["sts_inventario"],
-                    "sts_concepto" => $_POST["sts_concepto"],
                     "cod_usuario" => $_SESSION["admin"]->cod_usuario,
-                    "fec_actualiza" => date("d-m-Y H:i:s"),
-                    "cod_sri" => "sri1",
+                    "fec_actualiza" => date("Y-m-d H:i:s"),
     
                 );
-                
 
+            
+                
          
-                $url = "srja_concepto?token=".$_SESSION["admin"]->token_usuario;
+                $url = "srja_caja?token=".$_SESSION["admin"]->token_usuario;
                 $method = "POST";
                 $fields = $data;
                 $response = CurlController::request($url,$method,$fields);
@@ -66,31 +47,31 @@ class ConceptosController{
                 if($response->status == 200){
                     echo '<script>
 
-                        fncFormatInputs();
-                        matPreloader("off");
-                        fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Registro con exito", "conceptos");
+                    fncFormatInputs();
+                    matPreloader("off");
+                    fncSweetAlert("close", "", "");
+                    fncSweetAlert("success", "Registro Exitosos", "cajas");
 
-                    </script>';
+                </script>';
                 }else{
                     echo '<script>
 
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncNotie(3, "Error al crear los datos");
+                        fncNotie(3, "Error al ingresar la informacion, intente mas tarde");
 
                     </script>';
                 }
 
     
             }else{
-                echo '<script>
+               echo '<script>
 
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncNotie(3, "Error en el campo de datos");
+                        fncNotie(3, "Error en los campos ingresados");
 
                     </script>';
             }
@@ -100,8 +81,8 @@ class ConceptosController{
     }
 
 
-    public function conceptos(){
-        $url = "srja_concepto";
+    public function establecimiento(){
+        $url = "srja_caja";
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
@@ -110,66 +91,44 @@ class ConceptosController{
 
 
     public function edit($id){
-
+;
         if(isset($_POST["idAdmin"])){
-            
-          if($id == $_POST["idAdmin"]){
 
-            $url = "srja_concepto?linkTo=cod_empresa,cod_concepto&equalTo=".$_SESSION['admin']->cod_empresa.",".$id;
+            echo '<script>
+
+				matPreloader("on");
+				fncSweetAlert("loading", "Loading...", "");
+
+			</script>';
+            
+           
+          if($id == $_POST["idAdmin"]){
+         
+
+            $url = "srja_caja?linkTo=cod_empresa,cod_caja&equalTo=".$_SESSION['admin']->cod_empresa.",".$id;
             
             $method = "GET";
             $fields = array();
     
             $response = CurlController::request($url,$method,$fields);
+      
            
             if($response->status == 200){
 
                 if(preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]))
-    
                 {
-                    
-                    if(isset($_POST["sts_facturacion"])){
-                        $_POST["sts_facturacion"] = "S";
-                    }else{
-                        $_POST["sts_facturacion"] = "N";
-                    }
-    
-                    if(isset($_POST["sts_inventario"])){
-                        $_POST["sts_inventario"] = "A";
-                    }else{
-                        $_POST["sts_inventario"] = "C";
-                    }
-    
-                    if(isset($_POST["sts_concepto"])){
-                        $_POST["sts_concepto"] = "A";
-                    }else{
-                        $_POST["sts_concepto"] = "C";
-                    }
               
-                        // // validar contraseña
-                        // if(!empty($_POST["password"])){
-                        //     $password = $_POST["password"];
-                        //     $crypt = crypt($password["cod_passwd"], 'td');
-                        // }else{
+                        // AGRUPAMOS LA INFORMACION
 
-                        // }
-                        // agruamos la informaicon
-
-                        $data =
+                        $data = 
                             "txt_descripcion=".trim($_POST["txt_descripcion"]).
-                            "&sts_facturacion=".trim($_POST["sts_facturacion"]).
-                            "&sts_tipo_concepto=".trim($_POST["sts_tipo_concepto"]).
-                            "&sts_proceso=".trim($_POST["sts_proceso"]).
-                            "&sts_inventario=".trim($_POST["sts_inventario"]).
-                            "&sts_concepto=".trim($_POST["sts_concepto"]).
                             "&cod_usuario=".$_SESSION["admin"]->cod_usuario.
-                            "&fec_actualiza=".date("d-m-Y H:i:s").
-                            "&cod_sri="."sri1";
+                            "&fec_actualiza=".date("Y-m-d H:i:s");
             
                     
                      
                 
-                    $url = "srja_concepto?id=".$id."&nameId=cod_concepto&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
+                    $url = "srja_caja?id=".$id."&nameId=cod_caja&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
          
                     $method = "PUT";
                     $fields = $data;
@@ -186,11 +145,12 @@ class ConceptosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Edicion con exito", "conceptos");
+                        fncSweetAlert("success", "Edicion con exito", "cajas");
 
                     </script>';
                     }else{
-                        echo '<script>
+
+                 echo '<script>
 
                         fncFormatInputs();
                         matPreloader("off");
@@ -202,6 +162,7 @@ class ConceptosController{
 
     
                 }else{
+
                     echo '<script>
 
                     fncFormatInputs();
@@ -210,6 +171,7 @@ class ConceptosController{
                     fncNotie(3, "Error en los campos ingresados");
 
                 </script>';
+                  
                 }
 
             }else{

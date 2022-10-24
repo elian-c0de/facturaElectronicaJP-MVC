@@ -1,5 +1,7 @@
 <?php
 require_once "../controllers/curl.controller.php";
+require_once "../controllers/template.controller.php";
+
 class DataTableController
 {
     public function data()
@@ -15,7 +17,7 @@ class DataTableController
             $length = $_POST["length"];
            
             //total de registros de la data
-            $url = "ecmp_proyecto?select=cod_proyecto&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=0&endAt=1&orderAt=cod_proyecto";
+            $url = "ecmp_proyecto?select=cod_proyecto&linkTo=cod_empresa&equalTo=".$_GET["code"];
             
             $method = "GET";
             $fields = array();
@@ -26,29 +28,32 @@ class DataTableController
                 echo '{"data":[]}';
                 return;
             }
-            $select = "cod_proyecto,nom_proyecto";
 
+            $hola = array();
             //busquedad de datos
             if(!empty($_POST['search']['value'])){
 
                 if(preg_match('/^[0-9A-Za-zñÑáéíóú ]{1,}$/',$_POST['search']['value'])){
 
-                    $linkTo = ["cod_proyecto","nom_proyecto"];
+                    $linkTo = ["cod_proyecto","nom_proyecto","fec_actualiza"];
                     $search = str_replace(" ","_",$_POST['search']['value']);
                     foreach ($linkTo as $key => $value) {
 
-                        $url = "ecmp_proyecto?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+                        $url = "ecmp_proyecto?select=*&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType;
                         $data = CurlController::request($url, $method, $fields)->result;
                         // echo '<pre>'; print_r($url); echo '</pre>'; 
                         
                         if($data == "Not Found"){
                             $data = array();
-                            $recordsFiltered = count($data);
                         
                         }else{
-                            $data = $data;
-                            $recordsFiltered = count($data);
-                            break;
+                            foreach ($data as $key1 => $value1) {
+                                if ($value1->cod_empresa == $_GET["code"]) {
+                                 array_push($hola,$value1);
+                                }
+                             }
+                             $data = array_slice($hola,$start,$length);
+                             $recordsFiltered = count($data);
                         }
                     }
                 }else{
@@ -57,7 +62,7 @@ class DataTableController
                 }
             }else{ 
             //seleccionar datos
-            $url = "ecmp_proyecto?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+            $url = "ecmp_proyecto?select=*&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa&linkTo=cod_empresa&equalTo=".$_GET["code"];
             $data = CurlController::request($url, $method, $fields)->result;
             // echo '<pre>'; print_r($data); echo '</pre>'; 
             // echo '<pre>'; print_r($url); echo '</pre>'; 
@@ -81,7 +86,21 @@ class DataTableController
                         $actions = "";
                         
                     }else{
-                        $actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
+                        // $actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
+                        $actions = "<a href='proyectos/edit/" . base64_encode($value->cod_proyecto . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+
+                        <i class='fas fa-pencil-alt'></i>
+
+                        </a> 
+                        
+                        <a class='btn btn-danger btn-sm rounded-circle removeItem' idItem=" . base64_encode($value->cod_proyecto . "~" . $_GET["token"]) . " table='ecmp_proyecto' column='cod_proyecto' page='proyectos' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
+
+                        <i class='fas fa-trash-alt'></i>
+
+                        </a>";
+
+                    $actions = TemplateController::htmlClean($actions);
+
                     }
                     $cod_proyecto = $value->cod_proyecto;
                     $nom_proyecto = $value->nom_proyecto;

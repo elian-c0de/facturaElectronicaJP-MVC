@@ -1,55 +1,70 @@
 <div class="card card-dark card-outline">
-    <form method="POST" class="needs-validation" novalidate>
+
+<!-- INICIO DE FORMULARIO CAJAS -->
+    <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+
         <div class="card-header">
+            <?php 
+                require_once("controllers/parametros.controllers.php");
+                $create = new ParametrosController();
+                $create ->create();
+                ?>
             <div class="col-md-8 offset-md-2">
 
+                <!-- CODIGO DE CONCEPTO -->
                 <div class="form-group mt-2">
-                    <label for="">cod_empresa</label>
+                    <label>Código de Parametro</label>
                     <input 
-                    type="text" 
+                    type="text"
+                    name="cod_parametro" 
                     class="form-control"
-                    pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ]{1,}"
+                    onchange="validateRepeat(event,'cod_parametro','gen_control','cod_parametro', <?php echo $_SESSION['admin']->cod_empresa?>)"
+                    pattern="[A-Z\\_]{1,10}"
+                    required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback"> Please fill out this field.</div>
+                </div>
+
+                <!-- NOMBRE DEL PARAMETRO -->
+                <div class="form-group mt-2">
+                    <label for="">Nombre del Parametro</label>
+                    <input 
+                    type="text"
+                    name="nom_parametro" 
+                    class="form-control"
+                    onchange="validateJS(event,'txt_descripcionParametro')"
+                    pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}" 
                     required>
                     <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Por favor, rellene este campo</div>
+                    <div class="invalid-feedback"> Please fill out this field</div>
                 </div>
 
+                <!-- VALOR DEL PARAMETRO -->
                 <div class="form-group mt-2">
-                    <label for="">cod_caja</label>
+                    <label for="">Valor del Parametro</label>
                     <input 
-                    type="text" 
+                    type="text"
+                    name="val_parametro" 
                     class="form-control"
-                    require="[A-Za-z0-9]{1,}">
+                    onchange="validateJS(event,'valorParametro')"
+                    pattern="[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\#\\?\\¿\\!\\¡\\:\\,\\.\\//\\'\\@\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,255}" 
+                    required>
+                    <div class="valid-feedback">Valid</div>
+                    <div class="invalid-feedback"> Please fill out this field</div>
                 </div>
 
-                <div class="form-group mt-2">
-                    <label for="">txt_descripcion</label>
-                    <input 
-                    type="text" 
-                    class="form-control">
-
-                </div>
-
-                <div class="form-group mt-2">
-                    <label for="">cod_usuario</label>
-                    <input type="text" class="form-control">
-                </div>
-
-                <div class="form-group mt-2">
-                    <label for="">fec_actualiza</label>
-                    <input type="text" class="form-control">
-                </div>
             </div>
         </div>
 
+        <!-- BOTONES DE REGRESAR Y GUARDAR -->
         <div class="card-header">
             <div class="col-md-8 offset-md-2">
                 <div class="form-group mt-3">
-                    <a href="perfiles" class="btn btn-danger border text-left">Cancelar</a>
-                    <button type="submit" class="btn btn-primary float-lg-right">Guardar</button>
+                    <a href="parametros" class="btn btn-light border text-left">Back</a>
+                    <button type="submit" class="btn bg-dark float-lg-right">Save</button>
                 </div>
             </div>
         </div>
     </form>
-
+<!-- FIN DE FORMULARIO PARAMETROS -->
 </div>

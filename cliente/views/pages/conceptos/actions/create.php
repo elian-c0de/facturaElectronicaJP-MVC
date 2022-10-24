@@ -18,7 +18,7 @@
                     type="text"
                     name="cod_concepto" 
                     class="form-control"
-                    onchange="validateRepeat(event,'cod_conc','srja_concepto','cod_concepto', <?php echo $_SESSION['admin']->cod_empresa?>)"
+                    onchange="validateRepeat(event,'cod_concepto','srja_concepto','cod_concepto', <?php echo $_SESSION['admin']->cod_empresa?>)"
                     pattern="[0-9]{1,2}"
                     required>
                     <div class="valid-feedback">Valid.</div>
@@ -33,7 +33,7 @@
                     name="txt_descripcion" 
                     class="form-control"
                     onchange="validateJS(event,'txt_descripcionConcepto')"
-                    pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,60}" 
+                    pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,125}" 
                     required>
                     <div class="valid-feedback">Valid</div>
                     <div class="invalid-feedback"> Please fill out this field</div>
@@ -112,5 +112,5 @@
             </div>
         </div>
     </form>
-<!-- FIN DE FORMULARIO CAJAS -->
+<!-- FIN DE FORMULARIO CONCEPTOS -->
 </div>
