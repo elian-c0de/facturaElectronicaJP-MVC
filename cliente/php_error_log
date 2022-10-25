@@ -1,3 +1,117 @@
 [21-Oct-2022 18:09:18 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
 [21-Oct-2022 19:38:09 Europe/Berlin] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\lineasdeproducto.controllers.php on line 127
 [21-Oct-2022 19:38:43 Europe/Berlin] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\lineasdeproducto.controllers.php on line 128
+[25-Oct-2022 00:30:50 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[25-Oct-2022 00:31:29 Europe/Berlin] PHP Warning:  Attempt to read property "result" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\lineasdeproducto.controllers.php on line 83
+[25-Oct-2022 00:31:29 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, null given in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\sublineaproducto\actions\list.php on line 34
+[25-Oct-2022 00:46:34 Europe/Berlin] PHP Warning:  Undefined variable $between1 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\permisos\actions\list.php on line 1
+[25-Oct-2022 00:46:34 Europe/Berlin] PHP Warning:  Undefined variable $between2 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\permisos\actions\list.php on line 2
+[24-Oct-2022 21:53:17 America/Guayaquil] PHP Warning:  Undefined property: stdClass::$cod_marca in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\create.php on line 21
+[25-Oct-2022 05:40:51 Europe/Berlin] PHP Warning:  Undefined variable $between1 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\permisos\actions\list.php on line 1
+[25-Oct-2022 05:40:51 Europe/Berlin] PHP Warning:  Undefined variable $between2 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\permisos\actions\list.php on line 2
+[25-Oct-2022 18:38:30 Europe/Berlin] PHP Warning:  Undefined variable $between1 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\permisos\actions\list.php on line 1
+[25-Oct-2022 18:38:30 Europe/Berlin] PHP Warning:  Undefined variable $between2 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\permisos\actions\list.php on line 2
+[25-Oct-2022 19:27:31 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[25-Oct-2022 20:15:07 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
+[25-Oct-2022 13:20:03 America/Guayaquil] PHP Warning:  Undefined property: stdClass::$cod_marca in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\create.php on line 21
+[25-Oct-2022 20:28:53 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "ConceptosController" not found in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\tipoprecio\actions\edit.php:43
+Stack trace:
+#0 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\tipoprecio\index.php(37): include()
+#1 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\template.php(167): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\template.controller.php(12): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\index.php(20): TemplateController->index()
+#4 {main}
+  thrown in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\tipoprecio\actions\edit.php on line 43
+[25-Oct-2022 14:11:45 America/Guayaquil] PHP Warning:  Undefined property: stdClass::$cod_marca in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\create.php on line 21
+[25-Oct-2022 14:11:53 America/Guayaquil] PHP Warning:  Undefined property: stdClass::$cod_marca in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\create.php on line 21
+[25-Oct-2022 21:22:30 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "MarcaController" not found in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\create.php:9
+Stack trace:
+#0 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\index.php(37): include()
+#1 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\template.php(167): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\template.controller.php(12): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\index.php(20): TemplateController->index()
+#4 {main}
+  thrown in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\create.php on line 9
+[25-Oct-2022 21:30:47 Europe/Berlin] PHP Warning:  Undefined array key 2 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 8
+[25-Oct-2022 21:30:47 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:30:47 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:30:47 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:30:47 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:30:47 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:30:47 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:30:47 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:30:47 Europe/Berlin] PHP Warning:  Attempt to read property "nom_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:30:51 Europe/Berlin] PHP Warning:  Undefined array key 2 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 8
+[25-Oct-2022 21:30:51 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:30:51 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:30:51 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:30:51 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:30:51 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:30:51 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:30:51 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:30:51 Europe/Berlin] PHP Warning:  Attempt to read property "nom_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:30:55 Europe/Berlin] PHP Warning:  Undefined array key 2 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 8
+[25-Oct-2022 21:30:55 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:30:55 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:30:55 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:30:55 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:30:55 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:30:55 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:30:55 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:30:55 Europe/Berlin] PHP Warning:  Attempt to read property "nom_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:31:00 Europe/Berlin] PHP Warning:  Undefined array key 2 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 8
+[25-Oct-2022 21:31:00 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:31:00 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:31:00 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:31:00 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:31:00 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:31:00 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:31:00 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:31:00 Europe/Berlin] PHP Warning:  Attempt to read property "nom_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:31:05 Europe/Berlin] PHP Warning:  Undefined array key 2 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 8
+[25-Oct-2022 21:31:05 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:31:05 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:31:05 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:31:05 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:31:05 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:31:05 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:31:05 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:31:05 Europe/Berlin] PHP Warning:  Attempt to read property "nom_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:31:10 Europe/Berlin] PHP Warning:  Undefined array key 2 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 8
+[25-Oct-2022 21:31:10 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:31:10 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:31:10 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:31:10 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:31:10 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:31:10 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:31:10 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:31:10 Europe/Berlin] PHP Warning:  Attempt to read property "nom_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:31:15 Europe/Berlin] PHP Warning:  Undefined array key 2 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 8
+[25-Oct-2022 21:31:15 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:31:15 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:31:15 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:31:15 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:31:15 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:31:15 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:31:15 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:31:15 Europe/Berlin] PHP Warning:  Attempt to read property "nom_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:31:18 Europe/Berlin] PHP Warning:  Undefined array key 2 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 8
+[25-Oct-2022 21:31:18 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:31:18 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 48
+[25-Oct-2022 21:31:18 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:31:18 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 54
+[25-Oct-2022 21:31:18 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:31:18 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 65
+[25-Oct-2022 21:31:18 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:31:18 Europe/Berlin] PHP Warning:  Attempt to read property "nom_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 80
+[25-Oct-2022 21:31:50 Europe/Berlin] PHP Warning:  Undefined array key 2 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 8
+[25-Oct-2022 21:31:50 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 49
+[25-Oct-2022 21:31:50 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 49
+[25-Oct-2022 21:31:50 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 55
+[25-Oct-2022 21:31:50 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 55
+[25-Oct-2022 21:31:50 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 66
+[25-Oct-2022 21:31:50 Europe/Berlin] PHP Warning:  Attempt to read property "cod_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 66
+[25-Oct-2022 21:31:50 Europe/Berlin] PHP Warning:  Undefined variable $admin in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 81
+[25-Oct-2022 21:31:50 Europe/Berlin] PHP Warning:  Attempt to read property "nom_marca" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 81
+[25-Oct-2022 21:36:54 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$cod_caja in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 21
+[25-Oct-2022 21:37:12 Europe/Berlin] PHP Warning:  Undefined property: stdClass::$cod_caja in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\pages\marcas\actions\edit.php on line 21

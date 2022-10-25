@@ -145,16 +145,7 @@ class ConceptosController{
                     }else{
                         $_POST["sts_concepto"] = "C";
                     }
-              
-                        // // validar contraseña
-                        // if(!empty($_POST["password"])){
-                        //     $password = $_POST["password"];
-                        //     $crypt = crypt($password["cod_passwd"], 'td');
-                        // }else{
-
-                        // }
-                        // agruamos la informaicon
-
+                    
                         $data =
                             "txt_descripcion=".trim($_POST["txt_descripcion"]).
                             "&sts_facturacion=".trim($_POST["sts_facturacion"]).

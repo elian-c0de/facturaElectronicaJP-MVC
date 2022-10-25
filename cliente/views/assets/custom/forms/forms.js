@@ -144,6 +144,7 @@ function validateJS(event, type) {
   if(type == "txt_path_logo") pattern = /^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}$/;
   if(type == "cod_tipo_id_representante") pattern = /^[A-Z]{1,1}$/;
   if(type == "txt_descripcion") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,60}$/;
+  if(type == "nom_marca") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,70}$/;
   if(type == "txt_descripcion_inventario") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
   if(type == "cod_pre") pattern = /^[a-zA-Z0-9]{1,2}$/;
   if(type == "cod_verif") pattern = /^[0-9]{1,3}$/;
@@ -170,6 +171,7 @@ function validateJS(event, type) {
   if(type == "cod_perfil") pattern = /^[a-zA-Z0-9]{1,6}$/;
   if(type == "nom_perfil") pattern = /^[a-zA-Z0-9]{1,50}$/;
   if(type == "cod_rete") pattern = /^[a-zA-Z1-9]{1,5}$/;
+  if(type == "cod_marca") pattern = /^[0-9]{1,3}$/;
   if(type == "descrip_formapag") pattern = /^[-//%0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
   if(type == "por_reten") pattern = /^[0-9]{1,3}([.][0-9]{1,2})?$/
 

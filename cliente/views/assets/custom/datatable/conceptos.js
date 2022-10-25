@@ -1,6 +1,7 @@
 function execDataTable (text) {
-
+    
     var conceptosTable = $("#conceptostable").DataTable({
+       "select": {style: 'single'},
        "responsive": true, 
        "lengthChange": true, 
        "aLengthMenu": [[5,10,20,50,100],[5,10,20,50,100]],
