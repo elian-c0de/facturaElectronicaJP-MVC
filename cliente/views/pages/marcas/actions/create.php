@@ -5,8 +5,8 @@
 
         <div class="card-header">
                  <?php 
-                    require_once("controllers/tipoprecio.controllers.php");
-                    $create = new TipoprecioController();
+                    require_once("controllers/marca.controllers.php");
+                    $create = new MarcaController();
                     $create ->create();
                     ?>
             <div class="col-md-8 offset-md-2">
@@ -18,7 +18,7 @@
                     type="text"
                     name="cod_marca" 
                     class="form-control"
-                    onchange="validateRepeat(event,'cod_marca','ecmp_marca','cod_marca', <?php echo $_SESSION['admin']->cod_marca?>)"
+                    onchange="validateRepeat1(event,'cod_marca','ecmp_marca','cod_marca')"
                     pattern="[0-9]{1,3}"
                     required>
                     <div class="valid-feedback">Valid.</div>
@@ -31,9 +31,9 @@
                     <label for="">Nombre de Marca</label>
                     <input 
                     type="text"
-                    name="txt_descripcion" 
+                    name="nom_marca" 
                     class="form-control"
-                    onchange="validateJS(event,'txt_descripcion')"
+                    onchange="validateJS(event,'nom_marca')"
                     pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,70}" 
                     required>
                     <div class="valid-feedback">Valid</div>
