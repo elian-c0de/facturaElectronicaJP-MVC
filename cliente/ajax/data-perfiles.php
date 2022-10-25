@@ -87,13 +87,13 @@ class DataTableController
                         
                     }else{
                         // $actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
-                        $actions = "<a href='perfiles/edit/" . base64_encode($value->cod_perfil . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+                        $actions = "<a href='perfiles/edit/" . base64_encode(trim($value->cod_perfil) . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
 
                         <i class='fas fa-pencil-alt'></i>
 
                         </a> 
                         
-                        <a class='btn btn-danger btn-sm rounded-circle removeItem' idItem=" . base64_encode($value->cod_perfil . "~" . $_GET["token"]) . " table='gen_perfil' column='cod_perfil' page='perfiles' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
+                        <a class='btn btn-danger btn-sm rounded-circle removeItem' idItem=" . base64_encode(trim($value->cod_perfil) . "~" . $_GET["token"]) . " table='gen_perfil' column='cod_perfil' page='perfiles' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
 
                         <i class='fas fa-trash-alt'></i>
 

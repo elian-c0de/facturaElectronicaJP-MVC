@@ -8,7 +8,7 @@ function execDataTable (text) {
        "processing": true,
        "serverSide": true,
        "ajax":{
-         "url":"ajax/data-puntoemision.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val(),
+         "url":"ajax/data-puntoemision.php?text="+text+"&token="+localStorage.getItem("token_user")+"&code="+localStorage.getItem("cod")+"&cod_establecimiento="+$("#cod_establecimiento").val(),
          "type":"POST"
        },
        "columns":[
@@ -50,6 +50,13 @@ function execDataTable (text) {
          })
      }
    }
+   function reload(){
+    $("#puntoemisionTable").dataTable().fnClearTable();
+    $("#puntoemisionTable").dataTable().fnDestroy();
+    setTimeout(() => {
+        execDataTable("flat");
+    }, 10);
+    }
  
  // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
  function reportActive(event){
@@ -67,23 +74,3 @@ function execDataTable (text) {
          }, 10);
      }
  }
- 
- //rango de fechas
- $('#daterangep-btn').daterangepicker(
-     {
-       ranges   : {
-         'Today'       : [moment(), moment()],
-         'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-         'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-         'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-         'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-         'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-       },
-       startDate: moment($("#between1").val()),
-       endDate  : moment($("#between2").val())
-     },
-     function (start, end) {
-       // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-       window.location = "puntosEmision?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
-     }
-   )

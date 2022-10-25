@@ -1,6 +1,6 @@
 function execDataTable (text) {
 
-    var lineasdeproductoTable = $("#lineasdeproductotable").DataTable({
+    var sublineasdeproductotable = $("#sublineasdeproductotable").DataTable({
        "responsive": true, 
        "lengthChange": true, 
        "aLengthMenu": [[5,10,20,50,100],[5,10,20,50,100]],
@@ -8,11 +8,11 @@ function execDataTable (text) {
        "processing": true,
        "serverSide": true,
        "ajax":{
-         "url":"ajax/data-lineasdeproducto.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val()+"&token="+localStorage.getItem("token_user")+"&code="+localStorage.getItem("cod"),
+         "url":"ajax/data-sublineaproducto.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val()+"&token="+localStorage.getItem("token_user")+"&code="+localStorage.getItem("cod")+"&linea="+$("#linea").val(),
          "type":"POST"
        },
        "columns":[
-         {"data":"cod_linea"},
+         {"data":"cod_sublinea"},
          {"data":"txt_descripcion"},
          {"data":"actions"}
        ],
@@ -27,27 +27,33 @@ function execDataTable (text) {
      })
  
      if(text == "flat"){
-         $("#lineasdeproductotable").on("draw.dt",function(){
+         $("#sublineasdeproductotable").on("draw.dt",function(){
              setTimeout(() => {
-                lineasdeproductoTable.buttons().container().appendTo('#lineasdeproductotable_wrapper .col-md-6:eq(0)');
+              sublineasdeproductotable.buttons().container().appendTo('#sublineasdeproductotable_wrapper .col-md-6:eq(0)');
      
              }, 100);
      
          })
      }
    }
- 
+   function reload(){
+    $("#sublineasdeproductotable").dataTable().fnClearTable();
+    $("#sublineasdeproductotable").dataTable().fnDestroy();
+    setTimeout(() => {
+        execDataTable("flat");
+    }, 10);
+    }
  // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
  function reportActive(event){
      if(event.target.checked){
-         $("#lineasdeproductotable").dataTable().fnClearTable();
-         $("#lineasdeproductotable").dataTable().fnDestroy();
+         $("#sublineasdeproductotable").dataTable().fnClearTable();
+         $("#sublineasdeproductotable").dataTable().fnDestroy();
          setTimeout(() => {
              execDataTable("flat");
          }, 10);
      }else{
-         $("#lineasdeproductotable").dataTable().fnClearTable();
-         $("#lineasdeproductotable").dataTable().fnDestroy();
+         $("#sublineasdeproductotable").dataTable().fnClearTable();
+         $("#sublineasdeproductotable").dataTable().fnDestroy();
          setTimeout(() => {
              execDataTable("html");
          }, 10);
@@ -70,7 +76,7 @@ function execDataTable (text) {
      },
      function (start, end) {
        // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-       window.location = "lineasdeproducto?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
+       window.location = "sublineaproducto?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
      }
    )
 

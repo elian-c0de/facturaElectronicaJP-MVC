@@ -8,7 +8,7 @@ function execDataTable (text) {
        "processing": true,
        "serverSide": true,
        "ajax":{
-         "url":"ajax/data-tipoprecio.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val(),
+         "url":"ajax/data-tipoprecio.php?text="+text+"&between1="+$("#between1").val()+"&between2="+$("#between2").val()+"&code="+localStorage.getItem("cod")+"&token="+localStorage.getItem("token_user"),
          "type":"POST"
        },
        "columns":[

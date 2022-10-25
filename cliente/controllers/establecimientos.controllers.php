@@ -99,9 +99,9 @@ class EstablecimientosController{
   
     }
 
-
-    public function establecimiento(){
-        $url = "gen_local";
+    // OBTIENE UN LISTADO DE LOS ESTABLECIMIENTO DE UNA EMPRESA EN ESPECIFICA
+    public function establecimientos(){
+        $url = "gen_local?linkTo=cod_empresa&equalTo=".$_SESSION["admin"]->cod_empresa;
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;

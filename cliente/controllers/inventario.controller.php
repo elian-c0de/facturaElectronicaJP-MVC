@@ -149,6 +149,8 @@ class InventarioController{
     public function edit($id){
 
         if(isset($_POST["idAdmin"])){
+
+            
             
           if($id == $_POST["idAdmin"]){
 
@@ -160,6 +162,13 @@ class InventarioController{
             $response = CurlController::request($url,$method,$fields);
            
             if($response->status == 200){
+
+                echo '<script>
+
+                matPreloader("on");
+                fncSweetAlert("loading", "Loading...", "");
+    
+                </script>';
 
 
           

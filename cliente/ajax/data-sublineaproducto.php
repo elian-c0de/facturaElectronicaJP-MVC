@@ -7,7 +7,7 @@ class DataTableController
     {
         if (!empty($_POST)) {
             
-            if($_GET["cod_establecimiento"] != "") {
+            if(isset($_GET["linea"])){
                 
                 //capturando y organizandos las variables post de datatable
                 $draw = $_POST["draw"];
@@ -18,13 +18,19 @@ class DataTableController
                 $length = $_POST["length"];
             
                 //total de registros de la data
-                $url = "gen_punto_emision?select=*&linkTo=cod_empresa,cod_establecimiento&equalTo=".$_GET["code"].",".$_GET["cod_establecimiento"];
+                $url = "ecmp_linea?select=*&linkTo=cod_empresa,cod_linea&equalTo=".$_GET["code"].",".$_GET["linea"];
+                $link=array();
                 $method = "GET";
                 $fields = array();
                 $response = CurlController::request($url, $method, $fields);
 
                 if($response->status == 200){
-                    $totalData = $response->total;
+                    foreach ($response -> result as $key2 => $value2) {
+                        if ($value2->cod_sublinea != 000) {
+                        array_push($link,$value2);
+                        }
+                    }
+                    $totalData = count($link);
                 }else{
                     echo '{"data":[]}';
                     return;
@@ -36,11 +42,11 @@ class DataTableController
 
                     if(preg_match('/^[0-9A-Za-zñÑáéíóú ]{1,}$/',$_POST['search']['value'])){
 
-                        $linkTo = ["cod_punto_emision","txt_descripcion"];
+                        $linkTo = ["cod_sublinea","txt_descripcion"];
                         $search = str_replace(" ","_",$_POST['search']['value']);
                         foreach ($linkTo as $key => $value) {
 
-                            $url = "gen_punto_emision?select=*&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType;
+                            $url = "ecmp_linea?select=*&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType;
                             $data = CurlController::request($url, $method, $fields)->result;
                             
                             if($data == "Not Found"){
@@ -49,7 +55,7 @@ class DataTableController
                             
                             }else{
                                 foreach ($data as $key1 => $value1) {
-                                    if ($value1->cod_empresa == $_GET["code"] && $value1->cod_establecimiento == $_GET["cod_establecimiento"]) {
+                                    if ($value1->cod_empresa == $_GET["code"] && $value1->cod_linea == $_GET["linea"] && $value1->cod_sublinea != 000 ) {
                                     array_push($hola,$value1);
                                     }
                                 }
@@ -64,8 +70,14 @@ class DataTableController
                     }
                 }else{ 
                 //seleccionar datos
-                $url = "gen_punto_emision?select=*&orderBy=".$orderBy."&orderMode=".$orderType."&linkTo=cod_empresa,cod_establecimiento&equalTo=".$_GET["code"].",".$_GET["cod_establecimiento"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+                $url = "ecmp_linea?select=*&orderBy=".$orderBy."&orderMode=".$orderType."&linkTo=cod_empresa,cod_linea&equalTo=".$_GET["code"].",".$_GET["linea"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
                 $data = CurlController::request($url, $method, $fields)->result;
+                foreach ($data as $key3 => $value3) {
+                    if ($value3->cod_sublinea != 000) {
+                    array_push($valk,$value3);
+                    }
+                }
+                $data=$valk;
                 $recordsFiltered = $totalData;
                 }
                 if(empty($data)){
@@ -87,13 +99,13 @@ class DataTableController
                             $actions = "";
                             
                         }else{
-                            $actions = "<a href='sublineaproducto/edit/" . base64_encode($value->cod_punto_emision . "~" . $value->cod_sublinea . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+                            $actions = "<a href='sublineaproducto/edit/" . base64_encode($value->cod_linea . "~" . $value->cod_sublinea . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
 
                                 <i class='fas fa-pencil-alt'></i>
 
                                 </a> 
                                 
-                                <a class='btn btn-danger btn-sm rounded-circle removeItem2ids' idItem=" .  base64_encode($value->cod_punto_emision . "~" . $value->cod_sublinea . "~" . $_GET["token"]) . " table='gen_punto_emision' column='cod_punto_emision' column1='cod_sublinea' page='lineasdeproducto' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
+                                <a class='btn btn-danger btn-sm rounded-circle removeItem2ids' idItem=" .  base64_encode($value->cod_linea . "~" . $value->cod_sublinea . "~" . $_GET["token"]) . " table='ecmp_linea' column='cod_linea' column1='cod_sublinea' page='sublineaproducto' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
 
                                 <i class='fas fa-trash-alt'></i>
 
@@ -101,40 +113,12 @@ class DataTableController
 
                             $actions = TemplateController::htmlClean($actions);
                         }
-                        $cod_punto_emision = $value->cod_punto_emision;
+                        $cod_sublinea = $value->cod_sublinea;
                         $txt_descripcion = $value->txt_descripcion;
-                        $cod_caja = $value->cod_caja;
-                        $sts_ambiente = $value->sts_ambiente;
-                        $sts_tipo_emision = $value->sts_tipo_emision;
-                        $num_factura = $value->num_factura;
-                        $num_nota_credito = $value->num_nota_credito;
-                        $num_retencion = $value->num_retencion;
-                        $num_guia = $value->num_guia;
-                        $sts_tipo_facturacion = $value->sts_tipo_facturacion;
-                        $sts_impresion = $value->sts_impresion;
-                        $sts_punto_emsion = $value->sts_punto_emsion;
-                        $num_factura_prueba = $value->num_factura_prueba;
-                        $num_nota_credito_prueba = $value->num_nota_credito_prueba;
-                        $num_retencion_prueba = $value->num_retencion_prueba;
-                        $num_guia_prueba = $value->num_guia_prueba;
 
                                 $dataJson.='{
-                            "cod_punto_emision":"'.$cod_punto_emision.'",
+                            "cod_sublinea":"'.$cod_sublinea.'",
                             "txt_descripcion":"'.$txt_descripcion.'",
-                            "cod_caja":"'.$cod_caja.'",
-                            "sts_ambiente":"'.$sts_ambiente.'",
-                            "sts_tipo_emision":"'.$sts_tipo_emision.'",
-                            "num_factura":"'.$num_factura.'",
-                            "num_nota_credito":"'.$num_nota_credito.'",
-                            "num_retencion":"'.$num_retencion.'",
-                            "num_guia":"'.$num_guia.'",
-                            "sts_tipo_facturacion":"'.$sts_tipo_facturacion.'",
-                            "sts_impresion":"'.$sts_impresion.'",
-                            "sts_punto_emsion":"'.$sts_punto_emsion.'",
-                            "num_factura_prueba":"'.$num_factura_prueba.'",
-                            "num_nota_credito_prueba":"'.$num_nota_credito_prueba.'",
-                            "num_retencion_prueba":"'.$num_retencion_prueba.'",
-                            "num_guia_prueba":"'.$num_guia_prueba.'",
                             "actions":"'.$actions.'"
                         },';
                     }
@@ -142,9 +126,6 @@ class DataTableController
                     $dataJson = substr($dataJson,0,-1); 
                     $dataJson .= ']}';
                     echo $dataJson;
-            }else{
-                echo '{"data":[]}';
-                return;
             }
             
         }

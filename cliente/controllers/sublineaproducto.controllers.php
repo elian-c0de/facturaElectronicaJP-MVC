@@ -1,5 +1,5 @@
 <?php
-class LineasdeproductoController{
+class SubLineasdeproductoController{
 
     public function create(){
         date_default_timezone_set("America/Guayaquil");
@@ -22,7 +22,7 @@ class LineasdeproductoController{
                     
                     "cod_empresa" => $_SESSION["admin"]->cod_empresa,
                     "cod_linea" => trim($_POST["cod_linea"]),
-                    "cod_sublinea" => "000",
+                    "cod_sublinea" => trim($_POST["cod_sublinea"]),
                     "txt_descripcion" => trim($_POST["txt_descripcion"]),
                     "cod_usuario" => $_SESSION["admin"]->cod_usuario,
                     "fec_actualiza" => date("d-m-Y H:i:s"),
@@ -45,7 +45,7 @@ class LineasdeproductoController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Registro con exito", "lineasdeproducto");
+                        fncSweetAlert("success", "Registro con exito", "sublineaproducto");
 
                     </script>';
                 }else{
@@ -73,15 +73,6 @@ class LineasdeproductoController{
         }
 
   
-    }
-
-
-    public function getListaLinea(){
-        $url = "ecmp_linea?linkTo=cod_empresa,cod_sublinea&equalTo=".$_SESSION["admin"]->cod_empresa.",000";
-        $method = "GET";
-        $fields = array();
-        $response = CurlController::request($url,$method,$fields)->result;
-        return $response;
     }
 
 
@@ -115,7 +106,8 @@ class LineasdeproductoController{
                 {
                     
 
-                    $data = "&txt_descripcion=".trim($_POST["txt_descripcion"]).
+                    $data = 
+                            "&txt_descripcion=".trim($_POST["txt_descripcion"]).
                             "&cod_usuario=".$_SESSION["admin"]->cod_usuario.
                             "&fec_actualiza=".date("d-m-Y H:i:s");
             
@@ -140,7 +132,7 @@ class LineasdeproductoController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Edicion con exito", "lineasdeproducto");
+                        fncSweetAlert("success", "Edicion con exito", "sublineaproducto");
 
                         </script>';
                     }else{
