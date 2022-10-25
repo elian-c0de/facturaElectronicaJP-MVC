@@ -1,3 +1,0 @@
-[21-Oct-2022 18:09:18 Europe/Berlin] PHP Warning:  Undefined array key 3 in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\views\modules\slidebar.php on line 73
-[21-Oct-2022 19:38:09 Europe/Berlin] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\lineasdeproducto.controllers.php on line 127
-[21-Oct-2022 19:38:43 Europe/Berlin] PHP Warning:  Attempt to read property "status" on null in C:\xampp\htdocs\facturaElectronicaJP-MVC\cliente\controllers\lineasdeproducto.controllers.php on line 128
