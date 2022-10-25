@@ -174,7 +174,9 @@ function validateJS(event, type) {
   if(type == "cod_marca") pattern = /^[0-9]{1,3}$/;
   if(type == "descrip_formapag") pattern = /^[-//%0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
   if(type == "por_reten") pattern = /^[0-9]{1,3}([.][0-9]{1,2})?$/
-
+  if(type == "nom_usuario") pattern = /^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$/
+  if(type == "cod_usuario") pattern = /^[a-zñÑáéíóúÁÉÍÓÚ ]{1,20}$/
+  
 
   if (!pattern.test(event.target.value)) {
  
