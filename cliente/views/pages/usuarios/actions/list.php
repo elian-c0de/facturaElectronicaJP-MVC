@@ -139,7 +139,7 @@
             <label for="">Estado:</label>
             <br>
             <!-- <input type="text" class="form-control" -->
-            <input type="checkbox"  name="sts_usuario" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+            <input type="checkbox"  name="sts_usuario" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
             >
         </div>
 
@@ -148,7 +148,7 @@
             <label for="">Administrador:</label>
             <br>
             <!-- <input type="text" class="form-control" -->
-            <input type="checkbox"  name="sts_administrador" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+            <input type="checkbox"  name="sts_administrador" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
             >
         </div>
         <!-- BORRAR CONTRASEÑA -->
@@ -156,7 +156,7 @@
             <label for="">Borrar Contraseña:</label>
             <br>
             <!-- <input type="text" class="form-control" -->
-            <input type="checkbox"  name="#"  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+            <input type="checkbox"  name="#"  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
             >
         </div>
       </div>
@@ -166,8 +166,8 @@
     <div class="card-header">
             <div class="col-md-2 offset-md-5">
                 <div class="form-group mt-0">
-                    <a href="../cliente" class="btn btn-light border text-left">Back</a>
-                    <button type="submit" class="btn bg-dark float-lg-right">Save</button>
+                    <a href="../cliente" class="btn btn-light border text-left">Cancelar</a>
+                    <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
                 </div>
             </div>
         </div>
