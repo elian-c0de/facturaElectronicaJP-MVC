@@ -1,6 +1,10 @@
+execDataTable("flat");
 function execDataTable (text) {
-
     var establecimientosTable = $("#establecimientostable").DataTable({
+      
+      "select":{
+        style: 'single'
+      },  
        "responsive": true, 
        "lengthChange": true, 
        "aLengthMenu": [[5,10,20,50,100],[5,10,20,50,100]],
@@ -18,7 +22,7 @@ function execDataTable (text) {
          {"data":"txt_direccion"},
          {"data":"sts_matriz"},
          {"data":"sts_local"},
-         {"data":"actions"}
+        //  {"data":"actions"}
        ],
       "language": {
         "sProcessing":     "Procesando...",
@@ -28,6 +32,7 @@ function execDataTable (text) {
         "sInfo":           "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
         "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
         "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "select-info":      "",
         "sInfoPostFix":    "",
         "sSearch":         "Buscar:",
         "sUrl":            "",
@@ -43,6 +48,7 @@ function execDataTable (text) {
           "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
           "sSortDescending": ": Activar para ordenar la columna de manera descendente"
         }
+        // url: 'dataTables.spanish.json'
 
       },
        "buttons": [
@@ -64,24 +70,44 @@ function execDataTable (text) {
      
          })
      }
+     //Obtener el dato de la tabla en el input hidden
+     establecimientosTable
+      .on( 'select', function ( e, dt, type, indexes ) {
+      var rowData = establecimientosTable.rows( indexes ).data().toArray();
+      console.log( rowData);
+      document.getElementById("establecimiento").value =rowData[0].cod_establecimiento;
+      // document.getElementById("cod_inventario_hidden").value =rowData[0].cod_inventario;
+      // events.prepend("value="+JSON.stringify(rowData[0].cod_inventario+""));
+    } )
+    .on( 'deselect', function ( e, dt, type, indexes ) {
+      var rowData = establecimientosTable.rows( indexes ).data().toArray();
+      document.getElementById("establecimiento").value = "";
+      // document.getElementById("cod_inventario_hidden").value = "";
+    } );
+    document.getElementById("#edit").onclick=function(){
+      window.location.href = "establecimiento/edit"+btoa(rowData[0].cod_establecimiento+"~"+localStorage.getItem("token_user"));
+    }
+    
    }
  
  // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
- function reportActive(event){
-     if(event.target.checked){
-         $("#establecimientostable").dataTable().fnClearTable();
-         $("#establecimientostable").dataTable().fnDestroy();
-         setTimeout(() => {
-             execDataTable("flat");
-         }, 10);
-     }else{
-         $("#establecimientostable").dataTable().fnClearTable();
-         $("#establecimientostable").dataTable().fnDestroy();
-         setTimeout(() => {
-             execDataTable("html");
-         }, 10);
-     }
- }
+//  function reportActive(event){
+//      if(event.target.checked){
+//          $("#establecimientostable").dataTable().fnClearTable();
+//          $("#establecimientostable").dataTable().fnDestroy();
+//          setTimeout(() => {
+//              execDataTable("flat");
+//          }, 10);
+//      }else{
+//          $("#establecimientostable").dataTable().fnClearTable();
+//          $("#establecimientostable").dataTable().fnDestroy();
+//          setTimeout(() => {
+//              execDataTable("html");
+//          }, 10);
+//      }
+//  }
+
+
 
  //Elinianr registro
 $(document).on("click",".removeItem", function(){
@@ -120,11 +146,6 @@ $(document).on("click",".removeItem", function(){
           }
         }
       })
-
-
     }
-
-
   })
-
 })
