@@ -13,11 +13,21 @@ function rellenar(){
         data: data,
         contentType: false,
         cache: false,
+        dataType: 'json',
         processData: false,
         success: function(response){
-            console.log("response: ", response[cod_usuario]);
+            console.log("response: ", response[0]["cod_perfil"]);
+            console.log("response: ", response);
+            
 
-            //document.getElementById("cod_usuario").value=response.cod_usuario;
+            // document.getElementById("cod_usuario").value=response[0]["cod_usuario"];
+            $("#cod_usuario").val(response[0]["cod_usuario"])
+            $("#nom_usuario").val(response[0]["nom_usuario"])
+
+            document.ready = document.getElementById("gen_perfil").value = response[0]["cod_perfil"];
+
         }
       })
 }
+
+

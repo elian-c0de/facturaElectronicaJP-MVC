@@ -22,7 +22,7 @@
               <option value>Seleccione El Usuario</option>
               <?php foreach ($tipo_precio as $key => $value) : ?>
                   <option value="<?php echo $value["cod_usuario"] ?>">
-                  <?php echo $value["cod_usuario"] ?> <?php echo $value["nom_usuario"] ?> <?php echo $value["sts_usuario"] ?>
+                  <?php echo $value["cod_usuario"] ?> 
                   </option>
               <?php endforeach ?>
           </select>
@@ -41,10 +41,12 @@
           <input 
           type="text"
           name="cod_usuario" 
+          id="cod_usuario"
           class="form-control"
           onchange="validateRepeat(event,'cod_usuario','gen_usuario','cod_usuario', <?php echo $_SESSION['admin']->cod_empresa?>)"
           pattern="[0,1,2,3,4,5,6,7,8,9]{1,13}"
-          disabled>
+          disabled
+          >
           <div class="valid-feedback">Valid.</div>
           <div class="invalid-feedback"> Please fill out this field.</div>
         </div>
@@ -55,6 +57,7 @@
           <input 
           type="text"
           name="nom_usuario" 
+          id="nom_usuario"
           class="form-control"
           onchange="validateRepeat(event,'nom_usuario','gen_usuario','nom_usuario', <?php echo $_SESSION['admin']->cod_empresa?>)"
           pattern="[0,1,2,3,4,5,6,7,8,9]{1,13}"
@@ -62,6 +65,7 @@
           <div class="valid-feedback">Valid.</div>
           <div class="invalid-feedback"> Please fill out this field.</div>
         </div>
+
 
         <!-- VALIDAR PERFIL DE USUARIOS -->
         <div class="form-group mt-2">
@@ -73,17 +77,26 @@
           $tipo_precio = json_encode($tipo_precio);
           $tipo_precio = json_decode($tipo_precio, true);
           ?>
-          <select class="form-control select2 changeCountry" name="gen_perfil" required>
+          <select class="form-control select2 changeCountry" name="gen_perfil" id="gen_perfil" required>
               <option value>Seleccione el Perfil</option>
               <?php foreach ($tipo_precio as $key => $value) : ?>
-                  <option value="<?php echo $value["cod_perfil"] ?> - <?php echo $value["nom_perfil"] ?> ">
+                  <option value="<?php echo $value["cod_perfil"] ?>">
+                  
+
                   <?php echo $value["cod_perfil"] ?> <?php echo $value["nom_perfil"] ?>
+
+
                   </option>
               <?php endforeach ?>
           </select>
           <div class="valid-feedback">Valid.</div>
           <div class="invalid-feedback">Please fill out this field.</div>
 				</div>  
+
+
+
+
+
 
         <!-- VALIDAR ESTABLECIMIENTO DE USUARIOS -->
         <div class="form-group mt-2"> 
