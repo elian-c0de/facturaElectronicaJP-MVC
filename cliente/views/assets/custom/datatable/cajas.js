@@ -1,6 +1,9 @@
+execDataTable("flat");
 function execDataTable (text) {
-
   var cajasTable = $("#cajastable").DataTable({
+    select: {
+      style: "single",
+    },
      "responsive": true, 
      "lengthChange": true, 
      "aLengthMenu": [[5,10,20,50,100],[5,10,20,50,100]],
@@ -15,7 +18,7 @@ function execDataTable (text) {
      "columns":[
        {"data":"cod_caja"},
        {"data":"txt_descripcion"},
-       {"data":"actions"}
+      //  {"data":"actions"}
      ],
      "buttons": [
        {extend:"copy",className:"btn-dark"},
@@ -25,34 +28,26 @@ function execDataTable (text) {
        {extend:"print",className:"btn-g"},
        {extend:"colvis",className:"btn-g"}
    ]
-   })
+   })  
 
-   if(text == "flat"){
-       $("#cajastable").on("draw.dt",function(){
-           setTimeout(() => {
-            cajasTable.buttons().container().appendTo('#cajastable_wrapper .col-md-6:eq(0)');
-   
-           }, 100);
-   
-       })
-   }
+   //Obtener ID de la Caja
+   cajasTable
+    .on("select", function (e, dt, type, indexes) {
+      var rowData = cajasTable.rows(indexes).data().toArray();
+      document.getElementById("caja").value = rowData[0].cod_caja;
+    })
+    .on("deselect", function (e, dt, type, indexes) {
+      var rowData = cajasTable.rows(indexes).data().toArray();
+      document.getElementById("caja").value = "";
+    });
  }
 
-// parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
-function reportActive(event){
-   if(event.target.checked){
-       $("#cajastable").dataTable().fnClearTable();
-       $("#cajastable").dataTable().fnDestroy();
-       setTimeout(() => {
-           execDataTable("flat");
-       }, 10);
-   }else{
-       $("#cajastable").dataTable().fnClearTable();
-       $("#cajastable").dataTable().fnDestroy();
-       setTimeout(() => {
-           execDataTable("html");
-       }, 10);
-   }
+//Editar Caja
+function edit(){
+  var date = document.getElementById("caja").value;
+  if(date != ""){
+    window.location.href = ("cajas/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
+  }
 }
 
 //Elinianr registro
