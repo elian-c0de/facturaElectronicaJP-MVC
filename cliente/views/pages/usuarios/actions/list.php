@@ -152,7 +152,7 @@
             <label for="">Estado:</label>
             <br>
             <!-- <input type="text" class="form-control" -->
-            <input type="checkbox"  name="sts_usuario" id="sts_usuario"  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
+            <input type="checkbox"  name="sts_usuario" id="sts_usuario"
             >
         </div>
 
@@ -161,7 +161,7 @@
             <label for="">Administrador:</label>
             <br>
             <!-- <input type="text" class="form-control" -->
-            <input type="checkbox"  name="sts_administrador" id="sts_administrador"  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
+            <input type="checkbox"  name="sts_administrador" id="sts_administrador" 
             >
         </div>
         <!-- BORRAR CONTRASEÑA -->
