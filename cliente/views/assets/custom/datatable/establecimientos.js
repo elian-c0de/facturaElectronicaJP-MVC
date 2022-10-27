@@ -90,11 +90,7 @@ function execDataTable(text) {
 
  
 
-
-
-
-
- 
+  //Obtener ID del establecimiento
     establecimientosTable
       .on("select", function (e, dt, type, indexes) {
         var rowData = establecimientosTable.rows(indexes).data().toArray();
@@ -106,7 +102,6 @@ function execDataTable(text) {
       });
 
 }
-
 
 
 
@@ -139,59 +134,44 @@ function edit(){
 //      }
 //  }
 
-
 //Elinianr registro
 $(document).on("click", ".removeItem", function () {
+  var idItem = $(this).attr("idItem");
+  var table = $(this).attr("table");
+  var cod_empresa = $(this).attr("cod_empresa");
+  var column = $(this).attr("column");
+  var page = $(this).attr("page");
 
-  console.log("elian negro");
+  fncSweetAlert("confirm", "estas seguro de eliminar este registro?", "").then(
+    (resp) => {
+      if (resp) {
+        var data = new FormData();
+        data.append("idItem", idItem);
+        data.append("table", table);
+        data.append("cod_empresa", cod_empresa);
+        data.append("column", column);
+        data.append("token", localStorage.getItem("token_user"));
 
-  // var idItem = $(this).attr("idItem");
-  // var table = $(this).attr("table");
-  // var cod_empresa = $(this).attr("cod_empresa");
-  // var column = $(this).attr("column");
-  // var page = $(this).attr("page");
-
-  var cod_establecimiento = document.getElementById("establecimiento").value;
-  console.log(localStorage.getItem("cod"));
-  console.log("cod_establecimiento: ", cod_establecimiento);
-  if(cod_establecimiento != ""){
-
-    fncSweetAlert("confirm", "estas seguro de eliminar este registro?", "").then(
-      (resp) => {
-        if (resp) {
-          var data = new FormData();
-          //MODIFICAR PARAMETROS
-          data.append("idItem", btoa(cod_establecimiento+"~"+localStorage.getItem("token_user"))); // id pk de la tabla + toke encriptrado
-          data.append("table", "gen_local"); // nombre de la tabla
-          data.append("cod_empresa", btoa(localStorage.getItem("cod"))); // codigo empresa encriptado papa
-          data.append("column", "cod_establecimiento"); // columna donde se va a buscar el id pk
-          data.append("token", localStorage.getItem("token_user")); // el token enviado desde aqui para validar cualquier vaina 
-  
-          $.ajax({
-            url: "ajax/ajax-delete.php",
-            method: "POST",
-            data: data,
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function (response) {
-              console.log("response: ", response);
-              if (response == 200) {
-                fncSweetAlert(
-                  "success",
-                  "el registro a sido borrado correctamente",
-                  "establecimientos"
-                );
-              } else {
-                fncNotie(3, "Error al eliminar el registro");
-              }
-            },
-          });
-        }
+        $.ajax({
+          url: "ajax/ajax-delete.php",
+          method: "POST",
+          data: data,
+          contentType: false,
+          cache: false,
+          processData: false,
+          success: function (response) {
+            if (response == 200) {
+              fncSweetAlert(
+                "success",
+                "el registro a sido borrado correctamente",
+                page
+              );
+            } else {
+              fncNotie(3, "Error al eliminar el registro");
+            }
+          },
+        });
       }
-    );
-    
-  }
-
-
+    }
+  );
 });

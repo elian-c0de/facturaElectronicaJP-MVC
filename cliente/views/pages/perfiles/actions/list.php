@@ -3,9 +3,11 @@
 
 <?php
 ?>
-
+    <input type="hidden" id="perfil" name="perfil">
     <h3 class="card-title">
       <a class="btn bg-blue btn-small" href="perfiles/create"><i class="bi bi-file-earmark-plus-fill"></i></a>
+      <a class="btn btn-warning btn-small" onclick="edit()"><i class='fas fa-pencil-alt'></i></a>
+      <a class="btn btn-danger btn-small " removeItem><i class='fas fa-trash-alt'></i></a>
       <a class="btn bg-green btn-small" href=""><i class="bi bi-filetype-xml"></i></a>
     </h3>
       <div class="card-tools">

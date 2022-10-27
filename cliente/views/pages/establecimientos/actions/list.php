@@ -7,7 +7,7 @@
     <h3 class="card-title">
       <a class="btn bg-blue btn-small" href="establecimientos/create"><i class="bi bi-file-earmark-plus-fill"></i></a>
       <a class="btn btn-warning btn-small" onclick="edit()"><i class='fas fa-pencil-alt'></i></a>
-      <a class="btn btn-danger btn-small removeItem"><i class='fas fa-trash-alt'></i></a>
+      <a class="btn btn-danger btn-small" href="establecimientos/delete"><i class='fas fa-trash-alt'></i></a>
       <a class="btn bg-green btn-small" href="establecimientos/XML"><i class="bi bi-filetype-xml"></i></a>
 
     
@@ -16,7 +16,7 @@
       <!-- <div class="card-tools">
         <div class="d-flex">
           <div class="d-flex mr-2">
-            <span class="mr-3">Acciones:</span><input data-on-text="SI" data-off-text="NO" type="checkbox" onchange="reportActive(event);" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+            <input type="checkbox" onchange="reportActive(event);" name="my-checkbox" checked>
           </div>
         </div>
       </div> -->
