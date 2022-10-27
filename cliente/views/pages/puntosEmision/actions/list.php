@@ -6,14 +6,15 @@
 
     <h3 class="card-title">
       <a class="btn bg-blue btn-small" href="puntosEmision/create"><i class="bi bi-file-earmark-plus-fill"></i></a>
+      <a class="btn btn-warning btn-small" onclick="edit()"><i class='fas fa-pencil-alt'></i></a>
+      <a class="btn btn-danger btn-small " href="puntosEmision/delete"><i class='fas fa-trash-alt'></i></a>
       <a class="btn bg-green btn-small" href=""><i class="bi bi-filetype-xml"></i></a>
     </h3>
       <div class="card-tools">
         <div class="d-flex">
-        <div class="d-flex mr-2">
-          <span class="mr-3">Acciones:</span><input type="checkbox" onchange="reportActive(event);" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
-        </div>
-
+          <div class="d-flex mr-2">
+            <input type="checkbox" onchange="reportActive(event)" name="my-checkbox" checked>
+          </div>
         </div>
       </div>
   </div>

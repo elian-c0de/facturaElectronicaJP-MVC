@@ -29,10 +29,6 @@ if(isset($routesArray1[5])){
         window.location = "establecimientos";
         </script>';
     }
-
-
-    
-    
 }
 
 

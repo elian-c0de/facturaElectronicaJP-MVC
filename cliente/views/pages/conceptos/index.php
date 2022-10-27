@@ -8,11 +8,11 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-left">
           
-          <li class="breadcrumb-item"><a href="#">Home</a></li> 
+          <li class="breadcrumb-item"><a href="#">Inicio</a></li> 
           
           <?php 
           if (isset($routesArray1[4])) {
-            if($routesArray1[4] == "create" || $routesArray1[4] == "edit"){
+            if($routesArray1[4] == "create" || $routesArray1[4] == "edit" ){
               echo '<li class="breadcrumb-item"><a href="conceptos">Conceptos</a></li>';
               echo '<li class="breadcrumb-item active">'.$routesArray1[4].'</li>';
             }
