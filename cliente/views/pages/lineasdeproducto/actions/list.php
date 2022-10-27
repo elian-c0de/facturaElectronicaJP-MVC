@@ -32,4 +32,5 @@
   <!-- /.card-body -->
 </div>
 
+
 <script src="views/assets/custom/datatable/lineasdeproducto.js"></script>
