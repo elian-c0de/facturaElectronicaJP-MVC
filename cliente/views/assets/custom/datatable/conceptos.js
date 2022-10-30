@@ -1,3 +1,4 @@
+execDataTable("flat");
 function execDataTable (text) {
     
     var conceptosTable = $("#conceptostable").DataTable({
@@ -20,7 +21,7 @@ function execDataTable (text) {
          {"data":"sts_proceso"},
          {"data":"sts_inventario"},
          {"data":"sts_concepto"},
-         {"data":"actions"}
+         //{"data":"actions"}
        ],
        "language": {
 
@@ -30,7 +31,8 @@ function execDataTable (text) {
       "sEmptyTable":     "Ningún dato disponible en esta tabla",
       "sInfo":           "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
       "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
-      "sInfoFiltered":   "(filtrado de un total de MAX registros)",
+      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+      "select-info": "",
       "sInfoPostFix":    "",
       "sSearch":         "Buscar:",
       "sUrl":            "",
@@ -55,10 +57,17 @@ function execDataTable (text) {
          {extend:"pdf",className:"btn-g"},
          {extend:"print",className:"btn-g"},
          {extend:"colvis",className:"btn-g"}
-     ]
+     ],
+     fnDrawCallback:function(oSettings){
+       if(oSettings.aoData.length == 0){
+           $('.dataTables_paginate').hide();
+           $('.dataTables_info').hide();
+       }
+ 
+     }
      })
  
-     if(text == "flat"){
+ 
          $("#conceptostable").on("draw.dt",function(){
              setTimeout(() => {
               conceptosTable.buttons().container().appendTo('#conceptostable_wrapper .col-md-6:eq(0)');
@@ -66,25 +75,42 @@ function execDataTable (text) {
              }, 100);
      
          })
-     }
+
+         conceptosTable
+         .on("select", function (e, dt, type, indexes) {
+           var rowData = conceptosTable.rows(indexes).data().toArray();
+           document.getElementById("conceptos").value = rowData[0].cod_concepto;
+         })
+         .on("deselect", function (e, dt, type, indexes) {
+           var rowData = conceptosTable.rows(indexes).data().toArray();
+           document.getElementById("conceptos").value = "";
+         });
+
    }
+
+   function edit(){
+    var date = document.getElementById("conceptos").value;
+    if(date != ""){
+      window.location.href = ("conceptos/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
+    }
+  }
  
  // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
- function reportActive(event){
-     if(event.target.checked){
-         $("#conceptostable").dataTable().fnClearTable();
-         $("#conceptostable").dataTable().fnDestroy();
-         setTimeout(() => {
-             execDataTable("flat");
-         }, 10);
-     }else{
-         $("#conceptostable").dataTable().fnClearTable();
-         $("#conceptostable").dataTable().fnDestroy();
-         setTimeout(() => {
-             execDataTable("html");
-         }, 10);
-     }
- }
+//  function reportActive(event){
+//      if(event.target.checked){
+//          $("#conceptostable").dataTable().fnClearTable();
+//          $("#conceptostable").dataTable().fnDestroy();
+//          setTimeout(() => {
+//              execDataTable("flat");
+//          }, 10);
+//      }else{
+//          $("#conceptostable").dataTable().fnClearTable();
+//          $("#conceptostable").dataTable().fnDestroy();
+//          setTimeout(() => {
+//              execDataTable("html");
+//          }, 10);
+//      }
+//  }
  
  //rango de fechas
 //  $('#daterangee-btn').daterangepicker(
@@ -108,47 +134,52 @@ function execDataTable (text) {
 
 //Elinianr registro
 $(document).on("click",".removeItem", function(){
-    var idItem = $(this).attr("idItem");
-    var table = $(this).attr("table");
-    var cod_empresa = $(this).attr("cod_empresa");
-    var column = $(this).attr("column");
-    var page = $(this).attr("page");
-  
-    fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
-  
-      if(resp){
-        var data = new FormData();
-        data.append("idItem",idItem);
-        data.append("table",table);
-        data.append("cod_empresa",cod_empresa);
-        data.append("column",column);
-        data.append("token",localStorage.getItem("token_user"))
-  
-        $.ajax({
-          url: "ajax/ajax-delete.php",
-          method: "POST",
-          data: data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(response){
-            if(response == 200){
-              fncSweetAlert(
-                "success",
-                "el registro a sido borrado correctamente",
-                page
-              );
-            }else{
-              fncNotie(3,"error deleating the record")
+    // var idItem = $(this).attr("idItem");
+    // var table = $(this).attr("table");
+    // var cod_empresa = $(this).attr("cod_empresa");
+    // var column = $(this).attr("column");
+    // var page = $(this).attr("page");
+    var cod_concepto = document.getElementById("conceptos").value;
+    console.log(localStorage.getItem("cod"));
+    console.log("cod_concepto: ", cod_concepto);
+    if(cod_concepto != ""){
+      fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
+
+        if(resp){
+          var data = new FormData();
+          //MODIFICAR PARAMETROS
+          data.append("idItem", btoa(cod_concepto+"~"+localStorage.getItem("token_user"))); // id pk de la tabla + toke encriptrado
+          data.append("table", "srja_concepto"); // nombre de la tabla
+          data.append("cod_empresa", btoa(localStorage.getItem("cod"))); // codigo empresa encriptado papa
+          data.append("column", "cod_concepto"); // columna donde se va a buscar el id pk
+          data.append("token", localStorage.getItem("token_user")); // el token enviado desde aqui para validar cualquier vaina 
+
+          $.ajax({
+            url: "ajax/ajax-delete.php",
+            method: "POST",
+            data: data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(response){
+              if(response == 200){
+                fncSweetAlert(
+                  "success",
+                  "el registro a sido borrado correctamente",
+                  "conceptos"
+                );
+              }else{
+                fncNotie(3,"error deleating the record")
+              }
             }
-          }
-        })
+          })
+
+
+        }
+
+
+      });
+    }
   
-  
-      }
-  
-  
-    })
-  
-  })
+  });
   
