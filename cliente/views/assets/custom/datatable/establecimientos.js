@@ -73,24 +73,18 @@ function execDataTable(text) {
           $('.dataTables_paginate').hide();
           $('.dataTables_info').hide();
       }
-
     }
+  })
+
+    //Monstrar Reportes [PDF-PRint-Etc]
+    $("#establecimientostable").on("draw.dt",function(){
+        setTimeout(() => {
+          establecimientosTable.buttons().container().appendTo('#establecimientostable_wrapper .col-md-6:eq(0)');
+        }, 100);
+
     })
 
-
-        $("#establecimientostable").on("draw.dt",function(){
-            setTimeout(() => {
-              establecimientosTable.buttons().container().appendTo('#establecimientostable_wrapper .col-md-6:eq(0)');
-            }, 100);
-    
-        })
-
-     
-
-
- 
-
-  //Obtener ID del establecimiento
+    //Obtener ID del establecimiento
     establecimientosTable
       .on("select", function (e, dt, type, indexes) {
         var rowData = establecimientosTable.rows(indexes).data().toArray();
@@ -100,78 +94,54 @@ function execDataTable(text) {
         var rowData = establecimientosTable.rows(indexes).data().toArray();
         document.getElementById("establecimiento").value = "";
       });
+    }
 
-}
-
-
-
-function edit(){
-  var date = document.getElementById("establecimiento").value;
-  if(date != ""){
-    window.location.href = ("establecimientos/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
-  }
-}
-
-
-
-
-
-
-// parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
-//  function reportActive(event){
-//      if(event.target.checked){
-//          $("#establecimientostable").dataTable().fnClearTable();
-//          $("#establecimientostable").dataTable().fnDestroy();
-//          setTimeout(() => {
-//              execDataTable("flat");
-//          }, 10);
-//      }else{
-//          $("#establecimientostable").dataTable().fnClearTable();
-//          $("#establecimientostable").dataTable().fnDestroy();
-//          setTimeout(() => {
-//              execDataTable("html");
-//          }, 10);
-//      }
-//  }
-
-//Elinianr registro
-$(document).on("click", ".removeItem", function () {
-  var idItem = $(this).attr("idItem");
-  var table = $(this).attr("table");
-  var cod_empresa = $(this).attr("cod_empresa");
-  var column = $(this).attr("column");
-  var page = $(this).attr("page");
-
-  fncSweetAlert("confirm", "estas seguro de eliminar este registro?", "").then(
-    (resp) => {
-      if (resp) {
-        var data = new FormData();
-        data.append("idItem", idItem);
-        data.append("table", table);
-        data.append("cod_empresa", cod_empresa);
-        data.append("column", column);
-        data.append("token", localStorage.getItem("token_user"));
-
-        $.ajax({
-          url: "ajax/ajax-delete.php",
-          method: "POST",
-          data: data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function (response) {
-            if (response == 200) {
-              fncSweetAlert(
-                "success",
-                "el registro a sido borrado correctamente",
-                page
-              );
-            } else {
-              fncNotie(3, "Error al eliminar el registro");
-            }
-          },
-        });
+    //Editar Establecimiento
+    function edit(){
+    var date = document.getElementById("establecimiento").value;
+      if(date != ""){
+        window.location.href = ("establecimientos/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
       }
     }
-  );
-});
+
+    //Elinianr Establecimiento
+    $(document).on("click", ".removeItem", function () {
+      var idItem = $(this).attr("idItem");
+      var table = $(this).attr("table");
+      var cod_empresa = $(this).attr("cod_empresa");
+      var column = $(this).attr("column");
+      var page = $(this).attr("page");
+
+      fncSweetAlert("confirm", "estas seguro de eliminar este registro?", "").then(
+        (resp) => {
+          if (resp) {
+            var data = new FormData();
+            data.append("idItem", idItem);
+            data.append("table", table);
+            data.append("cod_empresa", cod_empresa);
+            data.append("column", column);
+            data.append("token", localStorage.getItem("token_user"));
+
+            $.ajax({
+              url: "ajax/ajax-delete.php",
+              method: "POST",
+              data: data,
+              contentType: false,
+              cache: false,
+              processData: false,
+              success: function (response) {
+                if (response == 200) {
+                  fncSweetAlert(
+                    "success",
+                    "el registro a sido borrado correctamente",
+                    page
+                  );
+                } else {
+                  fncNotie(3, "Error al eliminar el registro");
+                }
+              },
+            });
+          }
+        }
+      );
+    });

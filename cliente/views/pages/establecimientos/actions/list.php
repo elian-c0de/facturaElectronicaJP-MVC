@@ -9,9 +9,6 @@
       <a class="btn btn-warning btn-small" onclick="edit()"><i class='fas fa-pencil-alt'></i></a>
       <a class="btn btn-danger btn-small" href="establecimientos/delete"><i class='fas fa-trash-alt'></i></a>
       <a class="btn bg-green btn-small" href="establecimientos/XML"><i class="bi bi-filetype-xml"></i></a>
-
-    
-
     </h3>
       <!-- <div class="card-tools">
         <div class="d-flex">
