@@ -76,6 +76,7 @@ function execDataTable (text) {
   proyectosTable
     .on("select", function (e, dt, type, indexes) {
       var rowData = proyectosTable.rows(indexes).data().toArray();
+      console.log("rowData: ", rowData);
       document.getElementById("proyecto").value = rowData[0].cod_proyecto;
     })
     .on("deselect", function (e, dt, type, indexes) {
