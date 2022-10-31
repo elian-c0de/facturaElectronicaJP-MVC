@@ -21,8 +21,8 @@
                 onchange="validateRepeat(event,'cod_establecimiento','gen_local','cod_establecimiento', <?php echo $_SESSION['admin']->cod_empresa?>)"
                 pattern="[a-zA-Z0-9]{1,3}"
                 required>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback"> Please fill out this field.</div>
+                <div class="valid-feedback">Válido.</div>
+                <div class="invalid-feedback"> Por favor, rellene este campo</div>
             </div>
 
 
@@ -37,8 +37,8 @@
                 pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}"
                 required
                 >
-                <div class="valid-feedback">Valid</div>
-                <div class="invalid-feedback"> Please fill out this field</div>
+                <div class="valid-feedback">Válido</div>
+                <div class="invalid-feedback"> Por favor, rellene este campo</div>
             </div>
 
             <!-- DIRECCION -->
@@ -50,8 +50,8 @@
                 name="txt_direccion"
                 required
                 >
-                <div class="valid-feedback">Valid</div>
-                <div class="invalid-feedback"> Please fill out this field</div>
+                <div class="valid-feedback">Válido</div>
+                <div class="invalid-feedback"> Por favor, rellene este campo</div>
             </div>
 
             <!-- MATRIZ -->
@@ -59,7 +59,7 @@
                 <label for="">Matriz</label>
                 <br>
                 <!-- <input type="text" class="form-control" -->
-                <input type="checkbox"  name="sts_matriz" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                <input type="checkbox" data-on-text="SI" data-off-text="NO"  name="sts_matriz" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
                 >
             </div>
 
@@ -68,7 +68,7 @@
                 <label for="">Estado</label>
                 <br>
                 <!-- <input type="text" class="form-control" -->
-                <input type="checkbox"  name="sts_local" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                <input type="checkbox" data-on-text="SI" data-off-text="NO"  name="sts_local" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
                 >
             </div>
         </div>
@@ -78,8 +78,8 @@
     <div class="card-header">
         <div class="col-md-8 offset-md-2">
             <div class="form-group mt-3">
-                <a href="establecimientos" class="btn btn-light border text-left">Back</a>
-                <button type="submit" class="btn bg-dark float-lg-right">Save</button>
+                <a href="establecimientos" class="btn btn-light border text-left">Volver</a>
+                <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
             </div>
         </div>
     </div>

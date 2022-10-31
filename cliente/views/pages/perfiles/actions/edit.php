@@ -6,7 +6,7 @@ if(isset($routesArray1[5])){
 
     if($security[1] == $_SESSION["admin"]->token_usuario){
 
-        $url = "gen_perfil?linkTo=cod_empresa,cod_perfil&equalTo=".$_SESSION['admin']->cod_empresa.",".$security[0];
+        $url = "gen_perfil?linkTo=cod_empresa,cod_perfil&equalTo=".$_SESSION['admin']->cod_empresa.",".trim($security[0]);
         $method = "GET";
         $fields = array();
     

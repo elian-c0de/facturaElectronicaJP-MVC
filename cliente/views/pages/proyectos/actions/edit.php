@@ -6,7 +6,7 @@ if(isset($routesArray1[5])){
 
     if($security[1] == $_SESSION["admin"]->token_usuario){
 
-        $url = "ecmp_proyecto?linkTo=cod_empresa,cod_proyecto&equalTo=".$_SESSION['admin']->cod_empresa.",".$security[0];
+        $url = "ecmp_proyecto?linkTo=cod_empresa,cod_proyecto&equalTo=".$_SESSION['admin']->cod_empresa.",".trim($security[0]);
         $method = "GET";
         $fields = array();
     
@@ -74,7 +74,7 @@ if(isset($routesArray1[5])){
                 type="text" 
                 class="form-control"
                 name="nom_proyecto"
-                value="<?php echo $admin->nom_proyecto?>"
+                value="<?php echo trim($admin->nom_proyecto)?>"
                 onchange="validateJS(event,'txt_descripcion_inventario')"
                 pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}"
                 required

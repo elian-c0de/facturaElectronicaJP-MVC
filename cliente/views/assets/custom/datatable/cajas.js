@@ -20,6 +20,34 @@ function execDataTable (text) {
        {"data":"txt_descripcion"},
       //  {"data":"actions"}
      ],
+     language: {
+       sProcessing: "Procesando...",
+       sLengthMenu: "Mostrar _MENU_ Entradas",
+       sZeroRecords: "No se encontraron resultados",
+       sEmptyTable: "Ningún dato disponible en esta tabla",
+       sInfo: "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+       sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0",
+       sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+       "select-info": "",
+       sInfoPostFix: "",
+       sSearch: "Buscar:",
+       sUrl: "",
+       sInfoThousands: ",",
+       sLoadingRecords: "Cargando...",
+       oPaginate: {
+         sFirst: "Primero",
+         sLast: "Último",
+         sNext: "Siguiente",
+         sPrevious: "Anterior",
+       },
+       oAria: {
+         sSortAscending:
+           ": Activar para ordenar la columna de manera ascendente",
+         sSortDescending:
+           ": Activar para ordenar la columna de manera descendente",
+       },
+       // url: 'dataTables.spanish.json'
+     },
      "buttons": [
        {extend:"copy",className:"btn-dark"},
        {extend:"csv",className:"btn-b"},
@@ -27,8 +55,22 @@ function execDataTable (text) {
        {extend:"pdf",className:"btn-g"},
        {extend:"print",className:"btn-g"},
        {extend:"colvis",className:"btn-g"}
-   ]
-   })  
+      ],
+      fnDrawCallback:function(oSettings){
+        if(oSettings.aoData.length == 0){
+            $('.dataTables_paginate').hide();
+            $('.dataTables_info').hide();
+        }
+
+      }
+   })
+
+   $("#cajasTable").on("draw.dt",function(){
+    setTimeout(() => {
+      cajasTable.buttons().container().appendTo('#cajasTable_wrapper .col-md-6:eq(0)');
+    }, 100);
+
+   })
 
    //Obtener ID de la Caja
    cajasTable
