@@ -15,7 +15,7 @@ function execDataTable (text) {
 
          "type":"POST"
        },
-       "columns":[
+       columns:[
          {"data":"cod_proyecto"},
          {"data":"nom_proyecto"},
         //  {"data":"actions"}
@@ -56,72 +56,80 @@ function execDataTable (text) {
          {extend:"print",className:"btn-g"},
          {extend:"colvis",className:"btn-g"}
      ],
-    });
+     fnDrawCallback:function(oSettings){
+       if(oSettings.aoData.length == 0){
+           $('.dataTables_paginate').hide();
+           $('.dataTables_info').hide();
+       }
+     }
+    })
+
+    //Monstrar Reportes [PDF-PRint-Etc]
+    $("#proyectostable").on("draw.dt",function(){
+      setTimeout(() => {
+        proyectosTable.buttons().container().appendTo('#proyectostable_wrapper .col-md-6:eq(0)');
+      }, 100);
+
+  })
 
   //Obtener ID del Proyecto
   proyectosTable
     .on("select", function (e, dt, type, indexes) {
       var rowData = proyectosTable.rows(indexes).data().toArray();
+      console.log("rowData: ", rowData);
       document.getElementById("proyecto").value = rowData[0].cod_proyecto;
     })
     .on("deselect", function (e, dt, type, indexes) {
       var rowData = proyectosTable.rows(indexes).data().toArray();
       document.getElementById("proyecto").value = "";
     });
-
   }
-   
-//Editar Proyecto
-function edit(){
-  var date = document.getElementById("proyecto").value;
-  if(date != ""){
-    window.location.href = ("proyectos/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
-  }
-}
 
+  //Editar Proyecto
+  function edit(){
+    var date = document.getElementById("proyecto").value;
+    if(date != ""){
+      window.location.href = ("proyectos/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
+    }
+  }
  
- //Elinianr registro
-$(document).on("click",".removeItem", function(){
-    var idItem = $(this).attr("idItem");
-    var table = $(this).attr("table");
-    var cod_empresa = $(this).attr("cod_empresa");
-    var column = $(this).attr("column");
-    var page = $(this).attr("page");
-  
-    fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
-  
-      if(resp){
-        var data = new FormData();
-        data.append("idItem",idItem);
-        data.append("table",table);
-        data.append("cod_empresa",cod_empresa);
-        data.append("column",column);
-        data.append("token",localStorage.getItem("token_user"))
-  
-        $.ajax({
-          url: "ajax/ajax-delete.php",
-          method: "POST",
-          data: data,
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(response){
-            if(response == 200){
-              fncSweetAlert(
-                "success",
-                "el registro a sido borrado correctamente",
-                page
-              );
-            }else{
-              fncNotie(3,"error deleating the record")
+  //Elinianr registro
+  $(document).on("click",".removeItem", function(){
+    var cod_proyecto = document.getElementById("proyecto").value;
+    console.log(localStorage.getItem("cod"));
+    console.log("cod_proyecto: ", cod_proyecto);
+    if(cod_proyecto != ""){
+      fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
+
+        if(resp){
+          var data = new FormData();
+          //MODIFICAR PARAMETROS
+          data.append("idItem", btoa(cod_proyecto+"~"+localStorage.getItem("token_user"))); // id pk de la tabla + toke encriptrado
+          data.append("table", "ecmp_proyecto"); // nombre de la tabla
+          data.append("cod_empresa", btoa(localStorage.getItem("cod"))); // codigo empresa encriptado papa
+          data.append("column", "cod_proyecto"); // columna donde se va a buscar el id pk
+          data.append("token", localStorage.getItem("token_user")); // el token enviado desde aqui para validar cualquier vaina 
+
+          $.ajax({
+            url: "ajax/ajax-delete.php",
+            method: "POST",
+            data: data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(response){
+              if(response == 200){
+                fncSweetAlert(
+                  "success",
+                  "El registro a sido borrado correctamente",
+                  "proyectos"
+                );
+              }else{
+                fncNotie(3,"Error al eliminar el registro")
+              }
             }
-          }
-        })
-  
-  
-      }
-  
-  
-    })
-  
-  })
+          })
+        }
+      });
+    }
+  });

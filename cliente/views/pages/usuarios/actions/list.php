@@ -104,11 +104,11 @@
           <?php
           // require_once("controllers/admins.controllers.php");
           $create = new UsuariosController();
-          $tipo_precio = $create->establecimiento_usuario();
+          $tipo_precio = $create->puntoEmision_usuario();
           $tipo_precio = json_encode($tipo_precio);
           $tipo_precio = json_decode($tipo_precio, true);
           ?>
-          <select class="form-control select2 changeCountry" name="gen_local" id="gen_local" required>
+          <select class="form-control select2 changeCountry"   name="gen_punto_emision1" id="gen_punto_emision1" required>
               <option value>Seleccione el Establecimiento</option>
               <?php foreach ($tipo_precio as $key => $value) : ?>
                   <option value="<?php echo $value["cod_establecimiento"] ?>">
@@ -126,14 +126,14 @@
           <?php
           // require_once("controllers/admins.controllers.php");
           $create = new UsuariosController();
-          $tipo_precio = $create->puntoEmision_usuario();
+          $tipo_precio = $create->puntoEmision_usuario2("cod_establecimiento");
           $tipo_precio = json_encode($tipo_precio);
           $tipo_precio = json_decode($tipo_precio, true);
           ?>
-          <select class="form-control select2 changeCountry" name="gen_punto_emision" required>
+          <select class="form-control select2 changeCountry"  name="gen_punto_emision" id="gen_punto_emision" required>
               <option value>Seleccione el Punto de Emisión</option>
               <?php foreach ($tipo_precio as $key => $value) : ?>
-                  <option value="<?php echo $value["cod_punto_emision"] ?>">
+                  <option value="<?php echo $value["cod_punto_emision"] ?>" >
                   <?php echo $value["cod_punto_emision"] ?>
                   </option>
               <?php endforeach ?>
@@ -180,7 +180,7 @@
             <div class="col-md-2 offset-md-5">
                 <div class="form-group mt-0">
                     <a href="../cliente" class="btn btn-light border text-left">Cancelar</a>
-                    <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
+                    <button type="submit" class="btn btn-success float-lg-right">Guardar</button>
                 </div>
             </div>
         </div>
