@@ -88,6 +88,7 @@ function execDataTable(text) {
     establecimientosTable
       .on("select", function (e, dt, type, indexes) {
         var rowData = establecimientosTable.rows(indexes).data().toArray();
+        console.log("rowData: ", rowData);
         document.getElementById("establecimiento").value = rowData[0].cod_establecimiento;
       })
       .on("deselect", function (e, dt, type, indexes) {
@@ -106,11 +107,6 @@ function execDataTable(text) {
 
   //Elinianr registro
   $(document).on("click",".removeItem", function(){
-    // var idItem = $(this).attr("idItem");
-    // var table = $(this).attr("table");
-    // var cod_empresa = $(this).attr("cod_empresa");
-    // var column = $(this).attr("column");
-    // var page = $(this).attr("page");
     var cod_establecimiento = document.getElementById("establecimiento").value;
     console.log(localStorage.getItem("cod"));
     console.log("cod_establecimiento: ", cod_establecimiento);
@@ -137,20 +133,16 @@ function execDataTable(text) {
               if(response == 200){
                 fncSweetAlert(
                   "success",
-                  "el registro a sido borrado correctamente",
+                  "success",
+                  "El registro se elimino correctamente",
                   "establecimientos"
                 );
               }else{
-                fncNotie(3,"error deleating the record")
+                fncNotie(3,"Error al eliminar el registro")
               }
             }
           })
-
-
         }
-
-
       });
     }
-
   });

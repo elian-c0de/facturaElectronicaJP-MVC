@@ -67,8 +67,8 @@ if(isset($routesArray1[5])){
                 onchange="validateRepeat(event,'cod_perfil','gen_local','cod_perfil', <?php echo $_SESSION['admin']->cod_empresa?>)"
                 pattern="[a-zA-Z0-9]{1,6}"
                 required>
-                <div class="valid-feedback">Valid.</div>
-                <div class="invalid-feedback"> Please fill out this field.</div>
+                <div class="valid-feedback">Válido</div>
+                <div class="invalid-feedback"> Por favor, rellene este campo</div>
             </div>
 
             <!-- NOMBRE -->
@@ -83,8 +83,8 @@ if(isset($routesArray1[5])){
                 pattern="[a-zA-Z0-9]{1,50}"
                 required
                 >
-                <div class="valid-feedback">Valid</div>
-                <div class="invalid-feedback"> Please fill out this field</div>
+                <div class="valid-feedback">Válido</div>
+                <div class="invalid-feedback"> Por favor, rellene este campo</div>
             </div>
 
             <!-- ESTADO -->
@@ -102,8 +102,8 @@ if(isset($routesArray1[5])){
     <div class="card-header">
         <div class="col-md-8 offset-md-2">
             <div class="form-group mt-3">
-                <a href="perfiles" class="btn btn-light border text-left">Back</a>
-                <button type="submit" class="btn bg-dark float-lg-right">Save</button>
+                <a href="perfiles" class="btn btn-light border text-left">Cancelar</a>
+                <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
             </div>
         </div>
     </div>

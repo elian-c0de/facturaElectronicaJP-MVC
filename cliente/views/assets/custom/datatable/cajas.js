@@ -92,48 +92,43 @@ function edit(){
   }
 }
 
-//Elinianr registro
-$(document).on("click",".removeItem", function(){
-var idItem = $(this).attr("idItem");
-var table = $(this).attr("table");
-var cod_empresa = $(this).attr("cod_empresa");
-var column = $(this).attr("column");
-var page = $(this).attr("page");
+  //Elinianr registro
+  $(document).on("click",".removeItem", function(){
+    var cod_caja = document.getElementById("caja").value;
+    console.log(localStorage.getItem("cod"));
+    console.log("cod_caja: ", cod_caja);
+    if(cod_caja != ""){
+      fncSweetAlert("confirm","Estas seguro de eliminar este registro?","").then(resp=>{
 
-fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
+        if(resp){
+          var data = new FormData();
+          //MODIFICAR PARAMETROS
+          data.append("idItem", btoa(cod_caja+"~"+localStorage.getItem("token_user"))); // id pk de la tabla + toke encriptrado
+          data.append("table", "srja_caja"); // nombre de la tabla
+          data.append("cod_empresa", btoa(localStorage.getItem("cod"))); // codigo empresa encriptado papa
+          data.append("column", "cod_caja"); // columna donde se va a buscar el id pk
+          data.append("token", localStorage.getItem("token_user")); // el token enviado desde aqui para validar cualquier vaina 
 
-  if(resp){
-    var data = new FormData();
-    data.append("idItem",idItem);
-    data.append("table",table);
-    data.append("cod_empresa",cod_empresa);
-    data.append("column",column);
-    data.append("token",localStorage.getItem("token_user"))
-
-    $.ajax({
-      url: "ajax/ajax-delete.php",
-      method: "POST",
-      data: data,
-      contentType: false,
-      cache: false,
-      processData: false,
-      success: function(response){
-        if(response == 200){
-          fncSweetAlert(
-            "success",
-            "el registro a sido borrado correctamente",
-            page
-          );
-        }else{
-          fncNotie(3,"error deleating the record")
+          $.ajax({
+            url: "ajax/ajax-delete.php",
+            method: "POST",
+            data: data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(response){
+              if(response == 200){
+                fncSweetAlert(
+                  "success",
+                  "El registro se elimino correctamente",
+                  "cajas"
+                );
+              }else{
+                fncNotie(3,"Error al eliminar el registro")
+              }
+            }
+          })
         }
-      }
-    })
-
-
-  }
-
-
-})
-
-})
+      });
+    }
+  });

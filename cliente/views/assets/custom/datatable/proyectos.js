@@ -95,22 +95,21 @@ function execDataTable (text) {
  
   //Elinianr registro
   $(document).on("click",".removeItem", function(){
-      var idItem = $(this).attr("idItem");
-      var table = $(this).attr("table");
-      var cod_empresa = $(this).attr("cod_empresa");
-      var column = $(this).attr("column");
-      var page = $(this).attr("page");
-    
+    var cod_proyecto = document.getElementById("proyecto").value;
+    console.log(localStorage.getItem("cod"));
+    console.log("cod_proyecto: ", cod_proyecto);
+    if(cod_proyecto != ""){
       fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
-    
+
         if(resp){
           var data = new FormData();
-          data.append("idItem",idItem);
-          data.append("table",table);
-          data.append("cod_empresa",cod_empresa);
-          data.append("column",column);
-          data.append("token",localStorage.getItem("token_user"))
-    
+          //MODIFICAR PARAMETROS
+          data.append("idItem", btoa(cod_proyecto+"~"+localStorage.getItem("token_user"))); // id pk de la tabla + toke encriptrado
+          data.append("table", "ecmp_proyecto"); // nombre de la tabla
+          data.append("cod_empresa", btoa(localStorage.getItem("cod"))); // codigo empresa encriptado papa
+          data.append("column", "cod_proyecto"); // columna donde se va a buscar el id pk
+          data.append("token", localStorage.getItem("token_user")); // el token enviado desde aqui para validar cualquier vaina 
+
           $.ajax({
             url: "ajax/ajax-delete.php",
             method: "POST",
@@ -122,14 +121,15 @@ function execDataTable (text) {
               if(response == 200){
                 fncSweetAlert(
                   "success",
-                  "el registro a sido borrado correctamente",
-                  page
+                  "El registro a sido borrado correctamente",
+                  "proyectos"
                 );
               }else{
-                fncNotie(3,"error deleating the record")
+                fncNotie(3,"Error al eliminar el registro")
               }
             }
           })
         }
-      })
-    })
+      });
+    }
+  });

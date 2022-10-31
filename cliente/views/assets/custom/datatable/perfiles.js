@@ -59,10 +59,19 @@ function execDataTable (text) {
      ]
   })
 
+    //Monstrar Reportes [PDF-PRint-Etc]
+    $("#perfilestable").on("draw.dt",function(){
+        setTimeout(() => {
+          perfilesTable.buttons().container().appendTo('#perfilestable_wrapper .col-md-6:eq(0)');
+        }, 100);
+
+    })
+
      //Obtener ID del Perfil
      perfilesTable
     .on("select", function (e, dt, type, indexes) {
       var rowData = perfilesTable.rows(indexes).data().toArray();
+      console.log("rowData: ", rowData);
       document.getElementById("perfil").value = rowData[0].cod_perfil;
     })
     .on("deselect", function (e, dt, type, indexes) {
@@ -72,56 +81,51 @@ function execDataTable (text) {
  
   }
 
-  //Editar Perfil
+  //Editar registro
   function edit(){
     var date = document.getElementById("perfil").value;
-    if(date != ""){
-      window.location.href = ("perfiles/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
+      if(date != ""){
+        window.location.href = ("perfiles/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
+      }
     }
-  }
 
- //Elinianr registro
-$(document).on("click",".removeItem", function(){
-  var idItem = $(this).attr("idItem");
-  var table = $(this).attr("table");
-  var cod_empresa = $(this).attr("cod_empresa");
-  var column = $(this).attr("column");
-  var page = $(this).attr("page");
+  //Elinianr registro
+  $(document).on("click",".removeItem", function(){
+    var cod_perfil = document.getElementById("perfil").value;
+    console.log(localStorage.getItem("cod"));
+    console.log("cod_perfil: ", cod_perfil);
+    if(cod_perfil != ""){
+      fncSweetAlert("confirm","Estas seguro de eliminar este registro?","").then(resp=>{
 
-  fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
+        if(resp){
+          var data = new FormData();
+          //MODIFICAR PARAMETROS
+          data.append("idItem", btoa(cod_perfil+"~"+localStorage.getItem("token_user"))); // id pk de la tabla + toke encriptrado
+          data.append("table", "gen_perfil"); // nombre de la tabla
+          data.append("cod_empresa", btoa(localStorage.getItem("cod"))); // codigo empresa encriptado papa
+          data.append("column", "cod_perfil"); // columna donde se va a buscar el id pk
+          data.append("token", localStorage.getItem("token_user")); // el token enviado desde aqui para validar cualquier vaina 
 
-    if(resp){
-      var data = new FormData();
-      data.append("idItem",idItem);
-      data.append("table",table);
-      data.append("cod_empresa",cod_empresa);
-      data.append("column",column);
-      data.append("token",localStorage.getItem("token_user"))
-
-      $.ajax({
-        url: "ajax/ajax-delete.php",
-        method: "POST",
-        data: data,
-        contentType: false,
-        cache: false,
-        processData: false,
-        success: function(response){
-          if(response == 200){
-            fncSweetAlert(
-              "success",
-              "el registro a sido borrado correctamente",
-              page
-            );
-          }else{
-            fncNotie(3,"error deleating the record")
-          }
+          $.ajax({
+            url: "ajax/ajax-delete.php",
+            method: "POST",
+            data: data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(response){
+              if(response == 200){
+                fncSweetAlert(
+                  "success",
+                  "El registro se elimino correctamente",
+                  "perfiles"
+                );
+              }else{
+                fncNotie(3,"Error al eliminar el registro")
+              }
+            }
+          })
         }
-      })
-
-
+      });
     }
-
-
-  })
-
-})
+  });
