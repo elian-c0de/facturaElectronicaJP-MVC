@@ -18,39 +18,79 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
 
 
 
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="card-body">
+          <table id="itemsxestablecimiento_precio" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Codigo</th>
+                <th>Descripcion</th>
+                <th>V/COSTO</th>
+                <th>% COSTO</th>
+                <th>PRECIO</th>
+                <th>IVA</th>
+                <th>V/IVA</th>
+                <th>PRECIO FINAL</th>
+                <th>actions</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <div class="card">
   <div class="card-header">
 
     <!-- BOTONES SUPERIORES PARA CREAR Y HACER OTRAS COSAS -->
+
+    <input type="hidden" id="inventarioID" name="inventarioID">
+
+
+
     <h3 class="card-title">
-      <a class="btn bg-blue btn-small" href="itemsxestablecimiento/create">Agregar Items</a>
+      <a class="btn bg-blue btn-small" href="itemsxestablecimiento/create"><i class="bi bi-file-earmark-plus-fill"></i></a>
+      <a class="btn btn-warning btn-small" onclick="edit()"><i class='fas fa-pencil-alt'></i></a>
+      <a class="btn btn-danger btn-small removeItem"><i class='fas fa-trash-alt'></i></a>
+      <a class="btn bg-green btn-small" href="establecimientos/XML"><i class="bi bi-filetype-xml"></i></a>
       <a class="btn bg-block btn-outline-primary btn-small ml-5" href="inventario">Inventario</a>
       <a class="btn bg-block btn-outline-primary btn-small" href="itemsxestablecimiento">Items x Establecimiento</a>
 
-                      <!-- LINEA Y SUB LINEA -->
-              <div class="form-group">
-                    <label>Establecimiento</label>
-                    <?php
-                    require_once("controllers/establecimientos.controllers.php");
-                    $create = new EstablecimientosController();
-                    $tipo_precio = $create->establecimientos();
-                    $tipo_precio = json_encode($tipo_precio);
-                    $tipo_precio = json_decode($tipo_precio, true);
-                    ?>
+      <!-- LINEA Y SUB LINEA -->
+      <div class="form-group">
+        <br>
+        <?php
+        require_once("controllers/establecimientos.controllers.php");
+        $create = new EstablecimientosController();
+        $tipo_precio = $create->establecimientos();
+        $tipo_precio = json_encode($tipo_precio);
+        $tipo_precio = json_decode($tipo_precio, true);
+        ?>
 
-                    <select class="form-control select2 changeCountry" name="cod_linea" id="establecimiento" onchange="reload()" required>
-                        <option value>Seleccione Precio Aplicado</option>
-                        <?php foreach ($tipo_precio as $key => $value) : ?>
-                            <option value="<?php echo $value["cod_establecimiento"] ?>">
+        <select class="form-control select2 changeCountry" name="establecimiento" id="establecimiento" onchange="reload()" required>
+          <option value>Seleccione Establecimiento</option>
+          <?php foreach ($tipo_precio as $key => $value) : ?>
+            <option value="<?php echo $value["cod_establecimiento"] ?>">
 
-                            <?php echo $value["txt_descripcion"] ?>
+              <?php echo $value["txt_descripcion"] ?>
 
-                            </option>
-                        <?php endforeach ?>
-                    </select>
-              </div>
+            </option>
+          <?php endforeach ?>
+        </select>
+      </div>
 
-      
+
 
     </h3>
 
@@ -58,11 +98,6 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
     <div class="card-tools">
       <div class="d-flex">
 
-        <!-- INTERRUPTOR DE MOSTRAR O NO REPORTES -->
-        <div class="d-flex mr-2">
-          <span class="mr-3">Resportes:</span>
-          <input type="checkbox" onchange="reportActive(event);" name="my-checkbox" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
-        </div>
         <!-- ASIGANACION DE RANGOS POR FECHAS -->
         <div class="input-group">
           <button type="button" class="btn float-right" id="daterange-btn">
@@ -75,7 +110,7 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
       </div>
     </div>
   </div>
-  
+
   <!-- /.card-header -->
   <!-- TABLA DONDE SE VAN A MOSTRAR LOS DATOS -->
   <div class="card-body">
@@ -93,6 +128,8 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
           <th>Valor Descuento</th>
           <th>% Descuento</th>
           <th>Estado</th>
+          <th></th>
+
         </tr>
       </thead>
     </table>

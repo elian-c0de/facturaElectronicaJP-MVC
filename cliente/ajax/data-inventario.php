@@ -148,51 +148,35 @@ class inventarioDataTableController
                 //RECORREMOS CADA POSICION DEL JSON QUE VIENE EN LA VARIABLE $data
                 foreach ($data as $key => $value) {
 
-                    //PREGUNTAMOS SI VIENE UNA VARIABLE FLAT LA CUAL NOS APLICARA UNA CONDICIONAL PARA MOSTRAR O NO ALGUNOS BOTONES
-                    if ($_GET["text"] == "flat") {
-                        $actions = "";
-                    }else{
-                        $actions = "<a href='inventario/edit/" . base64_encode($value->cod_inventario . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+                
 
-                            <i class='fas fa-pencil-alt'></i>
-
-                            </a> 
-                            
-                            <a class='btn btn-danger btn-sm rounded-circle removeItem' idItem=" . base64_encode($value->cod_inventario . "~" . $_GET["token"]) . " table='ecmp_inventario' column='cod_inventario' page='inventario' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
-
-                            <i class='fas fa-trash-alt'></i>
-
-
-                            </a>";
-
-                        $actions = TemplateController::htmlClean($actions);
+                          //checkbox control de checked
+                    if($value->sts_iva == "A") {
+                        $sts_iva = "Si";
                     }
 
-                    //checkbox control de checked
-                    if ($value->sts_iva == "A") {
-                        $checked = "checked";
-                    }else{
-                        $checked = "";
+                    if($value->sts_iva == "C") {
+                        $sts_iva = "No";
                     }
 
                        //checkbox control de checked
                     if ($value->sts_inventario == "A") {
-                        $checked1 = "checked";
-                    }else{
-                        $checked1 = "";
+                        $sts_inventario = "Activo";
+                    }
+
+                    if ($value->sts_inventario == "C") {
+                        $sts_inventario = "Inactivo";
                     }
 
                     if($value->sts_tipo == "S"){
-                        $sts_tipo = "SERVICIOS";
+                        $sts_tipo = "Servicios";
                     }
 
                     if($value->sts_tipo == "B"){
-                        $sts_tipo = "BIENES";
+                        $sts_tipo = "Bienes";
                     }
 
-                    // $button = "<input type='checkbox' class='stsiva' val='".$value->sts_iva."'  $checked idItem='".base64_encode($value->cod_inventario . "~" . $_GET["token"])."' cod_empresa='" . base64_encode($value->cod_empresa. "~" . $_GET["token"])."' table = 'ecmp_inventario' column = 'cod_inventario' page='inventario' >";
-                    // $button2 = "<input type='checkbox' class='stsinventario' val='".$value->sts_inventario."'  $checked1 idItem='".base64_encode($value->cod_inventario . "~" . $_GET["token"])."' cod_empresa='" . base64_encode($value->cod_empresa. "~" . $_GET["token"])."' table = 'ecmp_inventario' column = 'cod_inventario' page='inventario' >";
-                
+                   
 
 
                  
@@ -201,13 +185,10 @@ class inventarioDataTableController
                     $cod_inventario= $value->cod_inventario;
                     $cod_barras= $value->cod_barras;
                     $txt_descripcion= $value->txt_descripcion;
-                    $sts_iva= $value->sts_iva;
-                    // $sts_tipo= $value->sts_tipo;
                     $qtx_saldo= $value->qtx_saldo;
                     $val_costo= $value->val_costo;
                     $cod_linea_sublinea= $value->lineasublinea;
                     $cod_marca= $value->cod_marca;
-                    $sts_inventario= $value->sts_inventario;
                 
 
 
@@ -223,8 +204,7 @@ class inventarioDataTableController
                         "val_costo":"'.$val_costo.'",		
                         "cod_linea_sublinea":"'.$cod_linea_sublinea.'",
                         "cod_marca":"'.$cod_marca.'",		
-                        "sts_inventario":"'.$sts_inventario.'",
-                        "actions":"'.$actions.'"	
+                        "sts_inventario":"'.$sts_inventario.'"
                         },';
                 }
 
