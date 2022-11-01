@@ -26,7 +26,7 @@
 					<?php 
                     require_once("controllers/puntoemision.controllers.php");
                     $create = new PuntoemisionController();
-                    $lista = $create -> getListaEstablecimiento();
+                    $lista = $create -> getlistaEstablecimiento();
                     $lista = json_encode($lista);
                     $lista = json_decode($lista,true);
                     ?>
