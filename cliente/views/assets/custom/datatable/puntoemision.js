@@ -1,4 +1,4 @@
-execDataTable("flat");
+// execDataTable("flat");
 function execDataTable (text) {
   var puntoemisionTable = $("#puntoemisiontable").DataTable({
     select: {
@@ -25,6 +25,7 @@ function execDataTable (text) {
        {data:"num_retencion"},
        {data:"num_guia"},
        {data:"sts_tipo_facturacion"},
+       {data:"sts_punto_emsion"},
        {data:"sts_impresion"},
        {data:"num_factura_prueba"},
        {data:"num_nota_credito_prueba"},
@@ -84,14 +85,28 @@ function execDataTable (text) {
     .on("select", function (e, dt, type, indexes) {
       var rowData = puntoemisionTable.rows(indexes).data().toArray();
       
-      document.getElementById("sublinea").value = rowData[0].cod_sublinea;
+      document.getElementById("puntoemision").value = rowData[0].cod_sublinea;
     })
     .on("deselect", function (e, dt, type, indexes) {
       var rowData = puntoemisionTable.rows(indexes).data().toArray();
-      document.getElementById("linea1").value = "";
-      document.getElementById("sublinea").value = "";
+      document.getElementById("establecimiento").value = "";
+      document.getElementById("puntoemision").value = "";
     });
  }
+
+ //Recargar tabla al seleccionar combobox
+ var count = 0;
+  function reload(){
+    console.log("count: ", count);
+    count = count +1;
+    if (count == 2) {
+      location.reload();
+    }
+    $("#puntoemisiontable").DataTable().clear().draw();
+    $("#puntoemisiontable").DataTable().destroy(); $
+    execDataTable();
+  }
+
 
  //Editar Punto de Emision
  function edit(){

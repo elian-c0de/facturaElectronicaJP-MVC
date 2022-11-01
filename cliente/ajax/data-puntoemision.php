@@ -7,7 +7,7 @@ class DataTableController
     {
         if (!empty($_POST)) {
             
-            if(isset($_GET["puntoemision"])){
+            if(isset($_GET["cod_establecimiento"])){
                 
                 //capturando y organizandos las variables post de datatable
                 $draw = $_POST["draw"];
@@ -18,7 +18,7 @@ class DataTableController
                 $length = $_POST["length"];
             
                 //total de registros de la data
-                $url = "gen_punto_emision?select=*&linkTo=cod_empresa,cod_establecimiento&equalTo=".$_GET["code"].",".$_GET["puntoemision"];
+                $url = "gen_punto_emision?select=*&linkTo=cod_empresa,cod_establecimiento&equalTo=".$_GET["code"].",".$_GET["cod_establecimiento"];
                 $link=array();
                 $method = "GET";
                 $fields = array();
@@ -70,14 +70,8 @@ class DataTableController
                     }
                 }else{ 
                 //seleccionar datos
-                $url = "gen_punto_emision?select=*&orderBy=".$orderBy."&orderMode=".$orderType."&linkTo=cod_empresa,cod_establecimiento&equalTo=".$_GET["code"].",".$_GET["puntoemision"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+                $url = "gen_punto_emision?select=*&orderBy=".$orderBy."&orderMode=".$orderType."&linkTo=cod_empresa,cod_establecimiento&equalTo=".$_GET["code"].",".$_GET["cod_establecimiento"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
                 $data = CurlController::request($url, $method, $fields)->result;
-                foreach ($data as $key3 => $value3) {
-                    if ($value3->cod_punto_emision != 000) {
-                    array_push($valk,$value3);
-                    }
-                }
-                $data=$valk;
                 $recordsFiltered = $totalData;
                 }
                 if(empty($data)){
@@ -115,10 +109,38 @@ class DataTableController
                         }
                         $cod_punto_emision = $value->cod_punto_emision;
                         $txt_descripcion = $value->txt_descripcion;
+                        $cod_caja = $value->cod_caja;
+                        $sts_ambiente = $value->sts_ambiente;
+                        $sts_tipo_emision = $value->sts_tipo_emision;
+                        $num_factura = $value->num_factura;
+                        $num_nota_credito = $value->num_nota_credito;
+                        $num_retencion = $value->num_retencion;
+                        $num_guia = $value->num_guia;
+                        $sts_tipo_facturacion = $value->sts_tipo_facturacion;
+                        $sts_impresion = $value->sts_impresion;
+                        $sts_punto_emsion = $value->sts_punto_emsion;
+                        $num_factura_prueba = $value->num_factura_prueba;
+                        $num_nota_credito_prueba = $value->num_nota_credito_prueba;
+                        $num_retencion_prueba = $value->num_retencion_prueba;
+                        $num_guia_prueba = $value->num_guia_prueba;
 
                                 $dataJson.='{
                             "cod_punto_emision":"'.$cod_punto_emision.'",
                             "txt_descripcion":"'.$txt_descripcion.'",
+                            "cod_caja":"'.$cod_caja.'",
+                            "sts_ambiente":"'.$sts_ambiente.'",
+                            "sts_tipo_emision":"'.$sts_tipo_emision.'",
+                            "num_factura":"'.$num_factura.'",
+                            "num_nota_credito":"'.$num_nota_credito.'",
+                            "num_retencion":"'.$num_retencion.'",
+                            "num_guia":"'.$num_guia.'",
+                            "sts_tipo_facturacion":"'.$sts_tipo_facturacion.'",
+                            "sts_impresion":"'.$sts_impresion.'",
+                            "sts_punto_emsion":"'.$sts_punto_emsion.'",
+                            "num_factura_prueba":"'.$num_factura_prueba.'",
+                            "num_nota_credito_prueba":"'.$num_nota_credito_prueba.'",
+                            "num_retencion_prueba":"'.$num_retencion_prueba.'",
+                            "num_guia_prueba":"'.$num_guia_prueba.'",
                             "actions":"'.$actions.'"
                         },';
                     }
