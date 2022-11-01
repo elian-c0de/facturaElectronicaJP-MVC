@@ -245,4 +245,126 @@ class ItemsxestablecimientoController{
   
     }
 
+
+
+    public function editPrecio($id,$id2,$id3){
+
+        if(isset($_POST["idAdmin"]) &&  isset($_POST["idAdmin1"]) && isset($_POST["idAdmin2"]) ){
+            
+          if($id == $_POST["idAdmin"] && $id2 == $_POST["idAdmin1"] && $id3 == $_POST["idAdmin2"] ){
+
+
+            $url = "ecmp_item_precio?linkTo=cod_empresa,cod_inventario,cod_establecimiento,cod_precio&equalTo=".$_SESSION['admin']->cod_empresa.",".$id.",".$id2.",".$id3;
+            
+            $method = "GET";
+            $fields = array();
+    
+            $response = CurlController::request($url,$method,$fields);
+          
+            if($response->status == 200){
+
+                // echo '<script>
+
+                // matPreloader("on");
+                // fncSweetAlert("loading", "Loading...", "");
+    
+                // </script>';
+
+                if(preg_match('/^[0-9]{1,18}([.][0-9]{1,5})?$/',$_POST["val_porcentaje_costo"]) &&
+                preg_match('/^[0-9]{1,18}([.][0-9]{1,5})?$/',$_POST["val_precio"]))   
+                {
+                 
+
+                    if(isset($_POST["sts_iva"])){
+                        $_POST["sts_iva"] = "A";
+                    }else{
+                        $_POST["sts_iva"] = "C";
+                    }
+                 
+          
+                   
+                        $data = "val_porcentaje_costo=".$_POST["val_porcentaje_costo"].
+                        "&val_precio=".$_POST["val_precio"];
+
+                        // $data1 = "sts_iva=".$_POST["sts_iva"];
+                      
+                  
+                
+                    $url = "ecmp_item_precio?id=".$id."&nameId=cod_inventario&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa."&nameId3=cod_establecimiento&id3=".$id2."&nameId4=cod_precio&id4=".trim($id3);
+                    // $url1 = "ecmp_inventario?id=".$id."&nameId=cod_inventario&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
+
+
+      
+                    $method = "PUT";
+                    $fields = $data;
+
+                  
+                    // $fields1 = $data1;
+                
+                
+                    $response = CurlController::request($url,$method,$fields);
+                    // $response1 = CurlController::request($url1,$method,$fields1);
+           
+                 
+             
+                    
+                    // && $response1->status == 200
+
+                    
+
+
+                    if($response->status == 200 ){
+                        echo '<script>
+
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncSweetAlert("success", "Edicion con exito", "itemsxestablecimiento");
+
+                    </script>';
+                    }else{
+                        echo '<script>
+
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncNotie(3, "Error editing the registry");
+
+                    </script>';
+                    }
+
+    
+                }else{
+                    echo '<script>
+
+                    fncFormatInputs();
+                    matPreloader("off");
+                    fncSweetAlert("close", "", "");
+                    fncNotie(3, "Error en los campos ingresados");
+
+                </script>';
+                }
+
+            }else{
+                echo '<script>
+
+                fncFormatInputs();
+                matPreloader("off");
+                fncSweetAlert("close", "", "");
+                fncNotie(3, "Error en el sistema");
+
+            </script>';
+            }
+
+          }
+            
+        }
+
+  
+    }
+
+
+
+
+
 }
