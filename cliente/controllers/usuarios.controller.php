@@ -9,7 +9,7 @@ class UsuariosController{
      
        
 
-        if(isset($_POST["cod_inventario"])){
+        if(isset($_POST["cod_usuario"])){
 
 
             echo '<script>
@@ -20,30 +20,30 @@ class UsuariosController{
             </script>';
 
 
-            if (!isset($_POST["cod_barras"])) {
+            // if (!isset($_POST["nom_usuario"])) {
 
-                $_POST["cod_barras"] = "";
-            }
+            //     $_POST["nom_usuario"] = "";
+            // }
             
 
             if(
-            preg_match('/^[-A-Z0-9]{1,30}$/',$_POST["cod_inventario"]) &&
-            preg_match('/^[-0-9]{1,30}$/',$_POST["cod_barras"]) &&
-            preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]) &&
-            preg_match('/^[0-9]{1,18}$/',$_POST["qtx_saldo"]) &&
-            preg_match('/^[0-9]{1,18}([.][0-9]{1,2})?$/',$_POST["val_costo"]) )
+            preg_match('/^[a-zñÑáéíóúÁÉÍÓÚ ]{1,20}$/',$_POST["cod_usuario"]) &&
+            preg_match('/^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$/',$_POST["nom_usuario"]) &&  
+            preg_match('/^[a-zA-Z0-9]{1,6}$/',$_POST["cod_perfil"]) &&
+            preg_match('/^[a-zA-Z0-9]{1,3}$/',$_POST["cod_establecimiento"]) &&
+            preg_match('/^[0-9]{1,18}([.][0-9]{1,2})?$/',$_POST["cod_punto_emision"]) )
             {
 
-                if(isset($_POST["sts_iva"])){
-                    $_POST["sts_iva"] = "A";
+                if(isset($_POST["sts_usuario"])){
+                    $_POST["sts_usuario"] = "A";
                 }else{
-                    $_POST["sts_iva"] = "C";
+                    $_POST["sts_usuario"] = "C";
                 }
 
-                if(isset($_POST["sts_inventario"])){
-                    $_POST["sts_inventario"] = "A";
+                if(isset($_POST["sts_administrador"])){
+                    $_POST["sts_administrador"] = "A";
                 }else{
-                    $_POST["sts_inventario"] = "C";
+                    $_POST["sts_administrador"] = "C";
                     
                 }
 
@@ -55,19 +55,17 @@ class UsuariosController{
                     
 
                     "cod_empresa" => $_SESSION["admin"]->cod_empresa,
-                    "cod_inventario" => trim($_POST["cod_inventario"]),
-                    "cod_barras" => trim($_POST["cod_barras"]),
-                    "txt_descripcion" => trim($_POST["txt_descripcion"]),
-                    "sts_iva" => $_POST["sts_iva"],
-                    "sts_tipo" => $_POST["sts_tipo"],
-                    "qtx_saldo" => trim($_POST["qtx_saldo"]),
-                    "val_costo" => trim($_POST["val_costo"]),
-                    "cod_usuario" => $_SESSION["admin"]->cod_usuario,
-                    "cod_linea" => explode("-",$_POST["cod_linea"])[0],
-                    "cod_sublinea" => explode("-",$_POST["cod_linea"])[1],
-                    "cod_marca" => $_POST["cod_marca"],
-                    "sts_inventario" => $_POST["sts_inventario"],
-                    "fec_actualiza" => date("Y-m-d H:i:s")
+                    "cod_usuario" => trim($_POST["cod_usuario"]),
+                    "nom_usuario" => trim($_POST["nom_usuario"]),
+                    "fec_vigencia_passwd" => date("Y-m-d H:i:s"),
+                    "num_dias_vigencia_passwd" => trim('0'),
+                    "num_intentos" => trim('0'),
+                    //"cod_passwd" => explode("-",$_POST["cod_passwd"])[0],
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "sts_administrador" => $_POST["sts_administrador"],
+                    "sts_usuario" => $_POST["sts_usuario"],
+                    "cod_establecimiento" => trim($_POST["cod_establecimiento"]),
+                    "cod_punto_emision" => trim($_POST["cod_punto_emision"])
 
                 );
 
@@ -76,7 +74,7 @@ class UsuariosController{
             
                 
          
-                $url = "ecmp_inventario?token=".$_SESSION["admin"]->token_usuario;
+                $url = "gen_usuario?token=".$_SESSION["admin"]->token_usuario;
                 $method = "POST";
                 $fields = $data;
                 $response = CurlController::request($url,$method,$fields);
@@ -90,7 +88,7 @@ class UsuariosController{
                     fncFormatInputs();
                     matPreloader("off");
                     fncSweetAlert("close", "", "");
-                    fncSweetAlert("success", "Registro Exitosos", "inventario");
+                    fncSweetAlert("success", "Registro Exitosos", "usuarios");
 
                 </script>';
                 }else{
@@ -159,13 +157,23 @@ class UsuariosController{
         return $response;
     }
 
+    //BUSCAR
+    // public function buscar($tabla,$condicion){
+    //     $result = $this->conexion->query('SELECT * FROM $tabla WHERE $condicion') or die($this->conexion->error);
+    //     if($result){
+    //         return $result->fetch_all(MYSQLI_ASSOC);
+    //     }else{
+    //         return false;
+    //     }
+    // }
+
     public function edit($id){
 
         if(isset($_POST["idAdmin"])){
             
           if($id == $_POST["idAdmin"]){
 
-            $url = "ecmp_inventario?linkTo=cod_empresa,cod_inventario&equalTo=".$_SESSION['admin']->cod_empresa.",".$id;
+            $url = "gen_usuario?linkTo=cod_empresa,cod_usuario&equalTo=".$_SESSION['admin']->cod_empresa.",".$id;
             
             $method = "GET";
             $fields = array();
@@ -178,42 +186,41 @@ class UsuariosController{
           
 
                 if(
-                    preg_match('/^[-0-9 ]{1,30}$/',$_POST["cod_barras"]) &&
-                    preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]) &&
-                    preg_match('/^[0-9]{1,18}$/',$_POST["qtx_saldo"]) &&
-                    preg_match('/^[0-9]{1,18}([.][0-9]{1,2})?$/',$_POST["val_costo"]) )
+                preg_match('/^[a-zñÑáéíóúÁÉÍÓÚ ]{1,20}$/',$_POST["cod_usuario"]) &&
+                preg_match('/^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$/',$_POST["nom_usuario"]) &&  
+                preg_match('/^[a-zA-Z0-9]{1,6}$/',$_POST["cod_perfil"]) &&
+                preg_match('/^[a-zA-Z0-9]{1,3}$/',$_POST["cod_establecimiento"]) &&
+                preg_match('/^[0-9]{1,18}([.][0-9]{1,2})?$/',$_POST["cod_punto_emision"]) )
                 {
-
-
-                if(isset($_POST["sts_iva"])){
-                    $_POST["sts_iva"] = "A";
-                }else{
-                    $_POST["sts_iva"] = "C";
-                }
-
-                if(isset($_POST["sts_inventario"])){
-                    $_POST["sts_inventario"] = "A";
-                }else{
-                    $_POST["sts_inventario"] = "C";
-                    
-                }
-
-                            $data = "cod_barras=".trim($_POST["cod_barras"]).
-                            "&txt_descripcion=".trim($_POST["txt_descripcion"]).
-                            "&sts_iva=".$_POST["sts_iva"].
-                            "&sts_tipo=".$_POST["sts_tipo"].
-                            "&qtx_saldo=".trim($_POST["qtx_saldo"]).
-                            "&val_costo=".trim($_POST["val_costo"]).
-                            "&cod_usuario=".$_SESSION["admin"]->cod_usuario.
-                            "&cod_linea=".explode("-",$_POST["cod_linea"])[0].
-                            "&cod_sublinea=".explode("-",$_POST["cod_linea"])[1].
-                            "&cod_marca=".$_POST["cod_marca"].
-                            "&sts_inventario=".$_POST["sts_inventario"].
-                            "&fec_actualiza=".date("Y-m-d H:i:s");
+    
+                    if(isset($_POST["sts_usuario"])){
+                        $_POST["sts_usuario"] = "A";
+                    }else{
+                        $_POST["sts_usuario"] = "C";
+                    }
+    
+                    if(isset($_POST["sts_administrador"])){
+                        $_POST["sts_administrador"] = "A";
+                    }else{
+                        $_POST["sts_administrador"] = "C";
+                        
+                    }
+    
+                            $data = "cod_empresa=".trim($_POST["cod_empresa"]).
+                            "&cod_usuario=".trim($_POST["cod_usuario"]).
+                            "&nom_usuario=".trim($_POST["nom_usuario"]).
+                            "&fec_vigencia_passwd=".date("d-m-Y H:i:s").
+                            "&num_dias_vigencia_passwd=".trim('0').
+                            "&num_intentos=".trim('0').
+                            "&cod_perfil=".trim($_POST["cod_perfil"]).
+                            "&sts_administrador=".$_POST["sts_administrador"].
+                            "&sts_usuario=".$_POST["sts_usuario"].
+                            "&cod_perfil=".trim($_POST["cod_perfil"]).
+                            "&cod_punto_emision=".trim($_POST["cod_punto_emision"]);
             
-                    
+
                 
-                    $url = "ecmp_inventario?id=".$id."&nameId=cod_inventario&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
+                    $url = "gen_usuario?id=".$id."&nameId=cod_usuario&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
          
                     $method = "PUT";
                     $fields = $data;
@@ -231,7 +238,7 @@ class UsuariosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Edicion con exito", "inventario");
+                        fncSweetAlert("success", "Edicion con exito", "usuarios");
 
                     </script>';
                     }else{

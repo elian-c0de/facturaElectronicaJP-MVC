@@ -177,7 +177,7 @@ function validateJS(event, type) {
   if(type == "nom_usuario") pattern = /^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$/;
   if(type == "cod_usuario") pattern = /^[a-zñÑáéíóúÁÉÍÓÚ ]{1,20}$/;
   if(type == "num_factura") pattern = /^[0-9]{1,9}$/;
-  
+  if(type == "cod_punto_emision") pattern = /^[a-zA-Z0-9]{1,3}$/;
 
   if (!pattern.test(event.target.value)) {
  
