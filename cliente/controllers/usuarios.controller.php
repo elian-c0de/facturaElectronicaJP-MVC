@@ -122,7 +122,7 @@ class UsuariosController{
 
 
     public function perfil_usuario(){
-        $url = "gen_perfil";
+        $url = "gen_perfil?linkTo=cod_empresa&equalTo=".$_SESSION['admin']->cod_empresa;
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
@@ -130,7 +130,7 @@ class UsuariosController{
     }
    
     public function codigo_nombre_estado_usuario(){
-        $url = "gen_usuario";
+        $url = "gen_usuario?linkTo=cod_empresa&equalTo=".$_SESSION['admin']->cod_empresa;
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
@@ -138,14 +138,21 @@ class UsuariosController{
     }
 
     public function establecimiento_usuario(){
-        $url = "gen_local";
+        $url = "gen_local?linkTo=cod_empresa&equalTo=".$_SESSION['admin']->cod_empresa;
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
         return $response;
     }
     public function puntoEmision_usuario(){
-        $url = "gen_punto_emision";
+        $url = "gen_punto_emision?linkTo=cod_empresa&equalTo=".$_SESSION['admin']->cod_empresa;
+        $method = "GET";
+        $fields = array();
+        $response = CurlController::request($url,$method,$fields)->result;
+        return $response;
+    }
+    public function puntoEmision_usuario2($id){
+        $url = "gen_punto_emision?linkTo=cod_empresa,cod_establecimiento&equalTo=".$_SESSION['admin']->cod_empresa.",".$id;
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
@@ -190,9 +197,6 @@ class UsuariosController{
                     $_POST["sts_inventario"] = "C";
                     
                 }
-              
-        
-
 
                             $data = "cod_barras=".trim($_POST["cod_barras"]).
                             "&txt_descripcion=".trim($_POST["txt_descripcion"]).
@@ -284,5 +288,7 @@ class UsuariosController{
 
   
     }
+
+
 
 }
