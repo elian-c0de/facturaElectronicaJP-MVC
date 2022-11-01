@@ -1,6 +1,6 @@
 execDataTable("flat");
 function execDataTable (text) {
-  var puntoemisionTable = $("#puntoemisionTable").DataTable({
+  var puntoemisionTable = $("#puntoemisiontable").DataTable({
     select: {
       style: "single",
     },
@@ -68,13 +68,28 @@ function execDataTable (text) {
         { extend: "pdf", className: "btn-g" },
         { extend: "print", className: "btn-g" },
         { extend: "colvis", className: "btn-g" },
-      ],
-      fnDrawCallback:function(oSettings){
-        if(oSettings.aoData.length == 0){
-            $('.dataTables_paginate').hide();
-            $('.dataTables_info').hide();
-        }
-      }
+      ]
+    })
+
+     //Monstrar Reportes [PDF-PRint-Etc]
+    $("#puntoemisiontable").on("draw.dt",function(){
+        setTimeout(() => {
+          puntoemisionTable.buttons().container().appendTo('#puntoemisiontable_wrapper .col-md-6:eq(0)');
+
+        }, 100);
+    })
+
+    //Obtener ID del punto de emision
+    puntoemisionTable
+    .on("select", function (e, dt, type, indexes) {
+      var rowData = puntoemisionTable.rows(indexes).data().toArray();
+      
+      document.getElementById("sublinea").value = rowData[0].cod_sublinea;
+    })
+    .on("deselect", function (e, dt, type, indexes) {
+      var rowData = puntoemisionTable.rows(indexes).data().toArray();
+      document.getElementById("linea1").value = "";
+      document.getElementById("sublinea").value = "";
     });
  }
 
