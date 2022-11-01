@@ -47,8 +47,8 @@ if ($response->status == 200) {
                     pattern = "[0-9]{1,13}"
                     required
                     >
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback"> Please fill out this field.</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback">Por favor, rellene este campo.</div>
                 </div>
 
 
@@ -60,8 +60,8 @@ if ($response->status == 200) {
                     pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,100}"
                     required
                     >
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback"> Please fill out this field.</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback">Por favor, rellene este campo.</div>
                 </div>
 
 
@@ -73,8 +73,8 @@ if ($response->status == 200) {
                     onchange="validateJS(event,'nom_abreviado')"
                     required
                     >
-                    <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>
 
                 <!-- TXT DIRECCION CON VALIDACION TERMINADO -->
@@ -85,8 +85,8 @@ if ($response->status == 200) {
                      pattern= '[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,255}'
                      onchange="validateJS(event,'txt_direccion')"
                      required>
-                    <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>
 
                 <!-- NUMERO DE TELEFONO CON VALIDACION TERMINADO -->
@@ -98,8 +98,8 @@ if ($response->status == 200) {
                     name="num_telefono" 
                     required
                     >
-                    <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>
 
                 <!-- EMAIL CON VALIDACION TERMINADO -->
@@ -109,8 +109,8 @@ if ($response->status == 200) {
                     pattern="[.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}"
                     onchange="validateJS(event,'txt_email')" 
                     required>
-                    <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>
 
 
@@ -118,7 +118,7 @@ if ($response->status == 200) {
                     <label for="">Obligado a llevar contabilidad</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox" name="sts_obligado_contabilidad" <?php echo $admin->sts_obligado_contabilidad == "S" ? 'checked' : '' ?>  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
+                    <input type="checkbox" name="sts_obligado_contabilidad" data-on-text="SI" data-off-text="NO" <?php echo $admin->sts_obligado_contabilidad == "S" ? 'checked' : '' ?>  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
 
                 </div>
                 
@@ -130,15 +130,15 @@ if ($response->status == 200) {
                     onchange="validateJS(event,'num_res-agente_ret')" 
                     pattern="[0-9]{1,30}" 
                     >
-                    <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>
 
                 <div class="form-group mt-2">
                     <label for="">Regimen Micro Empresa</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox" name="sts_contribuyente_rme" <?php echo $admin->sts_contribuyente_rme == "S" ? 'checked' : '' ?>  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
+                    <input type="checkbox" name="sts_contribuyente_rme" data-on-text="SI" data-off-text="NO" <?php echo $admin->sts_contribuyente_rme == "S" ? 'checked' : '' ?>  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
 
                 </div>
 
@@ -151,20 +151,20 @@ if ($response->status == 200) {
                     >
                     
                     <div class="valid-feedback"></div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>
 
                 <!-- ID REPRESENTANTE CON VALIDACION TERMINADO (OJO SE PUEO INGRESAR DE A-Z e a la espera de confirmacion) -->
                 <div class="form-group mt-2">
                     <label for="">Id. Representante</label>
                     <input type="text" class="form-control"  
-                    value="<?php echo $admin->cod_tipo_id_representante ?>"
+                    value="<?php echo $admin->num_id_representante ?>"
                     name="cod_tipo_id_representante"
-                    onchange="validateJS(event,'cod_tipo_id_representante')" 
-                    pattern="[A-Z]{1,1}" 
+                    onchange="validateJS(event,'cod_tipo_id_representante')"
+                    pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,13}" 
                     required>
                     <div class="valid-feedback"></div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>
 
                 <div class="form-group mt-2">
@@ -176,21 +176,16 @@ if ($response->status == 200) {
                     pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,100}"
                     required>
                     <div class="valid-feedback"></div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>
-
-
-
-
-
             </div>
 
             <!-- BOTONES DE REGRESAR Y GUARDAR -->
             <div class="card-header">
                 <div class="col-md-8 offset-md-2">
                     <div class="form-group mt-3">
-                        <a href="informacionGeneral" class="btn btn-light border text-left">Back</a>
-                        <button type="submit" class="btn bg-dark float-lg-right">Save</button>
+                        <a href="informacionGeneral" class="btn btn-light border text-left">Cancelar</a>
+                        <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
                     </div>
                 </div>
             </div>
