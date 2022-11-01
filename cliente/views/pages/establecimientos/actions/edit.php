@@ -79,8 +79,8 @@ if(isset($routesArray1[5])){
                 pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}"
                 required
                 >
-                <div class="valid-feedback">Valid</div>
-                <div class="invalid-feedback"> Please fill out this field</div>
+                <div class="valid-feedback">Válido</div>
+                <div class="invalid-feedback"> Por favor, rellene este campo</div>
             </div>
 
             <!-- DIRECCION -->
@@ -93,8 +93,8 @@ if(isset($routesArray1[5])){
                 value="<?php echo $admin->txt_direccion?>"
                 required
                 >
-                <div class="valid-feedback">Valid</div>
-                <div class="invalid-feedback"> Please fill out this field</div>
+                <div class="valid-feedback">Válido</div>
+                <div class="invalid-feedback"> Por favor, rellene este campo</div>
             </div>
 
             <!-- MATRIZ -->
@@ -102,7 +102,7 @@ if(isset($routesArray1[5])){
                 <label for="">Matriz</label>
                 <br>
                 <!-- <input type="text" class="form-control" -->
-                <input type="checkbox"<?php echo $admin->sts_matriz == 'A' ? 'checked':''?>  name="sts_matriz" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                <input type="checkbox"<?php echo $admin->sts_matriz == 'A' ? 'checked':''?>data-on-text="SI" data-off-text="NO"  name="sts_matriz" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
                 >
             </div>
 
@@ -111,7 +111,7 @@ if(isset($routesArray1[5])){
                 <label for="">Estado</label>
                 <br>
                 <!-- <input type="text" class="form-control" -->
-                <input type="checkbox"<?php echo $admin->sts_local == 'A' ? 'checked':''?>  name="sts_local" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                <input type="checkbox"<?php echo $admin->sts_local == 'A' ? 'checked':''?> data-on-text="SI" data-off-text="NO"  name="sts_local" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
                 >
             </div>
         </div>
@@ -121,8 +121,8 @@ if(isset($routesArray1[5])){
     <div class="card-header">
         <div class="col-md-8 offset-md-2">
             <div class="form-group mt-3">
-                <a href="establecimientos" class="btn btn-light border text-left">Back</a>
-                <button type="submit" class="btn bg-dark float-lg-right">Save</button>
+                <a href="establecimientos" class="btn btn-light border text-left">Cancelar</a>
+                <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
             </div>
         </div>
     </div>

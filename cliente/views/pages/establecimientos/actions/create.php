@@ -21,7 +21,7 @@
                 onchange="validateRepeat(event,'cod_establecimiento','gen_local','cod_establecimiento', <?php echo $_SESSION['admin']->cod_empresa?>)"
                 pattern="[a-zA-Z0-9]{1,3}"
                 required>
-                <div class="valid-feedback">Válido.</div>
+                <div class="valid-feedback">Válido</div>
                 <div class="invalid-feedback"> Por favor, rellene este campo</div>
             </div>
 
@@ -78,7 +78,7 @@
     <div class="card-header">
         <div class="col-md-8 offset-md-2">
             <div class="form-group mt-3">
-                <a href="establecimientos" class="btn btn-light border text-left">Volver</a>
+                <a href="establecimientos" class="btn btn-light border text-left">Cancelar</a>
                 <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
             </div>
         </div>

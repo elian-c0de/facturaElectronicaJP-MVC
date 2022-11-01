@@ -21,25 +21,20 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
 <div class="card">
   <div class="card-header">
 
-    <!-- BOTONES SUPERIORES PARA CREAR Y HACER OTRAS COSAS -->
+  <input type="hidden" id="inventarioID" name="inventarioID">
     <h3 class="card-title">
-      <a class="btn bg-blue btn-small" href="inventario/create">Crear</a>
+      <a class="btn bg-blue btn-small" href="inventario/create"><i class="bi bi-file-earmark-plus-fill"></i></a>
+      <a class="btn btn-warning btn-small" onclick="edit()"><i class='fas fa-pencil-alt'></i></a>
+      <a class="btn btn-danger btn-small removeItem"><i class='fas fa-trash-alt'></i></a>
+      <a class="btn bg-green btn-small" href="establecimientos/XML"><i class="bi bi-filetype-xml"></i></a>
       <a class="btn bg-block btn-outline-primary btn-small ml-5" href="inventario">Inventario</a>
       <a class="btn bg-block btn-outline-primary btn-small" href="itemsxestablecimiento">Items x Establecimiento</a>
-
-      
-
     </h3>
 
     <!-- PARTE SUPERIOR DE LA TABLA -->
     <div class="card-tools">
       <div class="d-flex">
 
-        <!-- INTERRUPTOR DE MOSTRAR O NO REPORTES -->
-        <div class="d-flex mr-2">
-          <span class="mr-3">Resportes:</span>
-          <input type="checkbox" onchange="reportActive(event);" name="my-checkbox" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
-        </div>
         <!-- ASIGANACION DE RANGOS POR FECHAS -->
         <div class="input-group">
           <button type="button" class="btn float-right" id="daterange-btn">
@@ -69,7 +64,6 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
           <th>Linea / Sublinea</th>
           <th>Marca</th>
           <th>Estado</th>
-          
         </tr>
       </thead>
     </table>

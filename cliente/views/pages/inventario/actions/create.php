@@ -23,16 +23,21 @@
                     <div class="invalid-feedback"> Please fill out this field.</div>
                 </div>
 
+
+
+
+
+                <!-- CODIGO DE BARAS NO ES NECESARIO QUE SE ENVIE, PERO HAY QUE VALIDARLO DESDE EL BACKEND POR SI LAS MOSCAS -->
                 <div class="form-group mt-2">
                     <label>Codigo de barras</label>
                     <input type="text" name="cod_barras" 
-                    class="form-control" onchange="validateRepeat(event,'cod_barras','ecmp_inventario','cod_barras', <?php echo $_SESSION['admin']->cod_empresa ?>)"
-                     pattern="[-0-9]{1,30}" 
-                     required
-                     >
+                    class="form-control" onchange="validateJS(event,'cod_barras')"
+                     pattern="[-0-9]{1,30}">
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback"> Please fill out this field.</div>
                 </div>
+
+
 
                 <div class="form-group mt-2">
                     <label>Descripcion</label>
@@ -70,7 +75,7 @@
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
 
-                <div class="form-group mt-2">
+                <!-- <div class="form-group mt-2">
                     <label>Existencia Total</label>
                     <input type="text" name="qtx_saldo" 
                         class="form-control" 
@@ -92,7 +97,7 @@
                      >
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback"> Please fill out this field.</div>
-                </div>
+                </div> -->
 
 
                 <!-- LINEA Y SUB LINEA -->

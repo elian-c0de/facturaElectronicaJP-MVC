@@ -43,7 +43,7 @@
     //PREGUNTAMOS SI EXISTE UN VALOR EN EL INDICE 4
     if (isset($routesArray1[4])) {
 
-      if ($routesArray1[4] == "create" || $routesArray1[4] == "edit") {
+      if ($routesArray1[4] == "create" || $routesArray1[4] == "edit" || $routesArray[4] == "precio") {
         include "actions/" . $routesArray1[4] . ".php";
       }
     } else {
