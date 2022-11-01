@@ -108,6 +108,7 @@ function execDataTable() {
   adminsTable
     .on("select", function (e, dt, type, indexes) {
       rowData = adminsTable.rows(indexes).data().toArray();
+      console.log(rowData);
       document.getElementById("inventarioID").value = rowData[0].cod_inventario;
     })
     .on("deselect", function (e, dt, type, indexes) {
@@ -208,9 +209,16 @@ $(document).on("click", "#coso", function () {
 
 
 
+var count = 0;
 
 function reload() {
-  $("#itemsxestablecimientoTable").DataTable().clear();
+  console.log("count: ", count);
+  count = count +1;
+  if (count == 2) {
+    location.reload();
+  }
+
+  $("#itemsxestablecimientoTable").DataTable().clear().draw();
   $("#itemsxestablecimientoTable").DataTable().destroy();
   execDataTable();
   // var table = $("#itemsxestablecimientoTable").DataTable();
