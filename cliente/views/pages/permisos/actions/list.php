@@ -1,65 +1,177 @@
-<input type="hidden" id="between1" value="<?php echo $between1 ?>">
-<input type="hidden" id="between2" value="<?php echo $between2 ?>">
-<div class="card">
-<div class="card-header">
 
-<?php
-?>
+<div class="card card-dark card-outline">
+  <form method="post" class="needs-validation" novalidate enctype="multipart/form-data"><section class="content-header">
+    <div class="card-header">
+      <?php
+      require_once("controllers/permisos.controllers.php");
+      $create = new PermisosController();
+      $create->create();
+      ?>
+      <div class="col-md-5 offset-md-2">
 
-    <!-- <h3 class="card-title">
-      <a class="btn bg-blue btn-small" href="marcas/create"><i class="bi bi-file-earmark-plus-fill"></i></a>
-      <a class="btn bg-green btn-small" href=""><i class="bi bi-filetype-xml"></i></a>
-    </h3> -->
-        <div class="card-title">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="mx-auto" style="padding: 20px;">
-                                <form id="user-form">
-                                    <input type="hidden" id="userId">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <p>Perfil:</p>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control mb-3" id="nombre" placeholder="" required>
-                                        </div>
-                                    </div>
+      <!-- VALIDAR TIPO DE USUARIOS -->
+        <div class="form-group mt-2">
+          <label>Perfiles:</label>
+          <?php
+          // require_once("controllers/admins.controllers.php");
+          $create = new PermisosController();
+          $tipo = $create->perfiles();
+          $tipo = json_encode($tipo);
+          $tipo = json_decode($tipo, true);
+          ?>
+          <select class="form-control select2 changeCountry" name="perfil" id="perfil" onchange="rellenar()" required>
+              <option value>Seleccione el perfil</option>
+              <?php foreach ($tipo as $key => $value) : ?>
+                <option value="<?php echo $value["cod_perfil"] ?>" ><?php echo $value["cod_perfil"] ?> | <?php echo $value["nom_perfil"] ?></option>	
+              <?php endforeach ?>
+          </select>
+				</div>  
 
-                                </form>
-                        </div>
-
-        <!-- <div class="d-flex">
-            <div class="row">
-                <div class="col-md-4">
-                    <p>Usuario:</p>
-                </div>
-                <div class="col-md-6">
-                    <select class="form-control mb-3" id="usuario"  name="usuario" placeholder="Usuario" required></select>
-                </div>
-            </div>
-            
-        <div class="d-flex mr-2">
-          <span class="mr-3">Acciones:</span><input type="checkbox" onchange="reportActive(event);" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+        <!-- DIVICIÓN DEL CAMPO: DATOS -->
+        <div class="form-group mt-2">
+            <p class="lead">DATOS </br>______________________</p>
         </div>
-        <div class="input-group">
-          <button type="button" class="btn btn-default float-right" id="daterangee-btn">
-            <i class="far fa-calendar-alt"></i> Date range picker
-            <i class="fas fa-caret-down"></i>
-          </button>
-        </div> -->
+        <!-- CLIENTES -->
+        <div class="form-group mt-2">
+            <label for="">Clientes:</label>
+            <br>
+            <input type="checkbox"  name="sts_clientes" id="sts_clientes">
+        </div>
+        <!-- CLIENTES -->
+        <div class="form-group mt-2">
+            <label for="">Inventario:</label>
+            <br>
+            <input type="checkbox"  name="sts_inventario" id="sts_inventario">
+        </div>
+
+
+        <!-- DIVICIÓN DEL CAMPO: OPERACION -->
+        <div class="form-group mt-2">
+            <p class="lead">OPERACION </br>______________________</p>
+        </div>
+        <!-- MOVIMIENTOS DE INVENTARIO -->
+        <div class="form-group mt-2">
+            <label for="">Movimientos del inventario:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_mov_inventario" id="sts_mov_inventario">
+        </div>
+        <!-- PEDIDOS -->
+        <div class="form-group mt-2">
+            <label for="">Pedidos:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_pedidos" id="sts_pedidos">
+        </div>
+        <!-- FACTURACION -->
+        <div class="form-group mt-2">
+            <label for="">Facturación:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_facturacion" id="sts_facturacion">
+        </div>
+        <!-- NOTAS DE CREDITO -->
+        <div class="form-group mt-2">
+            <label for="">Notas de crédito:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_nota_credito" id="sts_nota_credito">
+        </div>
+        <!-- CAJA -->
+        <div class="form-group mt-2">
+            <label for="">Caja:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_caja" id="sts_caja">
+        </div>
+        <!-- GASTOS / COMPRAS -->
+        <div class="form-group mt-2">
+            <label for="">Gastos / Compras:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_gastos_compras" id="sts_gastos_compras">
+        </div>
+        <!-- COMPROBANTES DE RETENCION -->
+        <div class="form-group mt-2">
+            <label for="">Comprobantes de retención:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_comp_retencion" id="sts_comp_retencion">
+        </div>
+        <!-- GUIA DE REMISION -->
+        <div class="form-group mt-2">
+            <label for="">Guía de Remisión:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_guia_remision" id="sts_guia_remision">
+        </div>
+
+
+        <!-- DIVICIÓN DEL CAMPO: REPORTES -->
+        <div class="form-group mt-2">
+            <p class="lead">REPORTES </br>______________________</p>
+        </div>
+        <!-- KÁRDEX DEL INVENTARIO -->
+        <div class="form-group mt-2">
+            <label for="">Kárdex del inventario:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_kardex_inventario" id="sts_kardex_inventario">
+        </div>
+        <!-- COMPROBANTES EMITIDOS -->
+        <div class="form-group mt-2">
+            <label for="">Comprobantes emitidos:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_comp_emitidos" id="sts_comp_emitidos">
+        </div>
+        <!-- INFORMES DE VENTAS Y GASTOS -->
+        <div class="form-group mt-2">
+            <label for="">Informes de ventas y gastos:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_info_ventas_gastos" id="sts_info_ventas_gastos">
+        </div>
+        <!-- PRECIOS -->
+        <div class="form-group mt-2">
+            <label for="">Precios:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_precios" id="sts_precios">
+        </div>
+        <!-- HISTORIAL DEL CLIENTE -->
+        <div class="form-group mt-2">
+            <label for="">Historial del cliente:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_historial_cliente" id="sts_historial_cliente">
+        </div>
+        <!-- TOP DE VENTAS -->
+        <div class="form-group mt-2">
+            <label for="">Top de ventas:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_top_ventas" id="sts_top_ventas">
+        </div>
+        <!-- ATS-SRI -->
+        <div class="form-group mt-2">
+            <label for="">ATS-SRI:</label>
+            <br>
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"  name="sts_ats_sri" id="sts_ats_sri">
         </div>
       </div>
-  </div>
-  <!-- /.card-header -->
-  <div class="card-body">
-    <table id="permisostable" class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Opcion</th>
-          <th>Estado</th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <!-- /.card-body -->
+    <!-- BOTONES DE REGRESAR Y GUARDAR -->
+    <div class="card-header">
+            <div class="col-md-2 offset-md-4">
+                <div class="form-group mt-0">
+                    <a href="../cliente" class="btn btn-light border text-left">Cancelar</a>
+                    <button type="submit" class="btn btn-success float-lg-right">Guardar</button>
+                </div>
+            </div>
+        </div>
+  </form>
+   <!-- FIN DE FORMULARIO USUARIOS -->
 </div>
+
+<script src="views/assets/custom/datatable/permisos.js"></script>
