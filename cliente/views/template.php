@@ -162,7 +162,8 @@ foreach ($routesArray as $key => $value) {
             $routesArray1[3] == "clientes" ||
             $routesArray1[3] == "inventario" ||
             $routesArray1[3] == "sublineaproducto" ||
-            $routesArray1[3] == "itemsxestablecimiento"
+            $routesArray1[3] == "itemsxestablecimiento" ||
+            $routesArray1[3] == "claveusuario"
           ) {
             include("views/pages/" . $routesArray1[3] . "/index.php");
           } else {

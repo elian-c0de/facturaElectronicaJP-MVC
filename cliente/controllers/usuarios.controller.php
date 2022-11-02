@@ -60,7 +60,7 @@ class UsuariosController{
                     "fec_vigencia_passwd" => date("Y-m-d H:i:s"),
                     "num_dias_vigencia_passwd" => trim('0'),
                     "num_intentos" => trim('0'),
-                    //"cod_passwd" => explode("-",$_POST["cod_passwd"])[0],
+                    "cod_passwd" => explode("-",$_POST["cod_passwd"])[0],
                     "cod_perfil" => trim($_POST["cod_perfil"]),
                     "sts_administrador" => $_POST["sts_administrador"],
                     "sts_usuario" => $_POST["sts_usuario"],
@@ -216,9 +216,8 @@ class UsuariosController{
                             "&sts_administrador=".$_POST["sts_administrador"].
                             "&sts_usuario=".$_POST["sts_usuario"].
                             "&cod_perfil=".trim($_POST["cod_perfil"]).
-                            "&cod_punto_emision=".trim($_POST["cod_punto_emision"]);
-            
-
+                            "&cod_punto_emision=".trim($_POST["cod_punto_emision"]).
+                            "&cod_passwd=".trim($_POST["cod_passwd"]);
                 
                     $url = "gen_usuario?id=".$id."&nameId=cod_usuario&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
          

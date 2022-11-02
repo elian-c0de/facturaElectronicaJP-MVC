@@ -190,6 +190,14 @@ $routesArray = array_filter($routesArray);
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="claveusuario" class="nav-link">
+                      <i class="bi bi-key-fill"></i>
+                      <p>
+                          Cambiar clave de usuario
+                      </p>
+                    </a>
+                </li>
                 <!--           
           <li class="nav-item">
             <a href="../widgets.html" class="nav-link">
