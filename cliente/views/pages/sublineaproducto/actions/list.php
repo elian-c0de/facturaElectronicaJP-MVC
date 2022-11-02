@@ -24,7 +24,7 @@
                     $lista = json_decode($lista,true);
                     ?>
 
-					<select class="form-control select2 changeCountry" name="cod_linea" id="linea" onchange="reload(this.value)" required>
+					<select class="form-control select2 changeCountry" name="linea" id="linea" onchange="reload()" required>
 						<option value="">Seleccione la linea de producto</option>
 						<?php foreach ($lista as $key => $value): ?>
 							<option value="<?php echo $value["cod_linea"] ?>" ><?php echo $value["cod_linea"] ?> | <?php echo $value["txt_descripcion"] ?></option>	

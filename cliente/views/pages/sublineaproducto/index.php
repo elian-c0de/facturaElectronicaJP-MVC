@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-      <h1><i class=" fa-solid fa-cart-shopping mr-1"></i>Sublinea de Producto</h1>
+      <h1><i class="fa-solid fa-diagram-predecessor mr-1"></i>Sublinea de Producto</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-left">

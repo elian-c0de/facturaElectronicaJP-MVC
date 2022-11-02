@@ -1,7 +1,7 @@
 execDataTable("flat");
 function execDataTable (text) {
 
-    var sublineasdeproductotable = $("#sublineasdeproductotable").DataTable({
+    var sublineasdeproductoTable = $("#sublineasdeproductotable").DataTable({
        "select": {style: 'single'},  
        "responsive": true, 
        "lengthChange": true, 
@@ -54,73 +54,47 @@ function execDataTable (text) {
          {extend:"colvis",className:"btn-g"}
      ]
      })
- 
+
          $("#sublineasdeproductotable").on("draw.dt",function(){
              setTimeout(() => {
-              sublineasdeproductotable.buttons().container().appendTo('#sublineasdeproductotable_wrapper .col-md-6:eq(0)');
+              sublineasdeproductoTable.buttons().container().appendTo('#sublineasdeproductotable_wrapper .col-md-6:eq(0)');
      
              }, 100);
          })
 
-
-         sublineasdeproductotable
+         sublineasdeproductoTable
          .on("select", function (e, dt, type, indexes) {
-           var rowData = sublineasdeproductotable.rows(indexes).data().toArray();
-           
+           var rowData = sublineasdeproductoTable.rows(indexes).data().toArray();
+           console.log("rowData: ", rowData);
            document.getElementById("sublinea").value = rowData[0].cod_sublinea;
          })
          .on("deselect", function (e, dt, type, indexes) {
-           var rowData = sublineasdeproductotable.rows(indexes).data().toArray();
-           document.getElementById("linea1").value = "";
+           var rowData = sublineasdeproductoTable.rows(indexes).data().toArray();
            document.getElementById("sublinea").value = "";
          });
    }
-   function reload(x){
-    console.log("x: ", x);
-    document.getElementById('linea1').value=x;
-    $("#sublineasdeproductotable").dataTable().fnClearTable();
-    $("#sublineasdeproductotable").dataTable().fnDestroy();
-    setTimeout(() => {
-        execDataTable("flat");
-    }, 10);
-    }
- // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
-//  function reportActive(event){
-//      if(event.target.checked){
-//          $("#sublineasdeproductotable").dataTable().fnClearTable();
-//          $("#sublineasdeproductotable").dataTable().fnDestroy();
-//          setTimeout(() => {
-//              execDataTable("flat");
-//          }, 10);
-//      }else{
-//          $("#sublineasdeproductotable").dataTable().fnClearTable();
-//          $("#sublineasdeproductotable").dataTable().fnDestroy();
-//          setTimeout(() => {
-//              execDataTable("html");
-//          }, 10);
-//      }
-//  }
- 
-//  //rango de fechas
-//  $('#daterangee-btn').daterangepicker(
-//      {
-//        ranges   : {
-//          'Today'       : [moment(), moment()],
-//          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-//          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-//          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-//          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-//          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-//        },
-//        startDate: moment($("#between1").val()),
-//        endDate  : moment($("#between2").val())
-//      },
-//      function (start, end) {
-//        // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-//        window.location = "lineasdeproducto?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
-//      }
-//    )
+   var count = 0 ;
+   
 
+   function reload(){
+    console.log("count: ", count);
+    count = count + 1;
+    if(count == 2){
+      location.reload();
+    }
+    var lin = document.getElementById('linea').value;
+    console.log("lin: ", lin);
+    document.getElementById('linea1').value = lin;
+
+    $("#sublineasdeproductotable").DataTable().clear().draw();
+    $("#sublineasdeproductotable").DataTable().destroy();
+    execDataTable("flat");
+    // setTimeout(() => {
+    //      execDataTable("flat");
+    // }, 10);
+    }
+
+    
    //Eliminar registro
 $(document).on("click",".removeItem2ids", function(){
   var idItem = $(this).attr("idItem");
