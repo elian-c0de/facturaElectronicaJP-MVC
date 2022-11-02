@@ -1,42 +1,32 @@
 <?php
+    if(isset($routesArray1[5])){
+        // echo '<pre>'; print_r($routesArray1[5]); echo '</pre>';
+        $security = explode("~",base64_decode($routesArray1[5]));
+        if($security[1] == $_SESSION["admin"]->token_usuario){
 
-if(isset($routesArray1[5])){
-    // echo '<pre>'; print_r($routesArray1[5]); echo '</pre>';
-    $security = explode("~",base64_decode($routesArray1[5]));
+            $url = "ecmp_proyecto?linkTo=cod_empresa,cod_proyecto&equalTo=".$_SESSION['admin']->cod_empresa.",".trim($security[0]);
+            $method = "GET";
+            $fields = array();
+        
+            $response = CurlController::request($url,$method,$fields);
+            // echo '<pre>'; print_r($response); echo '</pre>';
+            // return;
 
-    if($security[1] == $_SESSION["admin"]->token_usuario){
-
-        $url = "ecmp_proyecto?linkTo=cod_empresa,cod_proyecto&equalTo=".$_SESSION['admin']->cod_empresa.",".trim($security[0]);
-        $method = "GET";
-        $fields = array();
-    
-        $response = CurlController::request($url,$method,$fields);
-        // echo '<pre>'; print_r($response); echo '</pre>';
-        // return;
-
-    if($response->status == 200){
-        $admin = $response->result[0];
-        // echo '<pre>'; print_r($admin->cod_caja); echo '</pre>';
-    }else{
-        echo '<script>
-    
-        window.location = "proyectos";
-        </script>';
+        if($response->status == 200){
+            $admin = $response->result[0];
+            // echo '<pre>'; print_r($admin->cod_caja); echo '</pre>';
+        }else{
+            echo '<script>
+            window.location = "proyectos";
+            </script>';
+        }
+        }else{
+            echo '<script>
+            window.location = "proyectos";
+            </script>';
+        }    
     }
-
-    }else{
-        echo '<script>
-    
-        window.location = "proyectos";
-        </script>';
-    }    
-}
-
-
 ?>
-
-
-
 
 <div class="card card-dark card-outline">
 
@@ -62,7 +52,7 @@ if(isset($routesArray1[5])){
                 class="form-control"
                 onchange="validateRepeat(event,'cod_proyecto','ecmp_proyecto','cod_proyecto', <?php echo $_SESSION['admin']->cod_empresa?>)"
                 pattern="[a-zA-Z0-9]{1,3}"
-                required>
+                disabled>
                 <div class="valid-feedback">Válido</div>
                 <div class="invalid-feedback"> Por favor, rellene este campo.</div>
             </div>
