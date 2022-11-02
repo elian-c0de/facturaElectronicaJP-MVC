@@ -76,11 +76,27 @@ if(isset($routesArray1[5])){
           type="text"
           name="nom_usuario" 
           id="nom_usuario"
-          value="<?php echo $admin->nom_usuario?>" 
+          value="<?php echo trim($admin->nom_usuario)?>" 
           class="form-control"
           onchange="validateRepeat(event,'nom_usuario','gen_usuario','nom_usuario', <?php echo $_SESSION['admin']->cod_empresa?>)"
           pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$"
           required>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
+        </div>
+
+         <!-- CONTRASEÑA -->
+        <div class="form-group mt-2">
+          <label>Contraseña:</label>
+          <input 
+          type="text"
+          name="cod_passwd" 
+          id="cod_passwd"
+          
+          class="form-control"
+          onchange="validateRepeat(event,'cod_passwd','gen_usuario','cod_passwd', <?php echo $_SESSION['admin']->cod_empresa?>)"
+          pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{8,20}$"
+          >
           <div class="valid-feedback">Válido</div>
           <div class="invalid-feedback"> Por Favor, rellene este campo</div>
         </div>

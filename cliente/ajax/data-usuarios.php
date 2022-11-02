@@ -104,6 +104,7 @@ class DataTableController
                     }
                     $cod_usuario = $value->cod_usuario;
                     $nom_usuario = $value->nom_usuario;
+                    $cod_passwd = $value->cod_passwd;
                     $cod_perfil = $value->cod_perfil;
                     $cod_establecimiento = $value->cod_establecimiento;
                     $cod_punto_emision = $value->cod_punto_emision;
@@ -113,6 +114,7 @@ class DataTableController
                             $dataJson.='{
                         "cod_usuario":"'.$cod_usuario.'",
                         "nom_usuario":"'.$nom_usuario.'",
+                        "cod_passwd":"'.$cod_passwd.'",
                         "cod_perfil":"'.$cod_perfil.'",
                         "cod_establecimiento":"'.$cod_establecimiento.'",
                         "cod_punto_emision":"'.$cod_punto_emision.'",

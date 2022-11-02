@@ -29,7 +29,8 @@ class UsuariosController{
 
             if(
             preg_match('/^[a-zñÑáéíóúÁÉÍÓÚ ]{1,20}$/',$_POST["cod_usuario"]) &&
-            preg_match('/^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$/',$_POST["nom_usuario"])  )
+            preg_match('/^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$/',$_POST["nom_usuario"]) &&
+            preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{8,20}$/',$_POST["cod_passwd"])  )
             {
 
                 if(isset($_POST["sts_usuario"])){
@@ -47,7 +48,7 @@ class UsuariosController{
 
                 $variable = explode("~",$_POST["gen_punto_emision1"]);
 
-
+                // $crypt = crypt($data["cod_passwd"], 'td');
                 $data = array(
                     
                     
@@ -58,7 +59,7 @@ class UsuariosController{
                     "fec_vigencia_passwd" => date("Y-m-d H:i:s"),
                     "num_dias_vigencia_passwd" => trim('0'),
                     "num_intentos" => trim('0'),
-                    "cod_passwd" => NULL,
+                    "cod_passwd" => crypt($_POST["cod_passwd"], 'td'),
                     "cod_perfil" => trim($_POST["gen_perfil"]),
                     "sts_administrador" => $_POST["sts_administrador"],
                     "sts_usuario" => $_POST["sts_usuario"],
@@ -179,7 +180,8 @@ class UsuariosController{
             if($response->status == 200){
                 if(
                 
-                preg_match('/^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$/',$_POST["nom_usuario"])  )
+                preg_match('/^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$/',$_POST["nom_usuario"]) &&
+                preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{8,20}$/',$_POST["cod_passwd"])  )
                 {
     
                     if(isset($_POST["sts_usuario"])){
@@ -206,8 +208,8 @@ class UsuariosController{
                             "&sts_administrador=".trim($_POST["sts_administrador"]).
                             "&sts_usuario=".trim($_POST["sts_usuario"]).
                             "&cod_establecimiento=".$variable[0].
-                            "&cod_punto_emision=".$variable[1];                          
-                            "&cod_passwd=".NULL;
+                            "&cod_punto_emision=".$variable[1].                          
+                            "&cod_passwd=".trim($_POST["cod_passwd"]);
                           
                     $url = "gen_usuario?id=".trim($id)."&nameId=cod_usuario&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
                     
