@@ -192,7 +192,7 @@ $routesArray = array_filter($routesArray);
                 </li>
                 <li class="nav-item">
                     <a href="claveusuario" class="nav-link">
-                      <i class="bi bi-key-fill"></i>
+                      <i class="fa-solid fa-key"></i>
                       <p>
                           Cambiar clave de usuario
                       </p>
