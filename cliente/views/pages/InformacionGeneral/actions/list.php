@@ -50,8 +50,8 @@ if ($response->status == 200) {
         <div class="form-group mt-2">
           <label>RUC</label>
           <input type="text" name="num_id" value="<?php echo $admin->num_ruc?>" disabled class="form-control">
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback"> Please fill out this field.</div>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback">Por favor, rellene este campo</div>
         </div>
 
 
@@ -60,7 +60,7 @@ if ($response->status == 200) {
           <label>Razon Social</label>
           <input type="text" name="num_id" value="<?php echo $admin->nom_empresa?>" disabled class="form-control">
           <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback"> Please fill out this field.</div>
+          <div class="invalid-feedback">Por favor, rellene este campo</div>
         </div>
 
 
@@ -68,53 +68,53 @@ if ($response->status == 200) {
         <div class="form-group mt-2">
           <label for="">Nombre Abreviado</label>
           <input type="text" class="form-control" value="<?php echo $admin->nom_abreviado?>" disabled name="nom_apellido_rsocial" pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}" required>
-          <div class="valid-feedback">Valid</div>
-          <div class="invalid-feedback"> Please fill out this field</div>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback">Por favor, rellene este campo</div>
         </div>
 
         <!-- CODIGO DE USUARIO -->
         <div class="form-group mt-2">
           <label for="">Direccion</label>
           <input type="text" class="form-control" value="<?php echo $admin->txt_direccion ?>"  disabled required name="nom_persona_nombre" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}">
-          <div class="valid-feedback">Valid</div>
-          <div class="invalid-feedback"> Please fill out this field</div>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback">Por favor, rellene este campo</div>
         </div>
 
         <!-- DIRECCION -->
         <div class="form-group mt-2">
           <label for="">Telefono</label>
           <input type="text" class="form-control" value="<?php echo $admin->num_telefono ?>" disabled pattern='[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}' name="txt_direccion" required value="<?php echo $admin->txt_direccion ?>">
-          <div class="valid-feedback">Valid</div>
-          <div class="invalid-feedback"> Please fill out this field</div>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback">Por favor, rellene este campo</div>
         </div>
 
         <div class="form-group mt-2">
           <label for="">Direccion Email</label>
           <input type="text" class="form-control" name="num_telefono" value="<?php echo $admin->txt_email ?>" disabled pattern="[-\\(\\)\\0-9 ]{1,15}" required>
-          <div class="valid-feedback">Valid</div>
-          <div class="invalid-feedback"> Please fill out this field</div>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback">Por favor, rellene este campo</div>
         </div>
 
         <div class="form-group mt-2">
           <label for="">Obligado a llevar contabilidad</label>
           <br>
           <!-- <input type="text" class="form-control" -->
-          <input type="checkbox" name="sts_cliente" <?php echo $admin->sts_obligado_contabilidad == "S" ? 'checked':'' ?> disabled  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
+          <input type="checkbox" name="sts_cliente" data-on-text="SI" data-off-text="NO" <?php echo $admin->sts_obligado_contabilidad == "S" ? 'checked':'' ?> disabled  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
  
         </div>
 
         <div class="form-group mt-2">
           <label for="">#Res. Agente de retencion</label>
           <input type="text" class="form-control" name="num_telefono" value="<?php echo $admin->num_res_agente_ret ?>" disabled pattern="[-\\(\\)\\0-9 ]{1,15}" required>
-          <div class="valid-feedback">Valid</div>
-          <div class="invalid-feedback"> Please fill out this field</div>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback">Por favor, rellene este campo</div>
         </div>
 
         <div class="form-group mt-2">
           <label for="">Regimen Micro Empresa</label>
           <br>
           <!-- <input type="text" class="form-control" -->
-          <input type="checkbox" name="sts_cliente" <?php echo $admin->sts_contribuyente_rme == "S" ? 'checked':'' ?> disabled  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
+          <input type="checkbox" name="sts_cliente" data-on-text="SI" data-off-text="NO" <?php echo $admin->sts_contribuyente_rme == "S" ? 'checked':'' ?> disabled  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
  
         </div>
 
@@ -123,21 +123,21 @@ if ($response->status == 200) {
           <label for="">Ubicacion Logo</label>
           <input type="text" class="form-control" disabled value="<?php echo $admin->txt_path_logo?>"  >
           <div class="valid-feedback"></div>
-          <div class="invalid-feedback"> Please fill out this field</div>
+          <div class="invalid-feedback">Por favor, rellene este campo</div>
         </div>
 
         <div class="form-group mt-2">
           <label for="">Id. Representante</label>
-          <input type="text" class="form-control" disabled value="<?php echo $admin->cod_tipo_id_representante?>"  >
+          <input type="text" class="form-control" disabled value="<?php echo $admin->num_id_representante?>"  >
           <div class="valid-feedback"></div>
-          <div class="invalid-feedback"> Please fill out this field</div>
+          <div class="invalid-feedback">Por favor, rellene este campo</div>
         </div>
 
         <div class="form-group mt-2">
           <label for="">Nombre Representante</label>
           <input type="text" class="form-control" disabled  value="<?php echo str_replace(" ","",$admin->nom_representante)?>"  >
           <div class="valid-feedback"></div>
-          <div class="invalid-feedback"> Please fill out this field</div>
+          <div class="invalid-feedback">Por favor, rellene este campo</div>
         </div>
 
 

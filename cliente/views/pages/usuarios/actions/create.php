@@ -1,54 +1,10 @@
-<?php
-
-if(isset($routesArray1[5])){
-    // echo '<pre>'; print_r($routesArray1[5]); echo '</pre>';
-    $security = explode("~",base64_decode($routesArray1[5]));
-
-    if($security[1] == $_SESSION["admin"]->token_usuario){
-
-        $url = "gen_usuario?linkTo=cod_empresa,cod_usuario&equalTo=".$_SESSION['admin']->cod_empresa.",".trim($security[0]);
-        $method = "GET";
-        $fields = array();
-    
-        $response = CurlController::request($url,$method,$fields);
-        //Cntrl+shift+Q
-        //echo '<pre>'; print_r($response); echo '</pre>';
-        
-
-    if($response->status == 200){
-        $admin = $response->result[0];
-        // echo '<pre>'; print_r($admin->cod_caja); echo '</pre>';
-    }else{
-        echo '<script>
-    
-        window.location = "usuarios";
-        </script>';
-    }
-
-    }else{
-        echo '<script>
-    
-        window.location = "usuarios";
-        </script>';
-    }
-
-
-    
-    
-}
-
-
-?>
-
-
 <div class="card card-dark card-outline">
   <form method="post" class="needs-validation" novalidate enctype="multipart/form-data"><section class="content-header">
-  <input type="hidden" value="<?php echo $admin->cod_usuario?>" name="idAdmin">   
-  <div class="card-header">
+    <div class="card-header">
       <?php
       require_once("controllers/usuarios.controller.php");
       $create = new UsuariosController();
-      $create->edit($admin->cod_usuario);
+      $create->create();
       ?>
       <div class="col-md-8 offset-md-2">
 
@@ -89,7 +45,7 @@ if(isset($routesArray1[5])){
           class="form-control"
           onchange="validateRepeat(event,'cod_usuario','gen_usuario','cod_usuario', <?php echo $_SESSION['admin']->cod_empresa?>)"
           pattern="[a-zñÑáéíóúÁÉÍÓÚ ]{1,20}$"
-          disabled
+          required
           >
           <div class="valid-feedback">Valid.</div>
           <div class="invalid-feedback"> Please fill out this field.</div>
@@ -152,7 +108,7 @@ if(isset($routesArray1[5])){
           $tipo_precio = json_encode($tipo_precio);
           $tipo_precio = json_decode($tipo_precio, true);
           ?>
-          <select class="form-control select2 changeCountry"   name="gen_punto_emision1" id="gen_punto_emision1" required>
+          <select class="form-control select2 changeCountry"   name="gen_punto_emision1" id="gen_punto_emision1"   required>
               <option value>Seleccione el Establecimiento</option>
               <?php foreach ($tipo_precio as $key => $value) : ?>
                   <option value="<?php echo $value["cod_establecimiento"] ?>">
@@ -170,13 +126,13 @@ if(isset($routesArray1[5])){
           <?php
           // require_once("controllers/admins.controllers.php");
           $create = new UsuariosController();
-          $tipo_precio = $create->puntoEmision_usuario1();
-          $tipo_precio = json_encode($tipo_precio);
-          $tipo_precio = json_decode($tipo_precio, true);
+          $puntoEmision_usuario1 = $create->puntoEmision_usuario1();
+          $puntoEmision_usuario1 = json_encode($puntoEmision_usuario1);
+          $puntoEmision_usuario1 = json_decode($puntoEmision_usuario1, true);
           ?>
           <select class="form-control select2 changeCountry"  name="gen_punto_emision" id="gen_punto_emision" required>
               <option value>Seleccione el Punto de Emisión</option>
-              <?php foreach ($tipo_precio as $key => $value) : ?>
+              <?php foreach ($puntoEmision_usuario1 as $key => $value) : ?>
                   <option value="<?php echo $value["cod_punto_emision"] ?>" >
                   <?php echo $value["cod_punto_emision"] ?>
                   </option>
@@ -185,6 +141,20 @@ if(isset($routesArray1[5])){
           <div class="valid-feedback">Valid.</div>
           <div class="invalid-feedback">Please fill out this field.</div>
 				</div> 
+
+        <!-- OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO ------------------------------>
+      
+
+        <!-- VALIDAR PUNTO DE EMISIÓN DE USUARIOS
+        <div class="form-group mt-2"> 
+          <label>Punto de Emisión:</label>
+          <select name="cod_punto_emision" id="cod_punto_emision"><option value>Seleccione el Punto de Emisión</option></select>
+          
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+				</div>  -->
+
+        <!-- AQUIIIIIIIIIII TERMINAAAA--------------------------------------------------- -->
 
         <!-- DIVICIÓN DEL CAMPO: USUARIO -->
         <div class="form-group mt-2">
@@ -208,14 +178,7 @@ if(isset($routesArray1[5])){
             <input type="checkbox"  name="sts_administrador" id="sts_administrador" 
             >
         </div>
-        <!-- BORRAR CONTRASEÑA -->
-        <div class="form-group mt-2">
-            <label for="">Borrar Contraseña:</label>
-            <br>
-            <!-- <input type="text" class="form-control" -->
-            <input type="checkbox"  name="#"  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
-            >
-        </div>
+        
       </div>
     </div>
     
@@ -233,3 +196,4 @@ if(isset($routesArray1[5])){
 </div>
 
 <script src="views/assets/custom/datatable/usuarios.js"></script>
+<script src="cliente/ajax/data-puntoemisionRellenar.php"></script>

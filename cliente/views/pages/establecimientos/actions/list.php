@@ -10,6 +10,7 @@
       <a class="btn btn-danger btn-small removeItem" title="Eliminar"><i class='fas fa-trash-alt'></i></a>
       <a class="btn bg-green btn-small" href="establecimientos/XML"><i class="bi bi-filetype-xml"></i></a>
     </h3>
+    
       <!-- <div class="card-tools">
         <div class="d-flex">
           <div class="d-flex mr-2">

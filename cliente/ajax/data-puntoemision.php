@@ -7,7 +7,7 @@ class DataTableController
     {
         if (!empty($_POST)) {
             
-            if($_GET["cod_establecimiento"] != "") {
+            if(isset($_GET["cod_establecimiento"])){
                 
                 //capturando y organizandos las variables post de datatable
                 $draw = $_POST["draw"];
@@ -19,12 +19,18 @@ class DataTableController
             
                 //total de registros de la data
                 $url = "gen_punto_emision?select=*&linkTo=cod_empresa,cod_establecimiento&equalTo=".$_GET["code"].",".$_GET["cod_establecimiento"];
+                $link=array();
                 $method = "GET";
                 $fields = array();
                 $response = CurlController::request($url, $method, $fields);
 
                 if($response->status == 200){
-                    $totalData = $response->total;
+                    foreach ($response -> result as $key2 => $value2) {
+                        if ($value2->cod_punto_emision != 000) {
+                        array_push($link,$value2);
+                        }
+                    }
+                    $totalData = count($link);
                 }else{
                     echo '{"data":[]}';
                     return;
@@ -36,7 +42,7 @@ class DataTableController
 
                     if(preg_match('/^[0-9A-Za-zñÑáéíóú ]{1,}$/',$_POST['search']['value'])){
 
-                        $linkTo = ["cod_punto_emision","txt_descripcion"];
+                        $linkTo = ["cod_punto_emision","cod_establecimiento","txt_descripcion"];
                         $search = str_replace(" ","_",$_POST['search']['value']);
                         foreach ($linkTo as $key => $value) {
 
@@ -49,7 +55,7 @@ class DataTableController
                             
                             }else{
                                 foreach ($data as $key1 => $value1) {
-                                    if ($value1->cod_empresa == $_GET["code"] && $value1->cod_establecimiento == $_GET["cod_establecimiento"]) {
+                                    if ($value1->cod_empresa == $_GET["code"] && $value1->cod_establecimiento == $_GET["puntoemision"] && $value1->cod_punto_emision != 000 ) {
                                     array_push($hola,$value1);
                                     }
                                 }
@@ -87,13 +93,13 @@ class DataTableController
                             $actions = "";
                             
                         }else{
-                            $actions = "<a href='sublineaproducto/edit/" . base64_encode($value->cod_punto_emision . "~" . $value->cod_sublinea . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+                            $actions = "<a href='puntosEmision/edit/" . base64_encode($value->cod_establecimiento . "~" . $value->cod_punto_emision . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
 
                                 <i class='fas fa-pencil-alt'></i>
 
                                 </a> 
                                 
-                                <a class='btn btn-danger btn-sm rounded-circle removeItem2ids' idItem=" .  base64_encode($value->cod_punto_emision . "~" . $value->cod_sublinea . "~" . $_GET["token"]) . " table='gen_punto_emision' column='cod_punto_emision' column1='cod_sublinea' page='lineasdeproducto' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
+                                <a class='btn btn-danger btn-sm rounded-circle removeItem2ids' idItem=" .  base64_encode($value->cod_establecimiento . "~" . $value->cod_punto_emision . "~" . $_GET["token"]) . " table='gen_punto_emision' column='cod_establecimiento' column1='cod_punto_emision' page='puntosEmision' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
 
                                 <i class='fas fa-trash-alt'></i>
 
@@ -142,9 +148,6 @@ class DataTableController
                     $dataJson = substr($dataJson,0,-1); 
                     $dataJson .= ']}';
                     echo $dataJson;
-            }else{
-                echo '{"data":[]}';
-                return;
             }
             
         }

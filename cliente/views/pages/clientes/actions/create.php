@@ -135,15 +135,14 @@
                     <label for="">Estado</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox"  name="sts_cliente" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
-                    >
+                    <input type="checkbox"  name="sts_cliente" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO">
                 </div>
 
                 <div class="form-group mt-2">
                     <label for="">Proveedor</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox"  name="sts_proveedor"  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                    <input type="checkbox"  name="sts_proveedor"  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
                     >
                 </div>
             </div>

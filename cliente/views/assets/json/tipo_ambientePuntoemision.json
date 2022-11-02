@@ -1,10 +1,10 @@
 [
     {
-    "name": "NORMAL",
-    "code": "2"
+    "name": "PRUEBA",
+    "code": "1"
     },
     {
-    "name": "CONTINGENCIA",
-    "code": "1"
+    "name": "AMBIENTE",
+    "code": "2"
     }
 ]

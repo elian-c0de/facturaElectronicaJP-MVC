@@ -153,30 +153,22 @@ class itemsxestablecimientoDataTableController
                 //RECORREMOS CADA POSICION DEL JSON QUE VIENE EN LA VARIABLE $data
                 foreach ($data as $key => $value) {
 
-                    //PREGUNTAMOS SI VIENE UNA VARIABLE FLAT LA CUAL NOS APLICARA UNA CONDICIONAL PARA MOSTRAR O NO ALGUNOS BOTONES
-                    if ($_GET["text"] == "flat") {
-                        $actions = "";
-                    } else {
-                        $actions = "<a href='itemsxestablecimiento/edit/" . base64_encode($value->cod_inventario . "~" .$value->cod_establecimiento . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+          
 
-                            <i class='fas fa-pencil-alt'></i>
+                    if($value->sts_control_saldo == "C") {
+                        $sts_control_saldo = "No";
+                    }
 
-                            </a> 
-                            
-                            <a class='btn btn-success btn-sm rounded-circle removeItem' idItem=" . base64_encode($value->cod_inventario . "~" .$value->cod_establecimiento . "~" . $_GET["token"]) . " table='ecmp_cliente' column='num_id' page='clientes' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
+                    if($value->sts_control_saldo == "A") {
+                        $sts_control_saldo = "Si";
+                    }
 
-                            <i class='fas fa-trash-alt'></i>
+                    if($value->sts_modifica_precio == "A") {
+                        $sts_modifica_precio = "Si";
+                    }
 
-                            </a>
-                            
-                            <a class='btn btn-danger btn-sm rounded-circle removeItem2ids' idItem=" .  base64_encode($value->cod_inventario . "~" .$value->cod_establecimiento . "~" . $_GET["token"]) . " table='ecmp_item_local' column='cod_inventario' column='cod_establecimiento' page='itemsxestablecimieto' cod_empresa='" . base64_encode($value->cod_empresa) . "'>
-
-                            <i class='fa-solid fa-dollar-sign'></i>
-
-
-                            </a>";
-
-                        $actions = TemplateController::htmlClean($actions);
+                    if($value->sts_modifica_precio == "C") {
+                        $sts_modifica_precio = "No";
                     }
 
 
@@ -185,8 +177,7 @@ class itemsxestablecimientoDataTableController
 
                     $cod_inventario = $value->cod_inventario;
                     $txt_descripcion = $value->txt_descripcion;
-                    $sts_control_saldo = $value->sts_control_saldo;
-                    $sts_modifica_precio = $value->sts_modifica_precio;
+                    
                     $qtx_minimo = $value->qtx_minimo;
                     $qtx_maximo = $value->qtx_maximo;
                     $qtx_saldo = $value->qtx_saldo;
@@ -194,6 +185,18 @@ class itemsxestablecimientoDataTableController
                     $val_descuento = $value->val_descuento;
                     $por_descuento = $value->por_descuento;
                     $sts_item_local = $value->sts_item_local;
+
+                    $actions = "<a  id='coso' name='coso' data-toggle='modal' data-target='.bd-example-modal-lg'   class='btn btn-success btn-sm mr-2' idItem=" .  base64_encode($value->cod_inventario . "~" . $value->cod_establecimiento . "~" . $_GET["token"]) . ">
+
+                    <i class='fa-solid fa-dollar-sign'></i>
+
+                    </a> ";
+
+
+                    
+                  
+
+                    $actions = TemplateController::htmlClean($actions);
 
 
 
@@ -212,8 +215,7 @@ class itemsxestablecimientoDataTableController
                         "val_descuento":"' . $val_descuento . '",		
                         "por_descuento":"' . $por_descuento . '",
                         "sts_item_local":"' . $sts_item_local . '",
-                        "actions":"' . $actions . '"	
-
+                        "actions":"'. $actions.'"
                         },';
                 }
 

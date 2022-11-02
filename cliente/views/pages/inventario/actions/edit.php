@@ -64,17 +64,17 @@ if(isset($routesArray1[5])){
                     <div class="invalid-feedback"> Please fill out this field.</div>
                 </div>
 
+
                 <div class="form-group mt-2">
                     <label>Codigo de barras</label>
                     <input type="text" name="cod_barras" 
-                    class="form-control" onchange="validateRepeat(event,'cod_barras','ecmp_inventario','cod_barras', <?php echo $_SESSION['admin']->cod_empresa ?>)"
-                     pattern="[-0-9]{1,30}" 
-                     value="<?php echo $admin->cod_barras?>"
-                     required
-                     >
+                    class="form-control" onchange="validateJS(event,'cod_barras')"
+                     pattern="[-0-9]{1,30}"
+                     value="<?php echo trim($admin->cod_barras)?>">
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback"> Please fill out this field.</div>
                 </div>
+
 
                 <div class="form-group mt-2">
                     <label>Descripcion</label>
@@ -115,7 +115,7 @@ if(isset($routesArray1[5])){
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
 
-                <div class="form-group mt-2">
+                <!-- <div class="form-group mt-2">
                     <label>Existencia Total</label>
                     <input type="text" name="qtx_saldo" 
                         class="form-control" 
@@ -139,7 +139,7 @@ if(isset($routesArray1[5])){
                      >
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback"> Please fill out this field.</div>
-                </div>
+                </div> -->
 
 
                 <!-- LINEA Y SUB LINEA -->
