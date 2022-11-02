@@ -16,8 +16,9 @@ class DataTableController
             $length = $_POST["length"];
            
             //total de registros de la data
-            $url = "gen_usuario?select=cod_usuario&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=0&endAt=1&orderAt=cod_usuario";
-            
+            //$url = "gen_usuario?select=cod_usuario&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=0&endAt=1&orderAt=cod_usuario";
+            $url = "gen_usuario?select=cod_usuario&linkTo=cod_empresa&equalTo=".$_GET["code"];
+
             $method = "GET";
             $fields = array();
             $response = CurlController::request($url, $method, $fields);
@@ -27,7 +28,7 @@ class DataTableController
                 echo '{"data":[]}';
                 return;
             }
-            $select = "cod_empresa,cod_usuario,nom_usuario,cod_perfil,cod_establecimiento,cod_punto_emision,sts_usuario,sts_administrador";
+            //$select = "cod_empresa,cod_usuario,nom_usuario,cod_perfil,cod_establecimiento,cod_punto_emision,sts_usuario,sts_administrador";
 
             //busquedad de datos
             if(!empty($_POST['search']['value'])){
@@ -38,7 +39,7 @@ class DataTableController
                     $search = str_replace(" ","_",$_POST['search']['value']);
                     foreach ($linkTo as $key => $value) {
 
-                        $url = "gen_usuario?select=".$select."&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+                        $url = "gen_usuario?select=*&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType;
                         $data = CurlController::request($url, $method, $fields)->result;
                         // echo '<pre>'; print_r($url); echo '</pre>'; 
                         
@@ -58,7 +59,7 @@ class DataTableController
                 }
             }else{ 
             //seleccionar datos
-            $url = "gen_usuario?select=".$select."&orderBy=".$orderBy."&orderMode=".$orderType."&between1=".$_GET["between1"]."&between2=".$_GET["between2"]."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa";
+            $url = "gen_usuario?select=*&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa&linkTo=cod_empresa&equalTo=".$_GET["code"];
             $data = CurlController::request($url, $method, $fields)->result;
             // echo '<pre>'; print_r($data); echo '</pre>'; 
             // echo '<pre>'; print_r($url); echo '</pre>'; 

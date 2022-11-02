@@ -13,7 +13,13 @@ if (isset($_POST['id'])) {
     //     echo $html;
     // }
 
-    $url = "gen_punto_emision?linkTo=cod_empresa,cod_establecimiento&equalTo=".$_SESSION['admin']->cod_empresa.$_POST['id'];
+    //var data = new FormData();
+
+//     data.append("cod_usuario",$("#gen_usuario").val());
+    
+//     data.append("cod_empresa",localStorage.getItem('cod'));
+
+    $url = "gen_punto_emision?linkTo=cod_establecimiento&equalTo=".$_POST['id'];
     
     $method = "GET";
     $fields = array();

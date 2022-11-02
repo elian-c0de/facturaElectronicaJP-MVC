@@ -8,32 +8,32 @@
       ?>
       <div class="col-md-8 offset-md-2">
 
-      <!-- VALIDAR TIPO DE USUARIOS -->
+      <!-- VALIDAR TIPO DE USUARIOS
         <div class="form-group mt-2">
           <label>Usuario:</label>
-          <?php
+          
           // require_once("controllers/admins.controllers.php");
           $create = new UsuariosController();
           $tipo_precio = $create->codigo_nombre_estado_usuario();
           $tipo_precio = json_encode($tipo_precio);
           $tipo_precio = json_decode($tipo_precio, true);
           ?>
-          <select class="form-control select2 changeCountry" name="gen_usuario" id="gen_usuario" onchange="rellenar()" required>
+          <select class="form-control select2 changeCountry" name="gen_usuario" id="gen_usuario" onchange="rellenar()">
               <option value>Seleccione El Usuario</option>
-              <?php foreach ($tipo_precio as $key => $value) : ?>
-                  <option value="<?php echo $value["cod_usuario"] ?>">
-                  <?php echo $value["cod_usuario"] ?> 
+               foreach ($tipo_precio as $key => $value) : ?>
+                  <option value=" echo $value["cod_usuario"] ?>">
+                   echo $value["cod_usuario"] ?> 
                   </option>
-              <?php endforeach ?>
+               endforeach ?>
           </select>
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please fill out this field.</div>
-				</div>  
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback">Por Favor, rellene este campo</div>
+				</div>   -->
 
       <!-- DIVICIÓN DEL CAMPO: USUARIO -->
-        <div class="form-group mt-2">
+        <!-- <div class="form-group mt-2">
             <p class="lead">Usuario</p>
-        </div>
+        </div> -->
 
         <!-- CÓDIGO DE USUARIO -->
         <div class="form-group mt-2">
@@ -47,8 +47,8 @@
           pattern="[a-zñÑáéíóúÁÉÍÓÚ ]{1,20}$"
           required
           >
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback"> Please fill out this field.</div>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
         </div>
 
        <!-- NOMBRE DE USUARIO -->
@@ -62,8 +62,8 @@
           onchange="validateRepeat(event,'nom_usuario','gen_usuario','nom_usuario', <?php echo $_SESSION['admin']->cod_empresa?>)"
           pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$"
           required>
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback"> Please fill out this field.</div>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
         </div>
 
 
@@ -77,7 +77,7 @@
           $tipo_precio = json_encode($tipo_precio);
           $tipo_precio = json_decode($tipo_precio, true);
           ?>
-          <select class="form-control select2 changeCountry" name="gen_perfil" id="gen_perfil" required>
+          <select class="form-control select2 changeCountry" name="gen_perfil" id="gen_perfil" >
               <option value>Seleccione el Perfil</option>
               <?php foreach ($tipo_precio as $key => $value) : ?>
                   <option value="<?php echo $value["cod_perfil"] ?>">
@@ -89,8 +89,8 @@
                   </option>
               <?php endforeach ?>
           </select>
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please fill out this field.</div>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
 				</div>  
 
 
@@ -100,7 +100,7 @@
 
         <!-- VALIDAR ESTABLECIMIENTO DE USUARIOS -->
         <div class="form-group mt-2"> 
-          <label>Establecimiento:</label>
+          <label>Establecimiento/Punto Emisión:</label>
           <?php
           // require_once("controllers/admins.controllers.php");
           $create = new UsuariosController();
@@ -108,40 +108,19 @@
           $tipo_precio = json_encode($tipo_precio);
           $tipo_precio = json_decode($tipo_precio, true);
           ?>
-          <select class="form-control select2 changeCountry"   name="gen_punto_emision1" id="gen_punto_emision1"   required>
+          <select class="form-control select2 changeCountry"   name="gen_punto_emision1" id="gen_punto_emision1">
               <option value>Seleccione el Establecimiento</option>
               <?php foreach ($tipo_precio as $key => $value) : ?>
-                  <option value="<?php echo $value["cod_establecimiento"] ?>">
-                  <?php echo $value["cod_establecimiento"] ?>
+                  <option value="<?php echo $value["cod_establecimiento"] ?>~<?php echo $value["cod_punto_emision"] ?>">
+                  <?php echo $value["cod_establecimiento"] ?> | <?php echo $value["cod_punto_emision"] ?> | <?php echo $value["txt_descripcion"] ?>
                   </option>
               <?php endforeach ?>
           </select>
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please fill out this field.</div>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
 				</div> 
 
-        <!-- VALIDAR PUNTO DE EMISIÓN DE USUARIOS -->
-        <div class="form-group mt-2"> 
-          <label>Punto de Emisión:</label>
-          <?php
-          // require_once("controllers/admins.controllers.php");
-          $create = new UsuariosController();
-          $puntoEmision_usuario1 = $create->puntoEmision_usuario1();
-          $puntoEmision_usuario1 = json_encode($puntoEmision_usuario1);
-          $puntoEmision_usuario1 = json_decode($puntoEmision_usuario1, true);
-          ?>
-          <select class="form-control select2 changeCountry"  name="gen_punto_emision" id="gen_punto_emision" required>
-              <option value>Seleccione el Punto de Emisión</option>
-              <?php foreach ($puntoEmision_usuario1 as $key => $value) : ?>
-                  <option value="<?php echo $value["cod_punto_emision"] ?>" >
-                  <?php echo $value["cod_punto_emision"] ?>
-                  </option>
-              <?php endforeach ?>
-          </select>
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please fill out this field.</div>
-				</div> 
-
+       
         <!-- OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO ------------------------------>
       
 
