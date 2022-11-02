@@ -215,7 +215,13 @@ function rellenar(){
 
 $(document).ready(function(e){
   $("#gen_punto_emision1").change(function(){
-    var data = "id="+$("#gen_punto_emision1").val();
+    var data = new FormData();
+
+      data.append("cod_usuario",$("#gen_usuario").val());
+      
+      data.append("cod_empresa",localStorage.getItem('cod'));
+      
+     data = "id="+$("#gen_punto_emision1").val();
     console.log("data: ", data);
     $.ajax({
           url: "ajax/data-puntoemisionRellenar.php",
@@ -226,12 +232,13 @@ $(document).ready(function(e){
           // dataType: 'json',
           // processData: false,
           beforeSend: function(){
-            //$("gen_punto_emision").html("Procesando, espere por favor..");
-            alert("Enviando");
+            $("gen_punto_emision").html("Procesando, espere por favor..");
+            //alert("Enviando");
           },
           success: function(response){
             console.log("response: ", response);
             $("#gen_punto_emision").html(response);
+      
           },
           error: function(){
             alert("ERROR LPM");

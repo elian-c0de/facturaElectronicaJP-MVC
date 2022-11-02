@@ -12,17 +12,22 @@ if (isset($_POST['id'])) {
     //     $html.="<option value='".$value['id']."'>".$value['cod_punto_emision']."</option>";
     //     echo $html;
     // }
-    $url = "gen_punto_emision?linkTo=cod_establecimiento&equalTo=".$_POST['id'];
+
+    $url = "gen_punto_emision?linkTo=cod_empresa,cod_establecimiento&equalTo=".$_SESSION['admin']->cod_empresa.$_POST['id'];
     
     $method = "GET";
     $fields = array();
     $response = CurlController::request($url, $method, $fields)->result;
+    $response = json_encode($response);
+    $response = json_decode($response,true);
+    echo '<pre>'; print_r($response); echo '</pre>';
     //echo '<pre>'; print_r($response[0]); echo '</pre>';
-    foreach ($response as $value){
-        //$html.="<option value='".$value['cod_punto_emision']."'>".$value['cod_punto_emision']."</option>";
-        echo '<pre>'; print_r($value[0]["cod_punto_emision"]); echo '</pre>';
-        //echo $html;
+    $html="";
+    foreach ($response as $key => $value){
+        $html.="<option value='".$value['cod_punto_emision']."'>".$value['cod_punto_emision']."</option>";
+        echo $html;
     }
+    return;
     //echo  json_encode($response->result);
 
 }else{

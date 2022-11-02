@@ -149,13 +149,22 @@ class UsuariosController{
         $response = CurlController::request($url,$method,$fields)->result;
         return $response;
     }
-    public function puntoEmision_usuario2($id){
-        $url = "gen_punto_emision?linkTo=cod_empresa,cod_establecimiento&equalTo=".$_SESSION['admin']->cod_empresa.",".$id;
+    public function puntoEmision_usuario1(){
+        $url = "gen_punto_emision?linkTo=cod_empresa&equalTo=".$_SESSION['admin']->cod_empresa;
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
         return $response;
+
+        
     }
+    // public function puntoEmision_usuario2($id){
+    //     $url = "gen_punto_emision?linkTo=cod_empresa,cod_establecimiento&equalTo=".$_SESSION['admin']->cod_empresa.",".$id;
+    //     $method = "GET";
+    //     $fields = array();
+    //     $response = CurlController::request($url,$method,$fields)->result;
+    //     return $response;
+    // }
 
     //BUSCAR
     // public function buscar($tabla,$condicion){

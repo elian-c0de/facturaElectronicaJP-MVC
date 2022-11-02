@@ -108,7 +108,7 @@
           $tipo_precio = json_encode($tipo_precio);
           $tipo_precio = json_decode($tipo_precio, true);
           ?>
-          <select class="form-control select2 changeCountry"   name="gen_punto_emision1" id="gen_punto_emision1" required>
+          <select class="form-control select2 changeCountry"   name="gen_punto_emision1" id="gen_punto_emision1"   required>
               <option value>Seleccione el Establecimiento</option>
               <?php foreach ($tipo_precio as $key => $value) : ?>
                   <option value="<?php echo $value["cod_establecimiento"] ?>">
@@ -126,13 +126,13 @@
           <?php
           // require_once("controllers/admins.controllers.php");
           $create = new UsuariosController();
-          $tipo_precio = $create->puntoEmision_usuario2("cod_punto_emision");
-          $tipo_precio = json_encode($tipo_precio);
-          $tipo_precio = json_decode($tipo_precio, true);
+          $puntoEmision_usuario1 = $create->puntoEmision_usuario1();
+          $puntoEmision_usuario1 = json_encode($puntoEmision_usuario1);
+          $puntoEmision_usuario1 = json_decode($puntoEmision_usuario1, true);
           ?>
           <select class="form-control select2 changeCountry"  name="gen_punto_emision" id="gen_punto_emision" required>
               <option value>Seleccione el Punto de Emisión</option>
-              <?php foreach ($tipo_precio as $key => $value) : ?>
+              <?php foreach ($puntoEmision_usuario1 as $key => $value) : ?>
                   <option value="<?php echo $value["cod_punto_emision"] ?>" >
                   <?php echo $value["cod_punto_emision"] ?>
                   </option>
@@ -145,13 +145,14 @@
         <!-- OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO ------------------------------>
       
 
-        <!-- VALIDAR PUNTO DE EMISIÓN DE USUARIOS -->
+        <!-- VALIDAR PUNTO DE EMISIÓN DE USUARIOS
         <div class="form-group mt-2"> 
           <label>Punto de Emisión:</label>
-          <select name="cod_punto_emision" id="cod_punto_emision"></select>
+          <select name="cod_punto_emision" id="cod_punto_emision"><option value>Seleccione el Punto de Emisión</option></select>
+          
           <div class="valid-feedback">Valid.</div>
           <div class="invalid-feedback">Please fill out this field.</div>
-				</div> 
+				</div>  -->
 
         <!-- AQUIIIIIIIIIII TERMINAAAA--------------------------------------------------- -->
 

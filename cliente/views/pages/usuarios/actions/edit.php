@@ -170,7 +170,7 @@ if(isset($routesArray1[5])){
           <?php
           // require_once("controllers/admins.controllers.php");
           $create = new UsuariosController();
-          $tipo_precio = $create->puntoEmision_usuario2("cod_establecimiento");
+          $tipo_precio = $create->puntoEmision_usuario1();
           $tipo_precio = json_encode($tipo_precio);
           $tipo_precio = json_decode($tipo_precio, true);
           ?>
