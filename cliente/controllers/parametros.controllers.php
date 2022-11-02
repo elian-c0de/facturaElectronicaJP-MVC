@@ -28,7 +28,7 @@ class ParametrosController{
                     "nom_parametro" => trim($_POST["nom_parametro"]),
                     "val_parametro" =>  trim($_POST["val_parametro"]),
                     "cod_usuario" => $_SESSION["admin"]->cod_usuario,
-                    "fec_actualiza" => date("d-m-Y H:i:s")
+                    "fec_actualiza" => date("Y-m-d H:i:s")
                     //Deben cambiar el Formato de la Fecha:Y-m-d o d-m-Y 
     
                 );
@@ -122,7 +122,7 @@ class ParametrosController{
                         $data =
                             "val_parametro=".trim($_POST["val_parametro"]).
                             "&cod_usuario=".$_SESSION["admin"]->cod_usuario.
-                            "&fec_actualiza=".date("d-m-Y H:i:s");
+                            "&fec_actualiza=".date("Y-m-d H:i:s");
                             //Deben cambiar el Formato de la Fecha:Y-m-d o d-m-Y 
                      
                 
