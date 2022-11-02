@@ -142,7 +142,7 @@ function validateJS(event, type) {
   if(type == "txt_email") pattern = /^[.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/;
   if(type == "num_res_agente_ret") pattern = /^[0-9]{1,30}$/;
   if(type == "txt_path_logo") pattern = /^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}$/;
-  if(type == "cod_tipo_id_representante") pattern = /^[A-Z]{1,1}$/;
+  if(type == "cod_tipo_id_representante") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,13}$/;
   if(type == "txt_descripcion") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,60}$/;
   if(type == "nom_marca") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,70}$/;
   if(type == "txt_descripcion_inventario") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
@@ -173,11 +173,11 @@ function validateJS(event, type) {
   if(type == "cod_rete") pattern = /^[a-zA-Z1-9]{1,5}$/;
   if(type == "cod_marca") pattern = /^[0-9]{1,3}$/;
   if(type == "descrip_formapag") pattern = /^[-//%0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
-  if(type == "por_reten") pattern = /^[0-9]{1,3}([.][0-9]{1,2})?$/
-  if(type == "nom_usuario") pattern = /^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$/
-  if(type == "cod_usuario") pattern = /^[a-zñÑáéíóúÁÉÍÓÚ ]{1,20}$/
+  if(type == "por_reten") pattern = /^[0-9]{1,3}([.][0-9]{1,2})?$/;
+  if(type == "nom_usuario") pattern = /^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$/;
+  if(type == "cod_usuario") pattern = /^[a-zñÑáéíóúÁÉÍÓÚ ]{1,20}$/;
   if(type == "cod_punto_emision") pattern = /^[a-zA-Z0-9]{1,3}$/;
- 
+  if(type == "num_factura") pattern = /^[0-9]{1,9}$/;
 
   if (!pattern.test(event.target.value)) {
  

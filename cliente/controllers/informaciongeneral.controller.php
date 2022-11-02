@@ -146,7 +146,7 @@ class InformacionGeneralController{
                 preg_match('/^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,225}$/',$_POST["txt_direccion"]) &&
                 preg_match('/^[-\\(\\)\\0-9 ]{1,10}$/',$_POST["num_telefono"]) &&
                 preg_match('/^[.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/',$_POST["txt_email"]) &&
-                preg_match('/^[A-Z]{1,1}$/',$_POST["cod_tipo_id_representante"]) && preg_match('/^[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,100}$/',$_POST["nom_representante"])
+                preg_match('/^[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,100}$/',$_POST["nom_representante"])
                 )
 
     
