@@ -81,7 +81,7 @@ class PuntoemisionController{
                 $method = "POST";
                 $fields = $data;
                 $response = CurlController::request($url,$method,$fields);
-                echo '<pre>'; print_r($response); echo '</pre>';
+                // echo '<pre>'; print_r($response); echo '</pre>';
                 // return;
               
 
@@ -155,39 +155,21 @@ class PuntoemisionController{
             
           if($id == $_POST["idAdmin"] && $id2 == $_POST["idAdmin2"]){
 
-            $url = "gen_punto_emision?linkTo=cod_empresa,cod_establecimiento,cod_sublinea&equalTo=".$_SESSION['admin']->cod_empresa.",".$id.",".$id2;
-            
+            $url = "gen_punto_emision?linkTo=cod_empresa,cod_establecimiento,cod_punto_emision&equalTo=".$_SESSION['admin']->cod_empresa.",".$id.",".$id2;
             $method = "GET";
             $fields = array();
-    
             $response = CurlController::request($url,$method,$fields);
 
             if($response->status == 200){
-                
-
                 if(preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]))
-    
                 {
-                    
-
                     $data = "&txt_descripcion=".trim($_POST["txt_descripcion"]).
                             "&cod_usuario=".$_SESSION["admin"]->cod_usuario.
                             "&fec_actualiza=".date("d-m-Y H:i:s");
-            
-                    
-                     
-                
                     $url = "gen_punto_emision?id=".$id."&nameId=cod_establecimiento&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa."&nameId3=cod_sublinea&id3=".$id2;
-                    
-         
                     $method = "PUT";
                     $fields = $data;
-                
                     $response = CurlController::request($url,$method,$fields);
-             
-
-                    
-
 
                     if($response->status == 200){
                         echo '<script>
@@ -231,12 +213,7 @@ class PuntoemisionController{
 
                     </script>';
             }
-
           }
-            
         }
-
-  
     }
-
 }

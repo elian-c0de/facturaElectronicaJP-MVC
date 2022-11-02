@@ -279,6 +279,6 @@
             </div>
         </div>
     </form>
-    <!-- FIN DE FORMULARIO CAJAS -->
+    <!-- FIN DE FORMULARIO PUNTO EMISION -->
 
 </div>
