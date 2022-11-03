@@ -258,6 +258,116 @@ class UsuariosController{
   
     }
 
+    //EDITAR PASSWORD
+    public function editpass($id){
 
+        if(isset($_POST["idAdmin"])){
+            echo '<script>
+
+            matPreloader("on");
+            fncSweetAlert("loading", "Loading...", "");
+
+        </script>';
+            
+          if($id == $_POST["idAdmin"]){
+
+            $url = "gen_usuario?linkTo=cod_empresa,cod_usuario&equalTo=".$_SESSION['admin']->cod_empresa.",".trim($id);
+          
+            $method = "GET";
+            $fields = array();
+    
+            $response = CurlController::request($url,$method,$fields);
+            $passold = crypt($_POST["cod_passwd"], 'td');
+            if($response->status == 200 && trim($response->result[0]->cod_passwd)==$passold){
+                
+                
+                
+                if($_POST["cod_passwd"] )
+                {
+                    if($_POST["txt_passwdnew"]==$_POST["txt_passwdnewconfi"]){
+        
+                                $data =                          
+                                "&cod_passwd=". crypt($_POST["txt_passwdnew"], 'td');
+                              
+                        $url = "gen_usuario?id=".trim($id)."&nameId=cod_usuario&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
+                        
+                        $method = "PUT";
+                        $fields = $data;
+                    
+                        $response = CurlController::request($url,$method,$fields);
+                        
+                        if($response->status == 200){
+                            echo '<script>
+    
+                            fncFormatInputs();
+                            matPreloader("off");
+                            fncSweetAlert("close", "", "");
+                            fncSweetAlert("success", "Edicion con exito", "usuarios");
+    
+                        </script>';
+                        }else{
+    
+                     echo '<script>
+    
+                            fncFormatInputs();
+                            matPreloader("off");
+                            fncSweetAlert("close", "", "");
+                            fncNotie(3, "Error al editar el registro");
+    
+                        </script>';
+                        }
+                    }else{
+
+                        echo '<script>
+    
+                        fncFormatInputs();
+                        matPreloader("off");
+                        fncSweetAlert("close", "", "");
+                        fncNotie(3, "La contraseña no coincide");
+    
+                    </script>';
+
+                    }
+                }else{
+
+                    echo '<script>
+
+                    fncFormatInputs();
+                    matPreloader("off");
+                    fncSweetAlert("close", "", "");
+                    fncNotie(3, "Error en los campos ingresados");
+
+                </script>';
+                  
+                }
+
+            }else{
+                echo '<script>
+
+                fncFormatInputs();
+                matPreloader("off");
+                fncSweetAlert("close", "", "");
+                fncNotie(3, "Error en el sistema1");
+
+            </script>';
+            }
+
+          }else{
+
+            echo '<script>
+
+            fncFormatInputs();
+            matPreloader("off");
+            fncSweetAlert("close", "", "");
+            fncNotie(3, "Error en el sistema2");
+
+        </script>';
+            
+          }
+            
+        }
+
+  
+    }
 
 }
