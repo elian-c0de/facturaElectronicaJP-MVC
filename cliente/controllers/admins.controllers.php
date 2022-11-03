@@ -25,7 +25,7 @@ class AdminsController{
                 $response = CurlController::request($url,$method,$fields);
                 
                 //validamos si los datos coinciden en la base de datos
-                if($response->status == 200){
+                if($response->status == 200 && $response->result[0]->sts_usuario == "A"){
                     $v = str_replace(" ","",$response->result[0]->cod_perfil);
                     //validamos si tiene rol administrativo
                     // if( $v != "ADM"){
@@ -46,14 +46,24 @@ class AdminsController{
 
 
                 }else{
-                    echo '<script>
+                    if(is_array($response->result)){
+                        echo '<script>
+                            fncFormatInputs();
+                            matPreloader("off");
+                            fncSweetAlert("close", "", "");
+                    
+                        </script> 
+                        <div class="alert alert-danger">Usuario Deshabilidao</div>';
+                    }else{
+                        echo '<script>
 
-                    fncFormatInputs();
-                    matPreloader("off");
-                    fncSweetAlert("close", "", "");
-            
-                </script> 
-                <div class="alert alert-danger">'.$response->result.'</div>';
+                            fncFormatInputs();
+                            matPreloader("off");
+                            fncSweetAlert("close", "", "");
+                    
+                        </script> 
+                        <div class="alert alert-danger">'.$response->result.'</div>';
+                    }
                 }
 
 

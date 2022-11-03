@@ -108,7 +108,7 @@ if(isset($routesArray1[5])){
                 <label for="">Estado</label>
                 <br>
                 <!-- <input type="text" class="form-control" -->
-                <input type="checkbox"<?php echo $admin->sts_local == 'A' ? 'checked':''?> data-on-text="SI" data-off-text="NO"  name="sts_local" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                <input type="checkbox"<?php echo $admin->sts_local == 'A' ? 'checked':''?> data-on-text="SI" data-off-text="NO"  name="sts_local" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
                 >
             </div>
         </div>

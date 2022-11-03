@@ -124,7 +124,9 @@ class PuntoemisionController{
 
 
     public function getListaEstablecimiento(){
-        $url = "gen_local?linkTo=cod_empresa&equalTo=".$_SESSION["admin"]->cod_empresa;
+        $url = "gen_local?linkTo=cod_empresa,sts_local&equalTo=".$_SESSION["admin"]->cod_empresa.",A";
+        // echo '<pre>'; print_r(url); echo '</pre>';
+        // return;
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
