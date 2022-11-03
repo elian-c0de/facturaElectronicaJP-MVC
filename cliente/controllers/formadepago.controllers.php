@@ -10,7 +10,7 @@ class FormadepagoController{
             echo '<script>
 
             matPreloader("on");
-            fncSweetAlert("loading", "Loading...", "");
+            fncSweetAlert("loading", "loading...", "");
 
             </script>';
 
@@ -169,7 +169,7 @@ class FormadepagoController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Edicion con exito", "formadepago");
+                        fncSweetAlert("success", "Edicion con éxito", "formadepago");
 
                     </script>';
                     }else{
@@ -178,7 +178,7 @@ class FormadepagoController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncNotie(3, "Error editing the registry");
+                        fncNotie(3, "Error al editar el registro");
 
                     </script>';
                     }

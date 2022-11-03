@@ -102,7 +102,7 @@ $(document).on("click",".removeItem", function(){
   console.log(localStorage.getItem("cod"));
   console.log("cod_usuario: ", cod_usuario);
   if(cod_usuario != ""){
-    fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
+    fncSweetAlert("confirm","Estas seguro de eliminar este registro?","").then(resp=>{
 
       if(resp){
         var data = new FormData();
@@ -124,11 +124,11 @@ $(document).on("click",".removeItem", function(){
             if(response == 200){
               fncSweetAlert(
                 "success",
-                "el registro a sido borrado correctamente",
+                "El registro a sido borrado correctamente",
                 "usuarios"
               );
             }else{
-              fncNotie(3,"error deleating the record")
+              fncNotie(3,"Error al eliminar el registro")
             }
           }
         })
@@ -145,51 +145,6 @@ $(document).on("click",".removeItem", function(){
 
 
 
-// function rellenar(){
-//     //var cod_usuario = document.getElementById('gen_usuario');
-
-//     var data = new FormData();
-
-//       data.append("cod_usuario",$("#gen_usuario").val());
-      
-//       data.append("cod_empresa",localStorage.getItem('cod'));
-
-//       $.ajax({
-//         url: "ajax/data-usuariosRellenar.php",
-//         method: "POST",
-//         data: data,
-//         contentType: false,
-//         cache: false,
-//         dataType: 'json',
-//         processData: false,
-//         success: function(response){
-//             console.log("response: ", response[0]["cod_perfil"]);
-//             console.log("response: ", response);
-            
-
-//             // document.getElementById("cod_usuario").value=response[0]["cod_usuario"];
-//             $("#cod_usuario").val(response[0]["cod_usuario"]);
-//             $("#nom_usuario").val(response[0]["nom_usuario"]);
-//             $("#gen_perfil").val(response[0]["cod_perfil"]);
-//             $("#gen_punto_emision1").val(response[0]["cod_establecimiento"])
-//            $("#gen_punto_emision").val(response[0]["cod_punto_emision"]);
-//            $("#sts_administrador").val(response[0]["sts_administrador"]);
-
-//            if (response[0]["sts_usuario"]=='A') {
-            
-//             $('#sts_usuario').prop('checked', true);
-//            }else{
-//             $('#sts_usuario').prop('checked', false);
-//            }
-//            if (response[0]["sts_administrador"]=='A') {
-            
-//             $('#sts_administrador').prop('checked', true);
-//            }else{
-//             $('#sts_administrador').prop('checked', false);
-//            }
-//         }
-//       })
-// }
 
 $(document).ready(function(e){
   $("#gen_punto_emision1").change(function(){

@@ -91,59 +91,18 @@ function execDataTable (text) {
    function edit(){
     var date = document.getElementById("conceptos").value;
     if(date != ""){
-      window.location.href = ("conceptos/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
+      window.location.href = ("conceptos/Editar/"+btoa(date+"~"+localStorage.getItem("token_user")));
     }
   }
  
- // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
-//  function reportActive(event){
-//      if(event.target.checked){
-//          $("#conceptostable").dataTable().fnClearTable();
-//          $("#conceptostable").dataTable().fnDestroy();
-//          setTimeout(() => {
-//              execDataTable("flat");
-//          }, 10);
-//      }else{
-//          $("#conceptostable").dataTable().fnClearTable();
-//          $("#conceptostable").dataTable().fnDestroy();
-//          setTimeout(() => {
-//              execDataTable("html");
-//          }, 10);
-//      }
-//  }
- 
- //rango de fechas
-//  $('#daterangee-btn').daterangepicker(
-//      {
-//        ranges   : {
-//          'Today'       : [moment(), moment()],
-//          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-//          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-//          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-//          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-//          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-//        },
-//        startDate: moment($("#between1").val()),
-//        endDate  : moment($("#between2").val())
-//      },
-//      function (start, end) {
-//        // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-//        window.location = "conceptos?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
-//      }
-//    )
 
 //Elinianr registro
 $(document).on("click",".removeItem", function(){
-    // var idItem = $(this).attr("idItem");
-    // var table = $(this).attr("table");
-    // var cod_empresa = $(this).attr("cod_empresa");
-    // var column = $(this).attr("column");
-    // var page = $(this).attr("page");
     var cod_concepto = document.getElementById("conceptos").value;
     console.log(localStorage.getItem("cod"));
     console.log("cod_concepto: ", cod_concepto);
     if(cod_concepto != ""){
-      fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
+      fncSweetAlert("confirm","Estas seguro de eliminar este registro?","").then(resp=>{
 
         if(resp){
           var data = new FormData();
@@ -165,11 +124,11 @@ $(document).on("click",".removeItem", function(){
               if(response == 200){
                 fncSweetAlert(
                   "success",
-                  "el registro a sido borrado correctamente",
+                  "El registro a sido borrado correctamente",
                   "conceptos"
                 );
               }else{
-                fncNotie(3,"error deleating the record")
+                fncNotie(3,"Error al eliminar el registro")
               }
             }
           })

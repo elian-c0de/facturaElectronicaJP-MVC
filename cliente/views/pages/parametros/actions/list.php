@@ -3,7 +3,7 @@
 <div class="card-header">
   <input type="hidden" id="parametros" name="parametros">
     <h3 class="card-title">
-      <a class="btn bg-blue btn-small" title="Crear" href="parametros/create"><i class="bi bi-file-earmark-plus-fill"></i></a>
+      <a class="btn bg-blue btn-small" title="Crear" href="parametros/Crear"><i class="bi bi-file-earmark-plus-fill"></i></a>
       <a class="btn btn-warning btn-small" title="Editar" onclick="edit()"><i class='fas fa-pencil-alt'></i></a>
       <a class="btn btn-danger btn-small removeItem" title="Eliminar"><i class='fas fa-trash-alt'></i></a>    
     </h3>

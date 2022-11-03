@@ -16,7 +16,7 @@ class UsuariosController{
             echo '<script>
 
             matPreloader("on");
-            fncSweetAlert("loading", "Loading...", "");
+            fncSweetAlert("Loading", "Loading...", "");
 
             </script>';
 
@@ -87,7 +87,7 @@ class UsuariosController{
                     fncFormatInputs();
                     matPreloader("off");
                     fncSweetAlert("close", "", "");
-                    fncSweetAlert("success", "Registro Exitosos", "usuarios");
+                    fncSweetAlert("success", "Registro Exitoso", "usuarios");
 
                 </script>';
                 }else{
@@ -200,7 +200,7 @@ class UsuariosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Edicion con exito", "usuarios");
+                        fncSweetAlert("success", "Edicion con éxito", "usuarios");
 
                     </script>';
                     }else{

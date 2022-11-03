@@ -21,8 +21,8 @@
                     onchange="validateRepeat1(event,'cod_for_pag','gen_forma_pago','cod_forma_pago')"
                     pattern="[A-Z]{1,2}"
                     required>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback"> Please fill out this field.</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
 
                 <!-- DESCRIPCION -->
@@ -35,8 +35,8 @@
                     onchange="validateJS(event,'txt_descripcionforma_pago')"
                     pattern="[-//0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}" 
                     required>
-                    <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
 
                 <!-- DEFECTO -->              
@@ -44,7 +44,7 @@
                     <label for="">Defecto</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox"  name="sts_defecto" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                    <input type="checkbox"  name="sts_defecto" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
                     >
                 </div>
 
@@ -55,14 +55,13 @@
                     $tipoformadepago = file_get_contents("views/assets/json/tipo_SRIformadepago.json");
                     $tipoformadepago = json_decode($tipoformadepago, true);
                     ?>
-                    <select class="form-control changeCountry" name="cod_sri" required>
+                    <select class="form-control changeCountry" name="cod_sri" >
                         <option value>Seleccione S.R.I</option>
                         <?php foreach ($tipoformadepago as $key => $value): ?>
                             <option value="<?php echo $value["code"] ?>"> <?php echo $value["name"] ?></option>	
                         <?php endforeach ?>
                     </select>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <div class="valid-feedback">Válido</div>
                 </div>
 
                 <!-- ESTADO DE FORMA DE PAGO -->
@@ -70,7 +69,7 @@
                     <label for="">Estado</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox"  name="sts_forma_pago" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                    <input type="checkbox"  name="sts_forma_pago" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
                     >
                 </div>
 
@@ -81,14 +80,13 @@
                     $tiporetencionformadepago = file_get_contents("views/assets/json/tipo_Retencionformadepago.json");
                     $tiporetencionformadepago = json_decode($tiporetencionformadepago, true);
                     ?>
-                    <select class="form-control changeCountry" name="sts_retencion" required>
+                    <select class="form-control changeCountry" name="sts_retencion" >
                         <option value>Seleccione la Retención</option>
                         <?php foreach ($tiporetencionformadepago as $key => $value): ?>
                             <option value="<?php echo $value["code"] ?>"> <?php echo $value["name"] ?></option>	
                         <?php endforeach ?>
                     </select>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <div class="valid-feedback">Válido</div>
                 </div>
             </div>
         </div>
@@ -97,8 +95,8 @@
         <div class="card-header">
             <div class="col-md-8 offset-md-2">
                 <div class="form-group mt-3">
-                    <a href="formadepago" class="btn btn-light border text-left">Back</a>
-                    <button type="submit" class="btn bg-dark float-lg-right">Save</button>
+                    <a href="formadepago" class="btn btn-light border text-left">Cancelar</a>
+                    <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
                 </div>
             </div>
         </div>

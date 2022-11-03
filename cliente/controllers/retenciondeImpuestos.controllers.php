@@ -7,12 +7,12 @@ class RetenciondeImpuestosController{
 
         if(isset($_POST["cod_impuesto"])){
             
-            // echo '<script>
+            echo '<script>
 
-            // matPreloader("on");
-            // fncSweetAlert("loading", "Loading...", "");
+            matPreloader("on");
+            fncSweetAlert("loading", "Loading...", "");
 
-            // </script>';
+            </script>';
 
             if(preg_match('/^[a-zA-Z1-9]{1,5}$/',$_POST["cod_retencion"]) &&
             preg_match('/^[-%0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]) &&
@@ -52,7 +52,7 @@ class RetenciondeImpuestosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Registro con exito", "retenciondeImpuestos");
+                        fncSweetAlert("success", "Registro con éxito", "retenciondeImpuestos");
 
                     </script>';
                 }else{
@@ -96,6 +96,12 @@ class RetenciondeImpuestosController{
     public function edit($id,$id2){
 
         if(isset($_POST["idAdmin"])){
+            echo '<script>
+
+            matPreloader("on");
+            fncSweetAlert("loading", "Loading...", "");
+
+            </script>';
             
           if($id == $_POST["idAdmin"] && $id2 == $_POST["idAdmin1"]){
             
@@ -153,7 +159,7 @@ class RetenciondeImpuestosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Edicion con exito", "retenciondeImpuestos");
+                        fncSweetAlert("success", "Edicion con éxito", "retenciondeImpuestos");
 
                     </script>';
                     }else{
@@ -162,7 +168,7 @@ class RetenciondeImpuestosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncNotie(3, "Error editing the registry");
+                        fncNotie(3, "Error al editar el registro");
 
                     </script>';
                     }
