@@ -90,47 +90,10 @@ function execDataTable (text) {
   function edit(){
     var date = document.getElementById("parametros").value;
     if(date != ""){
-      window.location.href = ("parametros/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
+      window.location.href = ("parametros/Editar/"+btoa(date+"~"+localStorage.getItem("token_user")));
     }
   }
 
-
- // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
-//  function reportActive(event){
-//      if(event.target.checked){
-//          $("#parametrostable").dataTable().fnClearTable();
-//          $("#parametrostable").dataTable().fnDestroy();
-//          setTimeout(() => {
-//              execDataTable("flat");
-//          }, 10);
-//      }else{
-//          $("#parametrostable").dataTable().fnClearTable();
-//          $("#parametrostable").dataTable().fnDestroy();
-//          setTimeout(() => {
-//              execDataTable("html");
-//          }, 10);
-//      }
-//  }
- 
- //rango de fechas
-//  $('#daterangee-btn').daterangepicker(
-//      {
-//        ranges   : {
-//          'Today'       : [moment(), moment()],
-//          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-//          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-//          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-//          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-//          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-//        },
-//        startDate: moment($("#between1").val()),
-//        endDate  : moment($("#between2").val())
-//      },
-//      function (start, end) {
-//        // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-//        window.location = "perfiles?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
-//      }
-//    )
 
 //Elinianr registro
 $(document).on("click",".removeItem", function(){
@@ -143,7 +106,7 @@ $(document).on("click",".removeItem", function(){
     console.log(localStorage.getItem("cod"));
     console.log("cod_concepto: ", cod_parametro);
     if(cod_parametro != ""){
-    fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
+    fncSweetAlert("confirm","Estas seguro de eliminar este registro?","").then(resp=>{
   
       if(resp){
         var data = new FormData();
@@ -165,11 +128,11 @@ $(document).on("click",".removeItem", function(){
             if(response == 200){
               fncSweetAlert(
                 "success",
-                "el registro a sido borrado correctamente",
+                "El registro a sido borrado correctamente",
                 "parametros"
               );
             }else{
-              fncNotie(3,"error deleating the record")
+              fncNotie(3,"Error al eliminar el registro")
             }
           },
         });

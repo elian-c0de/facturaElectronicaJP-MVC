@@ -10,7 +10,7 @@ class FormadepagoController{
             echo '<script>
 
             matPreloader("on");
-            fncSweetAlert("loading", "Loading...", "");
+            fncSweetAlert("loading", "loading...", "");
 
             </script>';
 
@@ -103,6 +103,12 @@ class FormadepagoController{
     public function edit($id){
 
         if(isset($_POST["idAdmin"])){
+            echo '<script>
+
+            matPreloader("on");
+            fncSweetAlert("loading", "loading...", "");
+
+            </script>';
             
           if($id == $_POST["idAdmin"]){
 
@@ -169,7 +175,7 @@ class FormadepagoController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Edicion con exito", "formadepago");
+                        fncSweetAlert("success", "Edicion con éxito", "formadepago");
 
                     </script>';
                     }else{
@@ -178,7 +184,7 @@ class FormadepagoController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncNotie(3, "Error editing the registry");
+                        fncNotie(3, "Error al editar el registro");
 
                     </script>';
                     }

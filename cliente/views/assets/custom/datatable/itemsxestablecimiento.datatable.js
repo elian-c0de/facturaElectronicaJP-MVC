@@ -149,9 +149,15 @@ $(document).on("click", "#coso", function () {
     ajax: {
       url: url,
       type: "POST",
-    },
-   
-
+    }, 
+    scrollY:        "500px",
+    scrollX:        true,
+    scrollCollapse: true,
+    columnDefs: [
+        { width: 200, targets: 0 }
+    ],
+    fixedColumns: true,
+  
     language: {
       sProcessing: "Procesando...",
       sLengthMenu: "Mostrar _MENU_ Entradas",

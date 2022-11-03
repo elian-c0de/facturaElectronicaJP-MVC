@@ -70,8 +70,7 @@ if(isset($routesArray1[5])){
                             <option value="<?php echo $value["code"] ?>"<?php echo $admin->cod_impuesto == $value["code"] ? 'selected':''?>> <?php echo $value["name"] ?></option>	
                         <?php endforeach ?>
                     </select>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <div class="valid-feedback">Válido</div>
                 </div>
 
                 <!-- CODIGO RETENCIÓN -->
@@ -85,8 +84,7 @@ if(isset($routesArray1[5])){
                     onchange="validateRepeat1(event,'cod_rete','ecmp_impuesto','cod_retencion')"
                     pattern="[a-zA-Z1-9]{1,5}"
                     disabled>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback"> Please fill out this field.</div>
+                    <div class="valid-feedback">Válido</div>
                 </div>
 
                 <!-- DESCRIPCION -->
@@ -100,8 +98,8 @@ if(isset($routesArray1[5])){
                     onchange="validateJS(event,'descrip_formapag')"
                     pattern="[-%0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}" 
                     required>
-                    <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
 
                  <!-- PORCENTAJE RETENCIÓN -->
@@ -115,8 +113,8 @@ if(isset($routesArray1[5])){
                     onchange="validateJS(event,'por_reten')"
                     pattern="[0-9]{1,5}([.][0-9]{1,2})" 
                     required>
-                    <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
 
                 <!-- ESTADO DE FORMA DE PAGO -->
@@ -124,7 +122,7 @@ if(isset($routesArray1[5])){
                     <label for="">Estado</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox"  <?php echo $admin->sts_impuesto == 'A' ? 'checked':''?> name="sts_impuesto" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                    <input type="checkbox"  <?php echo $admin->sts_impuesto == 'A' ? 'checked':''?> name="sts_impuesto" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
                     >
                 </div>
             </div>
@@ -134,8 +132,8 @@ if(isset($routesArray1[5])){
         <div class="card-header">
             <div class="col-md-8 offset-md-2">
                 <div class="form-group mt-3">
-                    <a href="retenciondeImpuestos" class="btn btn-light border text-left">Back</a>
-                    <button type="submit" class="btn bg-dark float-lg-right">Save</button>
+                    <a href="retenciondeImpuestos" class="btn btn-light border text-left">Cancelar</a>
+                    <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
                 </div>
             </div>
         </div>

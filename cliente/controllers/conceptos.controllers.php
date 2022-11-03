@@ -10,7 +10,7 @@ class ConceptosController{
             echo '<script>
 
             matPreloader("on");
-            fncSweetAlert("loading", "Loading...", "");
+            fncSweetAlert("loading", "loading...", "");
 
             </script>';
 
@@ -69,7 +69,7 @@ class ConceptosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Registro con exito", "conceptos");
+                        fncSweetAlert("success", "Registro con éxito", "conceptos");
 
                     </script>';
                 }else{
@@ -112,6 +112,12 @@ class ConceptosController{
     public function edit($id){
 
         if(isset($_POST["idAdmin"])){
+            echo '<script>
+
+            matPreloader("on");
+            fncSweetAlert("loading", "loading...", "");
+
+            </script>';
             
           if($id == $_POST["idAdmin"]){
 
@@ -177,7 +183,7 @@ class ConceptosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Edicion con exito", "conceptos");
+                        fncSweetAlert("success", "Edicion con éxito", "conceptos");
 
                     </script>';
                     }else{
@@ -186,7 +192,7 @@ class ConceptosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncNotie(3, "Error editing the registry");
+                        fncNotie(3, "Error al editar el registro");
 
                     </script>';
                     }

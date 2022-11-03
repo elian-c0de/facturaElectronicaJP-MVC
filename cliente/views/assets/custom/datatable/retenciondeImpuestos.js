@@ -92,43 +92,16 @@ function execDataTable (text) {
     var date = document.getElementById("retenciondeImpuestos").value;
     var date2 = document.getElementById("retenciondeImpuestos1").value;
     if(date != "" && date2 != ""){
-      window.location.href = ("retenciondeImpuestos/edit/"+btoa(date+"~"+date2+"~"+localStorage.getItem("token_user")));
+      window.location.href = ("retenciondeImpuestos/Editar/"+btoa(date+"~"+date2+"~"+localStorage.getItem("token_user")));
     }
   }
 
-
- // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
-//  function reportActive(event){
-//      if(event.target.checked){
-//          $("#retenciondeImpuestostable").dataTable().fnClearTable();
-//          $("#retenciondeImpuestostable").dataTable().fnDestroy();
-//          setTimeout(() => {
-//              execDataTable("flat");
-//          }, 10);
-//      }else{
-//          $("#retenciondeImpuestostable").dataTable().fnClearTable();
-//          $("#retenciondeImpuestostable").dataTable().fnDestroy();
-//          setTimeout(() => {
-//              execDataTable("html");
-//          }, 10);
-//      }
-//  }
- 
-
-
 //Elinianr registro
 $(document).on("click",".removeItem1", function(){
-    // var idItem = $(this).attr("idItem");
-    // var table = $(this).attr("table");
-    // var column = $(this).attr("column");
-    // var column1 = $(this).attr("column1");
-    // var page = $(this).attr("page");
     var cod_impuesto = document.getElementById("retenciondeImpuestos").value;
     var cod_retencion = document.getElementById("retenciondeImpuestos1").value;
-    // console.log(localStorage.getItem("cod"));
-    // console.log("cod_concepto: ", cod_concepto);
     if(cod_impuesto != "" && cod_retencion != ""){
-      fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
+      fncSweetAlert("confirm","Estas seguro de eliminar este registro?","").then(resp=>{
     
         if(resp){
           var data = new FormData();
@@ -150,11 +123,11 @@ $(document).on("click",".removeItem1", function(){
               if(response == 200){
                 fncSweetAlert(
                   "success",
-                  "el registro a sido borrado correctamente",
+                  "El registro a sido borrado correctamente",
                   "retenciondeImpuestos"
                 );
               }else{
-                fncNotie(3,"error deleating the record")
+                fncNotie(3,"Error al eliminar el registro")
               }
             }
           })

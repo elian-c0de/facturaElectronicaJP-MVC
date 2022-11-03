@@ -1,57 +1,13 @@
-<?php
-
-if(isset($routesArray1[5])){
-    // echo '<pre>'; print_r($routesArray1[5]); echo '</pre>';
-    $security = explode("~",base64_decode($routesArray1[5]));
-
-    if($security[1] == $_SESSION["admin"]->token_usuario){
-
-        $url = "srja_concepto?linkTo=cod_empresa,cod_concepto&equalTo=".$_SESSION['admin']->cod_empresa.",".$security[0];
-        $method = "GET";
-        $fields = array();
-    
-        $response = CurlController::request($url,$method,$fields);
-        //Cntrl+shift+Q
-        //echo '<pre>'; print_r($response); echo '</pre>';
-        
-
-    if($response->status == 200){
-        $admin = $response->result[0];
-        // echo '<pre>'; print_r($admin->cod_caja); echo '</pre>';
-    }else{
-        echo '<script>
-    
-        window.location = "conceptos";
-        </script>';
-    }
-
-    }else{
-        echo '<script>
-    
-        window.location = "conceptos";
-        </script>';
-    }
-
-
-    
-    
-}
-
-
-?>
-
-
-
 <div class="card card-dark card-outline">
 
 <!-- INICIO DE FORMULARIO CAJAS -->
     <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
-    <input type="hidden" value="<?php echo $admin->cod_concepto?>" name="idAdmin"> 
+
         <div class="card-header">
             <?php 
                 require_once("controllers/conceptos.controllers.php");
                 $create = new ConceptosController();
-                $create ->edit($admin->cod_concepto);
+                $create ->create();
                 ?>
             <div class="col-md-8 offset-md-2">
 
@@ -61,13 +17,12 @@ if(isset($routesArray1[5])){
                     <input 
                     type="text"
                     name="cod_concepto" 
-                    value="<?php echo $admin->cod_concepto?>" 
                     class="form-control"
                     onchange="validateRepeat(event,'cod_concepto','srja_concepto','cod_concepto', <?php echo $_SESSION['admin']->cod_empresa?>)"
                     pattern="[0-9]{1,2}"
-                    disabled>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback"> Please fill out this field.</div>
+                    required>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
 
                 <!-- DESCRIPCION -->
@@ -76,13 +31,12 @@ if(isset($routesArray1[5])){
                     <input 
                     type="text"
                     name="txt_descripcion" 
-                    value="<?php echo $admin->txt_descripcion?>"
                     class="form-control"
                     onchange="validateJS(event,'txt_descripcionConcepto')"
                     pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,125}" 
                     required>
-                    <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
 
                 <!-- FACTURACIÓN -->              
@@ -90,7 +44,7 @@ if(isset($routesArray1[5])){
                     <label for="">Facturación</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox"  <?php echo $admin->sts_facturacion == 'S' ? 'checked':''?> name="sts_facturacion" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                    <input type="checkbox"  name="sts_facturacion" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
                     >
                 </div>
 
@@ -101,14 +55,13 @@ if(isset($routesArray1[5])){
                     $tipo_concep = file_get_contents("views/assets/json/tipo_concepto.json");
                     $tipo_concep = json_decode($tipo_concep, true);
                     ?>
-                    <select class="form-control changeCountry" name="sts_tipo_concepto" required>
+                    <select class="form-control changeCountry" name="sts_tipo_concepto" >
                         <option value>Seleccione Tipo de Concepto</option>
                         <?php foreach ($tipo_concep as $key => $value): ?>
-                            <option value="<?php echo $value["code"] ?>" <?php echo $admin->sts_tipo_concepto == $value["code"] ? 'selected':''?>> <?php echo $value["name"] ?></option>	
+                            <option value="<?php echo $value["code"] ?>"> <?php echo $value["name"] ?></option>	
                         <?php endforeach ?>
                     </select>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <div class="valid-feedback">Válido</div>
                 </div>
 
                 <!-- VALIDAR TIPO DE PROCESO -->
@@ -118,14 +71,13 @@ if(isset($routesArray1[5])){
                     $tipo_proces = file_get_contents("views/assets/json/tipo_proceso.json");
                     $tipo_proces = json_decode($tipo_proces, true);
                     ?>
-                    <select class="form-control select2 changeCountry" name="sts_proceso" required>
+                    <select class="form-control select2 changeCountry" name="sts_proceso" >
                         <option value>Seleccione Tipo de Concepto</option>
                         <?php foreach ($tipo_proces as $key => $value): ?>
-                            <option value="<?php echo $value["code"] ?>"<?php echo $admin->sts_proceso == $value["code"] ? 'selected':''?>> <?php echo $value["name"] ?></option>	
+                            <option value="<?php echo $value["code"] ?>"> <?php echo $value["name"] ?></option>	
                         <?php endforeach ?>
                     </select>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <div class="valid-feedback">Válido</div>
                 </div>
 
                 <!-- AFECTA INVENTARIO -->
@@ -133,7 +85,7 @@ if(isset($routesArray1[5])){
                     <label for="">Afecta Inventario</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox" <?php echo $admin->sts_inventario == 'A' ? 'checked':''?> name="sts_inventario" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                    <input type="checkbox"  name="sts_inventario" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
                     >
                 </div>
 
@@ -142,7 +94,7 @@ if(isset($routesArray1[5])){
                     <label for="">Estado</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox"  <?php echo $admin->sts_concepto == 'A' ? 'checked':''?> name="sts_concepto" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                    <input type="checkbox"  name="sts_concepto" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"  data-on-text="SI" data-off-text="NO"
                     >
                 </div>
             </div>

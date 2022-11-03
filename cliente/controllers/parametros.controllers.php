@@ -49,7 +49,7 @@ class ParametrosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Registro con exito", "parametros");
+                        fncSweetAlert("success", "Registro con éxito", "parametros");
 
                     </script>';
                 }else{
@@ -143,7 +143,7 @@ class ParametrosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Edicion con exito", "parametros");
+                        fncSweetAlert("success", "Edicion con éxito", "parametros");
 
                     </script>';
                     }else{
@@ -152,7 +152,7 @@ class ParametrosController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncNotie(3, "Error editing the registry");
+                        fncNotie(3, "Error al editar el registro");
 
                     </script>';
                     }
