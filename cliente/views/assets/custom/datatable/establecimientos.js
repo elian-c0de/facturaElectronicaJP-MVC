@@ -101,7 +101,7 @@ function execDataTable(text) {
     function edit(){
     var date = document.getElementById("establecimiento").value;
       if(date != ""){
-        window.location.href = ("establecimientos/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
+        window.location.href = ("establecimientos/Editar/"+btoa(date+"~"+localStorage.getItem("token_user")));
       }
     }
 

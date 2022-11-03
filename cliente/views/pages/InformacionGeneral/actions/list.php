@@ -126,6 +126,23 @@ if ($response->status == 200) {
           <div class="invalid-feedback">Por favor, rellene este campo</div>
         </div>
 
+        <!-- TIPO REPRESENTANTE -->
+        <div class="form-group mt-2">
+                    <label>Tipo Representante</label>
+                    <?php 
+                    $ambiente = file_get_contents("views/assets/json/tipo_representanteInformaciongeneral.json");
+                    $ambiente = json_decode($ambiente, true);
+                    ?>
+                    <select disabled class="form-control changeCountry" name="cod_tipo_id_representante" >
+                        <option value>Seleccione el Tipo Representante</option>
+                        <?php foreach ($ambiente as $key => $value): ?>
+                            <option value="<?php echo $value["code"] ?>"<?php echo $admin->cod_tipo_id_representante == $value["code"] ? 'selected':''?>> <?php echo $value["name"] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                    <div class="valid-feedback">Valid.</div>
+                    <!-- <div class="invalid-feedback"> Por favor, rellene este campo</div> -->
+                </div>
+
         <div class="form-group mt-2">
           <label for="">Id. Representante</label>
           <input type="text" class="form-control" disabled value="<?php echo $admin->num_id_representante?>"  >
@@ -140,12 +157,6 @@ if ($response->status == 200) {
           <div class="invalid-feedback">Por favor, rellene este campo</div>
         </div>
 
-
-
-     
-
-
-   
       </div>
     </div>
 
@@ -155,7 +166,7 @@ if ($response->status == 200) {
   <div class="card-header">
 
     <h3 class="card-title">
-      <a class="btn bg-blue btn-small" href="informacionGeneral/edit">Editar</a>
+      <a class="btn bg-blue btn-small" href="informacionGeneral/Editar">Editar</a>
     </h3>
 
   </div>

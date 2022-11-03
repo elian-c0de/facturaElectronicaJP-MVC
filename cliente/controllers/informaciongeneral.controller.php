@@ -186,6 +186,7 @@ class InformacionGeneralController{
                         "&num_res_agente_ret=".trim($_POST["num_res_agente_ret"]).
                         "&sts_contribuyente_rme=".trim($_POST["sts_contribuyente_rme"]).
                         "&txt_path_logo=".trim($_POST["txt_path_logo"]).
+                        "&num_id_representante=".trim($_POST["num_id_representante"]).
                         "&cod_tipo_id_representante=".trim($_POST["cod_tipo_id_representante"]).
                         "&nom_representante=".trim($_POST["nom_representante"]);
                         

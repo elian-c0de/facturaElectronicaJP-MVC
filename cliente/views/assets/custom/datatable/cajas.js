@@ -88,7 +88,7 @@ function execDataTable (text) {
 function edit(){
   var date = document.getElementById("caja").value;
   if(date != ""){
-    window.location.href = ("cajas/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
+    window.location.href = ("cajas/Editar/"+btoa(date+"~"+localStorage.getItem("token_user")));
   }
 }
 
