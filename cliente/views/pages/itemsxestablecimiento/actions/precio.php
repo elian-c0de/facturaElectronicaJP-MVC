@@ -156,7 +156,7 @@ if (isset($routesArray1[5])) {
         <div class="card-header">
             <div class="col-md-8 offset-md-2">
                 <div class="form-group mt-3">
-                    <a href="itemsxestablecimiento" class="btn btn-light border text-left">Atras</a>
+                    <a href="itemsxestablecimiento" class="btn btn-light border text-left">Cancelar</a>
                     <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
                 </div>
             </div>
