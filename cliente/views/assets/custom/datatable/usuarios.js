@@ -16,7 +16,7 @@ function execDataTable (text) {
        "columns":[
          {"data":"cod_usuario"},
          {"data":"nom_usuario"},
-         {"data":"cod_passwd"},
+         //{"data":"cod_passwd"},
          {"data":"cod_perfil"},
          {"data":"cod_establecimiento"},
          {"data":"cod_punto_emision"},
