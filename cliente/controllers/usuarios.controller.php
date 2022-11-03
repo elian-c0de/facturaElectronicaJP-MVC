@@ -125,22 +125,6 @@ class UsuariosController{
         $response = CurlController::request($url,$method,$fields)->result;
         return $response;
     }
-   
-    public function codigo_nombre_estado_usuario(){
-        $url = "gen_usuario?linkTo=cod_empresa&equalTo=".$_SESSION['admin']->cod_empresa;
-        $method = "GET";
-        $fields = array();
-        $response = CurlController::request($url,$method,$fields)->result;
-        return $response;
-    }
-
-    public function establecimiento_usuario(){
-        $url = "gen_local?linkTo=cod_empresa&equalTo=".$_SESSION['admin']->cod_empresa;
-        $method = "GET";
-        $fields = array();
-        $response = CurlController::request($url,$method,$fields)->result;
-        return $response;
-    }
     public function puntoEmision_usuario(){
         $url = "gen_punto_emision?linkTo=cod_empresa&equalTo=".$_SESSION['admin']->cod_empresa;
         $method = "GET";
@@ -148,15 +132,7 @@ class UsuariosController{
         $response = CurlController::request($url,$method,$fields)->result;
         return $response;
     }
-    public function puntoEmision_usuario1(){
-        $url = "gen_punto_emision?linkTo=cod_empresa&equalTo=".$_SESSION['admin']->cod_empresa;
-        $method = "GET";
-        $fields = array();
-        $response = CurlController::request($url,$method,$fields)->result;
-        return $response;
-
-        
-    }
+  
 
     public function edit($id){
 
@@ -196,21 +172,8 @@ class UsuariosController{
                         $_POST["sts_administrador"] = "C";
                         
                     }
-                     //$algoritmo = MCRYPT_BLOWFISH ; 
-                    // $llave = 'Esa llave dorada que abre el palacio de la eternidad.' ; 
-                    // $data = 'La gallina se escapa al amanecer. Envía ayuda con Mr. Blue.' ; 
-                    // $modo = MCRYPT_MODE_CBC ; 
-                    // $iv = mcrypt_create_iv ( mcrypt_get_iv_size ( $algoritmo , $modo ), MCRYPT_DEV_URANDOM ); 
-                    // $datos_cifrados = mcrypt_encrypt ( $algoritmo, $clave, $datos, $modo, $iv ); 
-                    // $texto_sinformato = base64_encode ( $datos_cifrados ); 
-                    // echo $texto_sinformato . "\n" ; 
-                    // $datos_cifrados = base64_decode ( $texto_sinformato ); 
-                    // $decodificado = mcrypt_decrypt ( $algoritmo , $clave , $datos_cifrados , $modo , $iv ); 
-                    // echo $decodificado . "\n" ;  
-
+              
                     $variable = explode("~",$_POST["gen_punto_emision1"]);
-                    // $variable2 = base64_encode($_POST["cod_passwd"]);
-                    // $variable3 = base64_decode($variable2);
     
                             $data = 
                             "nom_usuario=".trim($_POST["nom_usuario"]).

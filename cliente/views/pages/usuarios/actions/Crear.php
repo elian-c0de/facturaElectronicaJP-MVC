@@ -8,33 +8,6 @@
       ?>
       <div class="col-md-8 offset-md-2">
 
-      <!-- VALIDAR TIPO DE USUARIOS
-        <div class="form-group mt-2">
-          <label>Usuario:</label>
-          
-          // require_once("controllers/admins.controllers.php");
-          $create = new UsuariosController();
-          $tipo_precio = $create->codigo_nombre_estado_usuario();
-          $tipo_precio = json_encode($tipo_precio);
-          $tipo_precio = json_decode($tipo_precio, true);
-          ?>
-          <select class="form-control select2 changeCountry" name="gen_usuario" id="gen_usuario" onchange="rellenar()">
-              <option value>Seleccione El Usuario</option>
-               foreach ($tipo_precio as $key => $value) : ?>
-                  <option value=" echo $value["cod_usuario"] ?>">
-                   echo $value["cod_usuario"] ?> 
-                  </option>
-               endforeach ?>
-          </select>
-          <div class="valid-feedback">Válido</div>
-          <div class="invalid-feedback">Por Favor, rellene este campo</div>
-				</div>   -->
-
-      <!-- DIVICIÓN DEL CAMPO: USUARIO -->
-        <!-- <div class="form-group mt-2">
-            <p class="lead">Usuario</p>
-        </div> -->
-
         <!-- CÓDIGO DE USUARIO -->
         <div class="form-group mt-2">
           <label>Código: </label>
@@ -77,9 +50,11 @@
           onchange="validateRepeat(event,'cod_passwd','gen_usuario','cod_passwd', <?php echo $_SESSION['admin']->cod_empresa?>)"
           pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{8,20}$"
           required>
+          <div><input onclick="verContraseña()" type="checkbox"> Ver Contraseña</div>
           <div class="valid-feedback">Válido</div>
           <div class="invalid-feedback"> Por Favor, rellene este campo</div>
         </div>
+        
 
 
         <!-- VALIDAR PERFIL DE USUARIOS -->
@@ -105,13 +80,7 @@
               <?php endforeach ?>
           </select>
           <div class="valid-feedback">Válido</div>
-          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
 				</div>  
-
-
-
-
-
 
         <!-- VALIDAR ESTABLECIMIENTO DE USUARIOS -->
         <div class="form-group mt-2"> 
@@ -132,23 +101,8 @@
               <?php endforeach ?>
           </select>
           <div class="valid-feedback">Válido</div>
-          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
 				</div> 
 
-       
-        <!-- OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO ------------------------------>
-      
-
-        <!-- VALIDAR PUNTO DE EMISIÓN DE USUARIOS
-        <div class="form-group mt-2"> 
-          <label>Punto de Emisión:</label>
-          <select name="cod_punto_emision" id="cod_punto_emision"><option value>Seleccione el Punto de Emisión</option></select>
-          
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please fill out this field.</div>
-				</div>  -->
-
-        <!-- AQUIIIIIIIIIII TERMINAAAA--------------------------------------------------- -->
 
         <!-- DIVICIÓN DEL CAMPO: USUARIO -->
         <div class="form-group mt-2">
@@ -181,7 +135,7 @@
             <div class="col-md-2 offset-md-5">
                 <div class="form-group mt-0">
                     <a href="usuarios" class="btn btn-light border text-left">Cancelar</a>
-                    <button type="submit" class="btn btn-success float-lg-right">Guardar</button>
+                    <button type="submit" class="btn btn-dark float-lg-right">Guardar</button>
                 </div>
             </div>
         </div>

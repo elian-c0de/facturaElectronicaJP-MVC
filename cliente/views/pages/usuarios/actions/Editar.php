@@ -144,7 +144,6 @@ if(isset($routesArray1[5])){
               <?php endforeach ?>
           </select>
           <div class="valid-feedback">Válido</div>
-          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
 		</div> 
 
 
@@ -172,14 +171,13 @@ if(isset($routesArray1[5])){
             <input type="checkbox"  <?php echo $admin->sts_administrador == 'A' ? 'checked':''?> name="sts_administrador" id="sts_administrador" 
             >
         </div>
-        <!-- BORRAR CONTRASEÑA -->
+        <!-- BORRAR CONTRASEÑA
         <div class="form-group mt-2">
             <label for="">Borrar Contraseña:</label>
             <br>
-            <!-- <input type="text" class="form-control" -->
             <input type="checkbox"  name="#"  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
             >
-        </div>
+        </div> -->
       </div>
     </div>
     

@@ -183,7 +183,7 @@ function validateJS(event, type) {
   if (!pattern.test(event.target.value)) {
  
     $(event.target).parent().addClass("was-validated");
-    $(event.target).parent().children(".invalid-feedback").html("Field syntax error");
+    $(event.target).parent().children(".invalid-feedback").html("Error de sintaxis de campo");
   }
 
 }
