@@ -182,10 +182,13 @@ $(document).ready(function(e){
 
 
 function verContraseña(){
-  var obtenerDato =document.getElementById("cod_passwd");
+  var obtenerDato = document.getElementById("cod_passwd");
+  // var icon = document.getElementById("icon");
   if (obtenerDato.type==="password") {
     obtenerDato.type="text";
+    $('#icon').addClass('bi bi-eye-slash-fill').removeClass('bi bi-eye-fill');
   } else {
     obtenerDato.type="password";
+    $('#icon').addClass('bi bi-eye-fill').removeClass('bi bi-eye-slash-fill');
   }
 }
