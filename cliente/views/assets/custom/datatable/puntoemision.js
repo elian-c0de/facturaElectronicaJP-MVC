@@ -113,7 +113,7 @@ function execDataTable (text) {
   var date = document.getElementById("establecimiento").value;
   var date2 = document.getElementById("puntoemision").value;
   if(date != "" && date2 != ""){
-    window.location.href = ("puntosEmision/edit/"+btoa(date+"~"+date2+"~"+localStorage.getItem("token_user")));
+    window.location.href = ("puntosEmision/Editar/"+btoa(date+"~"+date2+"~"+localStorage.getItem("token_user")));
   }
 }
 

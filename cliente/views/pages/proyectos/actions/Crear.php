@@ -22,7 +22,7 @@
                 pattern="[a-zA-Z0-9]{1,3}"
                 required>
                 <div class="valid-feedback">Válido</div>
-                <div class="invalid-feedback"> Por favor, rellene este campo</div>
+                <div class="invalid-feedback">Por favor, rellene este campo</div>
             </div>
 
             <!-- NOMBRE -->
@@ -34,10 +34,9 @@
                 name="nom_proyecto"
                 onchange="validateJS(event,'txt_descripcion_inventario')"
                 pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}"
-                required
-                >
+                required>
                 <div class="valid-feedback">Válido</div>
-                <div class="invalid-feedback"> Por favor, rellene este campo</div>
+                <div class="invalid-feedback">Por favor, rellene este campo</div>
             </div>
         </div>
     </div>

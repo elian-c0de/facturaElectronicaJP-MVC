@@ -38,8 +38,7 @@
                     <input type="text" name="num_ruc" value="<?php echo trim($admin->cod_usuario) ?>"  class="form-control"
                     onchange="validateJS(event,'num_ruc')"
                     pattern = "[0-9]{1,13}"
-                    disabled
-                    >
+                    disabled>
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback">Por favor, rellene este campo.</div>
                 </div>
@@ -51,8 +50,7 @@
                     <input type="text" name="nom_empresa" value="<?php echo trim($admin->nom_usuario) ?>"  class="form-control"
                     onchange="validateJS(event,'nom_empresa')"
                     pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,100}"
-                    disabled
-                    >
+                    disabled>
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback">Por favor, rellene este campo.</div>
                 </div>
@@ -64,8 +62,7 @@
                     <input type="password" class="form-control" name="cod_passwd" 
                     pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,15}"
                     onchange="validateJS(event,'nom_abreviado')"
-                    required
-                    >
+                    required>
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>
@@ -89,8 +86,7 @@
                     pattern='[-\\(\\)\\0-9 ]{1,10}' 
                     onchange="validateJS(event,'num_telefono')"
                     name="num_telefono" 
-                    required
-                    >
+                    required>
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>

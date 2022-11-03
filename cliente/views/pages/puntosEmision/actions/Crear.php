@@ -20,13 +20,13 @@
                     $lista = json_decode($lista,true);
                     ?>
 
-					<select class="form-control select2 changeCountry" name="cod_establecimiento"required>
+					<select class="form-control select2 changeCountry" name="cod_establecimiento" required>
 						<option value>Seleccione el Establecimiento</option>
 						<?php foreach ($lista as $key => $value): ?>
 							<option value="<?php echo $value["cod_establecimiento"] ?>" ><?php echo $value["cod_establecimiento"] ?> | <?php echo $value["txt_descripcion"] ?></option>	
 						<?php endforeach ?>
 					</select>
-					<div class="valid-feedback">Valid.</div>
+					<div class="valid-feedback">Válido</div>
             		<div class="invalid-feedback"> Por favor, rellene este campo</div>
 	            </div>
 
@@ -40,7 +40,7 @@
                     onchange="validateRepeat(event,'cod_verif','gen_punto_emision','cod_punto_emision', <?php echo $_SESSION['admin']->cod_empresa?>)"
                     pattern="[0-9]{1,3}"
                     required>
-                    <div class="valid-feedback">Valid.</div>
+                    <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback"> Por favor, rellene este campo</div>
                 </div>
 
@@ -54,7 +54,7 @@
                     onchange="validateJS(event,'txt_descrip')"
                     pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}" 
                     required>
-                    <div class="valid-feedback">Valid</div>
+                    <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback"> Por favor, rellene este campo</div>
                 </div>
 
@@ -73,7 +73,7 @@
 							<option value="<?php echo $value["cod_caja"] ?>" ><?php echo $value["cod_caja"] ?> | <?php echo $value["txt_descripcion"] ?></option>	
 						<?php endforeach ?>
 					</select>
-					<div class="valid-feedback">Valid.</div>
+					<div class="valid-feedback">Válido</div>
             		<!-- <div class="invalid-feedback"> Por favor, rellene este campo</div> -->
 	            </div>
 
@@ -90,7 +90,7 @@
                             <option value="<?php echo $value["code"] ?>"> <?php echo $value["name"] ?></option>	
                         <?php endforeach ?>
                     </select>
-                    <div class="valid-feedback">Valid.</div>
+                    <div class="valid-feedback">Válido</div>
                     <!-- <div class="invalid-feedback"> Por favor, rellene este campo</div> -->
                 </div>
 

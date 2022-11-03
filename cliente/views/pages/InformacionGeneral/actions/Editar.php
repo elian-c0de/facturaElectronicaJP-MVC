@@ -39,7 +39,7 @@ if ($response->status == 200) {
 
             <div class="col-md-8 offset-md-2">
 
-                <!-- INDEITIFICACON CON VALIDACIONES TERMINADO -->
+                <!-- RUC -->
                 <div class="form-group mt-2">
                     <label>RUC</label>
                     <input type="text" name="num_ruc" value="<?php echo $admin->num_ruc ?>"  class="form-control"
@@ -84,7 +84,7 @@ if ($response->status == 200) {
                      name="txt_direccion" 
                      pattern= '[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,255}'
                      onchange="validateJS(event,'txt_direccion')"
-                     required>
+                     >
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>
@@ -95,8 +95,7 @@ if ($response->status == 200) {
                     <input type="phone" class="form-control" value="<?php echo $admin->num_telefono ?>"  
                     pattern='[-\\(\\)\\0-9 ]{1,10}' 
                     onchange="validateJS(event,'num_telefono')"
-                    name="num_telefono" 
-                    required
+                    name="num_telefono"
                     >
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback">Por favor, rellene este campo</div>
@@ -108,7 +107,7 @@ if ($response->status == 200) {
                     <input type="text" class="form-control" name="txt_email" value="<?php echo str_replace(" ","",$admin->txt_email) ?>"  
                     pattern="[.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}"
                     onchange="validateJS(event,'txt_email')" 
-                    required>
+                    >
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>
@@ -142,7 +141,7 @@ if ($response->status == 200) {
 
                 </div>
 
-    <!-- UBICACION LOGO CON VALIDACION TERMINADO-->
+                <!-- UBICACION LOGO CON VALIDACION TERMINADO-->
                 <div class="form-group mt-2">
                     <label for="">Ubicacion Logo</label>
                     <input type="text" class="form-control"  
@@ -154,19 +153,37 @@ if ($response->status == 200) {
                     <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>
 
+                <!-- TIPO REPRESENTANTE -->
+                <div class="form-group mt-2">
+                    <label>Tipo Representante</label>
+                    <?php 
+                    $ambiente = file_get_contents("views/assets/json/tipo_representanteInformaciongeneral.json");
+                    $ambiente = json_decode($ambiente, true);
+                    ?>
+                    <select class="form-control changeCountry" name="cod_tipo_id_representante" >
+                        <option value>Seleccione el Tipo Representante</option>
+                        <?php foreach ($ambiente as $key => $value): ?>
+                            <option value="<?php echo $value["code"] ?>"<?php echo $admin->cod_tipo_id_representante == $value["code"] ? 'selected':''?>> <?php echo $value["name"] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                    <div class="valid-feedback">Valid.</div>
+                    <!-- <div class="invalid-feedback"> Por favor, rellene este campo</div> -->
+                </div>
+
                 <!-- ID REPRESENTANTE CON VALIDACION TERMINADO (OJO SE PUEO INGRESAR DE A-Z e a la espera de confirmacion) -->
                 <div class="form-group mt-2">
                     <label for="">Id. Representante</label>
                     <input type="text" class="form-control"  
                     value="<?php echo $admin->num_id_representante ?>"
-                    name="cod_tipo_id_representante"
+                    name="num_id_representante"
                     onchange="validateJS(event,'cod_tipo_id_representante')"
-                    pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,13}" 
-                    required>
+                    pattern="[0-9]{1,13}"
+                    >
                     <div class="valid-feedback"></div>
                     <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>
 
+                <!-- Nombre Representante CON VALIDACION TERMINADO (OJO SE PUEO INGRESAR DE A-Z e a la espera de confirmacion) -->
                 <div class="form-group mt-2">
                     <label for="">Nombre Representante</label>
                     <input type="text" class="form-control"  
@@ -174,7 +191,7 @@ if ($response->status == 200) {
                     name="nom_representante"
                     onchange="validateJS(event,'nom_empresa')" 
                     pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,100}"
-                    required>
+                    >
                     <div class="valid-feedback"></div>
                     <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>

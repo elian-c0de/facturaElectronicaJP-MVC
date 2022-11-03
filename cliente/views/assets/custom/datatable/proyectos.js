@@ -89,7 +89,7 @@ function execDataTable (text) {
   function edit(){
     var date = document.getElementById("proyecto").value;
     if(date != ""){
-      window.location.href = ("proyectos/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
+      window.location.href = ("proyectos/Editar/"+btoa(date+"~"+localStorage.getItem("token_user")));
     }
   }
  

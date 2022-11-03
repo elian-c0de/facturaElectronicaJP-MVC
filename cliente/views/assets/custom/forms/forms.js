@@ -142,7 +142,7 @@ function validateJS(event, type) {
   if(type == "txt_email") pattern = /^[.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/;
   if(type == "num_res_agente_ret") pattern = /^[0-9]{1,30}$/;
   if(type == "txt_path_logo") pattern = /^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}$/;
-  if(type == "cod_tipo_id_representante") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,13}$/;
+  if(type == "cod_tipo_id_representante") pattern = /^[0-9]{1,13}$/;
   if(type == "txt_descripcion") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,60}$/;
   if(type == "nom_marca") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,70}$/;
   if(type == "txt_descripcion_inventario") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
