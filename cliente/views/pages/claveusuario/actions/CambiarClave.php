@@ -1,5 +1,5 @@
 <?php
-    $url = "gen_usuario?equalTo=" . $_SESSION["admin"]->cod_empresa . "&linkTo=cod_empresa";
+    $url = "gen_usuario?equalTo=" . trim($_SESSION["admin"]->cod_empresa) .",".trim($_SESSION["admin"]->cod_usuario). "&linkTo=cod_empresa,cod_usuario";
     $method = "GET";
     $fields = array();
     $response = CurlController::request($url, $method, $fields);
