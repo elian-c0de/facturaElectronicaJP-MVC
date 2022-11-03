@@ -28,8 +28,8 @@
 							<option value="<?php echo $value["cod_linea"] ?>" <?php echo $key == 0 ?"selected":"" ?> ><?php echo $value["cod_linea"] ?> | <?php echo $value["txt_descripcion"] ?></option>	
 						<?php endforeach ?>
 					</select>
-					<div class="valid-feedback">Valid.</div>
-            		<div class="invalid-feedback">Please fill out this field.</div>
+					<div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
 	            </div>
 
                 <!-- CODIGO DE SUBLINEA -->
@@ -42,8 +42,8 @@
                     onchange="validateRepeatSublinea(event,'cod_verif','ecmp_linea','cod_sublinea', <?php echo $_SESSION['admin']->cod_empresa?>)"
                     pattern="[0-9]{1,3}"
                     required>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback"> Please fill out this field.</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
 
                 <!-- DESCRIPCION -->
@@ -56,8 +56,8 @@
                     onchange="validateJS(event,'txt_descrip')"
                     pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}" 
                     required>
-                    <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
             </div>
         </div>
@@ -66,8 +66,8 @@
         <div class="card-header">
             <div class="col-md-8 offset-md-2">
                 <div class="form-group mt-3">
-                    <a href="sublineaproducto" class="btn btn-light border text-left">Back</a>
-                    <button type="submit" class="btn bg-dark float-lg-right">Save</button>
+                    <a href="sublineaproducto" class="btn btn-light border text-left">Cancelar</a>
+                    <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
                 </div>
             </div>
         </div>

@@ -112,14 +112,14 @@ if (isset($routesArray1[5])) {
                 <div class="form-group mt-2">
                     <label for="">Controla Saldo</label>
                     <br>
-                    <input type="checkbox" name="sts_control_saldo" <?php echo $admin->sts_control_saldo == 'A' ? 'checked' : '' ?> data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
+                    <input type="checkbox" name="sts_control_saldo" <?php echo $admin->sts_control_saldo == 'A' ? 'checked' : '' ?> data-on-text="SI" data-off-text="NO" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
                 </div>
 
                 <!-- MODIFICA PRECIO -->
                 <div class="form-group mt-2">
                     <label for="">Modifica Precio</label>
                     <br>
-                    <input type="checkbox" name="sts_modifica_precio" <?php echo $admin->sts_modifica_precio == 'A' ? 'checked' : '' ?> data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
+                    <input type="checkbox" name="sts_modifica_precio" <?php echo $admin->sts_modifica_precio == 'A' ? 'checked' : '' ?>  data-on-text="SI" data-off-text="NO" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
                 </div>
 
 
@@ -209,7 +209,7 @@ if (isset($routesArray1[5])) {
                 <div class="form-group mt-2">
                     <label for="">Estado </label>
                     <br>
-                    <input type="checkbox" name="sts_item_local" <?php echo $admin->sts_modifica_precio == 'A' ? 'checked' : '' ?> data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
+                    <input type="checkbox" name="sts_item_local" <?php echo $admin->sts_modifica_precio == 'A' ? 'checked' : '' ?> data-on-text="SI" data-off-text="NO" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
                 </div>
 
 
@@ -222,8 +222,8 @@ if (isset($routesArray1[5])) {
         <div class="card-header">
             <div class="col-md-8 offset-md-2">
                 <div class="form-group mt-3">
-                    <a href="itemsxestablecimiento" class="btn btn-light border text-left">Back</a>
-                    <button type="submit" class="btn bg-dark float-lg-right">Save</button>
+                    <a href="itemsxestablecimiento" class="btn btn-light border text-left">Cancelar</a>
+                    <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
                 </div>
             </div>
         </div>

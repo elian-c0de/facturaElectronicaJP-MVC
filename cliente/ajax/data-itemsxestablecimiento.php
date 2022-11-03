@@ -171,6 +171,14 @@ class itemsxestablecimientoDataTableController
                         $sts_modifica_precio = "No";
                     }
 
+                    if ($value->sts_item_local == "A") {
+                        $sts_item_local = "Activo";
+                    }
+
+                    if ($value->sts_item_local == "C") {
+                        $sts_item_local = "Inactivo";
+                    }
+
 
                     //ASIGANACION DE VALORES A VARIABLES
 
@@ -184,7 +192,7 @@ class itemsxestablecimientoDataTableController
                     $val_costo = $value->val_costo;
                     $val_descuento = $value->val_descuento;
                     $por_descuento = $value->por_descuento;
-                    $sts_item_local = $value->sts_item_local;
+                    // $sts_item_local = $value->sts_item_local;
 
                     $actions = "<a  id='coso' name='coso' data-toggle='modal' data-target='.bd-example-modal-lg'   class='btn btn-success btn-sm mr-2' idItem=" .  base64_encode($value->cod_inventario . "~" . $value->cod_establecimiento . "~" . $_GET["token"]) . ">
 

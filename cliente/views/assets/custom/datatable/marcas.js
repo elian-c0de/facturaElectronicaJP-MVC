@@ -76,7 +76,7 @@ function execDataTable (text) {
    function edit(){
     var date = document.getElementById("marcas").value;
     if(date != ""){
-      window.location.href = ("marcas/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
+      window.location.href = ("marcas/Editar/"+btoa(date+"~"+localStorage.getItem("token_user")));
     }
   }
  // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos

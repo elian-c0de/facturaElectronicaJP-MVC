@@ -1,5 +1,5 @@
 <?php
-    $url = "gen_usuario?equalTo=" . $_SESSION["admin"]->cod_empresa . "&linkTo=cod_empresa";
+    $url = "gen_usuario?equalTo=" . trim($_SESSION["admin"]->cod_empresa) .",".trim($_SESSION["admin"]->cod_usuario). "&linkTo=cod_empresa,cod_usuario";
     $method = "GET";
     $fields = array();
     $response = CurlController::request($url, $method, $fields);
@@ -19,7 +19,7 @@
 
     <!-- INICIO DE FORMULARIO USUARIOS -->
     <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
-        <input type="hidden" value="<?php echo $admin->cod_empresa ?>" name="idAdmin"> 
+        <input type="hidden" value="<?php echo $admin->cod_usuario ?>" name="idAdmin"> 
 
 
         <div class="card-header">
@@ -27,7 +27,7 @@
             <?php
             require_once("controllers/usuarios.controller.php");
             $create = new UsuariosController();
-            $create->edit($admin->cod_empresa);
+            $create->editpass($admin->cod_usuario);
             ?>
 
             <div class="col-md-8 offset-md-2">
@@ -59,9 +59,9 @@
                 <!-- CLAVE ACTUAL -->
                 <div class="form-group mt-2">
                     <label for="">Clave Actual</label>
-                    <input type="password" class="form-control" name="cod_passwd" 
-                    pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,15}"
-                    onchange="validateJS(event,'nom_abreviado')"
+                    <input type="password" class="form-control"
+                    name="cod_passwd"
+                    placeholder="Ingrese contraseña actual"
                     required>
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback">Por favor, rellene este campo</div>
@@ -70,11 +70,13 @@
                 <!-- CLAVE NUEVA -->
                 <div class="form-group mt-2">
                     <label for="">Clave Nueva</label>
-                    <input type="text" class="form-control"
-                     name="txt_direccion" 
-                     pattern= '[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,255}'
-                     onchange="validateJS(event,'txt_direccion')"
-                     required>
+                    <input type="password"
+                    class="form-control"
+                    onchange="validateJS(event,'cod_passwd')"
+                    pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{8,20}" 
+                    name="txt_passwdnew"
+                    placeholder="Ingrese nueva contraseña como minino 8 digitos"
+                    required>
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback">Por favor, rellene este campo</div>
                 </div>
@@ -82,10 +84,12 @@
                 <!-- CONFIRMACION -->
                 <div class="form-group mt-2">
                     <label for="">Confirmacion</label>
-                    <input type="phone" class="form-control"
-                    pattern='[-\\(\\)\\0-9 ]{1,10}' 
-                    onchange="validateJS(event,'num_telefono')"
-                    name="num_telefono" 
+                    <input type="password"
+                    class="form-control"
+                    onchange="validateJS(event,'cod_passwd')"
+                    pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{8,20}"
+                    name="txt_passwdnewconfi"
+                    placeholder="Confirme nueva contraseña"
                     required>
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback">Por favor, rellene este campo</div>

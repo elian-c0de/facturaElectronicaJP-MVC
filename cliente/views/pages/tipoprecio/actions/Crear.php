@@ -21,8 +21,8 @@
                     onchange="validateRepeat(event,'cod_pre','ecmp_precio','cod_precio', <?php echo $_SESSION['admin']->cod_empresa?>)"
                     pattern="[a-zA-Z0-9]{1,2}"
                     required>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback"> Please fill out this field.</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
 
 
@@ -36,8 +36,8 @@
                     onchange="validateJS(event,'txt_descripcion')"
                     pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,60}" 
                     required>
-                    <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
 
                 <!-- DEFECTO -->              
@@ -45,8 +45,8 @@
                     <label for="">Defecto</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox"  name="sts_defecto" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
-                    >
+                    <input type="checkbox"  name="sts_defecto" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO">
+                    
                 </div>
 
                 <!-- PRECIO -->
@@ -54,8 +54,7 @@
                     <label for="">Estado</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox"  name="sts_precio" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
-                    >
+                    <input type="checkbox"  name="sts_precio" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"  data-on-text="SI" data-off-text="NO">
                 </div>
             </div>
         </div>

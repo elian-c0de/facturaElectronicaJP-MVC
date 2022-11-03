@@ -183,7 +183,7 @@ if(isset($routesArray1[5])){
                     <label for="">Estado</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox" <?php echo $admin->sts_cliente == 'A' ? 'checked':''?> name="sts_cliente" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                    <input type="checkbox" <?php echo $admin->sts_cliente == 'A' ? 'checked':''?> name="sts_cliente" data-on-text="SI" data-off-text="NO" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
                     >
                 </div>
 
@@ -192,7 +192,7 @@ if(isset($routesArray1[5])){
                     <label for="">Proveedor</label>
                     <br>
            
-                    <input type="checkbox"  name="sts_proveedor" <?php echo $admin->sts_proveedor == 'A' ? 'checked':''?>  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                    <input type="checkbox"  name="sts_proveedor" <?php echo $admin->sts_proveedor == 'A' ? 'checked':''?>  data-on-text="SI" data-off-text="NO" data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
                     >
                 </div>
             </div>
@@ -202,8 +202,8 @@ if(isset($routesArray1[5])){
         <div class="card-header">
             <div class="col-md-8 offset-md-2">
                 <div class="form-group mt-3">
-                    <a href="cliente" class="btn btn-light border text-left">Back</a>
-                    <button type="submit" class="btn bg-dark float-lg-right">Save</button>
+                    <a href="clientes" class="btn btn-light border text-left">Cancelar</a>
+                    <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
                 </div>
             </div>
         </div>

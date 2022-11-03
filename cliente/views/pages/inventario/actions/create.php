@@ -54,7 +54,7 @@
                     <label for="">IVA</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox" name="sts_iva" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
+                    <input type="checkbox" name="sts_iva" data-on-text="SI" data-off-text="NO" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
                 </div>
 
 
@@ -156,7 +156,7 @@
                     <label for="">Estado</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
-                    <input type="checkbox" name="sts_inventario" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
+                    <input type="checkbox" name="sts_inventario" data-on-text="SI" data-off-text="NO" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
                 </div>
             
 
@@ -172,8 +172,8 @@
         <div class="card-header">
             <div class="col-md-8 offset-md-2">
                 <div class="form-group mt-3">
-                    <a href="inventario" class="btn btn-light border text-left">Back</a>
-                    <button type="submit" class="btn bg-dark float-lg-right">Save</button>
+                    <a href="inventario" class="btn btn-light border text-left">Cancelar</a>
+                    <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
                 </div>
             </div>
         </div>

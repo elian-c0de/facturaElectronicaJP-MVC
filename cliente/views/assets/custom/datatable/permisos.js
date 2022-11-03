@@ -131,17 +131,14 @@ function rellenar(){
               }else{
                 $('#sts_top_ventas').prop('checked', false);
               }
-  
               //ComboBox ATS-SRI
-              if (response[27]["sts_perfil_opcion"]=='A' && response[27]["cod_opcion"].trim()=='R_07') {
+              if (response[27]["sts_perfil_opcion"]=='A' && response[27]["sts_perfil_opcion"]!='R_07') {
+                
                 $('#sts_ats_sri').prop('checked', true);
               }else{
                 $('#sts_ats_sri').prop('checked', false);
               }
 
-         }else{
-            console.log("hola");
-         
          }
         } catch (error) {
           

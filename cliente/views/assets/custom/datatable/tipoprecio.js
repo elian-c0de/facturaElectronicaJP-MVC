@@ -77,59 +77,17 @@ function execDataTable (text) {
    function edit(){
     var date = document.getElementById("tipoprecio").value;
     if(date != ""){
-      window.location.href = ("tipoprecio/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
+      window.location.href = ("tipoprecio/Editar/"+btoa(date+"~"+localStorage.getItem("token_user")));
     }
   }
- // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
-//  function reportActive(event){
-//      if(event.target.checked){
-//          $("#tipopreciotable").dataTable().fnClearTable();
-//          $("#tipopreciotable").dataTable().fnDestroy();
-//          setTimeout(() => {
-//              execDataTable("flat");
-//          }, 10);
-//      }else{
-//          $("#tipopreciotable").dataTable().fnClearTable();
-//          $("#tipopreciotable").dataTable().fnDestroy();
-//          setTimeout(() => {
-//              execDataTable("html");
-//          }, 10);
-//      }
-//  }
- 
- //rango de fechas
-//  $('#daterangee-btn').daterangepicker(
-//      {
-//        ranges   : {
-//          'Today'       : [moment(), moment()],
-//          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-//          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-//          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-//          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-//          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-//        },
-//        startDate: moment($("#between1").val()),
-//        endDate  : moment($("#between2").val())
-//      },
-//      function (start, end) {
-//        // $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-//        window.location = "tipoprecio?start="+start.format('YYYY-MM-DD')+"&end="+end.format('YYYY-MM-DD');
-//      }
-//    )
 
    //Eliminar registro
 $(document).on("click",".removeItem", function(){
-  // var idItem = $(this).attr("idItem");
-  // var table = $(this).attr("table");
-  // var cod_empresa = $(this).attr("cod_empresa");
-  // var column = $(this).attr("column");
-  // var page = $(this).attr("page");
+
   var cod_precio = document.getElementById("tipoprecio").value;
-  console.log(localStorage.getItem("cod"));
-  console.log("cod_precio: ",cod_precio);
   if(cod_precio != ""){
 
-      fncSweetAlert("confirm","estas seguro de eliminar este registro?","").then(resp=>{
+      fncSweetAlert("confirmar","estas seguro de eliminar este registro?","").then(resp=>{
 
         if(resp){
           var data = new FormData();
