@@ -135,7 +135,7 @@
             <div class="col-md-3 offset-md-5">
                 <div class="form-group mt-0">
                     <a href="../cliente" class="btn btn-light border text-left">Cancelar</a>
-                    <button type="submit" class="btn btn-success float-lg-right">Editar</button>
+                    <button type="submit" class="btn btn-success float-lg-right">Guardar</button>
                 </div>
             </div>
         </div>
