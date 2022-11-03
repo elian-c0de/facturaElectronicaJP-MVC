@@ -89,14 +89,14 @@ if(isset($routesArray1[5])){
         <div class="form-group mt-2">
           <label>Contraseña:</label>
           <input 
-          type="text"
+          type="password"
           name="cod_passwd" 
           id="cod_passwd"
-          
+          value="<?php echo trim($admin->cod_passwd)?>" 
           class="form-control"
           onchange="validateRepeat(event,'cod_passwd','gen_usuario','cod_passwd', <?php echo $_SESSION['admin']->cod_empresa?>)"
           pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{8,20}$"
-          >
+          required>
           <div class="valid-feedback">Válido</div>
           <div class="invalid-feedback"> Por Favor, rellene este campo</div>
         </div>

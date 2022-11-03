@@ -17,7 +17,6 @@
         <tr>
             <th>Codigo</th>
             <th>Nombre</th>
-            <th>Contraseña</th>
             <th>Perfil</th>
             <th>Establecimiento</th>
             <th>Punto de Emisión</th>

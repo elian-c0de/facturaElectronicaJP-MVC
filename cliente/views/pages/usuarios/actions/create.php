@@ -70,7 +70,7 @@
        <div class="form-group mt-2">
           <label>Contraseña:</label>
           <input 
-          type="text"
+          type="password"
           name="cod_passwd" 
           id="cod_passwd"
           class="form-control"
@@ -160,7 +160,7 @@
             <label for="">Estado:</label>
             <br>
             <!-- <input type="text" class="form-control" -->
-            <input type="checkbox"  name="sts_usuario" id="sts_usuario"
+            <input type="checkbox" checked name="sts_usuario" id="sts_usuario"
             >
         </div>
 
