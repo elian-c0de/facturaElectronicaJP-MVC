@@ -82,7 +82,7 @@ function execDataTable (text) {
     var date = document.getElementById("linea").value;
     var date2 = document.getElementById("sublinea").value;
     if(date != "" && date2 != ""){
-      window.location.href = ("lineasdeproducto/edit/"+btoa(date+"~"+date2+"~"+localStorage.getItem("token_user")));
+      window.location.href = ("lineasdeproducto/Editar/"+btoa(date+"~"+date2+"~"+localStorage.getItem("token_user")));
     }
   }
  // parte donde agarra info del list si el boton esta activo o no y muestra un texto enriquecidos
@@ -124,15 +124,9 @@ function execDataTable (text) {
 
    //Eliminar registro
 $(document).on("click",".removeItem2ids", function(){
-  // var idItem = $(this).attr("idItem");
-  // var table = $(this).attr("table");
+
   var cod_empresa = btoa(localStorage.getItem("cod"));
-  console.log(cod_empresa);
-  // var column = $(this).attr("column");
-  // var column1 = $(this).attr("column1");
-  // var page = $(this).attr("page");
   var cod_linea = document.getElementById("linea").value;
-  console.log("cod_linea: ", cod_linea);
   var cod_sublinea = document.getElementById("sublinea").value;
 
   if(cod_linea != "" && cod_sublinea != ""){
@@ -141,6 +135,7 @@ $(document).on("click",".removeItem2ids", function(){
 
       if(resp){
         var data = new FormData();
+        
         //MODIFICAR PARAMETROS
         data.append("idItem", btoa(cod_linea+"~"+cod_sublinea+"~"+localStorage.getItem("token_user"))); // id pk de la tabla + toke encriptrado
         data.append("table", "ecmp_linea"); // nombre de la tabla

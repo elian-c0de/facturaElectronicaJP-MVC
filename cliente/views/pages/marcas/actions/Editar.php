@@ -64,8 +64,8 @@ if(isset($routesArray1[5])){
                     value="<?php echo $admin->cod_marca?>" 
                     pattern="[0-9]{1,3}"
                     disabled>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback"> Please fill out this field.</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
 
 
@@ -80,8 +80,8 @@ if(isset($routesArray1[5])){
                     onchange="validateJS(event,'nom_marca')"
                     pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,70}" 
                     required>
-                    <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
             </div>
         </div>

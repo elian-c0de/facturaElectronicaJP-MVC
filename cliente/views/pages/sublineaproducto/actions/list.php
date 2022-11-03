@@ -3,12 +3,12 @@
 <div class="card-header">
 
 
-    <input type="text" id="linea1" name="linea1">
-    <input type="text" id="sublinea" name="sublinea">
+    <input type="hidden" id="linea1" name="linea1">
+    <input type="hidden" id="sublinea" name="sublinea">
     <h3 class="card-title">
-      <a class="btn bg-blue btn-small" title="Crear" href="sublineaproducto/create"><i class="bi bi-file-earmark-plus-fill"></i></a>
+      <a class="btn bg-blue btn-small" title="Crear" href="sublineaproducto/Crear"><i class="bi bi-file-earmark-plus-fill"></i></a>
       <a class="btn btn-warning btn-small" title="Editar" onclick="edit()"><i class='fas fa-pencil-alt'></i></a>
-      <a class="btn btn-danger btn-small removeItem1" title="Eliminar"><i class='fas fa-trash-alt'></i></a>
+      <a class="btn btn-danger btn-small removeItem2ids" title="Eliminar"><i class='fas fa-trash-alt'></i></a>
     </h3>
       
   </div>

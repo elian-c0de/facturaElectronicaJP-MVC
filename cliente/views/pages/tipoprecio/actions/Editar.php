@@ -53,8 +53,8 @@
                     name="cod_precio" 
                     class="form-control"
                     disabled>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback"> Please fill out this field.</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
 
 
@@ -68,8 +68,8 @@
                     onchange="validateJS(event,'txt_descripcion')"
                     pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,60}" 
                     required>
-                    <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Please fill out this field</div>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
 
                 <!-- DEFECTO -->              

@@ -83,7 +83,7 @@ class DataTableController
                         
                     }else{
                         
-                        $actions = "<a href='marcas/edit/" . base64_encode($value->cod_marca . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+                        $actions = "<a href='marcas/Editar/" . base64_encode($value->cod_marca . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
                         
                         <i class='fas fa-pencil-alt'></i>
 
