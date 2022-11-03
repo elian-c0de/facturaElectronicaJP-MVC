@@ -131,7 +131,6 @@ function rellenar(){
               }else{
                 $('#sts_top_ventas').prop('checked', false);
               }
-              console.log("response: ", response[27]["sts_perfil_opcion"]);
               //ComboBox ATS-SRI
               if (response[27]["sts_perfil_opcion"]=='A' && response[27]["sts_perfil_opcion"]!='R_07') {
                 
@@ -139,62 +138,6 @@ function rellenar(){
               }else{
                 $('#sts_ats_sri').prop('checked', false);
               }
-
-         }else{
-            //FUNCION QUE AGREGA EL DATO
-              //ComboBox Clientes
-            $('#sts_clientes').prop('checked', true);
-
-            //ComboBox Inventario
-            $('#sts_inventario').prop('checked', true);
-            
-            
-            //ComboBox movimientos de inventario
-            $('#sts_mov_inventario').prop('checked', true);
-
-
-            //ComboBox Pedidos
-            $('#sts_pedidos').prop('checked', true);
-            
-
-            //ComboBox Facturacion
-            $('#sts_facturacion').prop('checked', true);
-  
-            //ComboBox Notas de credito
-            $('#sts_nota_credito').prop('checked', true);
-
-              //ComboBox Caja
-            $('#sts_caja').prop('checked', true);
-  
-              //ComboBox Gatos / Compras
-              $('#sts_gastos_compras').prop('checked', true);
-
-              //ComboBox Comprobantes de retencion
-              $('#sts_comp_retencion').prop('checked', true);
-  
-              //ComboBox Guia de remision
-              $('#sts_guia_remision').prop('checked', true);
-
-              //ComboBox Kardex inventario
-              $('#sts_kardex_inventario').prop('checked', true);
-  
-              //ComboBox Comprovantes emitidos
-              $('#sts_comp_emitidos').prop('checked', true);
-
-              //ComboBox Informes de ventas y gastos
-              $('#sts_info_ventas_gastos').prop('checked', true);
-  
-              //ComboBox Precios
-              $('#sts_precios').prop('checked', true);
-
-              //ComboBox Historial de cliente
-              $('#sts_historial_cliente').prop('checked', true);
-
-              //ComboBox Top de ventas
-              $('#sts_top_ventas').prop('checked', true);
-              
-              //ComboBox ATS-SRI
-              $('#sts_ats_sri').prop('checked', true);
 
          }
         } catch (error) {

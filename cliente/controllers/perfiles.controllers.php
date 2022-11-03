@@ -10,7 +10,7 @@ class PerfilesController{
             fncSweetAlert("loading", "Loading...", "");
             </script>';
             
-           
+           //Ingreso de todos los permisos por defecto
 
             if(preg_match('/^[a-zA-Z0-9]{1,6}$/',$_POST["cod_perfil"]) &&
             preg_match('/^[a-zA-Z0-9]{1,50}$/',$_POST["nom_perfil"]))
