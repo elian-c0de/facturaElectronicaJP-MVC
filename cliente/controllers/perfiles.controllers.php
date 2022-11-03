@@ -10,8 +10,8 @@ class PerfilesController{
             fncSweetAlert("loading", "Loading...", "");
             </script>';
             
-           //Ingreso de todos los permisos por defecto
 
+            //INSERTAR cod_perfil
             if(preg_match('/^[a-zA-Z0-9]{1,6}$/',$_POST["cod_perfil"]) &&
             preg_match('/^[a-zA-Z0-9]{1,50}$/',$_POST["nom_perfil"]))
             {
@@ -35,6 +35,597 @@ class PerfilesController{
                 $method = "POST";
                 $fields = $data;
                 $response = CurlController::request($url,$method,$fields);
+
+                
+            //INSERTAR PERMISOS
+            // D_00
+            if(isset($_POST["cod_perfil"])){
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "D_00",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // D_01
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "D_01",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // D_01_L
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "D_01_L",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+            
+            // D_02
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "D_02",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // O_00
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "O_00",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // O_01
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "O_01",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+               
+            }
+
+            // O_01_L
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "O_01_L",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // O_02
+            if(isset($_POST["cod_perfil"])){
+
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "O_02",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // O_03
+            if(isset($_POST["cod_perfil"])){
+
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "O_03",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // O_03_L
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "O_03_L",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // O_04
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "O_04",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // O_04_L
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "O_04_L",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // O_05
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "O_05",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // O_05_L
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "O_05_L",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // O_06
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "O_06",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // O_07
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "O_07",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // O_07_L
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "O_07_L",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // O_08
+            if(isset($_POST["cod_perfil"])){
+
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "O_08",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // R_00
+            if(isset($_POST["cod_perfil"])){
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "R_00",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // R_01
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "R_01",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // R_02
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "R_02",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // R_03
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "R_03",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // R_03_L
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "R_03_L",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // R_04
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "R_04",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // R_05
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "R_05",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // R_06
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "R_06",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // R_06_L
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "R_06_L",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data;
+                $response = CurlController::request($url,$method,$fields);
+                
+            }
+
+            // R_07
+            if(isset($_POST["cod_perfil"])){
+
+
+                $data = array(
+                        
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_perfil" => trim($_POST["cod_perfil"]),
+                    "cod_modulo" => "PECMP",
+                    "cod_opcion" => "R_07",
+                    "sts_perfil_opcion" => "A",
+
+                );
+
+                    $url = "gen_perfil_opcion?token=".$_SESSION["admin"]->token_usuario;
+                    $method = "POST";
+                    $fields = $data;
+                    $response = CurlController::request($url,$method,$fields);
+        
+                }
 
                 if($response->status == 200){
                     echo '<script>
