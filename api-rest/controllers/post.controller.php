@@ -28,7 +28,7 @@ class PostController extends Controlador{
 
         if(isset($data["cod_passwd"]) && $data["cod_passwd"] != null){
             $crypt = crypt($data["cod_passwd"], 'td');
-            echo '<pre>'; print_r($crypt); echo '</pre>';
+            //echo '<pre>'; print_r($crypt); echo '</pre>';
             $data['cod_passwd'] = $crypt;
             // echo '<pre>'; print_r($data); echo '</pre>';
             // echo '<pre>'; print_r($table); echo '</pre>';

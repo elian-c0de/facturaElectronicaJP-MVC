@@ -142,7 +142,7 @@ function validateJS(event, type) {
   if(type == "txt_email") pattern = /^[.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/;
   if(type == "num_res_agente_ret") pattern = /^[0-9]{1,30}$/;
   if(type == "txt_path_logo") pattern = /^[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}$/;
-  if(type == "cod_tipo_id_representante") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,13}$/;
+  if(type == "cod_tipo_id_representante") pattern = /^[0-9]{1,13}$/;
   if(type == "txt_descripcion") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,60}$/;
   if(type == "nom_marca") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,70}$/;
   if(type == "txt_descripcion_inventario") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/;
@@ -178,11 +178,12 @@ function validateJS(event, type) {
   if(type == "cod_usuario") pattern = /^[a-zñÑáéíóúÁÉÍÓÚ ]{1,20}$/;
   if(type == "cod_punto_emision") pattern = /^[a-zA-Z0-9]{1,3}$/;
   if(type == "num_factura") pattern = /^[0-9]{1,9}$/;
+  if(type == "cod_passwd") pattern = /^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{8,20}$/;
 
   if (!pattern.test(event.target.value)) {
  
     $(event.target).parent().addClass("was-validated");
-    $(event.target).parent().children(".invalid-feedback").html("Field syntax error");
+    $(event.target).parent().children(".invalid-feedback").html("Error de sintaxis de campo");
   }
 
 }

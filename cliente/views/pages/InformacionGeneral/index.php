@@ -13,7 +13,7 @@
 
           <?php
           if (isset($routesArray1[4])) {
-            if ($routesArray1[4] == "create" || $routesArray1[4] == "edit") {
+            if ($routesArray1[4] == "Crear" || $routesArray1[4] == "Editar") {
               echo '<li class="breadcrumb-item"><a href="informacionGeneral">Informacion General</a></li>';
               echo '<li class="breadcrumb-item active">' . $routesArray1[4] . '</li>';
             }
@@ -40,7 +40,7 @@
     //PREGUNTAMOS SI EXISTE UN VALOR EN EL INDICE 4
     if (isset($routesArray1[4])) {
       
-      if ($routesArray1[4] == "create" || $routesArray1[4] == "edit") {
+      if ($routesArray1[4] == "Crear" || $routesArray1[4] == "Editar") {
         include "actions/" . $routesArray1[4] . ".php";
       }
     }else{

@@ -10,7 +10,7 @@ $routesArray = array_filter($routesArray);
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
+    <a href="#" class="brand-link">
         <img src="views/assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">JP Facturacion</span>
     </a>
@@ -192,10 +192,8 @@ $routesArray = array_filter($routesArray);
                 </li>
                 <li class="nav-item">
                     <a href="claveusuario" class="nav-link">
-                      <i class="bi bi-key-fill"></i>
-                      <p>
-                          Cambiar clave de usuario
-                      </p>
+                      <i class="fa-solid fa-key"></i>
+                      <p> Cambiar Clave de Usuario</p>
                     </a>
                 </li>
                 <!--           

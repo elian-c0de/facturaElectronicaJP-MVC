@@ -52,7 +52,7 @@
   <div class="card-header">
 
     <h3 class="card-title">
-      <a class="btn bg-blue btn-small" href="claveusuario/edit">Cambiar clave</a>
+      <a class="btn bg-blue btn-small" href="claveusuario/CambiarClave">Cambiar clave</a>
     </h3>
   </div>
 

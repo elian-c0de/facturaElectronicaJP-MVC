@@ -85,7 +85,7 @@ function execDataTable (text) {
   function edit(){
     var date = document.getElementById("perfil").value;
       if(date != ""){
-        window.location.href = ("perfiles/edit/"+btoa(date+"~"+localStorage.getItem("token_user")));
+        window.location.href = ("perfiles/Editar/"+btoa(date+"~"+localStorage.getItem("token_user")));
       }
     }
 

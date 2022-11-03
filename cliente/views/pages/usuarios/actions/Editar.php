@@ -52,33 +52,7 @@ if(isset($routesArray1[5])){
       ?>
       <div class="col-md-8 offset-md-2">
 
-      <!-- VALIDAR TIPO DE USUARIOS -->
-        <div class="form-group mt-2">
-          <label>Usuario:</label>
-          <?php
-          // require_once("controllers/admins.controllers.php");
-          $create = new UsuariosController();
-          $tipo_precio = $create->codigo_nombre_estado_usuario();
-          $tipo_precio = json_encode($tipo_precio);
-          $tipo_precio = json_decode($tipo_precio, true);
-          ?>
-          <select class="form-control select2 changeCountry" name="gen_usuario" id="gen_usuario" onchange="rellenar()" required>
-              <option value>Seleccione El Usuario</option>
-              <?php foreach ($tipo_precio as $key => $value) : ?>
-                  <option value="<?php echo $value["cod_usuario"] ?>">
-                  <?php echo $value["cod_usuario"] ?> 
-                  </option>
-              <?php endforeach ?>
-          </select>
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please fill out this field.</div>
-				</div>  
-
-      <!-- DIVICIÓN DEL CAMPO: USUARIO -->
-        <div class="form-group mt-2">
-            <p class="lead">Usuario</p>
-        </div>
-
+      
         <!-- CÓDIGO DE USUARIO -->
         <div class="form-group mt-2">
           <label>Código: </label>
@@ -86,13 +60,13 @@ if(isset($routesArray1[5])){
           type="text"
           name="cod_usuario" 
           id="cod_usuario"
+          value="<?php echo $admin->cod_usuario?>" 
           class="form-control"
-          onchange="validateRepeat(event,'cod_usuario','gen_usuario','cod_usuario', <?php echo $_SESSION['admin']->cod_empresa?>)"
           pattern="[a-zñÑáéíóúÁÉÍÓÚ ]{1,20}$"
           disabled
           >
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback"> Please fill out this field.</div>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
         </div>
 
        <!-- NOMBRE DE USUARIO -->
@@ -102,12 +76,29 @@ if(isset($routesArray1[5])){
           type="text"
           name="nom_usuario" 
           id="nom_usuario"
+          value="<?php echo trim($admin->nom_usuario)?>" 
           class="form-control"
           onchange="validateRepeat(event,'nom_usuario','gen_usuario','nom_usuario', <?php echo $_SESSION['admin']->cod_empresa?>)"
           pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$"
           required>
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback"> Please fill out this field.</div>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
+        </div>
+
+         <!-- CONTRASEÑA -->
+        <div class="form-group mt-2">
+          <label>Contraseña:</label>
+          <input 
+          type="password"
+          name="cod_passwd" 
+          id="cod_passwd"
+          value="<?php echo trim($admin->cod_passwd)?>" 
+          class="form-control"
+          onchange="validateRepeat(event,'cod_passwd','gen_usuario','cod_passwd', <?php echo $_SESSION['admin']->cod_empresa?>)"
+          pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{8,20}$"
+          required>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
         </div>
 
 
@@ -121,30 +112,21 @@ if(isset($routesArray1[5])){
           $tipo_precio = json_encode($tipo_precio);
           $tipo_precio = json_decode($tipo_precio, true);
           ?>
-          <select class="form-control select2 changeCountry" name="gen_perfil" id="gen_perfil" required>
+          <select class="form-control select2 changeCountry" name="gen_perfil" id="gen_perfil" >
               <option value>Seleccione el Perfil</option>
               <?php foreach ($tipo_precio as $key => $value) : ?>
-                  <option value="<?php echo $value["cod_perfil"] ?>">
-                  
-
-                   <?php echo $value["nom_perfil"] ?>
-
-
+                  <option value="<?php echo $value["cod_perfil"] ?>"<?php echo $admin->cod_perfil == $value["cod_perfil"] ? 'selected':''?>> <?php echo $value["nom_perfil"] ?></option>		
                   </option>
               <?php endforeach ?>
           </select>
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please fill out this field.</div>
+          <div class="valid-feedback">Válido</div>
 				</div>  
 
-
-
-
-
+        
 
         <!-- VALIDAR ESTABLECIMIENTO DE USUARIOS -->
         <div class="form-group mt-2"> 
-          <label>Establecimiento:</label>
+          <label>Establecimiento/Punto Emisión:</label>
           <?php
           // require_once("controllers/admins.controllers.php");
           $create = new UsuariosController();
@@ -152,39 +134,20 @@ if(isset($routesArray1[5])){
           $tipo_precio = json_encode($tipo_precio);
           $tipo_precio = json_decode($tipo_precio, true);
           ?>
-          <select class="form-control select2 changeCountry"   name="gen_punto_emision1" id="gen_punto_emision1" required>
+          <select class="form-control select2 changeCountry"   name="gen_punto_emision1" id="gen_punto_emision1">
               <option value>Seleccione el Establecimiento</option>
               <?php foreach ($tipo_precio as $key => $value) : ?>
-                  <option value="<?php echo $value["cod_establecimiento"] ?>">
-                  <?php echo $value["cod_establecimiento"] ?>
+                  <option value="<?php echo $value["cod_establecimiento"] ?>~<?php echo $value["cod_punto_emision"] ?>" 
+                  <?php echo $admin->cod_establecimiento == $value["cod_establecimiento"] && $admin->cod_punto_emision == $value["cod_punto_emision"] ? 'selected':''?> >
+                  <?php echo $value["cod_establecimiento"] ?> | <?php echo $value["cod_punto_emision"] ?> | <?php echo $value["txt_descripcion"] ?>
                   </option>
               <?php endforeach ?>
           </select>
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please fill out this field.</div>
-				</div> 
+          <div class="valid-feedback">Válido</div>
+		</div> 
 
-        <!-- VALIDAR PUNTO DE EMISIÓN DE USUARIOS -->
-        <div class="form-group mt-2"> 
-          <label>Punto de Emisión:</label>
-          <?php
-          // require_once("controllers/admins.controllers.php");
-          $create = new UsuariosController();
-          $tipo_precio = $create->puntoEmision_usuario1();
-          $tipo_precio = json_encode($tipo_precio);
-          $tipo_precio = json_decode($tipo_precio, true);
-          ?>
-          <select class="form-control select2 changeCountry"  name="gen_punto_emision" id="gen_punto_emision" required>
-              <option value>Seleccione el Punto de Emisión</option>
-              <?php foreach ($tipo_precio as $key => $value) : ?>
-                  <option value="<?php echo $value["cod_punto_emision"] ?>" >
-                  <?php echo $value["cod_punto_emision"] ?>
-                  </option>
-              <?php endforeach ?>
-          </select>
-          <div class="valid-feedback">Valid.</div>
-          <div class="invalid-feedback">Please fill out this field.</div>
-				</div> 
+
+       
 
         <!-- DIVICIÓN DEL CAMPO: USUARIO -->
         <div class="form-group mt-2">
@@ -196,7 +159,7 @@ if(isset($routesArray1[5])){
             <label for="">Estado:</label>
             <br>
             <!-- <input type="text" class="form-control" -->
-            <input type="checkbox"  name="sts_usuario" id="sts_usuario"
+            <input type="checkbox"  <?php echo $admin->sts_usuario == 'A' ? 'checked':''?> name="sts_usuario" id="sts_usuario"
             >
         </div>
 
@@ -205,17 +168,16 @@ if(isset($routesArray1[5])){
             <label for="">Administrador:</label>
             <br>
             <!-- <input type="text" class="form-control" -->
-            <input type="checkbox"  name="sts_administrador" id="sts_administrador" 
+            <input type="checkbox"  <?php echo $admin->sts_administrador == 'A' ? 'checked':''?> name="sts_administrador" id="sts_administrador" 
             >
         </div>
-        <!-- BORRAR CONTRASEÑA -->
+        <!-- BORRAR CONTRASEÑA
         <div class="form-group mt-2">
             <label for="">Borrar Contraseña:</label>
             <br>
-            <!-- <input type="text" class="form-control" -->
             <input type="checkbox"  name="#"  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
             >
-        </div>
+        </div> -->
       </div>
     </div>
     
