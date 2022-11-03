@@ -103,6 +103,12 @@ class FormadepagoController{
     public function edit($id){
 
         if(isset($_POST["idAdmin"])){
+            echo '<script>
+
+            matPreloader("on");
+            fncSweetAlert("loading", "loading...", "");
+
+            </script>';
             
           if($id == $_POST["idAdmin"]){
 
