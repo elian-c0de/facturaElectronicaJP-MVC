@@ -218,23 +218,37 @@ class PuntoemisionController{
                     }
 
                     $data = "txt_descripcion=".trim($_POST["txt_descripcion"]).
+                
                             "&sts_ambiente=".trim($_POST["sts_ambiente"]).
                             "&sts_punto_emsion=".trim($_POST["sts_punto_emsion"]).
-                            "&cod_usuario=".$_SESSION["admin"]->cod_usuario.
-                            "&fec_actualiza=".date("d-m-Y H:i:s");
-                            // "&cod_caja=".trim($_POST["cod_caja"]).
-                            // "&num_factura=".trim($_POST["num_factura"]).
-                            // "&num_nota_credito_prueba=".trim($_POST["num_nota_credito_prueba"]).
-                            // "&sts_tipo_emision=".trim($_POST["sts_tipo_emision"]).
-                            // "&num_retencion=".trim($_POST["num_retencion"]).
-                            // "&num_retencion_prueba=".trim($_POST["num_retencion_prueba"]).
-                            // "&num_guia=".trim($_POST["num_guia"]);
-
+                            "&cod_usuario=".trim($_SESSION["admin"]->cod_usuario).
+                            "&fec_actualiza=".date("d-m-Y H:i:s").
+                            "&cod_caja=".trim($_POST["cod_caja"]).
+                            "&num_factura=".trim($_POST["num_factura"]).
+                            "&sts_tipo_facturacion=".trim($_POST["sts_tipo_facturacion"]).
+                            "&sts_impresion=".trim($_POST["sts_impresion"]).
+                            "&num_factura_prueba=".trim($_POST["num_factura_prueba"]).
+                            "&num_nota_credito_prueba=".trim($_POST["num_nota_credito_prueba"]).
+                            "&sts_tipo_emision=".trim($_POST["sts_tipo_emision"]).
+                            "&num_retencion=".trim($_POST["num_retencion"]).
+                            "&num_retencion_prueba=".trim($_POST["num_retencion_prueba"]).
+                            "&num_guia=".trim($_POST["num_guia"]).
+                            "&num_guia_prueba=".trim($_POST["num_guia_prueba"]);
                     
+                    //CODIGO PARA VALIDAR DATOS NULOS EN EDITAR
+                    $f ="";
+                    $perro = explode("&", $data);
+                            foreach ($perro as $key => $value) {
+                                $v = explode("=",$value);
+                                if($v[1]!=""){
+                                    $f.=$value."&";
+                                }
+                            }
+                            $f=substr($f,0,-1);
 
                     $url = "gen_punto_emision?id=".$id."&nameId=cod_establecimiento&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa."&nameId3=cod_punto_emision&id3=".$id2;
                     $method = "PUT";
-                    $fields = $data;
+                    $fields = $f;
                     $response = CurlController::request($url,$method,$fields);
 
                     if($response->status == 200){
@@ -283,3 +297,21 @@ class PuntoemisionController{
         }
     }
 }
+
+
+// $data = "txt_descripcion=".trim($_POST["txt_descripcion"]).
+//                             "&sts_ambiente=".trim($_POST["sts_ambiente"]).
+//                             "&sts_punto_emsion=".trim($_POST["sts_punto_emsion"]).
+//                             "&cod_usuario=".trim($_SESSION["admin"]->cod_usuario).
+//                             "&fec_actualiza=".date("d-m-Y H:i:s").                            
+//                             "&cod_caja=".trim($_POST["cod_caja"]).
+//                             "&num_factura=".trim($_POST["num_factura"]).
+//                             "&sts_tipo_facturacion=".trim($_POST["sts_tipo_facturacion"]).
+//                             "&sts_impresion=".trim($_POST["sts_impresion"]).
+//                             "&num_factura_prueba=".trim($_POST["num_factura_prueba"]).
+//                             "&num_nota_credito_prueba=".trim($_POST["num_nota_credito_prueba"]).
+//                             "&sts_tipo_emision=".trim($_POST["sts_tipo_emision"]).
+//                             "&num_retencion=".trim($_POST["num_retencion"]).
+//                             "&num_retencion_prueba=".trim($_POST["num_retencion_prueba"]).
+//                             "&num_guia=".trim($_POST["num_guia"]).
+//                             "&num_guia_prueba=".trim($_POST["num_guia_prueba"]);
