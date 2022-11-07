@@ -85,25 +85,9 @@ if(isset($routesArray1[5])){
           <div class="invalid-feedback"> Por Favor, rellene este campo</div>
         </div>
 
-        <!-- CONTRASEÑA -->
-        <div class="form-group mt-2">
-          <label>Contraseña:</label>
-          <div class="input-group">
-          <input 
-          type="password"
-          name="cod_passwd" 
-          id="cod_passwd"
-          class="form-control"
-          value="<?php echo crypt(trim($admin->cod_passwd),'td')?>" 
-          onchange="validateRepeat(event,'cod_passwd','gen_usuario','cod_passwd', <?php echo $_SESSION['admin']->cod_empresa?>)"
-          pattern="[-//0-9A-Za-zñÑáéíóúÁÉÍÓÚ]{8,20}$"
-          disabled>
-          <div class="valid-feedback">Válido</div>
-          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
-          <!-- <div class="input-group-text" id="btnGroupAddon" type="button" onclick="verContraseña()" disabled><i class="bi bi-eye-fill" id="icon"></i></div> -->
-          </div>
-          
-        </div>
+      
+        
+      
 
         <!-- VALIDAR PERFIL DE USUARIOS -->
         <div class="form-group mt-2">
@@ -174,13 +158,15 @@ if(isset($routesArray1[5])){
             <input type="checkbox"  <?php echo $admin->sts_administrador == 'A' ? 'checked':''?> name="sts_administrador" id="sts_administrador" 
             >
         </div>
-        <!-- BORRAR CONTRASEÑA
+        <!-- BORRAR CONTRASEÑA -->
+        
         <div class="form-group mt-2">
-            <label for="">Borrar Contraseña:</label>
+            <label for="">Asignar Clave Temporal:</label>
             <br>
-            <input type="checkbox"  name="#"  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75" data-on-text="SI" data-off-text="NO"
-            >
-        </div> -->
+            <!-- <input type="text" class="form-control" -->
+            <input type="checkbox"   name="claveTemporar" id="claveTemporar"   value="tdqow9PSQszTg"
+            > Clave Temporal: admin123
+        </div>
       </div>
     </div>
     
