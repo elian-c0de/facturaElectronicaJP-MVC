@@ -61,7 +61,7 @@
                     <label for="">Clave Actual</label>
                     <input type="password" class="form-control"
                     name="cod_passwd"
-                    placeholder="Ingrese contraseña actual"
+                    placeholder="Ingrese clave actual"
                     required>
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback">Por favor, rellene este campo</div>
@@ -75,7 +75,7 @@
                     onchange="validateJS(event,'cod_passwd')"
                     pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{8,20}" 
                     name="txt_passwdnew"
-                    placeholder="Ingrese nueva contraseña como minino 8 digitos"
+                    placeholder="Ingrese nueva clave como minino 8 digitos"
                     required>
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback">Por favor, rellene este campo</div>
@@ -89,7 +89,7 @@
                     onchange="validateJS(event,'cod_passwd')"
                     pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{8,20}"
                     name="txt_passwdnewconfi"
-                    placeholder="Confirme nueva contraseña"
+                    placeholder="Confirme nueva clave"
                     required>
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback">Por favor, rellene este campo</div>

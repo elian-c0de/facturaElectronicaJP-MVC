@@ -111,16 +111,15 @@ foreach ($routesArray as $key => $value) {
   }
   
   ?>
+
+  <!-- MOSTRAR NAVBAR A USUARIOS ADMINISTRADOR -->
   <?php if (isset($_SESSION["admin"])) :  ?>
+  <?php if ($_SESSION["admin"]->sts_administrador=="A") :  ?>
+      <!-- Site wrapper -->
+      <div class="wrapper">
 
-
-    <!-- Site wrapper -->
-    <div class="wrapper">
       <!-- navbar -->
       <?php include("modules/navbar.php"); ?>
-
-      <!-- Main Sidebar Container -->
-      <?php include("modules/slidebar.php"); ?>
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -175,6 +174,60 @@ foreach ($routesArray as $key => $value) {
         ?>
 
       </div>
+  <?php endif
+  ?>
+  
+  <!-- OCULTAR NAVBAR A USUARIOS NO ADMINISTRADOR -->
+  <?php if ($_SESSION["admin"]->sts_administrador!="A") :  ?>
+    <!-- Site wrapper -->
+    <div class="wrapper">
+    <!-- navbar -->
+    <?php include("modules/navbarvacio.php"); ?>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <?php
+        //  echo '<pre>'; print_r($routesArray1); echo '</pre>';
+        if (!empty($routesArray1[3])) {
+          if (
+            $routesArray1[3] == "logout" ||
+            $routesArray1[3] == "movimientoInventario" ||
+            $routesArray1[3] == "pedidos" ||
+            $routesArray1[3] == "facturacion" ||
+            $routesArray1[3] == "notasCredito" ||
+            $routesArray1[3] == "movimientoCaja" ||
+            $routesArray1[3] == "gastosCompras" ||
+            $routesArray1[3] == "comprobantesRetencion" ||
+            $routesArray1[3] == "guiasRemision" ||
+            $routesArray1[3] == "kardexinventario" ||
+            $routesArray1[3] == "comprobantesemitidos" ||
+            $routesArray1[3] == "historialcliente" ||
+            $routesArray1[3] == "precios" ||
+            $routesArray1[3] == "info_ventasygastos" ||
+            $routesArray1[3] == "topventas" ||
+            $routesArray1[3] == "ats_sri" ||
+            $routesArray1[3] == "clientes" ||
+            $routesArray1[3] == "inventario" ||
+            $routesArray1[3] == "itemsxestablecimiento" ||
+            $routesArray1[3] == "claveusuario"
+          ) {
+            include("views/pages/" . $routesArray1[3] . "/index.php");
+          } else {
+            include("views/pages/404/404.php");
+          }
+        } else {
+          include("views/pages/home.php");
+        }
+        ?>
+
+      </div>
+  <?php endif
+  ?>
+
+      <!-- Main Sidebar Container -->
+      <?php include("modules/slidebar.php"); ?>
+
+      
       <!-- /.content-wrapper -->
       <?php include("modules/footer.php"); ?>
     </div>

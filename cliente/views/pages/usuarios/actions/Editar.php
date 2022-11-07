@@ -62,7 +62,7 @@ if(isset($routesArray1[5])){
           id="cod_usuario"
           value="<?php echo $admin->cod_usuario?>" 
           class="form-control"
-          pattern="[a-zñÑáéíóúÁÉÍÓÚ ]{1,20}$"
+          pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9]{1,20}$"
           disabled
           >
           <div class="valid-feedback">Válido</div>
@@ -78,28 +78,14 @@ if(isset($routesArray1[5])){
           id="nom_usuario"
           value="<?php echo trim($admin->nom_usuario)?>" 
           class="form-control"
-          onchange="validateRepeat(event,'nom_usuario','gen_usuario','nom_usuario', <?php echo $_SESSION['admin']->cod_empresa?>)"
-          pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$"
+          onchange="validateJS(event,'nom_empresa')"
+          pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,50}$"
           required>
           <div class="valid-feedback">Válido</div>
           <div class="invalid-feedback"> Por Favor, rellene este campo</div>
         </div>
 
-         <!-- CONTRASEÑA -->
-        <div class="form-group mt-2">
-          <label>Contraseña:</label>
-          <input 
-          type="password"
-          name="cod_passwd" 
-          id="cod_passwd"
-          value="<?php echo trim($admin->cod_passwd)?>" 
-          class="form-control"
-          onchange="validateRepeat(event,'cod_passwd','gen_usuario','cod_passwd', <?php echo $_SESSION['admin']->cod_empresa?>)"
-          pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{8,20}$"
-          required>
-          <div class="valid-feedback">Válido</div>
-          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
-        </div>
+        <!-- CONTRASEÑA -->
 
 
         <!-- VALIDAR PERFIL DE USUARIOS -->
@@ -183,8 +169,8 @@ if(isset($routesArray1[5])){
     
     <!-- BOTONES DE REGRESAR Y GUARDAR -->
     <div class="card-header">
-            <div class="col-md-2 offset-md-5">
-                <div class="form-group mt-0">
+            <div class="col-md-8 offset-md-2">
+                <div class="form-group mt-3">
                     <a href="usuarios" class="btn btn-light border text-left">Cancelar</a>
                     <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
                 </div>

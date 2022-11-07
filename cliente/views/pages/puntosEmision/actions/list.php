@@ -30,8 +30,6 @@
 							<option value="<?php echo $value["cod_establecimiento"] ?>" ><?php echo $value["cod_establecimiento"] ?> | <?php echo $value["txt_descripcion"] ?></option>	
 						<?php endforeach ?>
 					</select>
-					<div class="valid-feedback">Valid.</div>
-            		<div class="invalid-feedback">Please fill out this field.</div>
 	  </div>
     <table id="puntoemisiontable" class="table table-bordered table-striped">
       <thead>

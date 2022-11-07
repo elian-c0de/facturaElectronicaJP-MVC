@@ -82,7 +82,7 @@ class PostController extends Controlador{
 
                 $response = null;
                 $return = new PostController();
-                $return -> fncResponse($response,"Wrong password");
+                $return -> fncResponse($response,"Clave incorrecta");
             
 
             }
@@ -90,7 +90,7 @@ class PostController extends Controlador{
         }else{
             $response = null;
             $return = new PostController();
-            $return -> fncResponse($response,"Wrong email");
+            $return -> fncResponse($response,"Usuario incorrecto");
         }
       
 

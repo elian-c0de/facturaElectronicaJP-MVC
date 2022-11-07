@@ -56,15 +56,15 @@
                             <h3 class="text-center fs-1 fw-bold">Iniciar Sesión</h3>
                             <label for="UserExample" class="form-label  fw-bold ">Usuario</label>
                             <input type="text" class="form-control bg-dark-x border-0" placeholder="Usuario" onchange="validateJS(event,'text')" pattern="[A-Za-z0-9_-]{1,15}" required name="txtusuario">
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                            <div class="valid-feedback">Válido.</div>
+                            <div class="invalid-feedback">Por favor, rellene este campo</div>
                             <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                         </div>
                         <div class="mb-4">
                             <label for="exampleInputPassword1" class="form-label fw-bold">Contraseña</label>
                             <input type="password" class="form-control bg-dark-x border-0" placeholder="Contraseña" pattern="[A-Za-z0-9_-]{1,15}" required name="txtcontra">
-                            <div class="valid-feedback">Valid.</div>
-                             <div class="invalid-feedback">Please fill out this field.</div>
+                            <div class="valid-feedback">Válido.</div>
+                             <div class="invalid-feedback">Por favor, rellene este campo</div>
                         </div>
                         <button type="submit" class="btn btn-primary w-100" id="btn__iniciar-sesion"><i class="bi bi-door-open-fill"></i>Ingresar</button>
                   

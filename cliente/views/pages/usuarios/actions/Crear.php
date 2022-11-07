@@ -16,8 +16,8 @@
           name="cod_usuario" 
           id="cod_usuario"
           class="form-control"
-          onchange="validateRepeat(event,'cod_usuario','gen_usuario','cod_usuario', <?php echo $_SESSION['admin']->cod_empresa?>)"
-          pattern="[a-zñÑáéíóúÁÉÍÓÚ ]{1,20}$"
+          onchange="validateRepeat(event,'nom_usuario','gen_usuario','cod_usuario', <?php echo $_SESSION['admin']->cod_empresa?>)"
+          pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9]{1,20}"
           required
           >
           <div class="valid-feedback">Válido</div>
@@ -33,7 +33,7 @@
           id="nom_usuario"
           class="form-control"
           onchange="validateRepeat(event,'nom_usuario','gen_usuario','nom_usuario', <?php echo $_SESSION['admin']->cod_empresa?>)"
-          pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$"
+          pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,50}"
           required>
           <div class="valid-feedback">Válido</div>
           <div class="invalid-feedback"> Por Favor, rellene este campo</div>
@@ -42,18 +42,15 @@
        <!-- CONTRASEÑA -->
        <div class="form-group mt-2">
           <label>Contraseña:</label>
-          <div class="input-group">
           <input 
           type="password"
           name="cod_passwd" 
           id="cod_passwd"
           class="form-control"
           onchange="validateRepeat(event,'cod_passwd','gen_usuario','cod_passwd', <?php echo $_SESSION['admin']->cod_empresa?>)"
-          pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{8,20}$"
+          pattern="[-//0-9A-Za-zñÑáéíóúÁÉÍÓÚ]{8,20}$"
           required>
-          <!-- <div><input onclick="verContraseña()" type="checkbox"> Ver Contraseña</div> -->
-          <div class="input-group-text" id="btnGroupAddon" type="button" onclick="verContraseña()"><i class="bi bi-eye-fill" id="icon"></i></div>
-          </div>
+          <div><input onclick="verContraseña()" type="checkbox"> Ver Contraseña</div>
           <div class="valid-feedback">Válido</div>
           <div class="invalid-feedback"> Por Favor, rellene este campo</div>
         </div>
@@ -135,8 +132,8 @@
     
     <!-- BOTONES DE REGRESAR Y GUARDAR -->
     <div class="card-header">
-            <div class="col-md-2 offset-md-5">
-                <div class="form-group mt-0">
+            <div class="col-md-8 offset-md-2">
+                <div class="form-group mt-3">
                     <a href="usuarios" class="btn btn-light border text-left">Cancelar</a>
                     <button type="submit" class="btn btn-dark float-lg-right">Guardar</button>
                 </div>
