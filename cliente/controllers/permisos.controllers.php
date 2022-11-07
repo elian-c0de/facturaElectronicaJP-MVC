@@ -2,8 +2,7 @@
 class PermisosController{
 
     public function perfiles(){
-        $url = "gen_perfil?linkTo=cod_empresa&equalTo=".$_SESSION["admin"]->cod_empresa;
-        $url = "gen_perfil";
+        $url = "gen_perfil?linkTo=cod_empresa,sts_perfil&equalTo=".$_SESSION["admin"]->cod_empresa.",A";
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
