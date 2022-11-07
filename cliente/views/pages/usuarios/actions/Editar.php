@@ -86,7 +86,24 @@ if(isset($routesArray1[5])){
         </div>
 
         <!-- CONTRASEÑA -->
-
+        <div class="form-group mt-2">
+          <label>Contraseña:</label>
+          <div class="input-group">
+          <input 
+          type="password"
+          name="cod_passwd" 
+          id="cod_passwd"
+          class="form-control"
+          value="<?php echo crypt(trim($admin->cod_passwd),'td')?>" 
+          onchange="validateRepeat(event,'cod_passwd','gen_usuario','cod_passwd', <?php echo $_SESSION['admin']->cod_empresa?>)"
+          pattern="[-//0-9A-Za-zñÑáéíóúÁÉÍÓÚ]{8,20}$"
+          disabled>
+          <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
+          <!-- <div class="input-group-text" id="btnGroupAddon" type="button" onclick="verContraseña()" disabled><i class="bi bi-eye-fill" id="icon"></i></div> -->
+          </div>
+          
+        </div>
 
         <!-- VALIDAR PERFIL DE USUARIOS -->
         <div class="form-group mt-2">

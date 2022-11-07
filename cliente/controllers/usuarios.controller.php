@@ -156,7 +156,9 @@ class UsuariosController{
             if($response->status == 200){
                 if(
                 
-                preg_match('/^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$/',$_POST["nom_usuario"]))
+                preg_match('/^[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,50}$/',$_POST["nom_usuario"]) 
+                // &&                preg_match('/^[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{8,20}$/',$_POST["cod_passwd"])  
+                )
                 {
     
                     if(isset($_POST["sts_usuario"])){
@@ -183,7 +185,8 @@ class UsuariosController{
                             "&sts_administrador=".trim($_POST["sts_administrador"]).
                             "&sts_usuario=".trim($_POST["sts_usuario"]).
                             "&cod_establecimiento=".$variable[0].
-                            "&cod_punto_emision=".$variable[0];
+                            "&cod_punto_emision=".$variable[1];                         
+                            // "&cod_passwd=".crypt(trim($_POST["cod_passwd"]), 'td');
                           
                     $url = "gen_usuario?id=".trim($id)."&nameId=cod_usuario&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
                     
