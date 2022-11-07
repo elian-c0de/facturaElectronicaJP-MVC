@@ -173,15 +173,11 @@ class UsuariosController{
                         $_POST["sts_administrador"] = "C";
                         
                     }
-                    echo '<pre>'; print_r($response->result[0]->cod_passwd); echo '</pre>';
-                    return;
 
                     if(isset($_POST["claveTemporar"])){
                         $_POST["claveTemporar"] = "tdqow9PSQszTg";
                     }else{
                         $_POST["claveTemporar"] = $response->result[0]->cod_passwd;
-                        
-                        
                     }
               
                     $variable = explode("~",$_POST["gen_punto_emision1"]);
@@ -195,9 +191,9 @@ class UsuariosController{
                             "&sts_administrador=".trim($_POST["sts_administrador"]).
                             "&sts_usuario=".trim($_POST["sts_usuario"]).
                             "&cod_establecimiento=".$variable[0].
-                            "&cod_punto_emision=".$variable[1].      
+                            "&cod_punto_emision=".$variable[1].
                             // "&cod_passwd=".trim($_POST["cod_passwd"]).                   
-                            "&cod_passwd=".trim($_POST["claveTemporar"]);
+                            "&cod_passwd=".trim($_POST["claveTemporar"]);   
                           
                     $url = "gen_usuario?id=".trim($id)."&nameId=cod_usuario&token=".$_SESSION["admin"]->token_usuario."&nameId2=cod_empresa&id2=".$_SESSION['admin']->cod_empresa;
                     
