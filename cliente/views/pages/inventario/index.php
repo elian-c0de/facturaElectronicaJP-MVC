@@ -5,7 +5,7 @@
 
       <div class="col-sm-6">
 
-        <h1>Iventario</h1>
+        <h1>Inventario</h1>
         
       </div>
       <div class="col-sm-6">

@@ -80,7 +80,7 @@ $routesArray = array_filter($routesArray);
 
             <ul class="nav nav-treeview">
 
-              <?php if ($value->cod_opcion == "D_01" && $value->sts_perfil_opcion == "A") :  ?>
+              <?php if (trim($value->cod_opcion) == "D_01" && $value->sts_perfil_opcion == "A") :  ?>
 
                 <li class="nav-item">
                   <a href="clientes" class="nav-link">

@@ -64,7 +64,7 @@ class AdminsController{
                             fncSweetAlert("close", "", "");
                     
                         </script> 
-                        <div class="alert alert-danger">Usuario Deshabilidao</div>';
+                        <div class="alert alert-danger">Usuario Deshabilitado</div>';
                     }else{
                         echo '<script>
 
