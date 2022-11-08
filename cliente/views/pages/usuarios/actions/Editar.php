@@ -164,7 +164,7 @@ if(isset($routesArray1[5])){
             <label for="">Asignar Clave Temporal:</label>
             <br>
             <!-- <input type="text" class="form-control" -->
-            <input type="checkbox"   name="claveTemporar" id="claveTemporar"   value="tdqow9PSQszTg"
+            <input type="checkbox"   name="claveTemporar" id="claveTemporar"   
             > Clave Temporal: admin123
         </div>
       </div>
