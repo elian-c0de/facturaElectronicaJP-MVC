@@ -24,6 +24,7 @@ class AdminsController{
                 
                 $response = CurlController::request($url,$method,$fields);
                 
+                
                 //validamos si los datos coinciden en la base de datos
                 if($response->status == 200 && $response->result[0]->sts_usuario == "A"){
                     $v = str_replace(" ","",$response->result[0]->cod_perfil);
@@ -34,6 +35,16 @@ class AdminsController{
                     // }
                     
                     $_SESSION["admin"] = $response->result[0];
+
+                    $url1 = "gen_perfil_opcion?linkTo=cod_empresa,cod_perfil&equalTo=".$_SESSION["admin"]->cod_empresa.",".trim($_SESSION["admin"]->cod_perfil);
+                    $method1 = "GET";
+                    $fields1 = array();
+                    
+                    $response1 = CurlController::request($url1,$method1,$fields1);
+    
+                    $_SESSION["perfil"] = $response1->result;
+                  
+                    
                     echo '<script>
 
                     fncFormatInputs();
