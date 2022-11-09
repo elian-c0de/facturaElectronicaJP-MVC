@@ -35,8 +35,7 @@ if ($response->status == 200) {
                     $create->edit($admin->cod_empresa);
                     ?>
                     <label for="">Establecimiento:</label>
-                    <input type="text" class="form-control" name="cod_establecimiento" id="cod_establecimiento" 
-                    value="<?php echo $admin->cod_establecimiento?>" disabled>
+                    <input type="text" class="form-control" name="cod_establecimiento" id="cod_establecimiento" value="<?php echo $admin->cod_establecimiento ?>" disabled>
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback"> Por favor, rellene este campo</div>
                 </div>
@@ -46,28 +45,36 @@ if ($response->status == 200) {
                 <!-- CODIGO NUMERO DE MOVIMIENTO -->
                 <div class="form-group mt-2">
                     <label for="">Número de movimiento:</label>
-                    <input type="text" class="form-control" require="[A-Za-z0-9]{1,}">
+                    <input type="text" class="form-control" name="num_documento" id="num_documento" disabled>
                 </div>
 
                 <!-- TIPO DE MOVIMIENTO -->
                 <div class="form-group mt-2">
                     <label for="">Tipo de movimineto:</label>
+                    <?php
+                    $tipo_concep = file_get_contents("views/assets/json/tipo_movimiento.json");
+                    $tipo_concep = json_decode($tipo_concep, true);
+                    ?>
                     <select class="form-control mb-3" id="tipoMovimiento" name="tipoMovimiento" placeholder="TipoMovimiento" required>
-                        <option value="">Ingreso</option>
-                        <option value="">Egreso</option>
+                        <option value>Seleccione Tipo de movimineto</option>
+                        <?php foreach ($tipo_concep as $key => $value) : ?>
+                            <option value="<?php echo $value["code"] ?>"> <?php echo $value["name"] ?></option>
+                        <?php endforeach ?>
                     </select>
                 </div>
 
                 <!-- FECHA -->
                 <div class="form-group mt-2">
                     <label for="">Fecha</label>
-                    <input type="date" class="form-control">
+                    <input type="date" class="form-control" id="fechaActual">
                 </div>
 
                 <!-- DESCIPCION -->
                 <div class="form-group mt-2">
                     <label for="">Descripción</label>
-                    <input type="text" class="form-control">
+                    <input type="text" name="txt_descripcion" class="form-control" onchange="validateJS(event,'txt_descripcionConcepto')" pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,125}" required>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
             </div>
         </div>
@@ -76,11 +83,29 @@ if ($response->status == 200) {
             <div class="col-md-8 offset-md-2">
 
                 <!-- VALIDAR CODIGO INVENTARIO -->
+
                 <div class="form-group mt-2">
-                    <label for="">Código Inventario:</label>
-                    <input type="text" id="codInven" name="codInven" class="form-control" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ]{1,}" required>
-                    <!-- <div class="valid-feedback">Valid</div>
-                    <div class="invalid-feedback"> Por favor, rellene este campo</div> -->
+                    <label>Código Inventario:</label>
+                    <?php
+                    // require_once("controllers/admins.controllers.php");
+                    $create = new MovimientoInventarioController();
+                    $tipo_precio = $create->cod_inventario();
+                    $tipo_precio = json_encode($tipo_precio);
+                    $tipo_precio = json_decode($tipo_precio, true);
+                    ?>
+                    <select class="form-control select2 changeCountry" name="cod_inventario" id="cod_inventario">
+                        <option value>Seleccione el Código Inventario</option>
+                        <?php foreach ($tipo_precio as $key => $value) : ?>
+                            <option value="<?php echo $value["cod_inventario"] ?>">
+
+
+                                <?php echo $value["cod_inventario"] ?>
+
+
+                            </option>
+                        <?php endforeach ?>
+                    </select>
+                    <div class="valid-feedback">Válido</div>
                 </div>
 
                 <!-- DESCRIPCION -->
