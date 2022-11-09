@@ -89,14 +89,6 @@ function execDataTable (text) {
       }
     }
 
-  //ELIMINAR PERFIL
-  function removePerfil(){
-    var cod_perfil = document.getElementById("perfil").value;
-    console.log(localStorage.getItem("cod"));
-    console.log("cod_perfil: ", cod_perfil);
-    
-    }
-
   //Elinianr registro
   $(document).on("click",".removeItem", function(){
     var cod_perfil = document.getElementById("perfil").value;
@@ -123,11 +115,6 @@ function execDataTable (text) {
             processData: false,
             success: function(response){
               if(response == 200){
-                // fncSweetAlert(
-                //   "success",
-                //   "El registro se elimino correctamente",
-                //   "perfiles"
-                // );
                 //ELIMINAR PERFIL
                 if(resp){
                   var data = new FormData();      

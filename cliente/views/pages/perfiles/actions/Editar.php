@@ -80,7 +80,7 @@ if(isset($routesArray1[5])){
                 name="nom_perfil"
                 value="<?php echo trim($admin->nom_perfil)?>"
                 onchange="validateJS(event,'nom_perfil')"
-                pattern="[a-zA-Z0-9]{1,50}"
+                pattern="[a-zA-Z0-9 ]{1,50}"
                 required>
                 <div class="valid-feedback">Válido</div>
                 <div class="invalid-feedback">Por favor, rellene este campo</div>

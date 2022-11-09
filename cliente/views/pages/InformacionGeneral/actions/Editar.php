@@ -55,7 +55,7 @@ if ($response->status == 200) {
                 <!-- TEXT RAZON SOCIAL CON VALIDACION TERMINADO -->
                 <div class="form-group mt-2">
                     <label>Razon Social</label>
-                    <input type="text" name="nom_empresa" value="<?php echo $admin->nom_empresa ?>"  class="form-control"
+                    <input type="text" name="nom_empresa" value="<?php echo trim($admin->nom_empresa) ?>"  class="form-control"
                     onchange="validateJS(event,'nom_empresa')"
                     pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,100}"
                     required
@@ -68,7 +68,7 @@ if ($response->status == 200) {
                 <!-- NOMBRE ABREVIADO CON VALIDACION TERMINADO -->
                 <div class="form-group mt-2">
                     <label for="">Nombre Abreviado</label>
-                    <input type="text" class="form-control" value="<?php echo $admin->nom_abreviado ?>"  name="nom_abreviado" 
+                    <input type="text" class="form-control" value="<?php echo trim($admin->nom_abreviado) ?>"  name="nom_abreviado" 
                     pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,15}"
                     onchange="validateJS(event,'nom_abreviado')"
                     required
@@ -145,7 +145,7 @@ if ($response->status == 200) {
                 <div class="form-group mt-2">
                     <label for="">Ubicacion Logo</label>
                     <input type="text" class="form-control"  
-                    value="<?php echo $admin->txt_path_logo ?>"
+                    value="<?php echo trim($admin->txt_path_logo) ?>"
                     name="txt_path_logo"
                     >
                     
@@ -174,7 +174,7 @@ if ($response->status == 200) {
                 <div class="form-group mt-2">
                     <label for="">Id. Representante</label>
                     <input type="text" class="form-control"  
-                    value="<?php echo $admin->num_id_representante ?>"
+                    value="<?php echo trim($admin->num_id_representante) ?>"
                     name="num_id_representante"
                     onchange="validateJS(event,'cod_tipo_id_representante')"
                     pattern="[0-9]{1,13}"
