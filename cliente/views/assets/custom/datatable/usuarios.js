@@ -146,39 +146,39 @@ $(document).on("click",".removeItem", function(){
 
 
 
-$(document).ready(function(e){
-  $("#gen_punto_emision1").change(function(){
-    var data = new FormData();
+// $(document).ready(function(e){
+//   $("#gen_punto_emision1").change(function(){
+//     var data = new FormData();
 
-      data.append("cod_usuario",$("#gen_usuario").val());
+//       data.append("cod_usuario",$("#gen_usuario").val());
       
-      data.append("cod_empresa",localStorage.getItem('cod'));
+//       data.append("cod_empresa",localStorage.getItem('cod'));
       
-     data = "id="+$("#gen_punto_emision1").val();
-    console.log("data: ", data);
-    $.ajax({
-          url: "ajax/data-puntoemisionRellenar.php",
-          method: "POST",
-          data: data,
-          // contentType: false,
-          // cache: false,
-          // dataType: 'json',
-          // processData: false,
-          beforeSend: function(){
-            $("gen_punto_emision").html("Procesando, espere por favor..");
-            //alert("Enviando");
-          },
-          success: function(response){
-            console.log("response: ", response);
-            $("#gen_punto_emision").html(response);
+//      data = "id="+$("#gen_punto_emision1").val();
+//     console.log("data: ", data);
+//     $.ajax({
+//           url: "ajax/data-puntoemisionRellenar.php",
+//           method: "POST",
+//           data: data,
+//           // contentType: false,
+//           // cache: false,
+//           // dataType: 'json',
+//           // processData: false,
+//           beforeSend: function(){
+//             $("gen_punto_emision").html("Procesando, espere por favor..");
+//             //alert("Enviando");
+//           },
+//           success: function(response){
+//             // console.log("response: ", response);
+//             $("#gen_punto_emision").html(response);
       
-          },
-          error: function(){
-            alert("ERROR LPM");
-          }
-        })
-  })
-})
+//           },
+//           error: function(){
+//             alert("ERROR LPM");
+//           }
+//         })
+//   })
+// })
 
 
 function verContraseña(){

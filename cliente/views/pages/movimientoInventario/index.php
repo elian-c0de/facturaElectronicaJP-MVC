@@ -8,11 +8,11 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-left">
           
-          <li class="breadcrumb-item"><a href="#">Home</a></li> 
+          <li class="breadcrumb-item"><a href="#">Inicio</a></li> 
           
           <?php 
           if (isset($routesArray1[4])) {
-            if($routesArray1[4] == "create" || $routesArray1[4] == "edit"){
+            if($routesArray1[4] == "Crear" || $routesArray1[4] == "Editar"){
               echo '<li class="breadcrumb-item"><a href="movimientoInventario">MovimientoInventario</a></li>';
               echo '<li class="breadcrumb-item active">'.$routesArray1[4].'</li>';
             }
@@ -28,13 +28,26 @@
 
 <!-- Main content -->
 <section class="content">
-    <div class="container-fluid">
+
+  <div class="container-fluid">
+
     <?php
-    if(isset($routesArray[4]) && $routesArray[4] == "create"){
-        include "actions/".$routesArray[4].".php"; 
-    }else{
-        include "actions/list.php"; 
+    //PREGUNTAMOS SI EXISTE UN VALOR EN EL INDICE 4
+    if (isset($routesArray1[4])) {
+
+      if ($routesArray1[4] == "Crear" || $routesArray1[4] == "Editar") {
+        include "actions/" . $routesArray1[4] . ".php";
+      }
+    } else {
+
+      include "actions/list.php";
     }
+
     ?>
-    </div>
+
+
+
+
+  </div>
+
 </section>
