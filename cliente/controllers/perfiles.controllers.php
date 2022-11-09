@@ -13,7 +13,7 @@ class PerfilesController{
 
             //INSERTAR cod_perfil
             if(preg_match('/^[a-zA-Z0-9]{1,6}$/',$_POST["cod_perfil"]) &&
-            preg_match('/^[a-zA-Z0-9]{1,50}$/',$_POST["nom_perfil"]))
+            preg_match('/^[a-zA-Z0-9 ]{1,50}$/',$_POST["nom_perfil"]))
             {
                 if(isset($_POST["sts_perfil"])){
                     $_POST["sts_perfil"] = "A";
@@ -679,7 +679,7 @@ class PerfilesController{
             $response = CurlController::request($url,$method,$fields);
 
             if($response->status == 200){
-                if(preg_match('/^[a-zA-Z0-9]{1,50}$/',$_POST["nom_perfil"]))
+                if(preg_match('/^[a-zA-Z0-9 ]{1,50}$/',$_POST["nom_perfil"]))
                 {
                 if(isset($_POST["sts_perfil"])){
                     $_POST["sts_perfil"] = "A";

@@ -90,7 +90,7 @@ if(isset($routesArray1[5])){
             <div class="form-group mt-2">
                 <label for="">Estado</label>
                 <br>
-                <input type="checkbox"<?php echo $admin->sts_perfil == 'A' ? 'checked':''?>   name="sts_perfil" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                <input type="checkbox"<?php echo $admin->sts_perfil == 'A' ? 'checked':''?> data-on-text="SI" data-off-text="NO" name="sts_perfil" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
                 >
             </div>
         </div>

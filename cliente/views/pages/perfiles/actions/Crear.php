@@ -33,7 +33,7 @@
                 class="form-control"
                 name="nom_perfil"
                 onchange="validateJS(event,'nom_perfil')"
-                pattern="[a-zA-Z0-9]{1,50}"
+                pattern="[a-zA-Z0-9 ]{1,50}"
                 required>
                 <div class="valid-feedback">Válido</div>
                 <div class="invalid-feedback">Por favor, rellene este campo</div>
@@ -44,7 +44,7 @@
                 <label for="">Estado</label>
                 <br>
                 <!-- <input type="text" class="form-control" -->
-                <input type="checkbox"  name="sts_perfil" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
+                <input type="checkbox" data-on-text="SI" data-off-text="NO"  name="sts_perfil" checked data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75"
                 >
             </div>
         </div>

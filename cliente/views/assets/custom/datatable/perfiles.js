@@ -89,6 +89,14 @@ function execDataTable (text) {
       }
     }
 
+  //ELIMINAR PERFIL
+  function removePerfil(){
+    var cod_perfil = document.getElementById("perfil").value;
+    console.log(localStorage.getItem("cod"));
+    console.log("cod_perfil: ", cod_perfil);
+    
+    }
+
   //Elinianr registro
   $(document).on("click",".removeItem", function(){
     var cod_perfil = document.getElementById("perfil").value;
@@ -96,13 +104,12 @@ function execDataTable (text) {
     console.log("cod_perfil: ", cod_perfil);
     if(cod_perfil != ""){
       fncSweetAlert("confirm","Estas seguro de eliminar este registro?","").then(resp=>{
-
-        //ELIMINAR PERFIL
+        //ELIMINAR PERMISOS
         if(resp){
           var data = new FormData();
           //MODIFICAR PARAMETROS
           data.append("idItem", btoa(cod_perfil+"~"+localStorage.getItem("token_user"))); // id pk de la tabla + toke encriptrado
-          data.append("table", "gen_perfil"); // nombre de la tabla
+          data.append("table", "gen_perfil_opcion"); // nombre de la tabla
           data.append("cod_empresa", btoa(localStorage.getItem("cod"))); // codigo empresa encriptado papa
           data.append("column", "cod_perfil"); // columna donde se va a buscar el id pk
           data.append("token", localStorage.getItem("token_user")); // el token enviado desde aqui para validar cualquier vaina 
@@ -116,42 +123,42 @@ function execDataTable (text) {
             processData: false,
             success: function(response){
               if(response == 200){
-                fncSweetAlert(
-                  "success",
-                  "El registro se elimino correctamente",
-                  "perfiles"
-                );
-              }else{
-                fncNotie(3,"Error al eliminar el registro")
-              }
-            }
-          })
-        }
+                // fncSweetAlert(
+                //   "success",
+                //   "El registro se elimino correctamente",
+                //   "perfiles"
+                // );
+                //ELIMINAR PERFIL
+                if(resp){
+                  var data = new FormData();      
+                  //MODIFICAR PARAMETROS
+                  data.append("idItem", btoa(cod_perfil+"~"+localStorage.getItem("token_user"))); // id pk de la tabla + toke encriptrado
+                  data.append("table", "gen_perfil"); // nombre de la tabla
+                  data.append("cod_empresa", btoa(localStorage.getItem("cod"))); // codigo empresa encriptado papa
+                  data.append("column", "cod_perfil"); // columna donde se va a buscar el id pk
+                  data.append("token", localStorage.getItem("token_user")); // el token enviado desde aqui para validar cualquier vaina
+            
+                  $.ajax({
+                    url: "ajax/ajax-delete.php",
+                    method: "POST",
+                    data: data,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(response){
+                      if(response == 200){
+                        fncSweetAlert(
+                          "success",
+                          "El registro se elimino correctamente",
+                          "perfiles"
+                        );
+                      }else{
+                        fncNotie(3,"Error al eliminar el registro")
+                      }
+                    }
+                  })
+                }
 
-        //ELIMINAR PERMISO
-        if(resp){
-          var data = new FormData();
-          //MODIFICAR PARAMETROS
-          data.append("idItem", btoa(cod_perfil+"~"+localStorage.getItem("token_user"))); // id pk de la tabla + toke encriptrado
-          data.append("table", "gen_perfil_opcion"); // nombre de la tabla
-          data.append("cod_empresa", btoa(localStorage.getItem("cod"))); // codigo empresa encriptado papa
-          data.append("column", "cod_perfil"); // columna donde se va a buscar el id pk
-          data.append("token", localStorage.getItem("token_user")); // el token enviado desde aqui para validar cualquier vaina 
-
-          $.ajax({
-            url: "ajax/ajax-delete.php",
-            method: "POST",
-            data: data,
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function(response){
-              if(response == 200){
-                fncSweetAlert(
-                  "success",
-                  "El registro se elimino correctamente",
-                  "perfiles"
-                );
               }else{
                 fncNotie(3,"Error al eliminar el registro")
               }

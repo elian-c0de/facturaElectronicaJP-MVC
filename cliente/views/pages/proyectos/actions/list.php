@@ -8,7 +8,7 @@
       <a class="btn bg-blue btn-small" href="proyectos/Crear"><i class="bi bi-file-earmark-plus-fill"></i></a>
       <a class="btn btn-warning btn-small" onclick="edit()"><i class='fas fa-pencil-alt'></i></a>
       <a class="btn btn-danger btn-small removeItem" title="Eliminar"><i class='fas fa-trash-alt'></i></a>
-      <a class="btn bg-green btn-small" href="proyectos/XML"><i class="bi bi-filetype-xml"></i></a>
+      <!-- <a class="btn bg-green btn-small" href="proyectos/XML"><i class="bi bi-filetype-xml"></i></a> -->
     </h3>
       <!-- <div class="card-tools">
         <div class="d-flex">

@@ -8,7 +8,7 @@
       <a class="btn bg-blue btn-small" title="Crear" href="establecimientos/Crear"><i class="bi bi-file-earmark-plus-fill"></i></a>
       <a class="btn btn-warning btn-small" title="Editar" onclick="edit()"><i class='fas fa-pencil-alt'></i></a>
       <a class="btn btn-danger btn-small removeItem" title="Eliminar"><i class='fas fa-trash-alt'></i></a>
-      <a class="btn bg-green btn-small" href="establecimientos/XML"><i class="bi bi-filetype-xml"></i></a>
+      <!-- <a class="btn bg-green btn-small" href="establecimientos/XML"><i class="bi bi-filetype-xml"></i></a> -->
     </h3>
     
       <!-- <div class="card-tools">

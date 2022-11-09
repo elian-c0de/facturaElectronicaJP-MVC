@@ -65,9 +65,9 @@ function execDataTable (text) {
       }
    })
 
-   $("#cajasTable").on("draw.dt",function(){
+   $("#cajastable").on("draw.dt",function(){
     setTimeout(() => {
-      cajasTable.buttons().container().appendTo('#cajasTable_wrapper .col-md-6:eq(0)');
+      cajasTable.buttons().container().appendTo('#cajastable_wrapper .col-md-6:eq(0)');
     }, 100);
 
    })
