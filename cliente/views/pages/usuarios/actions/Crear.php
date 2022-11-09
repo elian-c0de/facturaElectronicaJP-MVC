@@ -71,7 +71,7 @@
           $tipo_precio = json_encode($tipo_precio);
           $tipo_precio = json_decode($tipo_precio, true);
           ?>
-          <select class="form-control select2 changeCountry" name="gen_perfil" id="gen_perfil" >
+          <select class="form-control select2 changeCountry" name="gen_perfil" id="gen_perfil" required >
               <option value>Seleccione el Perfil</option>
               <?php foreach ($tipo_precio as $key => $value) : ?>
                   <option value="<?php echo $value["cod_perfil"] ?>">
@@ -83,7 +83,8 @@
                   </option>
               <?php endforeach ?>
           </select>
-          <div class="valid-feedback">Válido</div>
+          <div class="valid-feedback">Válido</div>          
+          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
 				</div>  
 
         <!-- VALIDAR ESTABLECIMIENTO DE USUARIOS -->
@@ -96,7 +97,7 @@
           $tipo_precio = json_encode($tipo_precio);
           $tipo_precio = json_decode($tipo_precio, true);
           ?>
-          <select class="form-control select2 changeCountry"   name="gen_punto_emision1" id="gen_punto_emision1">
+          <select class="form-control select2 changeCountry"   name="gen_punto_emision1" id="gen_punto_emision1" required>
               <option value>Seleccione el Establecimiento</option>
               <?php foreach ($tipo_precio as $key => $value) : ?>
                   <option value="<?php echo $value["cod_establecimiento"] ?>~<?php echo $value["cod_punto_emision"] ?>">
@@ -105,6 +106,7 @@
               <?php endforeach ?>
           </select>
           <div class="valid-feedback">Válido</div>
+          <div class="invalid-feedback"> Por Favor, rellene este campo</div>
 				</div> 
 
 
