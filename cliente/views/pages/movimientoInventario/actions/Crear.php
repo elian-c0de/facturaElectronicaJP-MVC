@@ -93,7 +93,7 @@ if ($response->status == 200) {
                     $tipo_precio = json_encode($tipo_precio);
                     $tipo_precio = json_decode($tipo_precio, true);
                     ?>
-                    <select class="form-control select2 changeCountry" name="cod_inventario" id="cod_inventario">
+                    <select class="form-control select2 changeCountry" name="cod_inventario" id="cod_inventario" onchange="rellenar()" required>
                         <option value>Seleccione el Código Inventario</option>
                         <?php foreach ($tipo_precio as $key => $value) : ?>
                             <option value="<?php echo $value["cod_inventario"] ?>">
@@ -111,7 +111,7 @@ if ($response->status == 200) {
                 <!-- DESCRIPCION -->
                 <div class="form-group mt-2">
                     <label for="">Descripción</label>
-                    <input type="text" id="descrip" name="descrip" class="form-control">
+                    <input type="text" id="txt_descripcion" name="txt_descripcion" class="form-control">
                 </div>
 
                 <!-- CANTIDAD -->
@@ -172,25 +172,53 @@ if ($response->status == 200) {
                         <th>Total</th>
                     </tr>
                 </thead>
+                <tbody></tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td colspan="1" style="text-align:right ">SubTotal 0%</td>
+                        <td id="SubTotal0%" style="text-align:right;color:blue " > 0.00</td>
+                        <td colspan="2"></td>
+                    
+                    </tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td colspan="1" style="text-align:right">SubTotal IVA</td>
+                        <td id="SubTotalIVA" style="text-align:right;color:blue"></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td colspan="1" style="text-align:right">IVA</td>
+                        <td id="IVA" style="text-align:right;color:blue"></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td colspan="1" style="text-align:right" >Total</td>
+                        <td id="Total" style="text-align:right;color:blue"></td>
+                        <td colspan="2"></td>
+                    </tr>
+                </tfoot>
             </table>
 
         </div>
-        <div class="card-footer text-right">
+        <!-- <div class="card-footer text-right">
             <span class="mr-3">SubTotal 0%</span>
-            <input type="number" id="total" value="0.00" name="total" class="mr-3" require="{1,2}" readonly>
+            <input type="number" id="SubTotal" value="0.00" name="SubTotal" class="mr-3" require="{1,2}" readonly>
         </div>
         <div class="card-footer text-right">
             <span class="mr-3">SubTotal IVA</span>
-            <input type="number" id="total" value="0.00" name="total" class="mr-3" require="{1,2}" readonly>
+            <input type="number" id="SubTotalIVA" value="0.00" name="SubTotalIVA" class="mr-3" require="{1,2}" readonly>
         </div>
         <div class="card-footer text-right">
             <span class="mr-3">IVA</span>
-            <input type="number" id="total" value="0.00" name="total" class="mr-3" require="{1,2}" readonly>
+            <input type="number" id="IVA" value="0.00" name="IVA" class="mr-3" require="{1,2}" readonly>
         </div>
         <div class="card-footer text-right">
             <span class="mr-3">Total</span>
-            <input type="number" id="total" value="0.00" name="total" class="mr-3" require="{1,2}" readonly>
-        </div>
+            <input type="number" id="Total" value="0.00" name="Total" class="mr-3" require="{1,2}" readonly>
+        </div> -->
         <!-- BOTONES DE REGRESAR Y GUARDAR -->
         <div class="card-header">
             <div class="col-md-8 offset-md-2">
