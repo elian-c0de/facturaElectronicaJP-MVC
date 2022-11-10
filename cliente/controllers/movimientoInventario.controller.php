@@ -5,7 +5,7 @@ class MovimientoInventarioController{
         date_default_timezone_set("America/Guayaquil");
 
 
-        if(isset($_POST["cod_impuesto"])){
+        if(isset($_POST["num_documento"])){
             
             echo '<script>
 
@@ -14,29 +14,30 @@ class MovimientoInventarioController{
 
             </script>';
 
-            if(preg_match('/^[a-zA-Z1-9]{1,5}$/',$_POST["cod_retencion"]) &&
-            preg_match('/^[-%0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,255}$/',$_POST["txt_descripcion"]) &&
-            preg_match('/^[0-9]{1,3}([.][0-9]{1,2})$/',$_POST["por_retencion"]))
+            if(preg_match('/^[a-zA-Z0-9]{1,3}$/',$_POST["cod_establecimiento"]) &&
+            preg_match('/^[0-9]{1,6}$/',$_POST["num_documento"]))
 
             {
-                if(isset($_POST["sts_impuesto"])){
-                    $_POST["sts_impuesto"] = "A";
-                }else{
-                    $_POST["sts_impuesto"] = "C";
-                }
+                // if(isset($_POST["sts_impuesto"])){
+                //     $_POST["sts_impuesto"] = "A";
+                // }else{
+                //     $_POST["sts_impuesto"] = "C";
+                // }
 
                 $data = array(
-                    
-                    "cod_impuesto" => trim($_POST["cod_impuesto"]),
-                    "cod_retencion" => trim($_POST["cod_retencion"]),
-                    "txt_descripcion" => trim($_POST["txt_descripcion"]),
-                    "por_retencion" => trim($_POST["por_retencion"]),
-                    "sts_impuesto" => $_POST["sts_impuesto"]
+
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_establecimiento" => trim($_POST["cod_establecimiento"]),
+                    "num_documento" => trim($_POST["num_documento"]),
+                    "cod_inventario" => trim($_POST["cod_inventario"]),
+                    "qtx_cantidad" => trim($_POST["qtx_cantidad"]),
+                    "val_costo" => trim($_POST["val_costo"]),
+                    "val_porcentaje_iva" => "12.00"
     
                 );
                 //echo '<pre>'; print_r($data); echo '</pre>';
          
-                $url = "ecmp_impuesto?token=".$_SESSION["admin"]->token_usuario;
+                $url = "ecmp_detalle_inventario?token=".$_SESSION["admin"]->token_usuario;
                 $method = "POST";
                 $fields = $data;
                 $response = CurlController::request($url,$method,$fields);
@@ -52,7 +53,7 @@ class MovimientoInventarioController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Registro con éxito", "retenciondeImpuestos");
+                        fncSweetAlert("success", "Registro con éxito", "movimientoInventario");
 
                     </script>';
                 }else{
@@ -93,7 +94,7 @@ class MovimientoInventarioController{
     }
 
     public function cod_inventario(){
-        $url = "ecmp_inventario?linkTo=cod_empresa&equalTo=".$_SESSION['admin']->cod_empresa;
+        $url = "ecmp_inventario?linkTo=cod_empresa,sts_inventario&equalTo=".$_SESSION['admin']->cod_empresa.",A";
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;
@@ -198,7 +199,7 @@ class MovimientoInventarioController{
                         fncFormatInputs();
                         matPreloader("off");
                         fncSweetAlert("close", "", "");
-                        fncSweetAlert("success", "Edicion con exito", "informacionGeneral");
+                        fncSweetAlert("success", "Edicion con exito", "movimientoInventario");
 
                     </script>';
 

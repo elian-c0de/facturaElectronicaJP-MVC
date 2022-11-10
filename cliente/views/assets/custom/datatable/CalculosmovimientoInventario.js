@@ -2,23 +2,22 @@
 
 //Ingresar datos de calcular SubTotal-IVA-TOTAL
 const form= document.getElementById("transactionForm");
-form.addEventListener("submit", function(event){
-   event.preventDefault();
+// form.addEventListener("submit", function(event){
+  document.getElementById("Guardar").addEventListener("click", myFunction);
+  function myFunction() {
+  //  event.preventDefault();
    let transactionFormData = new FormData(form);
    insertRowInTransactionTable(transactionFormData);
     document.getElementById('cod_inventario').value= ('');
     document.getElementById('txt_descripcion').value= ('');
-    document.getElementById('cant').value= ('');
-    document.getElementById('cost').value= ('');
+    document.getElementById('qtx_cantidad').value= ('');
+    document.getElementById('val_costo').value= ('');
     document.getElementById('subtot').value= ('');
     document.getElementById('iva').value= ('');
     document.getElementById('total').value= ('');
    // form.reset();
-  //  SubTotalIVA();
-  //  IVA();
-  //  Total();
    total();
-   });
+   };
 
 
 
@@ -34,10 +33,10 @@ function insertRowInTransactionTable(transactionFormData){
    newTypeCellRef.textContent = transactionFormData.get("descrip")
 
    newTypeCellRef = newTransactionRowRef.insertCell(2);
-   newTypeCellRef.textContent = transactionFormData.get("cant")
+   newTypeCellRef.textContent = transactionFormData.get("qtx_cantidad")
    
    newTypeCellRef = newTransactionRowRef.insertCell(3);
-   newTypeCellRef.textContent = transactionFormData.get("cost")
+   newTypeCellRef.textContent = transactionFormData.get("val_costo")
 
    newTypeCellRef = newTransactionRowRef.insertCell(4);
    newTypeCellRef.textContent = transactionFormData.get("subtot")
@@ -52,8 +51,8 @@ function insertRowInTransactionTable(transactionFormData){
 
 function calcularSubtotal(){
    try {
-       var a = parseFloat(document.getElementById("cant").value) || 0.00;
-       b = parseFloat(document.getElementById("cost").value) || 0.00;
+       var a = parseFloat(document.getElementById("qtx_cantidad").value) || 0.00;
+       b = parseFloat(document.getElementById("val_costo").value) || 0.00;
 
        document.getElementById("subtot").value = (a*b);
 
@@ -256,7 +255,7 @@ window.onload = function(){
      data.append("cod_empresa",localStorage.getItem('cod'));
  
      $.ajax({
-       url: "ajax/data-movimientoInventario.php",
+       url: "ajax/data-movimientoInventarioRellenar.php",
        method: "POST",
        data: data,
        contentType: false,
@@ -264,12 +263,13 @@ window.onload = function(){
        dataType: 'json',
        processData: false,
        success: function(response){
-           console.log("response: ", response[0]["txt_descripcion"]);
-           console.log("response: ", response);
+          //  console.log("response: ", response[0]["txt_descripcion"]);
+          //  console.log("response: ", response);
            
  
          //   // document.getElementById("cod_usuario").value=response[0]["cod_usuario"];
            $("#txt_descripcion").val(response[0]["txt_descripcion"]);
+           $("#val_costo").val(response[0]["val_costo"]);
          //   $("#nom_usuario").val(response[0]["nom_usuario"]);
          //   $("#gen_perfil").val(response[0]["cod_perfil"]);
          //   $("#gen_punto_emision1").val(response[0]["cod_establecimiento"])

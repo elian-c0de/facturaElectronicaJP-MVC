@@ -63,9 +63,13 @@ class DataTableController
             $data = CurlController::request($url, $method, $fields)->result;
             // echo '<pre>'; print_r($data); echo '</pre>'; 
             // echo '<pre>'; print_r($url); echo '</pre>'; 
-            $recordsFiltered = $totalData;
+            if($data == "Not Found"){
+                $recordsFiltered = 0;
+            }else{
+                $recordsFiltered = $totalData;
+            }
         }
-        if(empty($data) || $data==null){
+        if(empty($data)){
             echo '{"data": []}';
             return;
         }

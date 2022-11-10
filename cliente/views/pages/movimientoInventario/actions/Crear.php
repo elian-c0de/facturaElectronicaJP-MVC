@@ -76,11 +76,8 @@ if ($response->status == 200) {
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
-            </div>
-        </div>
 
-        <div class="card-header">
-            <div class="col-md-8 offset-md-2">
+
 
                 <!-- VALIDAR CODIGO INVENTARIO -->
 
@@ -88,14 +85,20 @@ if ($response->status == 200) {
                     <label>Código Inventario:</label>
                     <?php
                     // require_once("controllers/admins.controllers.php");
-                    $create = new MovimientoInventarioController();
-                    $tipo_precio = $create->cod_inventario();
-                    $tipo_precio = json_encode($tipo_precio);
-                    $tipo_precio = json_decode($tipo_precio, true);
+
+                    // $create = new MovimientoInventarioController();
+                    // $tipo_precio = $create->cod_inventario();
+                    // $tipo_precio = json_encode($tipo_precio);
+                    // $tipo_precio = json_decode($tipo_precio, true);
+                    require_once("controllers/inventario.controller.php");
+                    $create = new InventarioController();
+                    $tipo = $create->cod_inventario();
+                    $tipo = json_encode($tipo);
+                    $tipo = json_decode($tipo, true);
                     ?>
-                    <select class="form-control select2 changeCountry" name="cod_inventario" id="cod_inventario" onchange="rellenar()" required>
+                    <select class="form-control select2 changeCountry" name="cod_inventario" id="cod_inventario" onchange="rellenar()">
                         <option value>Seleccione el Código Inventario</option>
-                        <?php foreach ($tipo_precio as $key => $value) : ?>
+                        <?php foreach ($tipo as $key => $value) : ?>
                             <option value="<?php echo $value["cod_inventario"] ?>">
 
 
@@ -105,7 +108,6 @@ if ($response->status == 200) {
                             </option>
                         <?php endforeach ?>
                     </select>
-                    <div class="valid-feedback">Válido</div>
                 </div>
 
                 <!-- DESCRIPCION -->
@@ -117,13 +119,13 @@ if ($response->status == 200) {
                 <!-- CANTIDAD -->
                 <div class="form-group mt-2">
                     <label for="">Cantidad:</label>
-                    <input type="number" oninput="calcularSubtotal()" id="cant" name="cant" class="form-control" require="{1,2}">
+                    <input type="number" oninput="calcularSubtotal()" id="qtx_cantidad" name="qtx_cantidad" class="form-control">
                 </div>
 
                 <!-- COSTO -->
                 <div class="form-group mt-2">
                     <label for="">Costo:</label>
-                    <input type="number" id="cost" oninput="calcularSubtotal()" name="cost" class="form-control" require="{1,2}">
+                    <input type="number" id="val_costo" oninput="calcularSubtotal()" name="val_costo" class="form-control">
                 </div>
 
                 <!-- SUBTOTAL -->
@@ -148,62 +150,61 @@ if ($response->status == 200) {
                 <div class="card-body">
                     <div class="col-md-4 offset-md-4">
                         <div class="form-group mt-3">
-                            <button type="submit" id="Guardar" class="btn bg-dark float-lg-right"><i class="bi bi-plus-lg"></i> Agregar</button>
+                            <button type="button" id="Guardar" class="btn bg-dark float-lg-right"><i class="bi bi-plus-lg"></i> Agregar</button>
                         </div>
                     </div>
                 </div>
 
             </div>
-        </div>
 
 
 
-        <!-- /.card-footer -->
-        <div class="card-footer">
-            <table id="movimientoInventariotable1" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Codigo Inventario</th>
-                        <th>Descripcion</th>
-                        <th>Cantidad</th>
-                        <th>Costo</th>
-                        <th>Subtotal</th>
-                        <th>IVA</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="3"></td>
-                        <td colspan="1" style="text-align:right ">SubTotal 0%</td>
-                        <td id="SubTotal0%" style="text-align:right;color:blue " > 0.00</td>
-                        <td colspan="2"></td>
-                    
-                    </tr>
-                    <tr>
-                        <td colspan="3"></td>
-                        <td colspan="1" style="text-align:right">SubTotal IVA</td>
-                        <td id="SubTotalIVA" style="text-align:right;color:blue"></td>
-                        <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"></td>
-                        <td colspan="1" style="text-align:right">IVA</td>
-                        <td id="IVA" style="text-align:right;color:blue"></td>
-                        <td colspan="2"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"></td>
-                        <td colspan="1" style="text-align:right" >Total</td>
-                        <td id="Total" style="text-align:right;color:blue"></td>
-                        <td colspan="2"></td>
-                    </tr>
-                </tfoot>
-            </table>
+            <!-- /.card-footer -->
+            <div class="card-footer">
+                <table id="movimientoInventariotable1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Codigo Inventario</th>
+                            <th>Descripcion</th>
+                            <th>Cantidad</th>
+                            <th>Costo</th>
+                            <th>Subtotal</th>
+                            <th>IVA</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td colspan="1" style="text-align:right ">SubTotal 0%</td>
+                            <td id="SubTotal0%" style="text-align:right;color:blue "> 0.00</td>
+                            <td colspan="2"></td>
 
-        </div>
-        <!-- <div class="card-footer text-right">
+                        </tr>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td colspan="1" style="text-align:right">SubTotal IVA</td>
+                            <td id="SubTotalIVA" style="text-align:right;color:blue"></td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td colspan="1" style="text-align:right">IVA</td>
+                            <td id="IVA" style="text-align:right;color:blue"></td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td colspan="1" style="text-align:right">Total</td>
+                            <td id="Total" style="text-align:right;color:blue"></td>
+                            <td colspan="2"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+            <!-- <div class="card-footer text-right">
             <span class="mr-3">SubTotal 0%</span>
             <input type="number" id="SubTotal" value="0.00" name="SubTotal" class="mr-3" require="{1,2}" readonly>
         </div>
@@ -219,12 +220,13 @@ if ($response->status == 200) {
             <span class="mr-3">Total</span>
             <input type="number" id="Total" value="0.00" name="Total" class="mr-3" require="{1,2}" readonly>
         </div> -->
-        <!-- BOTONES DE REGRESAR Y GUARDAR -->
-        <div class="card-header">
-            <div class="col-md-8 offset-md-2">
-                <div class="form-group mt-3">
-                    <a href="movimientoInventario" class="btn btn-light border text-left">Cancelar</a>
-                    <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
+            <!-- BOTONES DE REGRESAR Y GUARDAR -->
+            <div class="card-header">
+                <div class="col-md-8 offset-md-2">
+                    <div class="form-group mt-3">
+                        <a href="movimientoInventario" class="btn btn-light border text-left">Cancelar</a>
+                        <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -234,3 +236,4 @@ if ($response->status == 200) {
 </div>
 
 <script src="views/assets/custom/datatable/CalculosmovimientoInventario.js"></script>
+<script src="views/assets/custom/datatable/movimientoInventario.js"></script>

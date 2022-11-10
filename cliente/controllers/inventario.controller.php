@@ -168,6 +168,14 @@ class InventarioController
         return $response;
     }
 
+    public function cod_inventario(){
+        $url = "ecmp_inventario?linkTo=cod_empresa&equalTo=".$_SESSION['admin']->cod_empresa;
+        $method = "GET";
+        $fields = array();
+        $response = CurlController::request($url,$method,$fields)->result;
+        return $response;
+    }
+
 
     public function edit($id)
     {
