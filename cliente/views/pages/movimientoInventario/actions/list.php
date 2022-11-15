@@ -5,8 +5,8 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
   $between1 = $_GET["start"];
   $between2 = $_GET["end"];
 } else {
-  $between1 = date("Y-m-d", strtotime("-10 year", strtotime(date("Y-m-d"))));
-  $between2 = date("Y-m-d", strtotime("+1 day", strtotime(date("Y-m-d"))));
+  $between1 = date("d-m-Y", strtotime("-10 year", strtotime(date("d-m-Y"))));
+  $between2 = date("d-m-Y", strtotime("+1 day", strtotime(date("d-m-Y"))));
 }
 //FIN ASIGANACION DE FECHAS 
 

@@ -17,6 +17,7 @@ const form= document.getElementById("transactionForm");
     document.getElementById('total').value= ('');
    // form.reset();
    total();
+   obtenerDatos();
    };
 
 
@@ -27,10 +28,10 @@ function insertRowInTransactionTable(transactionFormData){
    let newTransactionRowRef = transactionTableRef.insertRow(1);
 
    let newTypeCellRef = newTransactionRowRef.insertCell(0);
-   newTypeCellRef.textContent = transactionFormData.get("codInven")
+   newTypeCellRef.textContent = transactionFormData.get("cod_inventario")
 
    newTypeCellRef = newTransactionRowRef.insertCell(1);
-   newTypeCellRef.textContent = transactionFormData.get("descrip")
+   newTypeCellRef.textContent = transactionFormData.get("txt_descripcion")
 
    newTypeCellRef = newTransactionRowRef.insertCell(2);
    newTypeCellRef.textContent = transactionFormData.get("qtx_cantidad")
@@ -65,13 +66,62 @@ function calcularSubtotal(){
    }
    
 }
+
+
+function obtenerDatos(){
+  const table =document.getElementById("movimientoInventariotable1"); //Almacenamos la id de la tabla
+  //console.log("table: ", table);
+  
+  
+  for (let i = 1; i < table.rows.length-4; i++) {
+    // console.log(table.rows[i].innerHTML);
+    var array = [];
+    // let var1 = table.rows[i].innerHTML;
+    // let var2 = var1.replace("<td>","");
+    // array.push(var2.replace("</td>",","));
+    for (let j = 0; j < table.rows[i].cells.length; j++) {
+      array.push(table.rows[i].cells[j].innerHTML);
+      
+    }
+    console.log("array: ", array[0]);
+    // console.log("array: ", array[1]);
+    //**************************************** */
+    var array1 = array[0];
+    var arrayJson=JSON.stringify(array1);
+    
+    var url="movimientoInventario.controller.php";
+    // ************* */ metodo 1 de enviar datos a un archivo php*****************
+    // $.post(url,{arrayJson:cod_inventario},function(data){
+    //   if(data!=null){
+    //     console.log("los datos fueron eviados correctamente");
+    //   }else{
+    //     console.log("NO JODAS PABLO, NO SE ENVIARON LOS DATOS");
+    //   }
+    // });
+  //************* */ metodo 2 de enviar datos a un archivo php*****************
+    fetch(url,{
+      method: 'POST',
+      cod_inventario:arrayJson
+      
+    });
+    // console.log("body: ", body);
+    // .then(resp => resp.json())
+    // .then(data => {
+    //   console.log(data);
+    // })
+  }
+}
+
+
+
+
 function total(){
   let total1 = 0;
   let total2 = 0;
   let total3 = 0;
   const table =document.getElementById("movimientoInventariotable1"); //Almacenamos la id de la tabla
   for (let i = 1; i < table.rows.length-4; i++) { //hacemos un recorrido por la tabla y no contamos la ultima fila (-N)
-    // console.log(table.rows[i].cells[4].innerHTML);
+    //console.log(table.rows[i].innerHTML);
     let rowValue = table.rows[i].cells[4].innerHTML; // lo almacenamos en una variable el resultado de la columna [N]
     total1 += Number(rowValue); // sumamos los valores
     
@@ -226,7 +276,7 @@ window.onload = function(){
      dia='0'+dia; //agrega cero si el menor de 10
    if(mes<10)
      mes='0'+mes //agrega cero si el menor de 10
-   document.getElementById('fechaActual').value=ano+"-"+mes+"-"+dia;
+   document.getElementById('fec_documento').value=ano+"-"+mes+"-"+dia;
  
    // var num_documento= document.getElementById("num_documento");
    // if (num_documento==" ") {

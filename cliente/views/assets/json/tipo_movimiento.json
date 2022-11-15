@@ -1,11 +1,11 @@
 [
     {
     "name": "INGRESO",
-    "code": "I"
+    "code": "IN"
     },
     {
     "name": "EGRESO",
-    "code": "E"
+    "code": "EG"
     }
 
 ]

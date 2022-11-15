@@ -16,7 +16,7 @@ function execDataTable () {
       
     ];
   
-   var retenciondeImpuestosTable = $("#movimientoInventarioTable").DataTable({
+   var movimientoInventarioTable = $("#movimientoInventarioTable").DataTable({
       "responsive": true, 
       "lengthChange": true,
       "select": {style: 'single'},
@@ -76,7 +76,7 @@ function execDataTable () {
     
         $("#movimientoInventarioTable").on("draw.dt",function(){
             setTimeout(() => {
-                retenciondeImpuestosTable.buttons().container().appendTo('#movimientoInventarioTable_wrapper .col-md-6:eq(0)');
+                movimientoInventarioTable.buttons().container().appendTo('#movimientoInventarioTable_wrapper .col-md-6:eq(0)');
             }, 100);
     
         })
@@ -84,15 +84,15 @@ function execDataTable () {
 
 
 
-        retenciondeImpuestosTable
+        movimientoInventarioTable
         .on("select", function (e, dt, type, indexes) {
-          var rowData = retenciondeImpuestosTable.rows(indexes).data().toArray();
+          var rowData = movimientoInventarioTable.rows(indexes).data().toArray();
           console.log("rowData: ", rowData);
           document.getElementById("movimientoInventarioID").value = rowData[0].num_documento;
           document.getElementById("movimientoInventarioID1").value = rowData[0].cod_inventario;
         })
         .on("deselect", function (e, dt, type, indexes) {
-          var rowData = retenciondeImpuestosTable.rows(indexes).data().toArray();
+          var rowData = movimientoInventarioTable.rows(indexes).data().toArray();
           document.getElementById("movimientoInventarioID").value = "";
           document.getElementById("movimientoInventarioID1").value = "";
         });

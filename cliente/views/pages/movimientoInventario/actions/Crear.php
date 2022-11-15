@@ -35,22 +35,23 @@ if ($response->status == 200) {
                     $create->edit($admin->cod_empresa);
                     ?>
                     <label for="">Establecimiento:</label>
-                    <input type="text" class="form-control" name="cod_establecimiento" id="cod_establecimiento" value="<?php echo $admin->cod_establecimiento ?>" disabled>
+                    <input type="text" class="form-control"  value="<?php echo $admin->cod_establecimiento ?>" disabled>
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback"> Por favor, rellene este campo</div>
                 </div>
-
+                <input type="hidden" class="form-control" name="cod_establecimiento" id="cod_establecimiento" value="<?php echo $admin->cod_establecimiento ?>" >
 
 
                 <!-- CODIGO NUMERO DE MOVIMIENTO -->
                 <div class="form-group mt-2">
                     <label for="">Número de movimiento:</label>
-                    <input type="text" class="form-control" name="num_documento" id="num_documento" disabled>
+                    <input type="text" class="form-control" value="2" disabled>
                 </div>
+                <input type="hidden" class="form-control" name="num_documento" id="num_documento" >
 
                 <!-- TIPO DE MOVIMIENTO -->
                 <div class="form-group mt-2">
-                    <label for="">Tipo de movimineto:</label>
+                    <label for="">Tipo de movimiento:</label>
                     <?php
                     $tipo_concep = file_get_contents("views/assets/json/tipo_movimiento.json");
                     $tipo_concep = json_decode($tipo_concep, true);
@@ -66,13 +67,13 @@ if ($response->status == 200) {
                 <!-- FECHA -->
                 <div class="form-group mt-2">
                     <label for="">Fecha</label>
-                    <input type="date" class="form-control" id="fechaActual">
+                    <input type="date" class="form-control" id="fec_documento" name="fec_documento">
                 </div>
 
                 <!-- DESCIPCION -->
                 <div class="form-group mt-2">
                     <label for="">Descripción</label>
-                    <input type="text" name="txt_descripcion" class="form-control" onchange="validateJS(event,'txt_descripcionConcepto')" pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,125}" required>
+                    <input type="text" name="txt_descripcion1" class="form-control" onchange="validateJS(event,'txt_descripcionConcepto')" pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,125}" required>
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
@@ -113,7 +114,7 @@ if ($response->status == 200) {
                 <!-- DESCRIPCION -->
                 <div class="form-group mt-2">
                     <label for="">Descripción</label>
-                    <input type="text" id="txt_descripcion" name="txt_descripcion" class="form-control">
+                    <input type="text" id="txt_descripcion" name="txt_descripcion" class="form-control"  >
                 </div>
 
                 <!-- CANTIDAD -->
@@ -125,7 +126,7 @@ if ($response->status == 200) {
                 <!-- COSTO -->
                 <div class="form-group mt-2">
                     <label for="">Costo:</label>
-                    <input type="number" id="val_costo" oninput="calcularSubtotal()" name="val_costo" class="form-control">
+                    <input type="number" id="val_costo" oninput="calcularSubtotal()" name="val_costo" class="form-control" >
                 </div>
 
                 <!-- SUBTOTAL -->
@@ -146,6 +147,9 @@ if ($response->status == 200) {
                     <input type="number" id="total" name="total" class="form-control" require="{1,2}" readonly>
                 </div>
 
+
+
+
                 <!-- BOTON DE AÑADIR A LA TABLA INFERIOR -->
                 <div class="card-body">
                     <div class="col-md-4 offset-md-4">
@@ -154,11 +158,7 @@ if ($response->status == 200) {
                         </div>
                     </div>
                 </div>
-
             </div>
-
-
-
             <!-- /.card-footer -->
             <div class="card-footer">
                 <table id="movimientoInventariotable1" class="table table-bordered table-striped">
@@ -204,6 +204,9 @@ if ($response->status == 200) {
                 </table>
 
             </div>
+
+
+
             <!-- <div class="card-footer text-right">
             <span class="mr-3">SubTotal 0%</span>
             <input type="number" id="SubTotal" value="0.00" name="SubTotal" class="mr-3" require="{1,2}" readonly>

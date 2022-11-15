@@ -2,17 +2,18 @@
 class MovimientoInventarioController{
 
     public function create(){
+
         date_default_timezone_set("America/Guayaquil");
+        
 
-
-        if(isset($_POST["num_documento"])){
+        if(isset($_POST["cod_inventario"])){
             
-            echo '<script>
+            // echo '<script>
 
-            matPreloader("on");
-            fncSweetAlert("loading", "Loading...", "");
+            // matPreloader("on");
+            // fncSweetAlert("loading", "Loading...", "");
 
-            </script>';
+            // </script>';
 
             if(preg_match('/^[a-zA-Z0-9]{1,3}$/',$_POST["cod_establecimiento"]) &&
             preg_match('/^[0-9]{1,6}$/',$_POST["num_documento"]))
@@ -23,24 +24,55 @@ class MovimientoInventarioController{
                 // }else{
                 //     $_POST["sts_impuesto"] = "C";
                 // }
+                $cod_inventario = json_encode($_POST["cod_inventario"],true);
+                echo '<pre>'; print_r($cod_inventario); echo '</pre>';
+                // if ($cod_inventario = json_encode($_POST["cod_inventario"],true)) {
+                //     echo '<pre>'; print_r("SI VALE TU WEBADA"); echo '</pre>';
+                // }else{
+                //     echo '<pre>'; print_r("NO VALE TU WEBADA"); echo '</pre>';
+                // }
+               
+                
 
                 $data = array(
 
                     "cod_empresa" => $_SESSION["admin"]->cod_empresa,
                     "cod_establecimiento" => trim($_POST["cod_establecimiento"]),
                     "num_documento" => trim($_POST["num_documento"]),
-                    "cod_inventario" => trim($_POST["cod_inventario"]),
+                    "cod_inventario" => $cod_inventario,
                     "qtx_cantidad" => trim($_POST["qtx_cantidad"]),
                     "val_costo" => trim($_POST["val_costo"]),
                     "val_porcentaje_iva" => "12.00"
     
                 );
+
+
+
+                $data1 = array(
+
+                    "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+                    "cod_establecimiento" => trim($_POST["cod_establecimiento"]),
+                    "num_documento" => trim($_POST["num_documento"]),
+                    "cod_documento" => trim($_POST["tipoMovimiento"]),
+                    "fec_documento" => trim($_POST["fec_documento"]),
+                    "txt_observacion" => trim($_POST["txt_descripcion1"]),
+                    "cod_usuario" => $_SESSION["admin"]->cod_usuario,
+                    "fec_actualiza" => trim($_POST["fec_documento"]),
+                    "sts_cabecera_inventario" => "A"
+    
+                );
+
                 //echo '<pre>'; print_r($data); echo '</pre>';
-         
+                $url = "ecmp_cabecera_inventario?token=".$_SESSION["admin"]->token_usuario;
+                $method = "POST";
+                $fields = $data1;
+                $response = CurlController::request($url,$method,$fields);
+
                 $url = "ecmp_detalle_inventario?token=".$_SESSION["admin"]->token_usuario;
                 $method = "POST";
                 $fields = $data;
                 $response = CurlController::request($url,$method,$fields);
+                
                 // echo '<pre>'; print_r($response); echo '</pre>';
                 // return;
       
