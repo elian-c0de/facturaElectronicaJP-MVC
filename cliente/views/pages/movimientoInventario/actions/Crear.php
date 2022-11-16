@@ -21,19 +21,25 @@ if ($response->status == 200) {
 
         <div class="card-header">
             <?php
-            require_once("controllers/movimientoInventario.controller.php");
-            $create = new MovimientoInventarioController();
-            $create->create();
+            // require_once("controllers/movimientoInventario.controller.php");
+            // $create = new MovimientoInventarioController();
+            // $create->create();
             ?>
             <div class="col-md-8 offset-md-2">
 
-                <!-- VALIDAR CODIGO ETABLECIMIENTO -->
+
+            <input type="hidden" class="form-control" name="cod_empresa" id="cod_empresa" value="<?php echo $_SESSION["admin"]->cod_empresa ?>" >
+
+               
+            
+            <!-- VALIDAR CODIGO ETABLECIMIENTO -->
                 <div class="form-group mt-2">
                     <?php
                     require_once("controllers/usuarios.controller.php");
                     $create = new UsuariosController();
                     $create->edit($admin->cod_empresa);
                     ?>
+                    
                     <label for="">Establecimiento:</label>
                     <input type="text" class="form-control"  value="<?php echo $admin->cod_establecimiento ?>" disabled>
                     <div class="valid-feedback">Válido</div>
@@ -70,18 +76,19 @@ if ($response->status == 200) {
                     <input type="date" class="form-control" id="fec_documento" name="fec_documento">
                 </div>
 
-                <!-- DESCIPCION -->
+                <!-- DESCRIPCION -->
                 <div class="form-group mt-2">
                     <label for="">Descripción</label>
-                    <input type="text" name="txt_descripcion1" class="form-control" onchange="validateJS(event,'txt_descripcionConcepto')" pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,125}" required>
+                    <input type="text" name="txt_descripcion1" id="txt_descripcion1" class="form-control" onchange="validateJS(event,'txt_descripcionConcepto')" pattern="[0-9A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,125}" required>
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback"> Por Favor, rellene este campo</div>
                 </div>
 
+                <br>
+                <!-- PARTE DE INGRESO DE MOVIMIENTO DE INVENTARIO -->
+                <br>
 
-
-                <!-- VALIDAR CODIGO INVENTARIO -->
-
+                <!-- CODIGO INVENTARIO -->
                 <div class="form-group mt-2">
                     <label>Código Inventario:</label>
                     <?php
@@ -161,6 +168,8 @@ if ($response->status == 200) {
             </div>
             <!-- /.card-footer -->
             <div class="card-footer">
+
+
                 <table id="movimientoInventariotable1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -180,7 +189,6 @@ if ($response->status == 200) {
                             <td colspan="1" style="text-align:right ">SubTotal 0%</td>
                             <td id="SubTotal0%" style="text-align:right;color:blue "> 0.00</td>
                             <td colspan="2"></td>
-
                         </tr>
                         <tr>
                             <td colspan="3"></td>
@@ -202,7 +210,6 @@ if ($response->status == 200) {
                         </tr>
                     </tfoot>
                 </table>
-
             </div>
 
 
@@ -228,7 +235,7 @@ if ($response->status == 200) {
                 <div class="col-md-8 offset-md-2">
                     <div class="form-group mt-3">
                         <a href="movimientoInventario" class="btn btn-light border text-left">Cancelar</a>
-                        <button type="submit" class="btn bg-dark float-lg-right">Guardar</button>
+                        <button type="button" onclick="obtenerDatos()" class="btn bg-dark float-lg-right">Guardar</button>
                     </div>
                 </div>
             </div>

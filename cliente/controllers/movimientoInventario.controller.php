@@ -4,6 +4,10 @@ class MovimientoInventarioController{
     public function create(){
 
         date_default_timezone_set("America/Guayaquil");
+
+
+        echo '<pre>'; print_r($_POST); echo '</pre>';
+        return;
         
 
         if(isset($_POST["cod_inventario"])){

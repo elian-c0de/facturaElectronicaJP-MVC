@@ -17,7 +17,7 @@ const form= document.getElementById("transactionForm");
     document.getElementById('total').value= ('');
    // form.reset();
    total();
-   obtenerDatos();
+
    };
 
 
@@ -69,47 +69,72 @@ function calcularSubtotal(){
 
 
 function obtenerDatos(){
-  const table =document.getElementById("movimientoInventariotable1"); //Almacenamos la id de la tabla
-  //console.log("table: ", table);
-  
-  
+  const table = document.getElementById("movimientoInventariotable1"); //Almacenamos la id de la tabla
+  var array = [];
+
+  var data = new FormData();
   for (let i = 1; i < table.rows.length-4; i++) {
-    // console.log(table.rows[i].innerHTML);
-    var array = [];
-    // let var1 = table.rows[i].innerHTML;
-    // let var2 = var1.replace("<td>","");
-    // array.push(var2.replace("</td>",","));
+    var hola = "";
     for (let j = 0; j < table.rows[i].cells.length; j++) {
-      array.push(table.rows[i].cells[j].innerHTML);
-      
+      hola = hola + table.rows[i].cells[j].innerHTML + ",";
     }
-    console.log("array: ", array[0]);
-    // console.log("array: ", array[1]);
-    //**************************************** */
-    var array1 = array[0];
-    var arrayJson=JSON.stringify(array1);
-    
-    var url="movimientoInventario.controller.php";
-    // ************* */ metodo 1 de enviar datos a un archivo php*****************
-    // $.post(url,{arrayJson:cod_inventario},function(data){
-    //   if(data!=null){
-    //     console.log("los datos fueron eviados correctamente");
-    //   }else{
-    //     console.log("NO JODAS PABLO, NO SE ENVIARON LOS DATOS");
-    //   }
-    // });
-  //************* */ metodo 2 de enviar datos a un archivo php*****************
-    fetch(url,{
-      method: 'POST',
-      cod_inventario:arrayJson
-      
-    });
-    // console.log("body: ", body);
-    // .then(resp => resp.json())
-    // .then(data => {
-    //   console.log(data);
-    // })
+
+    array.push(hola);
   }
+
+  console.log(array);
+
+
+  for (var i = 0; i < array.length; i++) {
+      data.append('array[]',array[i]);
+    }
+
+ 
+
+
+
+
+
+  // DATOS PARA CREATE 
+  data.append("cod_empresa",localStorage.getItem("cod"));
+  data.append("cod_establecimiento",document.getElementById("cod_establecimiento").value);
+  data.append("num_documento",3);
+  data.append("token",localStorage.getItem("token_user"));
+  data.append("cod_usuario",localStorage.getItem("codus"));
+
+  //INVENTARIO CABECERA
+  data.append("cod_documento",document.getElementById("tipoMovimiento").value);
+  data.append("fec_actualiza",document.getElementById("fec_documento").value);
+  data.append("txt_descripcion",document.getElementById("txt_descripcion1").value);
+
+  // //DATOS DE LA TABLA
+  // data.append("data",array);
+  console.log("data: ", data);
+ 
+  
+
+  $.ajax({
+    url: "controllers/movimientoINV.controllers.php",
+    method: "POST",
+    data: data,
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function(response){
+      console.log("response: ", response);
+      if(response == 200){
+        fncSweetAlert(
+          "success",
+          "el registro a sido borrado correctamente",
+          "clientes"
+        );
+      }else{
+        fncNotie(3,"error deleating the record")
+      }
+    }
+  })
+
+
 }
 
 

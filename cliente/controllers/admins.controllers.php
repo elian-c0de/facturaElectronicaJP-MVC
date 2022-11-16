@@ -50,6 +50,7 @@ class AdminsController{
                     fncFormatInputs();
                     localStorage.setItem("token_user","'.$response->result[0]->token_usuario.'");
                     localStorage.setItem("cod","'.$response->result[0]->cod_empresa.'");
+                    localStorage.setItem("codus","'.$response->result[0]->cod_usuario.'");
                     window.location = "'.$_SERVER["REQUEST_URI"].'"
                     
                     
