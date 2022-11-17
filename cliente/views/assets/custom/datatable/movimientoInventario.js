@@ -3,7 +3,7 @@
 execDataTable();
 function execDataTable () {
 
-    var url = "ajax/data-moviminetoInventario.php?&between1="+$("#between1").val()+"&between2="+$("#between2").val()+"&token="+localStorage.getItem("token_user")+"&code="+localStorage.getItem("cod");
+    var url = "ajax/data-movimientoInventario.php?&between1="+$("#between1").val()+"&between2="+$("#between2").val()+"&token="+localStorage.getItem("token_user")+"&code="+localStorage.getItem("cod");
     var columns = [
 
    
@@ -76,7 +76,7 @@ function execDataTable () {
     
         $("#movimientoInventarioTable").on("draw.dt",function(){
             setTimeout(() => {
-                movimientoInventarioTable.buttons().container().appendTo('#movimientoInventarioTable_wrapper .col-md-6:eq(0)');
+              movimientoInventarioTable.buttons().container().appendTo('#movimientoInventarioTable_wrapper .col-md-6:eq(0)');
             }, 100);
     
         })
@@ -106,7 +106,7 @@ function edit(){
     var date = document.getElementById("movimientoInventarioID").value;
     var date2 = document.getElementById("movimientoInventarioID1").value;
     if(date != "" && date2 != ""){
-      window.location.href = ("retenciondeImpuestos/Editar/"+btoa(date+"~"+date2+"~"+localStorage.getItem("token_user")));
+      window.location.href = ("movimientoInventario/Editar/"+btoa(date+"~"+date2+"~"+localStorage.getItem("token_user")));
     }
   }
 

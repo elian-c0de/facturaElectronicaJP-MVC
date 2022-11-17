@@ -6,8 +6,8 @@ class MovimientoInventarioController{
         date_default_timezone_set("America/Guayaquil");
 
 
-        echo '<pre>'; print_r($_POST); echo '</pre>';
-        return;
+        // echo '<pre>'; print_r($_POST); echo '</pre>';
+        // return;
         
 
         if(isset($_POST["cod_inventario"])){
@@ -23,27 +23,14 @@ class MovimientoInventarioController{
             preg_match('/^[0-9]{1,6}$/',$_POST["num_documento"]))
 
             {
-                // if(isset($_POST["sts_impuesto"])){
-                //     $_POST["sts_impuesto"] = "A";
-                // }else{
-                //     $_POST["sts_impuesto"] = "C";
-                // }
-                $cod_inventario = json_encode($_POST["cod_inventario"],true);
-                echo '<pre>'; print_r($cod_inventario); echo '</pre>';
-                // if ($cod_inventario = json_encode($_POST["cod_inventario"],true)) {
-                //     echo '<pre>'; print_r("SI VALE TU WEBADA"); echo '</pre>';
-                // }else{
-                //     echo '<pre>'; print_r("NO VALE TU WEBADA"); echo '</pre>';
-                // }
-               
-                
+                              
 
                 $data = array(
 
                     "cod_empresa" => $_SESSION["admin"]->cod_empresa,
                     "cod_establecimiento" => trim($_POST["cod_establecimiento"]),
                     "num_documento" => trim($_POST["num_documento"]),
-                    "cod_inventario" => $cod_inventario,
+                    "cod_inventario" => $_POST["cod_inventario"],
                     "qtx_cantidad" => trim($_POST["qtx_cantidad"]),
                     "val_costo" => trim($_POST["val_costo"]),
                     "val_porcentaje_iva" => "12.00"

@@ -126,7 +126,7 @@ function obtenerDatos(){
         fncSweetAlert(
           "success",
           "el registro a sido borrado correctamente",
-          "clientes"
+          "movimientoInventario"
         );
       }else{
         fncNotie(3,"error deleating the record")

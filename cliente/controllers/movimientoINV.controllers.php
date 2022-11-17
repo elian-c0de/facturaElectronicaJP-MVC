@@ -5,6 +5,7 @@ require_once ("../controllers/curl.controller.php");
 class CreateController{
 
    public $array;
+   
    public $cod_empresa;
    public $cod_establecimiento;
    public $num_documento;
@@ -18,10 +19,29 @@ class CreateController{
  
 
     public function dataCreate(){
+        // $variable = $this->array;
+        // foreach ($variable as $key => $value) {
+        //     list($valor1, $valor2, $valor3, $valor4, $valor5, $valor6, $valor7) = $variable;
+        // echo "Valor1=$value Valor2=$value Valor3=$value Valor4=$value Valor5=$value Valor6=$value Valor7=$value";
+        // return;
+             
+        // }
+        
+        // $data1 = array(
+            
 
+        //     "cod_empresa" => $_SESSION["admin"]->cod_empresa,
+        //     "cod_establecimiento" => trim($variable[1]),
+        //     "num_documento" => trim($variable[2]),
+        //     "cod_inventario" => $variable[3],
+        //     "qtx_cantidad" => trim($variable[4]),
+        //     "val_costo" => trim($variable[5]),
+        //     "val_porcentaje_iva" => "12.00"
 
-      
-  
+        // );
+        // echo '<pre>'; print_r($data1); echo '</pre>';
+        // return;
+
          $data = array(
                 
 
@@ -37,7 +57,7 @@ class CreateController{
 
             );
             
-            echo '<pre>'; print_r( $data); echo '</pre>';
+            echo '<pre>'; print_r( $data ); echo '</pre>';
 
         //  $url = "ecmp_detalle_inventario?token=".$this->token;
         //  $method = "POST";
@@ -88,13 +108,3 @@ $validate = new CreateController();
  $validate->dataCreate();
 
 }
-
-
-
-
-
-
-
-
-
-?>

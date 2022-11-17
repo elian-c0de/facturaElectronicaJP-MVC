@@ -38,7 +38,7 @@ class DataTableController
                     $search = str_replace(" ","_",$_POST['search']['value']);
                     foreach ($linkTo as $key => $value) {
 
-                        $url = "ecmp_detalle_inventario?select=*&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=num_documento";
+                        $url = "ecmp_detalle_inventario?select=*&linkTo=".$value."&search=".$search."&orderBy=".$orderBy."&orderMode=".$orderType;
                         $data = CurlController::request($url, $method, $fields)->result;
                         // echo '<pre>'; print_r($url); echo '</pre>'; 
                         
@@ -58,7 +58,7 @@ class DataTableController
                 }
             }else{ 
             //seleccionar datos
-            $url = "ecmp_detalle_inventario?select=*&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=num_documento";
+            $url = "ecmp_detalle_inventario?select=*&orderBy=".$orderBy."&orderMode=".$orderType."&startAt=".$start."&endAt=".$length."&orderAt=cod_empresa&linkTo=cod_empresa&equalTo=".$_GET["code"];
             
             $data = CurlController::request($url, $method, $fields)->result;
             // echo '<pre>'; print_r($data); echo '</pre>'; 
@@ -69,7 +69,9 @@ class DataTableController
                 $recordsFiltered = $totalData;
             }
         }
+        
         if(empty($data)){
+            
             echo '{"data": []}';
             return;
         }
@@ -82,26 +84,26 @@ class DataTableController
 
                 //recorrer la data 
                 foreach ($data as $key => $value) {
-
-                    if($_GET["text"] == "flat"){
-                        $actions = "";
+                    
+                    // if($_GET["text"] == "flat"){
+                    //     $actions = "";
                         
-                    }else{
-                        //$actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
-                        $actions = "<a href='retenciondeImpuestos/edit/" . base64_encode($value->cod_establecimiento . "~" . $value->num_documento . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+                    // }else{
+                    //     //$actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
+                    //     $actions = "<a href='movimientoInventario/Editar/" . base64_encode($value->cod_establecimiento . "~" . $value->num_documento . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
                         
-                        <i class='fas fa-pencil-alt'></i>
+                    //     <i class='fas fa-pencil-alt'></i>
 
-                        </a> 
+                    //     </a> 
                         
-                        <a class='btn btn-danger btn-sm rounded-circle removeItem1' idItem=" . base64_encode($value->cod_establecimiento . "~" . $value->num_documento . "~" . $_GET["token"]) . " table='ecmp_detalle_inventario' column='cod_establecimiento' column1='num_documento' page='retenciondeImpuestos'>
+                    //     <a class='btn btn-danger btn-sm rounded-circle removeItem1' idItem=" . base64_encode($value->cod_establecimiento . "~" . $value->num_documento . "~" . $_GET["token"]) . " table='ecmp_detalle_inventario' column='cod_establecimiento' column1='num_documento' page='retenciondeImpuestos'>
 
-                        <i class='fas fa-trash-alt'></i>
+                    //     <i class='fas fa-trash-alt'></i>
 
-                        </a>";
+                    //     </a>";
 
-                    $actions = TemplateController::htmlClean($actions);
-                    }
+                    // $actions = TemplateController::htmlClean($actions);
+                    // }
                     $cod_establecimiento = $value->cod_establecimiento;
                     $num_documento = $value->num_documento;
                     $cod_inventario = $value->cod_inventario;
@@ -115,8 +117,7 @@ class DataTableController
                         "cod_inventario":"'.$cod_inventario.'",
                         "qtx_cantidad":"'.$qtx_cantidad.'",
                         "val_costo":"'.$val_costo.'",
-                        "val_porcentaje_iva":"'.$val_porcentaje_iva.'",
-                        "actions":"'.$actions.'"
+                        "val_porcentaje_iva":"'.$val_porcentaje_iva.'"
                     },';
                 }
 
