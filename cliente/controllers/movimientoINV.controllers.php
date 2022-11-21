@@ -37,7 +37,7 @@ class CreateController
         // }
         // return;
         $array = [];
-        foreach ($variable as $clave=> $value) {
+        foreach ($variable as $variable => $value) {
             // $var = $value;
             // echo '</pre>';
             // print_r($var);
@@ -45,20 +45,42 @@ class CreateController
             //echo "   {$value} ";
             // $array['cod_inventario'] = $value;
             $arrexp = explode(",", $value);
-            // $arrexp = explode(",", str_replace($clave.',', '', $value));
+
+            //ELIMINAMOS EL UTLIMO CAMPO DEL ARRAY PORQUE MOSTRABA VACIO
+            $eliminacionUltimocampoVacio = array_pop($arrexp);
+
+                if (is_array ($arrexp))
+                {
+                    
+                    foreach ($arrexp as $variable2=>$value2)
+                    {
+                        
+                        echo "Llave final: ".$variable2. " Valor final: ".$value2."\n";
+                    }  
+                        echo "\n";
             
-                // $arrexp = explode(",", str_replace($clave.',', '', $value));
-                unset($arrexp[$value[8]]);
-        
-            echo '<pre>'; print_r( $arrexp); echo '</pre>';
+            
+                }else{
+                    echo "Llave: ".$variable. " Valor: ".$value."\n";
+                }
+            
+
+           
+            // $arrexp = explode(",", str_replace($clave.',', '', $value));
+            //list($Codigo, $Descripcion, $Cantidad,$Costo,$Subtotal,$IVA,$Total) = $arrexp;
+
+            // echo "ARRAY:  CODIGO:$Codigo DESCRIPCIO:$Descripcion CATIDAD: $Cantidad COSTO:$Costo SUBTOTAL:$Subtotal IVA:$IVA TOTAL:$Total <br>";
+            // $arrexp = explode(",", str_replace($clave.',', '', $value));
+            //unset($arrexp[$value[8]]);
+
             // var_dump( $arrexp);
             // print_r($variable);
-            
+
 
             // for ($i=0; $i < $clave; $i++) { 
             //     echo "{$clave} => {$value} ";
             // }
-            
+
         }
 
         return;

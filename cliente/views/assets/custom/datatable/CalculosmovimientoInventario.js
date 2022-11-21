@@ -84,7 +84,6 @@ function obtenerDatos(){
 
   console.log(array);
 
-
   for (var i = 0; i < array.length; i++) {
       data.append('array[]',array[i]);
     }
