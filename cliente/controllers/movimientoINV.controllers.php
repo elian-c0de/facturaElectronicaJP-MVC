@@ -43,8 +43,15 @@ class CreateController
             // print_r($var);
             // echo '</pre>';
             //echo "   {$value} ";
-            $array['cod_inventario'] = $value;
-            var_dump( $array);
+            // $array['cod_inventario'] = $value;
+            $arrexp = explode(",", $value);
+            // $arrexp = explode(",", str_replace($clave.',', '', $value));
+            
+                // $arrexp = explode(",", str_replace($clave.',', '', $value));
+                unset($arrexp[$value[8]]);
+        
+            echo '<pre>'; print_r( $arrexp); echo '</pre>';
+            // var_dump( $arrexp);
             // print_r($variable);
             
 
