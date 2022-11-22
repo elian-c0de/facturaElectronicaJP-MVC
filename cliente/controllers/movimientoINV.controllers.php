@@ -54,7 +54,7 @@ class CreateController
                     
                     foreach ($arrexp as $variable2=>$value2)
                     {
-                        
+                       
                         echo "Llave final: ".$variable2. " Valor final: ".$value2."\n";
                     }  
                         echo "\n";
