@@ -23,8 +23,6 @@ class CreateController
     {
 
         $variable = $this->array;
-
-
         // //saco el numero de elementos
         // $longitud = count($variable);
 
@@ -37,68 +35,33 @@ class CreateController
         // }
         // return;
         $array = [];
-        foreach ($variable as $variable => $value) {
-            // $var = $value;
-            // echo '</pre>';
-            // print_r($var);
-            // echo '</pre>';
-            //echo "   {$value} ";
-            // $array['cod_inventario'] = $value;
+        foreach ($variable as $key => $value) {
             $arrexp = explode(",", $value);
-
-            //ELIMINAMOS EL UTLIMO CAMPO DEL ARRAY PORQUE MOSTRABA VACIO
-            $eliminacionUltimocampoVacio = array_pop($arrexp);
-
-                if (is_array ($arrexp))
-                {
-                    
-                    foreach ($arrexp as $variable2=>$value2)
-                    {
-                       
-                        echo "Llave final: ".$variable2. " Valor final: ".$value2."\n";
-                    }  
-                        echo "\n";
-            
-            
-                }else{
-                    echo "Llave: ".$variable. " Valor: ".$value."\n";
-                }
-            
-
-           
-            // $arrexp = explode(",", str_replace($clave.',', '', $value));
-            //list($Codigo, $Descripcion, $Cantidad,$Costo,$Subtotal,$IVA,$Total) = $arrexp;
-
-            // echo "ARRAY:  CODIGO:$Codigo DESCRIPCIO:$Descripcion CATIDAD: $Cantidad COSTO:$Costo SUBTOTAL:$Subtotal IVA:$IVA TOTAL:$Total <br>";
-            // $arrexp = explode(",", str_replace($clave.',', '', $value));
-            //unset($arrexp[$value[8]]);
-
-            // var_dump( $arrexp);
-            // print_r($variable);
+            // echo '<pre>';
+            // print_r($arrexp);
+            // echo '</pre>';
+            $data1 = array(
 
 
-            // for ($i=0; $i < $clave; $i++) { 
-            //     echo "{$clave} => {$value} ";
-            // }
 
+                "cod_empresa" => trim($this->cod_empresa),
+                "cod_establecimiento" => trim($this->cod_establecimiento),
+                "num_documento" => trim($this->num_documento),
+                "cod_inventario" => trim($arrexp[0]),
+                "qtx_cantidad" => trim($arrexp[2]),
+                "val_costo" => trim($arrexp[3]),
+                "val_porcentaje_iva" => "12.00"
+
+            );
+            // echo '<pre>';
+            // print_r($data1);
+            // echo '</pre>';
+            $url = "ecmp_detalle_inventario?token=".$this->token;
+            $method = "POST";
+            $fields = $data1;
+            $response = CurlController::request($url, $method, $fields);
+             echo '<pre>'; print_r($response); echo '</pre>';
         }
-
-        return;
-
-        // $data1 = array(
-
-
-        //     "cod_empresa" => $_SESSION["admin"]->cod_empresa,
-        //     "cod_establecimiento" => trim($variable[1]),
-        //     "num_documento" => trim($variable[2]),
-        //     "cod_inventario" => $variable[3],
-        //     "qtx_cantidad" => trim($variable[4]),
-        //     "val_costo" => trim($variable[5]),
-        //     "val_porcentaje_iva" => "12.00"
-
-        // );
-        // echo '<pre>'; print_r($data1); echo '</pre>';
-        // return;
 
         $data = array(
 
@@ -115,30 +78,16 @@ class CreateController
 
         );
 
-        echo '<pre>';
-        print_r($data);
-        echo '</pre>';
+        $url = "ecmp_cabecera_inventario?token=".$this->token;
+        $method = "POST";
+        $fields = $data;
+        $response = CurlController::request($url, $method, $fields);
+        if($response == null){
+            echo "400";
+        }else{
+            echo $response->status;
 
-        //  $url = "ecmp_detalle_inventario?token=".$this->token;
-        //  $method = "POST";
-        //  $fields = $data;
-        //  $response = CurlController::request($url,$method,$fields);
-
-
-
-        //     if($response == null){
-        //         echo "400";
-        //     }else{
-        //         echo $response->status;
-
-        //     }
-
-        // }else{
-        //     echo 404;
-        // }
-
-
-
+        }
     }
 }
 
