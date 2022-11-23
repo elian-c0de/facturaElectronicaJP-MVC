@@ -23,18 +23,6 @@ class CreateController
     {
 
         $variable = $this->array;
-        // //saco el numero de elementos
-        // $longitud = count($variable);
-
-        // //Recorro todos los elementos
-        // for ($i = 0; $i < $longitud; $i++) {
-        //     //saco el valor de cada elemento
-        //     // echo $variable[$i];
-        //     echo '<pre>'; print_r($variable[$i]); echo '</pre>';
-
-        // }
-        // return;
-        $array = [];
         foreach ($variable as $key => $value) {
             $arrexp = explode(",", $value);
             // echo '<pre>';
@@ -60,7 +48,6 @@ class CreateController
             $method = "POST";
             $fields = $data1;
             $response = CurlController::request($url, $method, $fields);
-             echo '<pre>'; print_r($response); echo '</pre>';
         }
 
         $data = array(
