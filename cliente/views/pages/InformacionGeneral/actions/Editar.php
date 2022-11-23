@@ -54,7 +54,7 @@ if ($response->status == 200) {
 
                 <!-- TEXT RAZON SOCIAL CON VALIDACION TERMINADO -->
                 <div class="form-group mt-2">
-                    <label>Razon Social</label>
+                    <label>Razón Social</label>
                     <input type="text" name="nom_empresa" value="<?php echo trim($admin->nom_empresa) ?>"  class="form-control"
                     onchange="validateJS(event,'nom_empresa')"
                     pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ0-9 ]{1,100}"
@@ -79,7 +79,7 @@ if ($response->status == 200) {
 
                 <!-- TXT DIRECCION CON VALIDACION TERMINADO -->
                 <div class="form-group mt-2">
-                    <label for="">Direccion</label>
+                    <label for="">Dirección</label>
                     <input type="text" class="form-control" value="<?php echo $admin->txt_direccion ?>" 
                      name="txt_direccion" 
                      pattern= '[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,255}'
@@ -91,7 +91,7 @@ if ($response->status == 200) {
 
                 <!-- NUMERO DE TELEFONO CON VALIDACION TERMINADO -->
                 <div class="form-group mt-2">
-                    <label for="">Telefono</label>
+                    <label for="">Teléfono</label>
                     <input type="phone" class="form-control" value="<?php echo $admin->num_telefono ?>"  
                     pattern='[-\\(\\)\\0-9 ]{1,10}' 
                     onchange="validateJS(event,'num_telefono')"
@@ -103,7 +103,7 @@ if ($response->status == 200) {
 
                 <!-- EMAIL CON VALIDACION TERMINADO -->
                 <div class="form-group mt-2">
-                    <label for="">Direccion Email</label>
+                    <label for="">Dirección Email</label>
                     <input type="text" class="form-control" name="txt_email" value="<?php echo str_replace(" ","",$admin->txt_email) ?>"  
                     pattern="[.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}"
                     onchange="validateJS(event,'txt_email')" 
@@ -123,7 +123,7 @@ if ($response->status == 200) {
                 
                 <!-- NUM AGENTE DE RETENCION -->
                 <div class="form-group mt-2">
-                    <label for="">#Res. Agente de retencion</label>
+                    <label for="">#Res. Agente de retención</label>
                     <input type="text" class="form-control" 
                     name="num_res_agente_ret" value="<?php echo str_replace(" ","",$admin->num_res_agente_ret) ?>"  
                     onchange="validateJS(event,'num_res-agente_ret')" 
@@ -134,7 +134,7 @@ if ($response->status == 200) {
                 </div>
 
                 <div class="form-group mt-2">
-                    <label for="">Regimen Micro Empresa</label>
+                    <label for="">Régimen Microempresa</label>
                     <br>
                     <!-- <input type="text" class="form-control" -->
                     <input type="checkbox" name="sts_contribuyente_rme" data-on-text="SI" data-off-text="NO" <?php echo $admin->sts_contribuyente_rme == "S" ? 'checked' : '' ?>  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
@@ -143,7 +143,7 @@ if ($response->status == 200) {
 
                 <!-- UBICACION LOGO CON VALIDACION TERMINADO-->
                 <div class="form-group mt-2">
-                    <label for="">Ubicacion Logo</label>
+                    <label for="">Ubicación Logo</label>
                     <input type="text" class="form-control"  
                     value="<?php echo trim($admin->txt_path_logo) ?>"
                     name="txt_path_logo"
