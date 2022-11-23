@@ -17,6 +17,7 @@ const form= document.getElementById("transactionForm");
     document.getElementById('total').value= ('');
    // form.reset();
    total();
+
    };
 
 
@@ -27,10 +28,10 @@ function insertRowInTransactionTable(transactionFormData){
    let newTransactionRowRef = transactionTableRef.insertRow(1);
 
    let newTypeCellRef = newTransactionRowRef.insertCell(0);
-   newTypeCellRef.textContent = transactionFormData.get("codInven")
+   newTypeCellRef.textContent = transactionFormData.get("cod_inventario")
 
    newTypeCellRef = newTransactionRowRef.insertCell(1);
-   newTypeCellRef.textContent = transactionFormData.get("descrip")
+   newTypeCellRef.textContent = transactionFormData.get("txt_descripcion")
 
    newTypeCellRef = newTransactionRowRef.insertCell(2);
    newTypeCellRef.textContent = transactionFormData.get("qtx_cantidad")
@@ -65,13 +66,86 @@ function calcularSubtotal(){
    }
    
 }
+
+
+function obtenerDatos(){
+  const table = document.getElementById("movimientoInventariotable1"); //Almacenamos la id de la tabla
+  var array = [];
+
+  var data = new FormData();
+  for (let i = 1; i < table.rows.length-4; i++) {
+    var hola = "";
+    for (let j = 0; j < table.rows[i].cells.length; j++) {
+      hola = hola + table.rows[i].cells[j].innerHTML + ",";
+    }
+
+    array.push(hola);
+  }
+
+  console.log(array);
+
+  for (var i = 0; i < array.length; i++) {
+      data.append('array[]',array[i]);
+    }
+
+ 
+
+
+
+
+
+  // DATOS PARA CREATE 
+  data.append("cod_empresa",localStorage.getItem("cod"));
+  data.append("cod_establecimiento",document.getElementById("cod_establecimiento").value);
+  data.append("num_documento",3);
+  data.append("token",localStorage.getItem("token_user"));
+  data.append("cod_usuario",localStorage.getItem("codus"));
+
+  //INVENTARIO CABECERA
+  data.append("cod_documento",document.getElementById("tipoMovimiento").value);
+  data.append("fec_actualiza",document.getElementById("fec_documento").value);
+  data.append("txt_descripcion",document.getElementById("txt_descripcion1").value);
+
+  // //DATOS DE LA TABLA
+  // data.append("data",array);
+  console.log("data: ", data);
+ 
+  
+
+  $.ajax({
+    url: "controllers/movimientoINV.controllers.php",
+    method: "POST",
+    data: data,
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function(response){
+      console.log("response: ", response);
+      if(response == 200){
+        fncSweetAlert(
+          "success",
+          "el registro a sido borrado correctamente",
+          "movimientoInventario"
+        );
+      }else{
+        fncNotie(3,"error deleating the record")
+      }
+    }
+  })
+
+
+}
+
+
+
+
 function total(){
   let total1 = 0;
   let total2 = 0;
   let total3 = 0;
   const table =document.getElementById("movimientoInventariotable1"); //Almacenamos la id de la tabla
   for (let i = 1; i < table.rows.length-4; i++) { //hacemos un recorrido por la tabla y no contamos la ultima fila (-N)
-    // console.log(table.rows[i].cells[4].innerHTML);
+    //console.log(table.rows[i].innerHTML);
     let rowValue = table.rows[i].cells[4].innerHTML; // lo almacenamos en una variable el resultado de la columna [N]
     total1 += Number(rowValue); // sumamos los valores
     
@@ -226,7 +300,7 @@ window.onload = function(){
      dia='0'+dia; //agrega cero si el menor de 10
    if(mes<10)
      mes='0'+mes //agrega cero si el menor de 10
-   document.getElementById('fechaActual').value=ano+"-"+mes+"-"+dia;
+   document.getElementById('fec_documento').value=ano+"-"+mes+"-"+dia;
  
    // var num_documento= document.getElementById("num_documento");
    // if (num_documento==" ") {
