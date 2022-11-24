@@ -22,56 +22,6 @@ class CreateController
 
     public function dataCreate()
     {
-
-        $variable = $this->array;
-
-
-        // //saco el numero de elementos
-        // $longitud = count($variable);
-
-        // //Recorro todos los elementos
-        // for ($i = 0; $i < $longitud; $i++) {
-        //     //saco el valor de cada elemento
-        //     // echo $variable[$i];
-        //     echo '<pre>'; print_r($variable[$i]); echo '</pre>';
-
-        // }
-        // return;
-        $array = [];
-        foreach ($variable as $clave=> $value) {
-            // $var = $value;
-            // echo '</pre>';
-            // print_r($var);
-            // echo '</pre>';
-            //echo "   {$value} ";
-            $array['cod_inventario'] = $value;
-            var_dump( $array);
-            // print_r($variable);
-            
-
-            // for ($i=0; $i < $clave; $i++) { 
-            //     echo "{$clave} => {$value} ";
-            // }
-            
-        }
-
-        return;
-
-        // $data1 = array(
-
-
-        //     "cod_empresa" => $_SESSION["admin"]->cod_empresa,
-        //     "cod_establecimiento" => trim($variable[1]),
-        //     "num_documento" => trim($variable[2]),
-        //     "cod_inventario" => $variable[3],
-        //     "qtx_cantidad" => trim($variable[4]),
-        //     "val_costo" => trim($variable[5]),
-        //     "val_porcentaje_iva" => "12.00"
-
-        // );
-        // echo '<pre>'; print_r($data1); echo '</pre>';
-        // return;
-
         $data = array(
 
 
@@ -87,30 +37,47 @@ class CreateController
 
         );
 
-        echo '<pre>';
-        print_r($data);
-        echo '</pre>';
+        $url = "ecmp_cabecera_inventario?token=".$this->token;
+        $method = "POST";
+        $fields = $data;
+        $response = CurlController::request($url, $method, $fields);
 
-        //  $url = "ecmp_detalle_inventario?token=".$this->token;
-        //  $method = "POST";
-        //  $fields = $data;
-        //  $response = CurlController::request($url,$method,$fields);
-
-
-
-        //     if($response == null){
-        //         echo "400";
-        //     }else{
-        //         echo $response->status;
-
-        //     }
-
-        // }else{
-        //     echo 404;
-        // }
+        $variable = $this->array;
+        foreach ($variable as $key => $value) {
+            $arrexp = explode(",", $value);
+            // echo '<pre>';
+            // print_r($arrexp);
+            // echo '</pre>';
+            $data1 = array(
 
 
 
+                "cod_empresa" => trim($this->cod_empresa),
+                "cod_establecimiento" => trim($this->cod_establecimiento),
+                "num_documento" => trim($this->num_documento),
+                "cod_inventario" => trim($arrexp[0]),
+                "qtx_cantidad" => trim($arrexp[2]),
+                "val_costo" => trim($arrexp[3]),
+                "val_porcentaje_iva" => "12.00"
+
+            );
+            // echo '<pre>';
+            // print_r($data1);
+            // echo '</pre>';
+            $url = "ecmp_detalle_inventario?token=".$this->token;
+            $method = "POST";
+            $fields = $data1;
+            $response = CurlController::request($url, $method, $fields);
+            // echo '<pre>'; print_r($response); echo '</pre>';
+        }
+
+       
+        if($response == null){
+            echo "400";
+        }else{
+            echo $response->status;
+
+        }
     }
 }
 

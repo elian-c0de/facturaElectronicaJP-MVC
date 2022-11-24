@@ -169,7 +169,7 @@ class InventarioController
     }
 
     public function cod_inventario(){
-        $url = "ecmp_inventario?linkTo=cod_empresa&equalTo=".$_SESSION['admin']->cod_empresa;
+        $url = "ecmp_item_local?linkTo=cod_empresa,cod_establecimiento&equalTo=".$_SESSION['admin']->cod_empresa.",".trim($_SESSION['admin']->cod_establecimiento);
         $method = "GET";
         $fields = array();
         $response = CurlController::request($url,$method,$fields)->result;

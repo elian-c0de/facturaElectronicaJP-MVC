@@ -57,7 +57,7 @@ if ($response->status == 200) {
 
         <!-- NUMERO DE IDENTIFICACION -->
         <div class="form-group mt-2">
-          <label>Razon Social</label>
+          <label>Razón Social</label>
           <input type="text" name="num_id" value="<?php echo $admin->nom_empresa?>" disabled class="form-control">
           <div class="valid-feedback">Valid.</div>
           <div class="invalid-feedback">Por favor, rellene este campo</div>
@@ -74,7 +74,7 @@ if ($response->status == 200) {
 
         <!-- CODIGO DE USUARIO -->
         <div class="form-group mt-2">
-          <label for="">Direccion</label>
+          <label for="">Dirección</label>
           <input type="text" class="form-control" value="<?php echo $admin->txt_direccion ?>"  disabled required name="nom_persona_nombre" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,100}">
           <div class="valid-feedback">Válido</div>
           <div class="invalid-feedback">Por favor, rellene este campo</div>
@@ -82,14 +82,14 @@ if ($response->status == 200) {
 
         <!-- DIRECCION -->
         <div class="form-group mt-2">
-          <label for="">Telefono</label>
+          <label for="">Teléfono</label>
           <input type="text" class="form-control" value="<?php echo $admin->num_telefono ?>" disabled pattern='[-\\(\\)\\=\\%\\&\\$\\;\\_\\*\\"\\#\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]{1,100}' name="txt_direccion" required value="<?php echo $admin->txt_direccion ?>">
           <div class="valid-feedback">Válido</div>
           <div class="invalid-feedback">Por favor, rellene este campo</div>
         </div>
 
         <div class="form-group mt-2">
-          <label for="">Direccion Email</label>
+          <label for="">Dirección Email</label>
           <input type="text" class="form-control" name="num_telefono" value="<?php echo $admin->txt_email ?>" disabled pattern="[-\\(\\)\\0-9 ]{1,15}" required>
           <div class="valid-feedback">Válido</div>
           <div class="invalid-feedback">Por favor, rellene este campo</div>
@@ -104,14 +104,14 @@ if ($response->status == 200) {
         </div>
 
         <div class="form-group mt-2">
-          <label for="">#Res. Agente de retencion</label>
+          <label for="">#Res. Agente de retención</label>
           <input type="text" class="form-control" name="num_telefono" value="<?php echo $admin->num_res_agente_ret ?>" disabled pattern="[-\\(\\)\\0-9 ]{1,15}" required>
           <div class="valid-feedback">Válido</div>
           <div class="invalid-feedback">Por favor, rellene este campo</div>
         </div>
 
         <div class="form-group mt-2">
-          <label for="">Regimen Micro Empresa</label>
+          <label for="">Régimen Microempresa</label>
           <br>
           <!-- <input type="text" class="form-control" -->
           <input type="checkbox" name="sts_cliente" data-on-text="SI" data-off-text="NO" <?php echo $admin->sts_contribuyente_rme == "S" ? 'checked':'' ?> disabled  data-bootstrap-switch data-off-color="light" data-on-color="dark" data-handle-width="75">
@@ -120,7 +120,7 @@ if ($response->status == 200) {
 
 
         <div class="form-group mt-2">
-          <label for="">Ubicacion Logo</label>
+          <label for="">Ubicación Logo</label>
           <input type="text" class="form-control" disabled value="<?php echo $admin->txt_path_logo?>"  >
           <div class="valid-feedback"></div>
           <div class="invalid-feedback">Por favor, rellene este campo</div>
