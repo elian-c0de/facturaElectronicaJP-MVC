@@ -5,7 +5,6 @@ require_once("../controllers/curl.controller.php");
 class CreateController
 {
 
-    
     public $array;
 
     public $cod_empresa;
