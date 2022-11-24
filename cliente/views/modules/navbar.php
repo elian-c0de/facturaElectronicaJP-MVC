@@ -9,18 +9,18 @@
       <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Procesos Especiales</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-            <a href="informacionGeneral" class="dropdown-item"><i class=" fa-solid fa-user  pl-1 pr-1"></i>Informacion general</a>
+            <a href="informacionGeneral" class="dropdown-item"><i class=" fa-solid fa-user  pl-1 pr-1"></i>Información general</a>
             <a href="establecimientos" class="dropdown-item"><i class=" fa-solid fa-shop mr-1"></i>Establecimientos</a>
-            <a href="puntosEmision" class="dropdown-item"><i class=" fa-solid fa-cart-shopping mr-1"></i>Puntos de emision</a>
+            <a href="puntosEmision" class="dropdown-item"><i class=" fa-solid fa-cart-shopping mr-1"></i>Puntos de emisión</a>
             <a href="cajas" class="dropdown-item"><i class="fa-solid fa-cash-register mr-1"></i>Cajas</a>
             <li class="dropdown-divider"></li>
             <a href="conceptos" class="dropdown-item"><i class="fa-solid fa-circle-info mr-1"></i>Conceptos</a>
             <a href="formadepago" class="dropdown-item"><i class="fa-solid fa-money-check-dollar mr-1"></i>Formas de pago</a>
-            <a href="parametros" class="dropdown-item"><i class="fa-solid fa-sliders mr-1"></i>Parametros</a>
-            <a href="retenciondeImpuestos" class="dropdown-item"><i class="fa-solid fa-handshake-simple mr-1"></i>Tipos de retencion de impuestos</a>
+            <a href="parametros" class="dropdown-item"><i class="fa-solid fa-sliders mr-1"></i>Parámetros</a>
+            <a href="retenciondeImpuestos" class="dropdown-item"><i class="fa-solid fa-handshake-simple mr-1"></i>Tipos de retención de impuestos</a>
             <li class="dropdown-divider"></li>
             <a href="tipoprecio" class="dropdown-item"><i class="fa-solid fa-hand-holding-dollar mr-1"></i>Tipos de precio</a>
-            <a href="lineasdeproducto" class="dropdown-item"><i class="fa-solid fa-diagram-next mr-1"></i>Lineas de producto</a>
+            <a href="lineasdeproducto" class="dropdown-item"><i class="fa-solid fa-diagram-next mr-1"></i>Líneas de producto</a>
             <a href="sublineaproducto" class="dropdown-item"><i class="fa-solid fa-diagram-predecessor mr-1"></i>Sublinea de producto</a>
             <a href="marcas" class="dropdown-item"><i class="fa-solid fa-copyright mr-1"></i>Marcas</a>
             <li class="dropdown-divider"></li>
