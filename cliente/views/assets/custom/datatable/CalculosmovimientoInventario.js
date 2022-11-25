@@ -124,11 +124,11 @@ function obtenerDatos(){
       if(response == 200){
         fncSweetAlert(
           "success",
-          "el registro a sido borrado correctamente",
+          "el registro a sido ingresado correctamente",
           "movimientoInventario"
         );
       }else{
-        fncNotie(3,"error deleating the record")
+        fncNotie(3,"Error al ingresar el registro")
       }
     }
   })

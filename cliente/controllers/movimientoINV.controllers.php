@@ -21,6 +21,25 @@ class CreateController
 
     public function dataCreate()
     {
+        $data = array(
+
+
+            "cod_empresa" => trim($this->cod_empresa),
+            "cod_establecimiento" => trim($this->cod_establecimiento),
+            "num_documento" => trim($this->num_documento),
+            "cod_documento" => trim($this->cod_documento),
+            "fec_documento" => trim($this->fec_actualiza),
+            "txt_observacion" => trim($this->txt_descripcion),
+            "cod_usuario" => trim($this->cod_usuario),
+            "fec_actualiza" => trim($this->fec_actualiza),
+            "sts_cabecera_inventario" => "A"
+
+        );
+
+        $url = "ecmp_cabecera_inventario?token=".$this->token;
+        $method = "POST";
+        $fields = $data;
+        $response = CurlController::request($url, $method, $fields);
 
         $variable = $this->array;
         foreach ($variable as $key => $value) {
@@ -48,27 +67,10 @@ class CreateController
             $method = "POST";
             $fields = $data1;
             $response = CurlController::request($url, $method, $fields);
+            // echo '<pre>'; print_r($response); echo '</pre>';
         }
 
-        $data = array(
-
-
-            "cod_empresa" => trim($this->cod_empresa),
-            "cod_establecimiento" => trim($this->cod_establecimiento),
-            "num_documento" => trim($this->num_documento),
-            "cod_documento" => trim($this->cod_documento),
-            "fec_documento" => trim($this->fec_actualiza),
-            "txt_observacion" => trim($this->txt_descripcion),
-            "cod_usuario" => trim($this->cod_usuario),
-            "fec_actualiza" => trim($this->fec_actualiza),
-            "sts_cabecera_inventario" => "A"
-
-        );
-
-        $url = "ecmp_cabecera_inventario?token=".$this->token;
-        $method = "POST";
-        $fields = $data;
-        $response = CurlController::request($url, $method, $fields);
+       
         if($response == null){
             echo "400";
         }else{
