@@ -125,7 +125,7 @@ class MovimientoInventarioController{
     }
 
 
-    public function edit($id,$id2){
+    public function edit($id){
 
         
 
@@ -138,11 +138,11 @@ class MovimientoInventarioController{
 
 			</script>';
             
-          if($id == $_POST["idAdmin"] && $id2 == $_POST["idAdmin1"]){
+          if($id == $_POST["idAdmin"]){
 
 
 
-            $url = "gen_empresa?linkTo=cod_empresa&equalTo=".$_SESSION['admin']->cod_empresa;
+            $url = "ecmp_cabecera_inventario?linkTo=cod_empresa&equalTo=".$_SESSION['admin']->cod_empresa;
             
             $method = "GET";
             $fields = array();

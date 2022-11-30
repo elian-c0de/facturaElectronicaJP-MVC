@@ -97,7 +97,7 @@ function obtenerDatos(){
   // DATOS PARA CREATE 
   data.append("cod_empresa",localStorage.getItem("cod"));
   data.append("cod_establecimiento",document.getElementById("cod_establecimiento").value);
-  data.append("num_documento",3);
+  data.append("num_documento",document.getElementById("num_documento").value);
   data.append("token",localStorage.getItem("token_user"));
   data.append("cod_usuario",localStorage.getItem("codus"));
 

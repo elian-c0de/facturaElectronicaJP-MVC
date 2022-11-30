@@ -22,6 +22,8 @@ class CreateController
     public function dataCreate()
     {
         $data = array(
+            
+            
 
 
             "cod_empresa" => trim($this->cod_empresa),
@@ -35,40 +37,45 @@ class CreateController
             "sts_cabecera_inventario" => "A"
 
         );
+        echo '<pre>'; print_r($data); echo '</pre>';
+        $url = "ecmp_cabecera_inventario?token=" . $this->token;
+        echo '<pre>'; print_r($url); echo '</pre>';
+        
+        $method = "post";
+        $fields = $data; 
+        $response = CurlController::request($url,$method,$fields);
+        
+        
 
-        $url = "ecmp_cabecera_inventario?token=".$this->token;
-        $method = "POST";
-        $fields = $data;
-        $response = CurlController::request($url, $method, $fields);
-
-        $variable = $this->array;
-        foreach ($variable as $key => $value) {
-            $arrexp = explode(",", $value);
-            // echo '<pre>';
-            // print_r($arrexp);
-            // echo '</pre>';
-            $data1 = array(
+        // $variable = $this->array;
+        // foreach ($variable as $key => $value) {
+        //     $arrexp = explode(",", $value);
+        //     // echo '<pre>';
+        //     // print_r($arrexp);
+        //     // echo '</pre>';
+        //     $data1 = array(
 
 
 
-                "cod_empresa" => trim($this->cod_empresa),
-                "cod_establecimiento" => trim($this->cod_establecimiento),
-                "num_documento" => trim($this->num_documento),
-                "cod_inventario" => trim($arrexp[0]),
-                "qtx_cantidad" => trim($arrexp[2]),
-                "val_costo" => trim($arrexp[3]),
-                "val_porcentaje_iva" => "12.00"
+        //         "cod_empresa" => trim($this->cod_empresa),
+        //         "cod_establecimiento" => trim($this->cod_establecimiento),
+        //         "num_documento" => trim($this->num_documento),
+        //         "cod_inventario" => trim($arrexp[0]),
+        //         "qtx_cantidad" => trim($arrexp[2]),
+        //         "val_costo" => trim($arrexp[3]),
+        //         "val_porcentaje_iva" => "12.00"
 
-            );
-            // echo '<pre>';
-            // print_r($data1);
-            // echo '</pre>';
-            $url = "ecmp_detalle_inventario?token=".$this->token;
-            $method = "POST";
-            $fields = $data1;
-            $response = CurlController::request($url, $method, $fields);
-            // echo '<pre>'; print_r($response); echo '</pre>';
-        }
+        //     );
+        //     // echo '<pre>';
+        //     // print_r($data1);
+        //     // echo '</pre>';
+        //     $url = "ecmp_detalle_inventario?token=".$this->token;
+        //     echo '<pre>'; print_r($url); echo '</pre>';
+        //     $method = "POST";
+        //     $fields = $data1;
+        //     $response = CurlController::request($url,$method,$fields);
+        //     echo '<pre>'; print_r( $response); echo '</pre>';
+        // }
 
        
         if($response == null){

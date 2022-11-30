@@ -4,8 +4,14 @@ $method = "GET";
 $fields = array();
 $response = CurlController::request($url, $method, $fields);
 
-if ($response->status == 200) {
+$url1 = "ecmp_cabecera_inventario?equalTo=" . trim($_SESSION["admin"]->cod_empresa)  . "&linkTo=cod_empresa";
+$method1 = "GET";
+$fields1 = array();
+$response1 = CurlController::request($url1, $method1, $fields1);
+
+if ($response->status == 200 && $response1->status == 200) {
     $admin = $response->result[0];
+    $admin2 = end($response1->result);
     // echo '<pre>'; print_r($admin->cod_caja); echo '</pre>';
 } else {
     echo '<script>
@@ -50,10 +56,15 @@ if ($response->status == 200) {
 
                 <!-- CODIGO NUMERO DE MOVIMIENTO -->
                 <div class="form-group mt-2">
+                <?php
+                    require_once("controllers/movimientoInventario.controller.php");
+                    $create = new MovimientoInventarioController();
+                    $create->edit($admin2->cod_empresa);
+                    ?>
                     <label for="">Número de movimiento:</label>
-                    <input type="text" class="form-control" value="2" disabled>
+                    <input type="text" class="form-control" value="<?php echo $admin2->num_documento+1 ?>" disabled>
                 </div>
-                <input type="hidden" class="form-control" name="num_documento" id="num_documento" >
+                <input type="hidden" class="form-control" name="num_documento" id="num_documento"  value="<?php echo $admin2->num_documento+1 ?>">
 
                 <!-- TIPO DE MOVIMIENTO -->
                 <div class="form-group mt-2">
