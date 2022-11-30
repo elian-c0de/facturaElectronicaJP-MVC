@@ -19,7 +19,7 @@
           }else{
             echo '<li class="breadcrumb-item active">Marcas</li>';
           }
-      ?>
+      ?> 
         </ol>
       </div>
     </div>
