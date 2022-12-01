@@ -1,8 +1,14 @@
 <?php
-$url = "ecmp_detalle_pedido?equalTo=" . trim($_SESSION["admin"]->cod_empresa) . "&linkTo=cod_empresa";
+$url = "ecmp_detalle_pedido?equalTo="  . trim($_SESSION["admin"]->cod_empresa) . "&linkTo=cod_empresa";
+echo '<pre>'; print_r($url ); echo '</pre>';
+
+
 $method = "GET";
 $fields = array();
+echo '<pre>'; print_r($fields); echo '</pre>';
 $response = CurlController::request($url, $method, $fields);
+echo '<pre>'; print_r($response); echo '</pre>';
+return;
 
 if ($response->status == 200) {
     $admin = end($response->result);
@@ -38,7 +44,7 @@ if ($response->status == 200) {
                     <div class="valid-feedback">Válido</div>
                     <div class="invalid-feedback"> Por favor, rellene este campo</div>
                 </div>
-                <input type="hidden" class="form-control" name="cod_establecimiento" id="cod_establecimiento" value="<?php echo $admin->cod_establecimiento ?>" >
+                <input type="hidden" class="form-control" name="cod_establecimiento" id="cod_establecimiento" value="<?php echo $admin->num_pedido+1 ?>" >
 
 
                     <div class="form-group mt-2">
