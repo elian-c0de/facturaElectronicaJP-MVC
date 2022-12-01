@@ -46,6 +46,7 @@ class Post
                 );
             }
         } catch (PDOException $e) {
+            // echo '<pre>'; print_r($e); echo '</pre>';
         
             return null;
         }
