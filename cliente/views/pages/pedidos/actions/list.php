@@ -32,7 +32,7 @@ if (isset($_GET["start"]) && isset($_GET["end"])) {
       <div class="d-flex">
 
         <div class="input-group">
-          <button type="button" class="btn btn-default float-right" id="daterangee-btn">
+          <button type="button" class="btn float-right" id="daterangee-btn">
             <i class="far fa-calendar-alt mr-2"></i>
             <?php echo $between1 ?> - <?php echo $between2 ?>
             <i class="fas fa-caret-down ml-2"></i>

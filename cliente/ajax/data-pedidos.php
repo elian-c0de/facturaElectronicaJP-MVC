@@ -83,32 +83,32 @@ class DataTableController
                 //recorrer la data 
                 foreach ($data as $key => $value) {
 
-                    if($_GET["text"] == "flat"){
-                        $actions = "";
+                    // if($_GET["text"] == "flat"){
+                    //     $actions = "";
                         
-                    }else{
-                        //$actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
-                        $actions = "<a href='pedidos/Editar/" . base64_encode($value->num_pedido . "~" . $value->num_detalle . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
+                    // }else{
+                    //     //$actions = "<a class='btn btn-warning btn-sm mr-2'><i class='fas fa-pencil-alt'></i></a> <a class='btn btn-danger btn-sm'><i class='fas fa-trash-alt'></i></a>";
+                    //     $actions = "<a href='pedidos/Editar/" . base64_encode($value->num_pedido . "~" . $value->num_detalle . "~" . $_GET["token"]) . "' class='btn btn-warning btn-sm mr-2'>
                         
-                        <i class='fas fa-pencil-alt'></i>
+                    //     <i class='fas fa-pencil-alt'></i>
 
-                        </a> 
+                    //     </a> 
                         
-                        <a class='btn btn-danger btn-sm rounded-circle removeItem1' idItem=" . base64_encode($value->num_pedido . "~" . $value->num_detalle . "~" . $_GET["token"]) . " table='ecmp_detalle_pedido' column='num_pedido' column1='num_detalle' page='retenciondeImpuestos'>
+                    //     <a class='btn btn-danger btn-sm rounded-circle removeItem1' idItem=" . base64_encode($value->num_pedido . "~" . $value->num_detalle . "~" . $_GET["token"]) . " table='ecmp_detalle_pedido' column='num_pedido' column1='num_detalle' page='retenciondeImpuestos'>
 
-                        <i class='fas fa-trash-alt'></i>
+                    //     <i class='fas fa-trash-alt'></i>
 
-                        </a>";
+                    //     </a>";
 
-                    $actions = TemplateController::htmlClean($actions);
-                    }
+                    // $actions = TemplateController::htmlClean($actions);
+                    // }
                     $num_pedido = $value->num_pedido;
                     $num_detalle = $value->num_detalle;
                     $cod_inventario = $value->cod_inventario;
                     $txt_descripcion = $value->txt_descripcion;
                     $val_cantidad = $value->val_cantidad;
                     $val_unitario = $value->val_unitario;
-
+                    $val_porcentaje_iva = $value->val_porcentaje_iva;
                             $dataJson.='{
                         "num_pedido":"'.$num_pedido.'",
                         "num_detalle":"'.$num_detalle.'",
@@ -116,7 +116,7 @@ class DataTableController
                         "txt_descripcion":"'.$txt_descripcion.'",
                         "val_cantidad":"'.$val_cantidad.'",
                         "val_unitario":"'.$val_unitario.'",
-                        "actions":"'.$actions.'"
+                        "val_porcentaje_iva":"'.$val_porcentaje_iva.'"
                     },';
                 }
 
