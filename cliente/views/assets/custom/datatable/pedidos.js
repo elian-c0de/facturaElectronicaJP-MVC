@@ -182,3 +182,35 @@ $(document).on("click",".removeItem1", function(){
       })
     }
   })
+
+  window.onload = function(){
+    //FECHA ACTUAL
+    var fecha = new Date(); //Fecha actual
+    var mes = fecha.getMonth()+1; //obteniendo mes
+    var dia = fecha.getDate(); //obteniendo dia
+    var ano = fecha.getFullYear(); //obteniendo año
+    if(dia<10)
+      dia='0'+dia; //agrega cero si el menor de 10
+    if(mes<10)
+      mes='0'+mes //agrega cero si el menor de 10
+    document.getElementById('fec_documento').value=ano+"-"+mes+"-"+dia;
+  
+    // var num_documento= document.getElementById("num_documento");
+    // if (num_documento==" ") {
+    //    num_documento="1";
+    // } else {
+    //    num_documento = substr(num_documento,3);
+    //    num_documento = intval(num_documento);
+    //    num_documento = (num_documento+1);
+ 
+    // }
+    //Incremento NUMERO
+    
+  }
+
+  var myModal = document.getElementById('myModal')
+var myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})

@@ -311,12 +311,7 @@ window.onload = function(){
    //    num_documento = (num_documento+1);
 
    // }
-   //Incremento NUMERO
-   if(document.getElementById("num_documento").value==""){
-      document.getElementById("num_documento").value='1';
-   }else{
-
-   }
+ 
  }
 
  function rellenar(){

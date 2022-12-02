@@ -1,5 +1,5 @@
 <?php
-class MovimientoInventarioController{
+class PedidosController{
 
     public function create(){
 
