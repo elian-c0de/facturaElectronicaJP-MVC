@@ -22,12 +22,26 @@ class CreateController
     {
 
         //ecmp_pedido
+        /*
+        SELECT TOP (1000) [cod_empresa]
+      ,[num_pedido]
+      ,[num_id]
+      ,[nom_nombre_rsocial]
+      ,[fec_pedido]
+      ,[cod_establecimiento]
+      ,[cod_punto_emision]
+      ,[num_factura]
+      ,[sts_pedido]
+      ,[cod_usuario]
+      ,[fec_actualiza]
+  FROM [PECMP_JPEREZ].[dbo].[ecmp_pedido] 
+        */
         $data = array(
             "cod_empresa" => trim($this->cod_empresa),
             "num_id" => trim($this->num_id),
             "num_pedido" => trim($this->num_pedido),
             "nom_nombre_rsocial" => trim($this->nom_nombre_rsocial),
-            "fec_documento" => trim($this->fec_actualiza),  
+            "fec_pedido" => trim($this->fec_actualiza),  
             "cod_establecimiento" => NULL,
             "cod_punto_emision" => NULL,
             "num_factura" => NULL,
