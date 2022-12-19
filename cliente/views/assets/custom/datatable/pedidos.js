@@ -1,104 +1,74 @@
+//Ingresar datos de calcular SubTotal-IVA-TOTAL
+const form= document.getElementById("transactionForm");
+// form.addEventListener("submit", function(event){
+  document.getElementById("Guardar").addEventListener("click", myFunction);
+  function myFunction() {
+  //  event.preventDefault();
+   let transactionFormData = new FormData(form);
+   insertRowInTransactionTable(transactionFormData);
+    document.getElementById('cod_inventario').value= ('');
+    document.getElementById('txt_descripcion').value= ('');
+    document.getElementById('qtx_cantidad').value= ('');
+    document.getElementById('val_costo').value= ('');
+    document.getElementById('subtot').value= ('');
+    document.getElementById('iva').value= ('');
+    document.getElementById('total').value= ('');
+    document.getElementById('qtx_saldo').value= ('');
+   // form.reset();
+   total();
+
+   };
 
 
-execDataTable();
-function execDataTable () {
 
-    var url = "ajax/data-pedidos.php?&between1="+$("#between1").val()+"&between2="+$("#between2").val()+"&token="+localStorage.getItem("token_user")+"&code="+localStorage.getItem("cod");
-    var columns = [
-
+function insertRowInTransactionTable(transactionFormData){
+   let transactionTableRef = document.getElementById("pedidostable1");
    
-      {"data":"num_pedido"},
-      {"data":"num_detalle"},
-      {"data":"cod_inventario"},
-      {"data":"txt_descripcion"},
-      {"data":"val_cantidad"},
-      {"data":"val_unitario"},
-      {"data":"val_porcentaje_iva"},
-      
-    ];
-  
-   var pedidostable = $("#pedidostable").DataTable({
-      "responsive": true, 
-      "lengthChange": true,
-      "select": {style: 'single'},
-      "aLengthMenu": [[5,10,20,50,100],[5,10,20,50,100]],
-      "autoWidth": false, 
-      "processing": true,
-      "serverSide": true,
-      "ajax":{
-        "url": url,        
-        "type":"POST"
-      },
-      language: {
-        sProcessing: "Procesando...",
-        sLengthMenu: "Mostrar _MENU_ Entradas",
-        sZeroRecords: "No se encontraron resultados",
-        sEmptyTable: "Ningún dato disponible en esta tabla",
-        sInfo: "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-        sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0",
-        sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
-        "select-info": "",
-        sInfoPostFix: "",
-        sSearch: "Buscar:",
-        sUrl: "",
-        sInfoThousands: ",",
-        sLoadingRecords: "Cargando...",
-        oPaginate: {
-          sFirst: "Primero",
-          sLast: "Último",
-          sNext: "Siguiente",
-          sPrevious: "Anterior",
-        },
-        oAria: {
-          sSortAscending:
-            ": Activar para ordenar la columna de manera ascendente",
-          sSortDescending:
-            ": Activar para ordenar la columna de manera descendente",
-        },
-        // url: 'dataTables.spanish.json'
-      },
-      "columns": columns,
-      "buttons": [
-        {extend:"copy",className:"btn-dark"},
-        {extend:"csv",className:"btn-b"},
-        {extend:"excel",className:"btn-g"},
-        {extend:"pdf",className:"btn-g"},
-        {extend:"print",className:"btn-g"},
-        {extend:"colvis",className:"btn-g"}
-    ],
-    fnDrawCallback:function(oSettings){
-      if(oSettings.aoData.length == 0){
-          $('.dataTables_paginate').hide();
-          $('.dataTables_info').hide();
-      }
+   let newTransactionRowRef = transactionTableRef.insertRow(1);
 
-    }
-    })
-    
-        $("#pedidostable").on("draw.dt",function(){
-            setTimeout(() => {
-                pedidostable.buttons().container().appendTo('#pedidostable_wrapper .col-md-6:eq(0)');
-            }, 100);
-    
-        })
+   let newTypeCellRef = newTransactionRowRef.insertCell(0);
+   newTypeCellRef.textContent = transactionFormData.get("cod_inventario")
 
+   newTypeCellRef = newTransactionRowRef.insertCell(1);
+   newTypeCellRef.textContent = transactionFormData.get("txt_descripcion")
 
+   newTypeCellRef = newTransactionRowRef.insertCell(2);
+   newTypeCellRef.textContent = transactionFormData.get("qtx_cantidad")
+   
+   newTypeCellRef = newTransactionRowRef.insertCell(3);
+   newTypeCellRef.textContent = transactionFormData.get("val_costo")
 
+   newTypeCellRef = newTransactionRowRef.insertCell(4);
+   newTypeCellRef.textContent = transactionFormData.get("subtot")
 
-        pedidostable
-        .on("select", function (e, dt, type, indexes) {
-          var rowData = pedidostable.rows(indexes).data().toArray();
-          console.log("rowData: ", rowData);
-          document.getElementById("pedidosID").value = rowData[0].num_documento;
-          document.getElementById("pedidosID1").value = rowData[0].cod_inventario;
-        })
-        .on("deselect", function (e, dt, type, indexes) {
-          var rowData = pedidostable.rows(indexes).data().toArray();
-          document.getElementById("pedidosID").value = "";
-          document.getElementById("pedidosID1").value = "";
-        });
-     
+   newTypeCellRef = newTransactionRowRef.insertCell(5);
+   newTypeCellRef.textContent = transactionFormData.get("iva")
+
+   newTypeCellRef = newTransactionRowRef.insertCell(6);
+   newTypeCellRef.textContent = transactionFormData.get("total");
+
+   newTypeCellRef = newTransactionRowRef.insertCell(7);
+   newTypeCellRef.textContent = transactionFormData.get("qtx_saldo");
+   
 }
+
+function calcularSubtotal(){
+  try {
+      var a = parseFloat(document.getElementById("qtx_cantidad").value) || 0.00;
+      b = parseFloat(document.getElementById("val_costo").value) || 0.00;
+
+      document.getElementById("subtot").value = (a*b);
+
+      var c = parseFloat(document.getElementById("subtot").value) || 0.00;
+      document.getElementById("iva").value = ((c*12)/100);
+
+      var d = parseFloat(document.getElementById("iva").value) || 0.00;
+      document.getElementById("total").value = d+c;
+  } catch (error) {  
+  }
+  
+}
+
 
 
 
@@ -208,9 +178,156 @@ $(document).on("click",".removeItem1", function(){
     
   }
 
-  var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
+//   var myModal = document.getElementById('myModal')
+// var myInput = document.getElementById('myInput')
 
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-})
+// myModal.addEventListener('shown.bs.modal', function () {
+//   myInput.focus()
+// })
+
+
+function rellenar(){
+  //var cod_usuario = document.getElementById('gen_usuario');
+
+  var data = new FormData();
+
+    data.append("cod_inventario",$("#cod_inventario").val());
+    
+    data.append("cod_empresa",localStorage.getItem('cod'));
+
+    $.ajax({
+      url: "ajax/data-movimientoInventarioRellenar.php",
+      method: "POST",
+      data: data,
+      contentType: false,
+      cache: false,
+      dataType: 'json',
+      processData: false,
+      success: function(response){
+         //  console.log("response: ", response[0]["txt_descripcion"]);
+         //  console.log("response: ", response);
+          
+
+        //   // document.getElementById("cod_usuario").value=response[0]["cod_usuario"];
+          $("#txt_descripcion").val(response[0]["txt_descripcion"]);
+          $("#val_costo").val(response[0]["val_costo"]);
+          $("#qtx_saldo").val(response[0]["qtx_saldo"]);
+          
+          //$("#val_costo").val(response[0]["val_costo"]);
+        //   $("#nom_usuario").val(response[0]["nom_usuario"]);
+        //   $("#gen_perfil").val(response[0]["cod_perfil"]);
+        //   $("#gen_punto_emision1").val(response[0]["cod_establecimiento"])
+        //  $("#gen_punto_emision").val(response[0]["cod_punto_emision"]);
+        //  $("#sts_administrador").val(response[0]["sts_administrador"]);
+
+        //  if (response[0]["sts_usuario"]=='A') {
+          
+        //   $('#sts_usuario').prop('checked', true);
+        //  }else{
+        //   $('#sts_usuario').prop('checked', false);
+        //  }
+        //  if (response[0]["sts_administrador"]=='A') {
+          
+        //   $('#sts_administrador').prop('checked', true);
+        //  }else{
+        //   $('#sts_administrador').prop('checked', false);
+        //  }
+      }
+    })
+}
+
+function total(){
+  let total1 = 0;
+  let total2 = 0;
+  let total3 = 0;
+  const table =document.getElementById("pedidostable1"); //Almacenamos la id de la tabla
+  for (let i = 1; i < table.rows.length-4; i++) { //hacemos un recorrido por la tabla y no contamos la ultima fila (-N)
+    //console.log(table.rows[i].innerHTML);
+    let rowValue = table.rows[i].cells[4].innerHTML; // lo almacenamos en una variable el resultado de la columna [N]
+    total1 += Number(rowValue); // sumamos los valores
+    
+    let rowValue2 = table.rows[i].cells[5].innerHTML; // lo almacenamos en una variable el resultado de la columna [5]
+    total2 += Number(rowValue2); // sumamos los valores
+
+    let rowValue3 = table.rows[i].cells[6].innerHTML; // lo almacenamos en una variable el resultado de la columna [5]
+    total3 += Number(rowValue3); // sumamos los valores
+  }
+  // console.log("total1: ", total1);
+  const SubTotalIVA =document.getElementById("SubTotalIVA"); //obtenemos y almacenamos en una valiable el id de la tabledata que hemos creado vacia
+  SubTotalIVA.textContent = total1; // Hacemos que se muestre el total en la tabledata que hemos creado.
+
+  const IVA =document.getElementById("IVA"); //obtenemos y almacenamos en una valiable el id de la tabledata que hemos creado vacia
+  IVA.textContent = total2; // Hacemos que se muestre el total en la tabledata que hemos creado.
+
+  const Total =document.getElementById("Total"); //obtenemos y almacenamos en una valiable el id de la tabledata que hemos creado vacia
+  Total.textContent = total3; // Hacemos que se muestre el total en la tabledata que hemos creado.
+}
+
+
+function obtenerDatos(){
+  const table = document.getElementById("pedidostable1"); //Almacenamos la id de la tabla
+  var array = [];
+
+  var data = new FormData();
+  for (let i = 1; i < table.rows.length-4; i++) {
+    var hola = "";
+    for (let j = 0; j < table.rows[i].cells.length; j++) {
+      hola = hola + table.rows[i].cells[j].innerHTML + ",";
+    }
+
+    array.push(hola);
+  }
+
+   console.log(array);
+
+  for (var i = 0; i < array.length; i++) {
+      data.append('array[]',array[i]);
+    }
+
+ 
+
+
+
+
+
+  // DATOS PARA CREATE 
+  data.append("cod_empresa",localStorage.getItem("cod"));
+  data.append("num_id",document.getElementById("num_id").value);
+  data.append("num_pedido",document.getElementById("num_documento").value);
+  data.append("token",localStorage.getItem("token_user"));
+  data.append("cod_usuario",localStorage.getItem("codus"));
+
+  //INVENTARIO CABECERA
+  data.append("nom_nombre_rsocial",document.getElementById("NombreApellido").value);
+  data.append("fec_actualiza",document.getElementById("fec_documento").value);
+  // data.append("txt_descripcion",document.getElementById("txt_descripcion1").value);
+
+  // //DATOS DE LA TABLA
+  // data.append("data",array);
+  console.log("data: ", data);
+ 
+  
+
+  $.ajax({
+    url: "controllers/pedidosmovimiento.controllers.php",
+    method: "POST",
+    data: data,
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function(response){
+      console.log("response: ", response);
+      if(response == 200){
+        fncSweetAlert(
+          "success",
+          "el registro a sido ingresado correctamente",
+          "pedidos"
+        );
+      }else{
+        fncNotie(3,"Error al ingresar el registro")
+      }
+    }
+  })
+
+
+}
