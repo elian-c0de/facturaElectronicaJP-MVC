@@ -52,11 +52,13 @@ class CreateController
         );
         //  echo '<pre>'; print_r($data); echo '</pre>';
         $url = "ecmp_pedido?token=" . $this->token;
+        
         // echo '<pre>'; print_r($url); echo '</pre>';
         
         $method = "post";
         $fields = $data; 
         $response = CurlController::request($url,$method,$fields);
+        // echo '<pre>'; print_r($response); echo '</pre>';
         
         
 //ecmp_detalle_pedido
@@ -71,7 +73,7 @@ SELECT TOP (1000) [cod_empresa]
       ,[val_porcentaje_iva]
   FROM [PECMP_JPEREZ].[dbo].[ecmp_detalle_pedido]
 */
-
+/*
         $variable = $this->array;
         foreach ($variable as $key => $value) {
             $arrexp = explode(",", $value);
@@ -100,7 +102,7 @@ SELECT TOP (1000) [cod_empresa]
             $fields = $data1;
             $response = CurlController::request($url,$method,$fields);
             // echo '<pre>'; print_r( $response); echo '</pre>';
-        }
+        }*/
 
        
         if($response == null){

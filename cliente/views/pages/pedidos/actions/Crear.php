@@ -49,7 +49,7 @@ if ($response->status == 200) {
                     <!-- DATOS DEL CLIENTE -->
                     <label for="">Cliente:</label>
                     <button type="button" class="btn btn-outline-info agregarproductos" data-toggle="modal" data-target="#agregarProductos">
-                        <i class="bi bi-people-fill"></i>
+                        <i class="bi bi-search"></i>
                     </button>
 
                     <!-- Modal AGREGAR PRODUCTOS-->
@@ -61,7 +61,7 @@ if ($response->status == 200) {
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h3>Buscar Productos</h3>
+                                        <h3>Buscar Clientes</h3>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                     </div>
                                     <div class="modal-body">

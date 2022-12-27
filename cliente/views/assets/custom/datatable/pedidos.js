@@ -278,15 +278,11 @@ function obtenerDatos(){
     array.push(hola);
   }
 
-   console.log(array);
+  //  console.log(array);
 
   for (var i = 0; i < array.length; i++) {
       data.append('array[]',array[i]);
     }
-
- 
-
-
 
 
 
@@ -304,7 +300,7 @@ function obtenerDatos(){
 
   // //DATOS DE LA TABLA
   // data.append("data",array);
-  console.log("data: ", data);
+    console.log("data: ", data);
  
   
 
